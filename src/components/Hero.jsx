@@ -3,7 +3,7 @@ import mypics from '../assets/samteck picture.jpg'
 
 export default function Hero() {
   return (
-    <section className="relative h-screen mt-16 w-full pb-12 flex justify-between gap-0">
+    <section className="relative h-screen mt-16 w-full pb-12 flex justify-between bg-primary gap-0">
         <img src={bg02} alt="opacity background" className='absolute -top-16 right-0 max-w-[770px] -z-[0]' style={{opacity: '40%' }} />
         <div className="max_padd_container max-h-[470px] !pe-0 relative top-16 xs:top-32 w-[45%] flex items-start justify-between flex-col ">
             <p className="text-gray-30 regular-18 "><span className="regular-18 active_link ">HELLO, </span>MY NAME IS</p>

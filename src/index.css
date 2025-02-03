@@ -20,6 +20,10 @@
 html{
   scroll-behavior: smooth;
   background-image: url(assets/leone-venter-VieM9BdZKFo-unsplash.jpg);
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 /* width */
 ::-webkit-scrollbar {

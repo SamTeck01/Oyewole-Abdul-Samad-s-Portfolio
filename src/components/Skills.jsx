@@ -21,33 +21,40 @@ const Skills = () => {
   return (
     <section className="p-10 bg-gray-100">
       <div className="max-w-6xl mx-auto">
-        <motion.h2 
-          className="text-4xl font-bold text-center mb-10"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          Skills
-        </motion.h2>
         
         <div className="grid md:grid-cols-2 gap-10">
           <div>
+            <motion.h2 
+              className="h3 text-center"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.5 }}
+            > 
+              Skills
+            </motion.h2>
+            <hr className="h-[3px] md:w-1/2 mx-auto bg-gradient-to-r from-transparent via-black to-transparent mb-16 " />
+
             {skills.map((skill, index) => (
               <motion.div key={index} 
                 className="mb-4"
                 initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
               >
-                <p className="text-lg font-medium">{skill.name}</p>
-                <div className="bg-gray-300 h-3 rounded-lg overflow-hidden">
+                <p className="text-[18px] font-medium mb-1">{skill.name}</p>
+                <div className="bg-gray-300 h-4 rounded-lg overflow-hidden">
                   <motion.div 
-                    className="bg-blue-500 h-full"
-                    style={{ width: skill.level }}
+                    className=" h-full flex justify-end"
+                    style={{ width: skill.level, backgroundColor: '#009bdf'}}
                     initial={{ width: 0 }}
-                    animate={{ width: skill.level }}
+                    whileInView={{ width: skill.level }}
+                    viewport={{ once: false }}
                     transition={{ duration: 1 }}
-                  ></motion.div>
+                  >
+                    <span className="text-white text-xs me-1">{skill.level}</span>
+                  </motion.div>
                 </div>
               </motion.div>
             ))}
@@ -55,18 +62,22 @@ const Skills = () => {
           
           <div>
             <motion.h2 
-              className="text-4xl font-bold text-center mb-10"
+              className="h3 text-center"
               initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
               transition={{ duration: 0.5 }}
-            >
-              Technologies & Tools
+            > 
+              Technologies and Tools
             </motion.h2>
+            <hr className="h-[3px] md:w-1/2 mx-auto bg-gradient-to-r from-transparent via-black to-transparent mb-16 " />
+
             <ul className="list-disc list-inside text-lg space-y-2">
               {tools.map((tool, index) => (
                 <motion.li key={index} 
                   initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: false }}
                   transition={{ duration: 0.5, delay: index * 0.2 }}
                 >
                   {tool}

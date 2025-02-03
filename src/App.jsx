@@ -7,7 +7,7 @@ import Login from './pages/Login';
 
 export default function App() {
   return (
-    <main className="bg-[url(src/assets/leone-venter-VieM9BdZKFo-unsplash.jpg)] text-tertiary ">
+    <main className="text-tertiary ">
       <BrowserRouter>
         <Header/>
         <Routes>
