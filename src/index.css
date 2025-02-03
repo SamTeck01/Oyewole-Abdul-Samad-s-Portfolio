@@ -19,6 +19,7 @@
 }
 html{
   scroll-behavior: smooth;
+  background-image: url(assets/leone-venter-VieM9BdZKFo-unsplash.jpg);
 }
 /* width */
 ::-webkit-scrollbar {

@@ -1,61 +1,80 @@
+
 import { motion } from "framer-motion";
 
 const skills = [
-  { category: "Frontend", list: ["HTML", "CSS", "JavaScript", "React.js", "Tailwind CSS", "Bootstrap"] },
-  { category: "Tools & Version Control", list: ["Git", "GitHub", "NPM", "VS Code"] },
-  { category: "UI/UX & Design", list: ["Figma", "Adobe XD", "Responsive Design"] },
+  { name: "HTML & CSS", level: "90%" },
+  { name: "JavaScript", level: "85%" },
+  { name: "React.js", level: "80%" },
+  { name: "Tailwind CSS", level: "85%" },
+  { name: "Bootstrap", level: "80%" }
+];
+
+const tools = [
+  "React Vite",
+  "Git & GitHub",
+  "VS Code",
+  "Chrome DevTools",
+  "Postman"
 ];
 
 const Skills = () => {
   return (
-    <section className="min-h-screen bg-gray-100 flex flex-col items-center justify-center px-6 py-12">
-      <motion.h2
-        className="text-3xl font-bold text-gray-800 mb-6"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: false }}
-      >
-        My Skills
-      </motion.h2>
-
-      <motion.p
-        className="text-gray-600 text-lg text-center max-w-2xl mb-10"
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        viewport={{ once: false }}
-      >
-        Here are the technologies and tools I use to build engaging, high-quality web experiences.
-      </motion.p>
-
-      <div className="grid md:grid-cols-3 gap-8">
-        {skills.map((skillGroup, index) => (
-          <motion.div
-            key={index}
-            className="bg-white shadow-lg p-6 rounded-lg"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-            viewport={{ once: false }}
-          >
-            <h3 className="text-xl font-semibold text-gray-800 mb-4">{skillGroup.category}</h3>
-            <ul className="space-y-2">
-              {skillGroup.list.map((skill, i) => (
-                <motion.li
-                  key={i}
-                  className="text-gray-600 text-lg flex items-center gap-2"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  viewport={{ once: false }}
+    <section className="p-10 bg-gray-100">
+      <div className="max-w-6xl mx-auto">
+        <motion.h2 
+          className="text-4xl font-bold text-center mb-10"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          Skills
+        </motion.h2>
+        
+        <div className="grid md:grid-cols-2 gap-10">
+          <div>
+            {skills.map((skill, index) => (
+              <motion.div key={index} 
+                className="mb-4"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+              >
+                <p className="text-lg font-medium">{skill.name}</p>
+                <div className="bg-gray-300 h-3 rounded-lg overflow-hidden">
+                  <motion.div 
+                    className="bg-blue-500 h-full"
+                    style={{ width: skill.level }}
+                    initial={{ width: 0 }}
+                    animate={{ width: skill.level }}
+                    transition={{ duration: 1 }}
+                  ></motion.div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          <div>
+            <motion.h2 
+              className="text-4xl font-bold text-center mb-10"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              Technologies & Tools
+            </motion.h2>
+            <ul className="list-disc list-inside text-lg space-y-2">
+              {tools.map((tool, index) => (
+                <motion.li key={index} 
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
                 >
-                  ✅ {skill}
+                  {tool}
                 </motion.li>
               ))}
             </ul>
-          </motion.div>
-        ))}
+          </div>
+        </div>
       </div>
     </section>
   );
