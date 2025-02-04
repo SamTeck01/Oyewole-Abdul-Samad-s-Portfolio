@@ -1,7 +1,7 @@
 
 import Hero from "./Hero";
 import Popular from "./About-Page";
-import Offer from "./Offer";
+import Offer from "./Free Page";
 import NewCollections from "./Skills";
 import NewsLetter from "./NewsLetter";
 

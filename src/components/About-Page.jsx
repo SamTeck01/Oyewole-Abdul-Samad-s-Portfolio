@@ -35,7 +35,8 @@ export default function Popular() {
         {/* Content Sections */}
         <div className="mt-20 flex flex-wrap">
           <motion.div
-            className="w-[50%] playfair-display-sm"
+            className="w-[50%] playfair-display text-2xl md:text-[42px]"
+            style={{color: '#009bdf'}}
             whileInView={{ opacity: 1, scale: 1 }}
             initial={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.6 }}

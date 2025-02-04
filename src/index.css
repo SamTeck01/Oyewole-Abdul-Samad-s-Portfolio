@@ -19,7 +19,7 @@
 }
 html{
   scroll-behavior: smooth;
-  background-image: url(assets/leone-venter-VieM9BdZKFo-unsplash.jpg);
+  background-image: url(assets\steptodown.com106507.jpg);
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -68,6 +68,12 @@ html{
 
 @layer utilities {
 
+  .freePageCover {
+    overflow: hidden;
+    background-color: white;
+    background: -webkit-linear-gradient(to right, transparent, white);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, transparent, transparent, white); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
   .gen-font-medium {
     font-family: "Barlow Semi Condensed", serif;
     font-style: normal;
@@ -76,16 +82,8 @@ html{
   .playfair-display {
     font-family: "Playfair Display", serif;
     font-weight: 900;
-    font-size: 77px;
     color: black;
-  }
-  .playfair-display-sm {
-    color: #009bdf;
-    font-size: 37px;
-    font-size: 2.0588235294118rem;
-    font-weight: 800;
-    font-family: 'Playfair Display', serif;
-    line-height: 1.5em;
+    line-height: 2.7rem
   }
   .playfair-display-md {
     font-family: "Playfair Display", serif;
@@ -104,8 +102,6 @@ html{
   .myPics{
     border-radius: 500px 500px 500px 500px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-    width: 620px;
-    height: 620px;
   }
   .btn_white_rounded  { 
     @apply  medium-15 border border-white bg-white px-7 py-3 text-gray-90 rounded-full
