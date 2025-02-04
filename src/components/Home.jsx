@@ -1,18 +1,18 @@
 
 import Hero from "./Hero";
-import Popular from "./About-Page";
-import Offer from "./Free Page";
-import NewCollections from "./Skills";
-import NewsLetter from "./NewsLetter";
+import AboutPage from "./About-Page";
+import FreePage from "./Free Page";
+import Skills from "./Skills";
+import Contact from "./Contact";
 
 export default function Home() {
   return (
     <div>
       <Hero />
-      <Popular/>
-      <Offer/>
-      <NewCollections/>
-      <NewsLetter/>
+      <AboutPage/>
+      <FreePage/>
+      <Skills/>
+      <Contact/>
     </div>
   )
 }
