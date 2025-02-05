@@ -33,11 +33,11 @@ const Contact = () => {
               transition={{ duration: 0.5 }}
               viewport={{ once: false }}
             >
-              <label className="block text-gray-700 text-lg mb-2 font-bold">Name <span className="text-red-600">*</span></label>
-              <div className=""> 
-                <div><input type="text" className="w-[50%] p-3 border border-gray-300 rounded-[2px] bg-[] focus:ring-1 focus:ring-[#009bdf] focus:outline-none" required /></div>
+              <label className="block text-slate-500 text-lg mb-2 font-bold">Name <span className="text-red-600">*</span></label>
+              <div className="flex gap-3"> 
+                <div className="w-[50%]"><input type="text" className="w-full p-3 border border-slate-300 rounded-[2px] bg-[] focus:ring-1 focus:ring-[#009bdf] focus:outline-none" required /> <p>First</p> </div>
                 
-                <div><input type="text" className="w-[50%] p-3 border border-gray-300 rounded-[2px] bg-[] focus:ring-1 focus:ring-[#009bdf] focus:outline-none" required /></div>
+                <div className="w-[50%]"><input type="text" className="w-full p-3 border border-slate-300 rounded-[2px] bg-[] focus:ring-1 focus:ring-[#009bdf] focus:outline-none" required /> <p>Second</p> </div>
               </div>
               
             </motion.div>
@@ -48,8 +48,8 @@ const Contact = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: false }}
             >
-              <label className="block text-gray-700 text-lg mb-2">Email</label>
-              <input type="email" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Your Email" required />
+              <label className="block text-slate-500 text-lg mb-2 font-bold">Email <span className="text-red-600">*</span></label>
+              <input type="email" className="w-full p-3 border border-slate-300 rounded-[2px] bg-[] focus:ring-1 focus:ring-[#009bdf] focus:outline-none" required />
             </motion.div>
             
             <motion.div 
@@ -58,13 +58,13 @@ const Contact = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: false }}
             >
-              <label className="block text-gray-700 text-lg mb-2">Message</label>
-              <textarea className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" rows="5" placeholder="Your Message" required></textarea>
+              <label className="block text-slate-500 text-lg mb-2 font-bold">Message <span className="text-red-600">*</span></label>
+              <textarea className="w-full p-3 border border-slate-300 rounded-[2px] bg-[] focus:ring-1 focus:ring-[#009bdf] focus:outline-none" rows="5" placeholder="Your Message" required></textarea>
             </motion.div>
             
             <motion.button 
               type="submit"
-              className="w-full bg-blue-500 text-white py-3 rounded-lg text-lg font-semibold hover:bg-blue-600 transition duration-300"
+              className="w-full bg-[#009bdf] text-white py-3 rounded-lg text-lg font-semibold hover:bg-[#2897c6] transition duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

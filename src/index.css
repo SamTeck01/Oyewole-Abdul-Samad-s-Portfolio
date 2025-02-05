@@ -62,7 +62,7 @@ html{
   }
 
   p {
-    @apply leading-[1.3] text-gray-30 text-[15px];
+    @apply leading-[1.3] text-slate-500 text-[15px];
   }
 }
 

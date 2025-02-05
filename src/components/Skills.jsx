@@ -19,7 +19,7 @@ const tools = [
 
 const Skills = () => {
   return (
-    <section className="p-10 bg-gray-100">
+    <section className="p-10 bg-primary">
       <div className="max-w-6xl mx-auto">
         
         <div className="grid md:grid-cols-2 gap-10">
@@ -75,6 +75,7 @@ const Skills = () => {
             <ul className="list-disc list-inside text-lg space-y-2">
               {tools.map((tool, index) => (
                 <motion.li key={index} 
+                  className="text-slate-600"
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: false }}

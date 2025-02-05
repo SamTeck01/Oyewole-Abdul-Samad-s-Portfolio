@@ -25,7 +25,7 @@ export default function Footer() {
               {FOOTER_LINKS.map((col) => {
                 
                 return(<>
-                  <FooterColumn title={col.title} key={FOOTER_LINKS.length ++} className={"flex flex-col gap-4 regular-14 text-gray-20" } >
+                  <FooterColumn className={"flex flex-col gap-4 regular-14 text-slate-500" } >
                     {col.links.map((link) => <ul key={col.title} >
                       <Link to={'/'} key={link}> {link} </Link>
                     </ul> ) }

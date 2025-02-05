@@ -15,12 +15,12 @@ export default function Hero() {
             {/* Text Section */}
             <div className="md:h-[450px] h-full md:pe-0 md:mb-0 mb-5 relative md:top-16 top-28 md:w-[45%] flex items-center justify-center md:justify-start sm:justify-start ">
                 <div className='flex gap-6 md:justify-between sm:gap-10 flex-col text-center md:text-left h-full'>
-                    <p className="text-gray-30 regular-18 mb-6">
+                    <p className="text-slate-500 regular-18 mb-6">
                         <span className="regular-18 active_link">HELLO, </span>MY NAME IS
                     </p>
                     <div>
                         <h1 className="m-0 playfair-display text-4xl md:text-7xl">Abdul Samad</h1>
-                        <p className="text-gray-30 playfair-display-md font-extrabold text-2xl mt-2">Web Developer</p>
+                        <p className="text-slate-500 playfair-display-md font-extrabold text-2xl mt-2">Web Developer</p>
                     </div>
 
                     <div className="flex flex-col items-center md:items-start">

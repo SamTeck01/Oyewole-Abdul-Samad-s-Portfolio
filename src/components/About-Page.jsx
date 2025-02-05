@@ -1,6 +1,26 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
-export default function Popular() {
+export default function AboutPage() {
+
+  const [readmore, setReadMore] = useState('');
+
+  const [buttonContent, setbuttonContent] = useState();
+
+  useEffect(() => {
+    
+    return () => {
+      readmore === '' ? setbuttonContent('Read Me') : setbuttonContent('Read Less');
+    }
+  })
+  
+
+  const readMoreContent = <p className="text-slate-500 mt-4 text-lg">
+                            I am always eager to explore new technologies, solve complex 
+                            problems, and collaborate with teams to bring ideas to life.  
+                            Lets build something innovative together!
+                          </p>
+
   return (
     <section className="min-h-screen bg-primary flex items-center justify-center">
       <motion.div
@@ -50,24 +70,25 @@ export default function Popular() {
             initial={{ opacity: 0, x: 50 }}
             transition={{ duration: 0.8 }}
           >
-            <p className="text-gray-600 text-lg">
+            <p className="text-slate-500 text-lg">
               I am <span className="font-semibold">Oyewole Abdul Samad</span>, a highly motivated 
               <span className="font-semibold"> Front-End Developer</span> with expertise in 
               <span className="font-semibold"> React.js, JavaScript, HTML, CSS, Tailwind CSS, 
               and Bootstrap</span>.
             </p>
 
-            <p className="text-gray-600 mt-4 text-lg">
+            <p className="text-slate-500 mt-4 text-lg">
               With a keen eye for design and a deep understanding of modern 
               front-end technologies, I am dedicated to crafting seamless digital 
               experiences.
             </p>
 
-            <p className="text-gray-600 mt-4 text-lg">
-              I am always eager to explore new technologies, solve complex 
-              problems, and collaborate with teams to bring ideas to life.  
-              Let’s build something innovative together!
-            </p>
+            {readmore}
+
+            <button onClick={()=>{
+              
+              setReadMore(prev => prev=readMoreContent);
+            }}> {buttonContent} </button>
           </motion.div>
         </div>
       </motion.div>
