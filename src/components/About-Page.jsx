@@ -3,9 +3,9 @@ import { useState } from "react";
 
 export default function AboutPage() {
 
-  const [readmore, setReadMore] = useState('');
+  const [readmore, setReadMore] = useState();
 
-  const [isExpandable, setIsEXpandable] = useState(true);
+  const [isExpandable, setIsEXpandable] = useState(false);
 
   const readMoreContent = <p className="text-slate-500 mt-4 text-lg">
                             I am always eager to explore new technologies, solve complex 
@@ -80,7 +80,8 @@ export default function AboutPage() {
             <button onClick={()=>{
               
               setIsEXpandable(prev => !prev);
-            }}> {isExpandable ? 'Read More' : 'Read Less'} </button>
+              isExpandable ? setReadMore('') : setReadMore(readMoreContent)
+            }}> {isExpandable ? 'Read Less' : 'Read More'} </button>
           </motion.div>
         </div>
       </motion.div>
