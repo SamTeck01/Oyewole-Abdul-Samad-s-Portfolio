@@ -34,11 +34,11 @@ const Contact = () => {
               viewport={{ once: false }}
             >
               <label className="block text-gray-700 text-lg mb-2 font-bold">Name <span className="text-red-600">*</span></label>
-              <div className=""> </div>
-                <input type="text" className="w-[50%] p-3 border border-gray-300 rounded-[2px] bg-[] focus:ring-1 focus:ring-[#009bdf] focus:outline-none" required />
+              <div className=""> 
+                <div><input type="text" className="w-[50%] p-3 border border-gray-300 rounded-[2px] bg-[] focus:ring-1 focus:ring-[#009bdf] focus:outline-none" required /></div>
                 
-                <input type="text" className="w-[50%] p-3 border border-gray-300 rounded-[2px] bg-[] focus:ring-1 focus:ring-[#009bdf] focus:outline-none" required />
-             
+                <div><input type="text" className="w-[50%] p-3 border border-gray-300 rounded-[2px] bg-[] focus:ring-1 focus:ring-[#009bdf] focus:outline-none" required /></div>
+              </div>
               
             </motion.div>
             
