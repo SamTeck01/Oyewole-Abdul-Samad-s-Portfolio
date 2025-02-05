@@ -1,19 +1,11 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function AboutPage() {
 
   const [readmore, setReadMore] = useState('');
 
-  const [buttonContent, setbuttonContent] = useState();
-
-  useEffect(() => {
-    
-    return () => {
-      readmore === '' ? setbuttonContent('Read Me') : setbuttonContent('Read Less');
-    }
-  })
-  
+  const [isExpandable, setIsEXpandable] = useState(true);
 
   const readMoreContent = <p className="text-slate-500 mt-4 text-lg">
                             I am always eager to explore new technologies, solve complex 
@@ -87,8 +79,8 @@ export default function AboutPage() {
 
             <button onClick={()=>{
               
-              setReadMore(prev => prev=readMoreContent);
-            }}> {buttonContent} </button>
+              setIsEXpandable(prev => !prev);
+            }}> {isExpandable ? 'Read More' : 'Read Less'} </button>
           </motion.div>
         </div>
       </motion.div>
