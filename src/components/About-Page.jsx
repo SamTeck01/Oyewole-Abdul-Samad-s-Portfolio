@@ -12,7 +12,7 @@ export default function Popular() {
       >
         {/* Heading */}
         <motion.div
-          className="text-center"
+          className="text-center text-[#009bdf]"
           whileInView={{ opacity: 1, y: 0 }}
           initial={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.5, delay: 0.3 }}
@@ -20,7 +20,7 @@ export default function Popular() {
           <h3 className="h3">About Me</h3>
         </motion.div>
 
-        <hr className="h-[3px] md:w-1/2 mx-auto bg-gradient-to-r from-transparent via-black to-transparent mb-16 " />
+        <hr className="h-[3px] md:w-1/2 mx-auto bg-gradient-to-r from-transparent via-[#009bdf] to-transparent mb-16 " />
 
         {/* Description */}
         <motion.p

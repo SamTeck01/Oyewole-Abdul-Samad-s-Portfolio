@@ -25,7 +25,7 @@ const Skills = () => {
         <div className="grid md:grid-cols-2 gap-10">
           <div>
             <motion.h2 
-              className="h3 text-center"
+              className="h3 text-center text-[#009bdf]"
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
@@ -33,7 +33,7 @@ const Skills = () => {
             > 
               Skills
             </motion.h2>
-            <hr className="h-[3px] md:w-1/2 mx-auto bg-gradient-to-r from-transparent via-black to-transparent mb-16 " />
+            <hr className="h-[3px] md:w-1/2 mx-auto bg-gradient-to-r from-transparent via-[#009bdf] to-transparent mb-16 " />
 
             {skills.map((skill, index) => (
               <motion.div key={index} 
@@ -62,7 +62,7 @@ const Skills = () => {
           
           <div>
             <motion.h2 
-              className="h3 text-center"
+              className="h3 text-center text-[#009bdf]"
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
@@ -70,7 +70,7 @@ const Skills = () => {
             > 
               Technologies and Tools
             </motion.h2>
-            <hr className="h-[3px] md:w-1/2 mx-auto bg-gradient-to-r from-transparent via-black to-transparent mb-16 " />
+            <hr className="h-[3px] md:w-1/2 mx-auto bg-gradient-to-r from-transparent via-[#009bdf] to-transparent mb-16 " />
 
             <ul className="list-disc list-inside text-lg space-y-2">
               {tools.map((tool, index) => (

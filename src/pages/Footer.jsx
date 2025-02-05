@@ -15,8 +15,8 @@ function FooterColumn ({title, children, className}){
 
 export default function Footer() {
   return (
-    <div>
-      <footer className="flexCenter pb-20 pt-20" >
+    <div >
+      <footer className="flexCenter pb-20 pt-20 bg-primary" >
         <div className="max_padd_container flex w-full flex-col gap-14" >
           <div className="flex flex-col items-start justify-center gap-[10%] md:flex-row " >
             <Link to='/' className="mb-10 bold-20 ">Shoppee</Link>
