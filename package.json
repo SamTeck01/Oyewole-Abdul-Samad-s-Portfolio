@@ -2,7 +2,7 @@
   "name": "abdul-samad-oyewole-portfolio",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://SamTeck01.github.io/Oyewole-Abdul-Samad-s-Portfolio",
+  "homepage": "https://samteck01.github.io/Oyewole-Abdul-Samad-s-Portfolio",
   "type": "module",
   "scripts": {
     "dev": "vite",
