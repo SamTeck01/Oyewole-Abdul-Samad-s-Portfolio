@@ -1,4 +1,4 @@
-import {Link, NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 //import logout from '../assets/logout.svg';
 import Navbar from './Navbar.jsx'
 import { useState } from 'react'
@@ -12,8 +12,8 @@ export default function Header() {
     <header className='fixed top-0 left-0 m-auto max_padd_container w-full bg-white ring-1 ring-slate-900/5 z-10' >
       <div className='px-4 flexBetween py-3 max-xs:px-2' >
         {/*Logo */}
-        <div>
-            <Link to={'/'}> <h3 className='font-medium text-4xl '>ABDUL SAMAD OYEWOLE </h3> </Link>
+        <div >
+            <Link to={'/'}> <h3 className='font-medium text-4xl flex-row flex gap-3'>ABDUL SAMAD <span className='font-medium text-4xl hidden sm:block md:block lg:block xl:block '> OYEWOLE</span></h3> </Link>
         </div>
         {/*navbar desktop*/}
         <Navbar containerStyles={'hidden md:flex gap-x-5 xl:gap-x-10 medium-15 '} />
@@ -31,7 +31,7 @@ export default function Header() {
             <i className="bx bx-x bx-sm flex justify-center items-center md:hidden cursor-pointer hover:text-secondary mr-2 p-1 ring-2 ring-slate-900/30 h-8 w-8 rounded-full " onClick={toggleMenu} ></i>
           }
           <div className="flexBetween sm:gap-x-6 cursor-pointer ">
-            <NavLink to={'login'} className='btn_secondary_rounded gen-font-light'>Contacts</NavLink>
+            <a href='#contact' className='btn_secondary_rounded gen-font-light'>Contacts</a>
             {/*hello */}
           </div>
         </div>

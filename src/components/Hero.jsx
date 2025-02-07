@@ -38,7 +38,7 @@ export default function Hero() {
 
             {/* Image Section */}
             <div className="!p-0 !pt-16 relative flex justify-center md:w-[55%]">
-                <img src={mypics} alt="my picture" className='myPics md:w-[620px] md:h-[620px] w-[620px] h-[400px] ' />
+                <img src={mypics} alt="my picture" className='myPics md:w-[580px] md:h-[580px] w-[320px] h-[320px] ' />
                 
             </div>
         </div>
