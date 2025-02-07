@@ -1,6 +1,6 @@
 import {Link, NavLink} from 'react-router-dom'
 //import logout from '../assets/logout.svg';
-import Navbar from './NavBar.jsx'
+import Navbar from './Navbar.jsx'
 import { useState } from 'react'
 
 export default function Header() {
