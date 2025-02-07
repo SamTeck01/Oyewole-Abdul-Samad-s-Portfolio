@@ -1,4 +1,4 @@
-import {Link, NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 //import logout from '../assets/logout.svg';
 import Navbar from './Navbar.jsx'
 import { useState } from 'react'
@@ -31,7 +31,7 @@ export default function Header() {
             <i className="bx bx-x bx-sm flex justify-center items-center md:hidden cursor-pointer hover:text-secondary mr-2 p-1 ring-2 ring-slate-900/30 h-8 w-8 rounded-full " onClick={toggleMenu} ></i>
           }
           <div className="flexBetween sm:gap-x-6 cursor-pointer ">
-            <NavLink to={'login'} className='btn_secondary_rounded gen-font-light'>Contacts</NavLink>
+            <a href='#contact' className='btn_secondary_rounded gen-font-light'>Contacts</a>
             {/*hello */}
           </div>
         </div>

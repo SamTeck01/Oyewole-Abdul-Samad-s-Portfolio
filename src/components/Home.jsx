@@ -9,12 +9,12 @@ import Projects from "./Projects";
 export default function Home() {
   return (
     <div>
-      <Hero />
-      <AboutPage/>
-      <FreePage/>
-      <Skills/>
-      <Projects/>
-      <Contact/>
+      <section id="hero"><Hero /></section>
+      <section id="about"><AboutPage /></section>
+      <section id="free"><FreePage /></section>
+      <section id="skills"><Skills /></section>
+      <section id="projects"><Projects /></section>
+      <section id="contact"><Contact /></section>
     </div>
   )
 }
