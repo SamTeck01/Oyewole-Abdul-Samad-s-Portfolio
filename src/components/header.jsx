@@ -12,8 +12,8 @@ export default function Header() {
     <header className='fixed top-0 left-0 m-auto max_padd_container w-full bg-white ring-1 ring-slate-900/5 z-10' >
       <div className='px-4 flexBetween py-3 max-xs:px-2' >
         {/*Logo */}
-        <div>
-            <Link to={'/'}> <h3 className='font-medium text-4xl '>ABDUL SAMAD OYEWOLE </h3> </Link>
+        <div >
+            <Link to={'/'}> <h3 className='font-medium text-4xl flex-row flex gap-3'>ABDUL SAMAD <span className='font-medium text-4xl hidden sm:block md:block lg:block xl:block '> OYEWOLE</span></h3> </Link>
         </div>
         {/*navbar desktop*/}
         <Navbar containerStyles={'hidden md:flex gap-x-5 xl:gap-x-10 medium-15 '} />
