@@ -1,0 +1,97 @@
+
+:root {
+  --primary: #D00000;
+  --secondary: #212529;
+  --accent: #F8F9FA;
+  --text: #000000;
+  --footer: #6C757D;
+}
+*{
+  padding: 0;
+  margin: 0;
+  color: var(--accent);
+  background-color: var(--secondary);
+}
+header{
+  border-bottom: solid 1.5px grey;
+}
+footer{
+  position: absolute;
+  bottom: -40px;
+  border-top: solid 1.5px grey;
+  color: var(--footer);
+}
+input {
+  padding: 10px;
+  font-size: 14px;
+}
+
+input:focus {
+  outline: none;
+}
+.container-diff{
+  margin: 0% 5%;
+}
+.grid-container{
+  display: grid;
+  place-items: center;
+  grid-template-columns: auto auto auto;
+  row-gap: 15px;
+}
+
+.nav-diff{
+  display: flex;
+  gap: 15px;
+}
+.nav-item{
+  color: #dc3545;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 500;
+}
+.nav-item:hover{
+  color: var(--accent);
+}
+.nav-item-hover{
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 500;
+}
+.hover-info{
+  border: 1px var(--accent) solid;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px;
+  padding-bottom: 0px;
+  text-decoration: none;
+}
+.hovered-info{
+  border: 1.5px var(--accent) solid;
+  color: var(--accent);
+  text-decoration: none;
+}
+.hovered-info h6{
+  color: var(--accent);
+}
+.hover-info:hover{
+  border: 1.5px var(--accent) solid;
+  color: var(--accent);
+}
+.hoverCatList{
+  text-decoration: none;
+  color: hsl(0, 0%, 42%);
+}
+.hoveredCatList{
+  background-color: hsl(0, 0%, 42%);
+  color: white;
+  padding: 5px;
+  height: fit-content;
+  width: fit-content;
+}
+.hoverCatList:hover{
+  background-color: hsl(0, 0%, 42%);
+  color: white;
+  padding: 5px;
+  height: fit-content;
+}

@@ -44,7 +44,7 @@ export default function App() {
             </Route>
             <Route path='*' element={<div className='text-center h2'> <span>Page Not Found</span></div> }/>
           </Routes>
-          <footer className='navbar text-grey'>
+          <footer className='w-100'>
             <p>&copy; Copyright </p>
             <p>{new Date().getFullYear()}</p>
           </footer>
