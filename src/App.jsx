@@ -1,5 +1,5 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom' ;
-import { NavLink } from 'react-router-dom';
+import Header from './pages/header';
 import Home from './pages/home';
 import About from './pages/about';
 import Categories from './pages/categories';
@@ -13,21 +13,8 @@ export default function App() {
     <main className="text-tertiary">
       <BrowserRouter>
       
-        <body className='container-diff' style={{backgroundColor: 'var(--secondary)'}}>
-          <header className='navbar mb-4' >
-
-            <h1 className='display-6 text-danger'>Red30Tech</h1>
-
-            <nav className='nav-diff'> 
-
-              <NavLink className={({isActive})=> isActive ? 'nav-item-hover' : 'nav-item' } to='/'>Home</NavLink>
-              <NavLink className={({isActive})=> isActive ? 'nav-item-hover' : 'nav-item' } to='/categories'>Categories</NavLink>
-              <NavLink className={({isActive})=> isActive ? 'nav-item-hover' : 'nav-item' } to='/about'>About</NavLink>
-              <NavLink className={({isActive})=> isActive ? 'nav-item-hover' : 'nav-item' } to='/register'>Register</NavLink>
-
-            </nav>
-
-          </header>
+        <body className='container-diff'>
+          <Header/>
 
           <Routes>
             <Route path='/' element={<Home/>} />

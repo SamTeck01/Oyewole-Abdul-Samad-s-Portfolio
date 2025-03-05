@@ -1,7 +1,8 @@
 
 :root {
   --primary: #D00000;
-  --secondary: #212529;
+  --secondary: rgb(180, 253, 140);
+  --tertiary: #8237f6;
   --accent: #F8F9FA;
   --text: #000000;
   --footer: #6C757D;
@@ -9,11 +10,13 @@
 *{
   padding: 0;
   margin: 0;
-  color: var(--accent);
-  background-color: var(--secondary);
+  color: var(--text);
 }
 header{
+  background-color: var(--text);
   border-bottom: solid 1.5px grey;
+  width: 100%;
+  overflow: hidden;
 }
 footer{
   position: absolute;
@@ -29,8 +32,62 @@ input {
 input:focus {
   outline: none;
 }
-.container-diff{
-  margin: 0% 5%;
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: fit-content;
+  max-width: 700px;
+}
+
+.logo-main, .logo-sub {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  color: #D00000; /* Red color */
+  letter-spacing: -2px;
+}
+
+.logo-main {
+  font-size: 90px; /* Default size for laptops */
+}
+
+.logo-sub {
+  font-size: 90px; /* Default size for laptops */
+}
+
+.logo-motto {
+  margin-left: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #D00000; /* Red color */
+  text-transform: uppercase;
+  text-align: right;
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .logo-main, .logo-sub {
+    font-size: 60px;
+  }
+  .logo-motto {
+    font-size: 14px;
+    margin-left: 10px;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .logo-main, .logo-sub {
+    font-size: 40px;
+  }
+  .logo-motto {
+    display: none;
+  }
+}
+
+.color-red{
+  color: var(--primary);
 }
 .grid-container{
   display: grid;
@@ -38,19 +95,27 @@ input:focus {
   grid-template-columns: auto auto auto;
   row-gap: 15px;
 }
-
-.nav-diff{
+.font-montserrat{
+  font-family: "Montserrat", sans-serif;
+}
+.all-nav{
   display: flex;
-  gap: 15px;
+  flex-direction: row;
+  overflow-x: scroll;
+  width: fit-content;
 }
 .nav-item{
   color: #dc3545;
   text-decoration: none;
-  font-size: 17px;
-  font-weight: 500;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 3;
+  border-bottom: 2px dotted black;
+  width: max-content;
 }
 .nav-item:hover{
   color: var(--accent);
+  border-bottom: 2px dotted white;
 }
 .nav-item-hover{
   color: var(--accent);

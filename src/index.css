@@ -68,6 +68,34 @@ html{
 
 @layer utilities {
 
+  .btn-secondary{
+    color: #d5baff;
+    font-size: 16px;
+    height: 34px;
+    width: 34px;
+    border: .125rem solid #d5baff;
+    border-radius: 5px;
+  }
+  .btn-secondary:hover{
+    background-color: var(--secondary);
+    color: black;
+    border: none;
+  }
+  .btn-secondary-none{
+    background-color: var(--secondary);
+    color: var(--text);
+    font-size: 16px;
+    height: 34px;
+    width: fit-content;
+    border-radius: 5px;
+    padding: .75rem 1rem;
+    border: .125rem solid var(--secondary);
+  }
+  .btn-secondary-none:hover{
+    background-color: transparent;
+    color: var(--secondary);
+    padding: .75rem 1rem;
+  }
   .freePageCover {
     overflow: hidden;
     background-color: white;

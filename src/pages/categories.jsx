@@ -10,7 +10,7 @@ const Categories=()=>{
             <h2>Session Categories</h2>
             <div className="flex flex-wrap g-2 mb-4 text-center">
                 {categories.map((cat)=>{
-                    return <NavLink to={cat.id} className={({isActive}) => isActive ? 'hoveredCatList hoverCatList ' : 'hoverCatList me-1' } key={cat.id}>{cat.name}</NavLink>
+                    return <NavLink to={cat.id} className={({isActive}) => isActive? 'hoveredCatList hoverCatList ' : 'hoverCatList me-1' } key={cat.id}>{cat.name}</NavLink>
                 })}
             </div>
             <Outlet/>
