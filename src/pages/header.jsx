@@ -25,21 +25,21 @@ function Header() {
 
       <nav className='flex gap-3 all-nav'> 
 
-          <NavLink className='nav-item' to='/categories'>Categories</NavLink>
-          <NavLink className='nav-item' to='/about'>About</NavLink>
-          <NavLink className='nav-item' to='/register'>Register</NavLink>
-          {categories.map((cat)=>{
-            return <NavLink to={cat.id} className='nav-item' key={cat.id}>{cat.name}</NavLink>
-          })}
-          <NavLink className='nav-item' to='/categories'>Categories</NavLink>
-          <NavLink className='nav-item' to='/about'>About</NavLink>
-          <NavLink className='nav-item' to='/register'>Register</NavLink>
-          <NavLink className='nav-item' to='/categories'>Categories</NavLink>
-          <NavLink className='nav-item' to='/about'>About</NavLink>
-          <NavLink className='nav-item' to='/register'>Register</NavLink>
-          <NavLink className='nav-item' to='/categories'>Categories</NavLink>
-          <NavLink className='nav-item' to='/about'>About</NavLink>
-          <NavLink className='nav-item' to='/register'>Register</NavLink>
+        <NavLink className='nav-item' to='/categories'>Categories</NavLink>
+        <NavLink className='nav-item' to='/about'>About</NavLink>
+        <NavLink className='nav-item' to='/register'>Register</NavLink>
+        {categories.map((cat)=>{
+          return <NavLink to={cat.id} className='nav-item' key={cat.id}>{cat.name}</NavLink>
+        })}
+        <NavLink className='nav-item' to='/categories'>Categories</NavLink>
+        <NavLink className='nav-item' to='/about'>About</NavLink>
+        <NavLink className='nav-item' to='/register'>Register</NavLink>
+        <NavLink className='nav-item' to='/categories'>Categories</NavLink>
+        <NavLink className='nav-item' to='/about'>About</NavLink>
+        <NavLink className='nav-item' to='/register'>Register</NavLink>
+        <NavLink className='nav-item' to='/categories'>Categories</NavLink>
+        <NavLink className='nav-item' to='/about'>About</NavLink>
+        <NavLink className='nav-item' to='/register'>Register</NavLink>
 
       </nav>
 
