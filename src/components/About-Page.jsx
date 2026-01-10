@@ -8,10 +8,10 @@ export default function AboutPage() {
   const [isExpandable, setIsEXpandable] = useState(false);
 
   const readMoreContent = <p className="text-slate-500 mt-4 text-lg">
-                            I am always eager to explore new technologies, solve complex 
-                            problems, and collaborate with teams to bring ideas to life.  
-                            Lets build something innovative together!
-                          </p>
+    I am always eager to explore new technologies, solve complex
+    problems, and collaborate with teams to bring ideas to life.
+    Lets build something innovative together!
+  </p>
 
   return (
     <section className="min-h-screen bg-primary flex items-center justify-center">
@@ -48,7 +48,7 @@ export default function AboutPage() {
         <div className="mt-20 flex flex-wrap">
           <motion.div
             className="w-[50%] playfair-display text-2xl md:text-[42px]"
-            style={{color: '#009bdf'}}
+            style={{ color: '#009bdf' }}
             whileInView={{ opacity: 1, scale: 1 }}
             initial={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.6 }}
@@ -63,22 +63,21 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
           >
             <p className="text-slate-500 text-lg">
-              I am <span className="font-semibold">Oyewole Abdul Samad</span>, a highly motivated 
-              <span className="font-semibold"> Front-End Developer</span> with expertise in 
-              <span className="font-semibold"> React.js, JavaScript, HTML, CSS, Tailwind CSS, 
-              and Bootstrap</span>.
+              I am <span className="font-semibold">Oyewole Abdul Samad</span>, a highly motivated
+              <span className="font-semibold"> Full-Stack Developer</span> with expertise in
+              <span className="font-semibold"> React.js, Node.js, Express, MongoDB, JavaScript, HTML, CSS, Tailwind CSS,
+                and Modern Web Technologies</span>.
             </p>
 
             <p className="text-slate-500 mt-4 text-lg">
-              With a keen eye for design and a deep understanding of modern 
-              front-end technologies, I am dedicated to crafting seamless digital 
-              experiences.
+              With a keen eye for design and a deep understanding of both front-end and back-end architectures, I am dedicated to crafting seamless digital
+              experiences that combine aesthetic appeal with robust functionality.
             </p>
 
             {readmore}
 
-            <button onClick={()=>{
-              
+            <button onClick={() => {
+
               setIsEXpandable(prev => !prev);
               isExpandable ? setReadMore('') : setReadMore(readMoreContent)
             }}> {isExpandable ? 'Read Less' : 'Read More'} </button>

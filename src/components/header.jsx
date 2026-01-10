@@ -9,7 +9,7 @@ export default function Header() {
   const toggleMenu = () => setMenuOpened(!menuOpened);
 
   return (
-    <header className='fixed top-0 left-0 m-auto max_padd_container w-full bg-white ring-1 ring-slate-900/5 z-10' >
+    <header className='fixed top-0 left-0 mx-auto max_padd_container w-screen bg-white ring-1 ring-slate-900/5 z-10' >
       <div className='px-4 flexBetween py-3 max-xs:px-2' >
         {/*Logo */}
         <div >

@@ -2,11 +2,12 @@
 import { motion } from "framer-motion";
 
 const skills = [
-  { name: "HTML & CSS", level: "90%" },
-  { name: "JavaScript", level: "85%" },
-  { name: "React.js", level: "80%" },
-  { name: "Tailwind CSS", level: "85%" },
-  { name: "Bootstrap", level: "80%" }
+  { name: "HTML & CSS", level: "95%" },
+  { name: "JavaScript", level: "90%" },
+  { name: "React.js", level: "90%" },
+  { name: "Node.js & Express", level: "85%" },
+  { name: "MongoDB", level: "80%" },
+  { name: "Tailwind CSS", level: "90%" }
 ];
 
 const tools = [
@@ -14,29 +15,31 @@ const tools = [
   "Git & GitHub",
   "VS Code",
   "Chrome DevTools",
-  "Postman"
+  "Postman",
+  "Vercel & Netlify",
+  "Firebase"
 ];
 
 const Skills = () => {
   return (
     <section className="p-10 bg-primary">
       <div className="max-w-6xl mx-auto">
-        
+
         <div className="grid md:grid-cols-2 gap-10">
           <div>
-            <motion.h2 
+            <motion.h2
               className="h3 text-center text-[#009bdf]"
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 0.5 }}
-            > 
+            >
               Skills
             </motion.h2>
             <hr className="h-[3px] md:w-1/2 mx-auto bg-gradient-to-r from-transparent via-[#009bdf] to-transparent mb-16 " />
 
             {skills.map((skill, index) => (
-              <motion.div key={index} 
+              <motion.div key={index}
                 className="mb-4"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -45,9 +48,9 @@ const Skills = () => {
               >
                 <p className="text-[18px] font-medium mb-1">{skill.name}</p>
                 <div className="bg-gray-300 h-4 rounded-lg overflow-hidden">
-                  <motion.div 
+                  <motion.div
                     className=" h-full flex justify-end"
-                    style={{ width: skill.level, backgroundColor: '#009bdf'}}
+                    style={{ width: skill.level, backgroundColor: '#009bdf' }}
                     initial={{ width: 0 }}
                     whileInView={{ width: skill.level }}
                     viewport={{ once: false }}
@@ -59,22 +62,22 @@ const Skills = () => {
               </motion.div>
             ))}
           </div>
-          
+
           <div>
-            <motion.h2 
+            <motion.h2
               className="h3 text-center text-[#009bdf]"
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 0.5 }}
-            > 
+            >
               Technologies and Tools
             </motion.h2>
             <hr className="h-[3px] md:w-1/2 mx-auto bg-gradient-to-r from-transparent via-[#009bdf] to-transparent mb-16 " />
 
             <ul className="list-disc list-inside text-lg space-y-2">
               {tools.map((tool, index) => (
-                <motion.li key={index} 
+                <motion.li key={index}
                   className="text-slate-600"
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
