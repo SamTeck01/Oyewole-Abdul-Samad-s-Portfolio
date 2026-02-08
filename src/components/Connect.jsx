@@ -29,7 +29,7 @@ export default function Connect() {
             <h2 className="text-[48px] md:text-[110px] font-black text-white uppercase tracking-tighter leading-[0.85] mb-12">
               LET&apos;S WORK <br />
               <span className="flex items-center justify-center gap-2 md:gap-4">
-                TO
+                T
                 <div className="w-12 h-12 md:w-28 md:h-28 rounded-full overflow-hidden border-4 md:border-8 border-white/10 grayscale hover:grayscale-0 transition-all duration-500">
                   <img src={mypics} alt="Sam" className="w-full h-full object-cover" />
                 </div>
