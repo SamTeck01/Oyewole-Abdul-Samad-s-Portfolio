@@ -1,42 +1,162 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+:root {
+  --primary: #D00000;
+  --secondary: rgb(180, 253, 140);
+  --tertiary: #8237f6;
+  --accent: #F8F9FA;
+  --text: #000000;
+  --footer: #6C757D;
+}
+*{
+  padding: 0;
+  margin: 0;
+  color: var(--text);
+}
+header{
+  background-color: var(--text);
+  border-bottom: solid 1.5px grey;
+  width: 100%;
+  overflow: hidden;
+}
+footer{
+  position: absolute;
+  bottom: -40px;
+  border-top: solid 1.5px grey;
+  color: var(--footer);
+}
+input {
+  padding: 10px;
+  font-size: 14px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+input:focus {
+  outline: none;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: fit-content;
+  max-width: 700px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.logo-main, .logo-sub {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  color: #D00000; /* Red color */
+  letter-spacing: -2px;
+}
+
+.logo-main {
+  font-size: 90px; /* Default size for laptops */
+}
+
+.logo-sub {
+  font-size: 90px; /* Default size for laptops */
+}
+
+.logo-motto {
+  margin-left: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #D00000; /* Red color */
+  text-transform: uppercase;
+  text-align: right;
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .logo-main, .logo-sub {
+    font-size: 60px;
   }
-  to {
-    transform: rotate(360deg);
+  .logo-motto {
+    font-size: 14px;
+    margin-left: 10px;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* Phones */
+@media (max-width: 480px) {
+  .logo-main, .logo-sub {
+    font-size: 40px;
+  }
+  .logo-motto {
+    display: none;
   }
 }
 
-.card {
-  padding: 2em;
+.color-red{
+  color: var(--primary);
 }
-
-.read-the-docs {
-  color: #888;
+.grid-container{
+  display: grid;
+  place-items: center;
+  grid-template-columns: auto auto auto;
+  row-gap: 15px;
+}
+.font-montserrat{
+  font-family: "Montserrat", sans-serif;
+}
+.all-nav{
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  width: fit-content;
+}
+.nav-item{
+  color: #dc3545;
+  text-decoration: none;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 3;
+  border-bottom: 2px dotted black;
+  width: max-content;
+}
+.nav-item:hover{
+  color: var(--accent);
+  border-bottom: 2px dotted white;
+}
+.nav-item-hover{
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 500;
+}
+.hover-info{
+  border: 1px var(--accent) solid;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px;
+  padding-bottom: 0px;
+  text-decoration: none;
+}
+.hovered-info{
+  border: 1.5px var(--accent) solid;
+  color: var(--accent);
+  text-decoration: none;
+}
+.hovered-info h6{
+  color: var(--accent);
+}
+.hover-info:hover{
+  border: 1.5px var(--accent) solid;
+  color: var(--accent);
+}
+.hoverCatList{
+  text-decoration: none;
+  color: hsl(0, 0%, 42%);
+}
+.hoveredCatList{
+  background-color: hsl(0, 0%, 42%);
+  color: white;
+  padding: 5px;
+  height: fit-content;
+  width: fit-content;
+}
+.hoverCatList:hover{
+  background-color: hsl(0, 0%, 42%);
+  color: white;
+  padding: 5px;
+  height: fit-content;
 }
