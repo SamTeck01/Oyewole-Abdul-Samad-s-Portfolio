@@ -1,46 +1,40 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        primary: '#f0f2f5',
-        secondary: '#ff813f',
-        tertiary: '#222222',
-        slate: {
-          10: '#f1f3f4',
-        },
-        green: {
-          50: '#30AF5B',
-          90: '#292C27',
-        },
+        dark: "#080808",
+        accent: "#C3FF2E", // Lime green
+        purple: "#A855F7",
+        primary: "#FDFDFD",
         gray: {
-          10: '#EEEEEE',
-          20: '#A2A2A2',
-          30: '#7B7B7B',
-          50: '#585858',
-          90: '#141414',
+          900: "#111111",
+          800: "#1A1A1A",
+          700: "#222222",
+          600: "#333333",
+          500: "#666666",
+          400: "#999999",
         },
       },
-     backgroundImage: {
-        hero: "url('/src/assets/bgecom.png')",
-        banneroffer: "url('/src/assets/banneroffer.png')",
+      fontFamily: {
+        outfit: ["Outfit", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
-      screens: {
-        xs: '400px',
-        '3xl': '1680px',
-        '4xl': '2200px',
-      },
-      maxWidth: {
-        '10xl': '1512px',
+      fontWeight: {
+        black: "900",
+        extrabold: "800",
+        bold: "700",
+        semibold: "600",
+        medium: "500",
+        regular: "400",
       },
       borderRadius: {
-        '5xl': '40px',
+        "3xl": "24px",
+        "4xl": "32px",
+        "5xl": "48px",
       },
     },
   },
   plugins: [],
-}
+};

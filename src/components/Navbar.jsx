@@ -1,13 +1,27 @@
-import '../assets/boxicons-2.1.4 (2)/boxicons-2.1.4/css/boxicons.min.css'
+import { motion } from 'framer-motion';
 
 // eslint-disable-next-line react/prop-types
-export default function Navbar({containerStyles} ) {
+export default function Navbar({ containerStyles, onClick }) {
+  const navLinks = [
+    { title: 'Home', href: '#home' },
+    { title: 'About me', href: '#about' },
+    { title: 'Projects', href: '#projects' },
+    { title: 'Blog', href: '#blog' },
+  ];
+
   return (
-    <nav className={`${containerStyles}`} >
-      <a href='#home' className={({isActive}) => isActive ? 'active_link' : '' } > <div className="flexCenter gap-x-1 gen-font-light" ><i className='bx bx-user'></i> HOME</div> </a>
-      <a href='#about' className={({isActive}) => isActive ? 'active_link' : '' } > <div className="flexCenter gap-x-1 gen-font-light" ><i className='bx bx-category-alt' ></i> ABOUT</div> </a>
-      <a href='#skills' className={({isActive}) => isActive ? 'active_link' : '' } > <div className="flexCenter gap-x-1 gen-font-light" ><i className='bx bx-category-alt' ></i> SKILLS</div> </a>
-      <a href='#projects' className={({isActive}) => isActive ? 'active_link' : '' } > <div className="flexCenter gap-x-1 gen-font-light" ><i className="bx bx-shopping-bag"></i> Project </div> </a>
+    <nav className={`${containerStyles}`}>
+      {navLinks.map((link, index) => (
+        <motion.a
+          key={index}
+          href={link.href}
+          onClick={onClick}
+          className="text-white/60 hover:text-white transition-colors font-inter text-sm font-medium relative group"
+          whileHover={{ y: -1 }}
+        >
+          {link.title}
+        </motion.a>
+      ))}
     </nav>
-  )
+  );
 }

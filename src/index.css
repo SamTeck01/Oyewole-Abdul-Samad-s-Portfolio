@@ -1,68 +1,58 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-dark text-white font-outfit selection:bg-accent selection:text-black antialiased;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Barlow Semi Condensed", serif;
-  font-weight: 100;
-  font-size: 17px;
 }
-.linearGradient {
-  background: linear-gradient(180deg, #fde1ff 0%, #e1ffea22 60%);
-}
-html{
+
+html {
   scroll-behavior: smooth;
-  background-image: url(assets\steptodown.com106507.jpg);
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
+
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #080808;
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 5px;
+  background: #222;
+  border-radius: 10px;
 } 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #333;
 }
 
 @layer base {
-
-  .active_link{
-    @apply text-[#009bdf] relative flex-1 after:w-full after:h-[1px] after:bg-[#009bdf] after:absolute after:-bottom-3 after:right-0;
-  }
-  
   .h1 {
-    @apply text-[48px] leading-tight md:text-[72px] md:leading-[1.3] mb-8 font-bold;
+    @apply text-[38px] md:text-[85px] font-black leading-[0.95] tracking-tighter uppercase;
   }
 
   .h2 {
-    @apply text-[40px] leading-tight md:text-[55px] md:leading-[1.3] mb-4 font-bold;
+    @apply text-[32px] md:text-[64px] font-black leading-[0.95] tracking-tighter uppercase;
   }
 
   .h3 {
-    @apply text-[32px] leading-tight md:text-[36px] md:leading-[1.3] mb-4 font-semibold;
+    @apply text-[24px] md:text-[32px] font-black leading-[1.0] tracking-tighter uppercase;
   }
 
   p {
-    @apply leading-[1.3] text-slate-500 text-[15px];
+    @apply leading-snug text-base md:text-lg text-white/60 font-inter;
   }
 }
 

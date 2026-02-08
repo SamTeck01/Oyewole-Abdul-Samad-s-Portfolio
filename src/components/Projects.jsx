@@ -1,122 +1,148 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 import ecommerce_mern from '../assets/ecommerce_mern.png';
 import bee_energy from '../assets/bee_energy.png';
 import aia_counselling from '../assets/aia_counselling.png';
 import signbee from '../assets/signbee.png';
-import fabulous_gadgets from '../assets/fabulous_gadgets.png';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Add01Icon } from '@hugeicons/core-free-icons';
 
 const projects = [
   {
+    type: "Web3/Hackathon",
+    title: "BlockDAG Hackathon",
+    description: "Built a suite of innovative solutions including Blault, KwaraAI, and Bitroot, focusing on blockchain integration and AI.",
+    image: signbee, // Placeholder for hackathon projects
+    link: "https://github.com/SamTeck01",
+    tags: ["Blockchain", "AI", "React"],
+    color: "#A855F7" // Purple
+  },
+  {
+    type: "E-commerce Website",
     title: "Ecommerce Mern",
-    description: "A comprehensive digital shopping hub with core e-commerce functionality like product browsing and account management.",
+    description: "A comprehensive digital shopping hub with core e-commerce functionality like product browsing.",
     image: ecommerce_mern,
     link: "https://ecommerce-mern-smtck.vercel.app/",
-    tags: ["MERN", "Tailwind"]
+    tags: ["MERN", "Tailwind"],
+    color: "#2DD4BF" // Teal
   },
   {
+    type: "Service Platform",
     title: "Bee Energy Hive",
-    description: "A professional service site for solar and IoT power solutions, focusing on reliable inverter installations and smart monitoring.",
+    description: "A professional service site for solar and IoT power solutions, focusing on reliable inverter installations.",
     image: bee_energy,
     link: "https://bee-energy-hive.vercel.app/",
-    tags: ["React", "Tailwind"]
+    tags: ["React", "Tailwind"],
+    color: "#F472B6" // Pink
   },
   {
-    title: "AIA Counselling Consult",
-    description: "A psychology and counseling platform offering professional consulting services with integrated direct communication features.",
+    type: "Counseling Consult",
+    title: "AIA Counselling",
+    description: "A psychology and platform offering professional consulting services with integrated features.",
     image: aia_counselling,
     link: "https://aia-counselling-consult.vercel.app/",
-    tags: ["React", "Tailwind"]
-  },
-  {
-    title: "SignBee",
-    description: "An accessibility-focused platform connecting users with certified sign language interpreters for events, classes, or meetings.",
-    image: signbee,
-    link: "https://safe-bee.vercel.app/",
-    tags: ["React", "Tailwind"]
-  },
-  {
-    title: "Fabulous Gadgets",
-    description: "A premium e-commerce store for mobile devices and electronic accessories featuring dynamic sliders and interactive product galleries.",
-    image: fabulous_gadgets,
-    link: "https://fabulous-gadgets-and-accessories.vercel.app/",
-    tags: ["React", "Tailwind"]
+    tags: ["React", "Tailwind"],
+    color: "#FB923C" // Orange
   }
 ];
 
-const Projects = () => {
+export default function Projects() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    whileInView: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
   return (
-    <section className="min-h-screen bg-primary flex items-center justify-center flex-col py-20 px-6">
-      <motion.div
-        className="text-4xl font-bold text-center mb-4"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        <h3 className="h3 text-[#009bdf]">My Works</h3>
-      </motion.div>
-      <hr className="h-[3px] md:w-1/2 mx-auto bg-gradient-to-r from-transparent via-[#009bdf] to-transparent mb-16" />
+    <section id="projects" className="py-32 bg-white text-dark">
+      <div className="max_padd_container">
+        <motion.div
+          className="mb-24"
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-[40px] md:text-[64px] font-black uppercase tracking-tighter leading-[0.95]">
+            HERE&apos;S A GLIMPSE OF <br /> SOME EXCITING 🍯PROJECTS <br /> I&apos;VE DONE
+          </h2>
+        </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max_padd_container mx-auto">
-        {projects.map((project, index) => (
-          <motion.div
-            key={index}
-            className="group relative bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true }}
-          >
-            {/* Image Container with Overlay */}
-            <div className="relative h-72 overflow-hidden">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-              />
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-
-              {/* Tags positioned on image */}
-              <div className="absolute top-4 left-4 flex gap-2">
-                {project.tags.map((tag, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1 bg-white/20 backdrop-blur-md text-white text-xs font-medium rounded-full border border-white/30"
-                  >
-                    {tag}
-                  </span>
-                ))}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="whileInView"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24"
+        >
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              className="group"
+            >
+              <div className="relative overflow-hidden rounded-5xl border-[3px] border-dark/5 bg-white shadow-sm hover:shadow-xl transition-all duration-500">
+                <div className="p-4 bg-white aspect-[16/10] overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover rounded-3xl transition-all duration-700 group-hover:scale-105"
+                  />
+                </div>
               </div>
 
-              {/* Title and description overlay on image */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                <h4 className="text-2xl font-bold text-white mb-2">
-                  {project.title}
-                </h4>
-                <p className="text-white/90 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                  {project.description}
-                </p>
+              <div className="mt-8 flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-3xl font-black text-dark mb-3 uppercase tracking-tighter">{project.title}</h3>
+                  <p className="text-dark/50 text-base leading-snug mb-6 max-w-sm line-clamp-2">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-4 py-1.5 border-2 border-dark/5 rounded-full text-[11px] font-black uppercase text-dark/40 italic tracking-widest">{project.type}</span>
+                    {project.tags.map(tag => (
+                      <span key={tag} className="px-4 py-1.5 bg-dark/5 rounded-full text-[11px] font-black uppercase text-dark/30 tracking-widest">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group/btn flex-shrink-0 w-20 h-20 rounded-full border-[3px] border-dark/5 flexCenter transition-all duration-300 hover:border-dark hover:bg-dark"
+                >
+                  <HugeiconsIcon
+                    icon={Add01Icon}
+                    size={32}
+                    className="text-dark group-hover/btn:text-accent group-hover/btn:rotate-90 transition-all duration-500"
+                    strokeWidth={3}
+                  />
+                </a>
               </div>
-            </div>
+            </motion.div>
+          ))}
+        </motion.div>
 
-            {/* View Project Button - appears on hover */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/20 backdrop-blur-[2px]">
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 bg-[#009bdf] text-white font-semibold rounded-full hover:bg-[#2697c7] transition-colors duration-300 transform scale-95 group-hover:scale-100 flex items-center gap-2 shadow-xl"
-              >
-                View Project
-                <i className="bx bx-right-arrow-alt text-xl"></i>
-              </a>
+        <motion.div
+          className="mt-32 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <a href="#projects" className="inline-flex items-center gap-6 px-14 py-7 bg-accent text-dark font-black rounded-full hover:bg-dark hover:text-white transition-all duration-300 group shadow-xl">
+            See All projects
+            <div className="w-12 h-12 rounded-full bg-dark/10 flex items-center justify-center group-hover:bg-accent transition-all">
+              <HugeiconsIcon icon={Add01Icon} size={24} color="currentColor" strokeWidth={3} />
             </div>
-          </motion.div>
-        ))}
+          </a>
+        </motion.div>
       </div>
     </section>
   );
-};
-
-export default Projects;
+}

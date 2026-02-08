@@ -1,89 +1,72 @@
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion } from 'framer-motion';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { CodeIcon, Location01Icon, RocketIcon } from '@hugeicons/core-free-icons';
 
 export default function AboutPage() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    whileInView: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
 
-  const [readmore, setReadMore] = useState();
-
-  const [isExpandable, setIsEXpandable] = useState(false);
-
-  const readMoreContent = <p className="text-slate-500 mt-4 text-lg">
-    I am always eager to explore new technologies, solve complex
-    problems, and collaborate with teams to bring ideas to life.
-    Lets build something innovative together!
-  </p>
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
 
   return (
-    <section className="min-h-screen bg-primary flex items-center justify-center">
-      <motion.div
-        className="max_padd_container py-12 xl:py-28"
-        whileInView={{ opacity: 1, y: 0 }} // Animate when in view
-        initial={{ opacity: 0, y: 50 }} // Start position
-        transition={{ duration: 0.8 }}
-        viewport={{ once: false, amount: 0.2 }} // Controls when animation triggers
-      >
-        {/* Heading */}
+    <section id="about" className="py-32 bg-white text-dark relative overflow-hidden rounded-t-[60px] -mt-12 z-20">
+      <div className="max_padd_container relative z-10">
         <motion.div
-          className="text-center text-[#009bdf]"
-          whileInView={{ opacity: 1, y: 0 }}
-          initial={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="whileInView"
+          viewport={{ once: true, amount: 0.1 }}
+          className="max-w-5xl mx-auto"
         >
-          <h3 className="h3">About Me</h3>
+          <motion.h2
+            variants={itemVariants}
+            className="text-[32px] md:text-[52px] font-medium leading-[1.1] text-dark font-inter mb-12"
+          >
+            Hello! I&apos;m <span className="font-black">Abdul Samad</span>, —— a creative and driven web developer with a core focus on
+            <span className="text-purple font-black italic mx-2 underline underline-offset-[8px] decoration-[6px] decoration-purple/20">FRONT-END DEVELOPMENT</span>.
+            I thrive on turning imaginative ideas into digital realities, constantly seeking innovative ways to blend design and technology.
+            While my expertise lies in building high-performance web interfaces, I also possess a
+            <span className="inline-flex items-center gap-2 text-purple font-black mx-1">
+              <HugeiconsIcon icon={CodeIcon} size={32} color="#A855F7" strokeWidth={3} />
+              SPRINKLE
+            </span> of mobile development experience using
+            <span className="inline-flex items-center gap-2 text-purple font-black mx-1">
+              <HugeiconsIcon icon={RocketIcon} size={32} color="#A855F7" strokeWidth={3} />
+              REACT NATIVE
+            </span>,
+            ensuring a versatile approach to modern digital solutions.
+          </motion.h2>
+
+          <motion.div variants={itemVariants} className="grid md:grid-cols-2 gap-12 mt-16 pt-16 border-t border-dark/10">
+            <div className="flex gap-6">
+              <div className="p-4 bg-dark rounded-3xl h-fit">
+                <HugeiconsIcon icon={Location01Icon} size={32} color="#C3FF2E" strokeWidth={2} />
+              </div>
+              <p className="text-black/70 text-xl leading-relaxed">
+                Based in Nigeria, I specialize in crafting engaging websites and digital products. My approach combines aesthetic appeal with robust, scalable functionality.
+              </p>
+            </div>
+            <div className="flex gap-6">
+              <div className="p-4 bg-dark rounded-3xl h-fit">
+                <HugeiconsIcon icon={RocketIcon} size={32} color="#C3FF2E" strokeWidth={2} />
+              </div>
+              <p className="text-black/70 text-xl leading-relaxed">
+                I am highly motivated and dedicated to staying at the forefront of modern web technologies, ensuring every project I touch is built with the highest standards.
+              </p>
+            </div>
+          </motion.div>
         </motion.div>
-
-        <hr className="h-[3px] md:w-1/2 mx-auto bg-gradient-to-r from-transparent via-[#009bdf] to-transparent mb-16 " />
-
-        {/* Description */}
-        <motion.p
-          className="playfair-display-xmd"
-          whileInView={{ opacity: 1, x: 0 }}
-          initial={{ opacity: 0, x: -50 }}
-          transition={{ duration: 0.8 }}
-        >
-          I am an enthusiastic web developer in Nigeria, passionate about creating engaging website and product designs.
-        </motion.p>
-
-        {/* Content Sections */}
-        <div className="mt-20 flex flex-wrap">
-          <motion.div
-            className="w-[50%] playfair-display text-2xl md:text-[42px]"
-            style={{ color: '#009bdf' }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            initial={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.6 }}
-          >
-            I design professional & <br /> beautiful websites
-          </motion.div>
-
-          <motion.div
-            className="w-[50%]"
-            whileInView={{ opacity: 1, x: 0 }}
-            initial={{ opacity: 0, x: 50 }}
-            transition={{ duration: 0.8 }}
-          >
-            <p className="text-slate-500 text-lg">
-              I am <span className="font-semibold">Oyewole Abdul Samad</span>, a highly motivated
-              <span className="font-semibold"> Full-Stack Developer</span> with expertise in
-              <span className="font-semibold"> React.js, Node.js, Express, MongoDB, JavaScript, HTML, CSS, Tailwind CSS,
-                and Modern Web Technologies</span>.
-            </p>
-
-            <p className="text-slate-500 mt-4 text-lg">
-              With a keen eye for design and a deep understanding of both front-end and back-end architectures, I am dedicated to crafting seamless digital
-              experiences that combine aesthetic appeal with robust functionality.
-            </p>
-
-            {readmore}
-
-            <button onClick={() => {
-
-              setIsEXpandable(prev => !prev);
-              isExpandable ? setReadMore('') : setReadMore(readMoreContent)
-            }}> {isExpandable ? 'Read Less' : 'Read More'} </button>
-          </motion.div>
-        </div>
-      </motion.div>
+      </div>
     </section>
-  )
+  );
 }
