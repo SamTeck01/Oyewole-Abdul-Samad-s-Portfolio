@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { HugeiconsIcon } from '@hugeicons/react';
-import { CodeIcon, Location01Icon, RocketIcon } from '@hugeicons/core-free-icons';
+import { Location01Icon, RocketIcon } from '@hugeicons/core-free-icons';
 
 export default function AboutPage() {
   const containerVariants = {
@@ -30,21 +30,16 @@ export default function AboutPage() {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-[32px] md:text-[52px] font-medium leading-[1.1] text-dark font-inter mb-12"
+            className="text-[26px] md:text-[42px] font-normal leading-[1.3] text-dark font-outfit mb-12"
           >
-            Hello! I&apos;m <span className="font-black">Abdul Samad</span>, —— a creative and driven web developer with a core focus on
-            <span className="text-purple font-black italic mx-2 underline underline-offset-[8px] decoration-[6px] decoration-purple/20">FRONT-END DEVELOPMENT</span>.
+            👋 Hello! I&apos;m <span className="font-semibold">Abdul Samad</span>, —— a creative and driven web and
+            <span className="text-purple font-semibold mx-2 underline underline-offset-[8px] decoration-[6px] decoration-purple/20">MOBILE DEVELOPER</span> with
+            <span className="text-purple font-semibold italic mx-2 underline underline-offset-[8px] decoration-[6px] decoration-purple/20">5 YEARS OF EXPERIENCE</span> in the field.
             I thrive on turning imaginative ideas into digital realities, constantly seeking innovative ways to blend design and technology.
-            While my expertise lies in building high-performance web interfaces, I also possess a
-            <span className="inline-flex items-center gap-2 text-purple font-black mx-1">
-              <HugeiconsIcon icon={CodeIcon} size={32} color="#A855F7" strokeWidth={3} />
-              SPRINKLE
-            </span> of mobile development experience using
-            <span className="inline-flex items-center gap-2 text-purple font-black mx-1">
-              <HugeiconsIcon icon={RocketIcon} size={32} color="#A855F7" strokeWidth={3} />
-              REACT NATIVE
-            </span>,
-            ensuring a versatile approach to modern digital solutions.
+            I possess a strong foundation in
+            <span className="text-purple font-semibold italic mx-2 underline underline-offset-[8px] decoration-[6px] decoration-purple/20">FRONT-END</span> and
+            <span className="text-purple font-semibold italic mx-2 underline underline-offset-[8px] decoration-[6px] decoration-purple/20">BACK-END</span> development,
+            as well as a keen eye for responsive design and user-centered interfaces.
           </motion.h2>
 
           <motion.div variants={itemVariants} className="grid md:grid-cols-2 gap-12 mt-16 pt-16 border-t border-dark/10">
