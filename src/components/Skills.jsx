@@ -3,7 +3,7 @@ import { HugeiconsIcon } from '@hugeicons/react';
 import {
   Layout01Icon,
   Server,
-  DatabaseIcon,
+  CubeIcon,
   Git,
   SmartPhone01Icon,
   PaintBoardIcon
@@ -11,39 +11,39 @@ import {
 
 const skillCategories = [
   {
-    title: "Front-end Development",
-    description: "My core expertise. Crafting high-performance, pixel-perfect web interfaces using React, Next.js, and modern CSS frameworks.",
+    title: "Front-end Engineering",
+    description: "My core craft. Building high-performance, pixel-perfect interfaces with React, Next.js, TypeScript, and Tailwind CSS.",
     icon: Layout01Icon,
     accent: true
   },
   {
-    title: "Mobile Development",
-    description: "A sprinkle of mobile experience using React Native to build cross-platform applications with a primary focus on UI/UX.",
-    icon: SmartPhone01Icon,
-    accent: false
-  },
-  {
-    title: "Back-end & Databases",
-    description: "Proficient in Node.js, Express, and database management with MySQL, MongoDB, and Supabase for robust server-side logic.",
+    title: "Full-Stack & APIs",
+    description: "End-to-end features with Node.js and REST APIs, integrated with Appwrite, Supabase, and PostgreSQL for robust data and auth.",
     icon: Server,
     accent: false
   },
   {
-    title: "Version Control & CI/CD",
-    description: "Expert use of Git and GitHub for collaborative development, branching strategies, and ensuring smooth deployment pipelines.",
+    title: "Interactive & 3D",
+    description: "Immersive, interactive experiences with Three.js and WebGL — including a full 3D virtual science laboratory.",
+    icon: CubeIcon,
+    accent: false
+  },
+  {
+    title: "Mobile Development",
+    description: "Cross-platform mobile interfaces with React Native, focused on clean UI and a smooth, native-feeling experience.",
+    icon: SmartPhone01Icon,
+    accent: false
+  },
+  {
+    title: "Version Control & Deployment",
+    description: "Confident with Git and GitHub workflows and branching strategies, shipping to production on Vercel and Netlify.",
     icon: Git,
     accent: false
   },
   {
-    title: "UI/UX & Graphics",
-    description: "Designing user-centric layouts in Figma and Adobe XD, focusing on accessibility and modern aesthetic principles.",
+    title: "UI/UX & Product",
+    description: "Designing user-centric layouts in Figma with a product-first eye for accessibility, performance, and business value.",
     icon: PaintBoardIcon,
-    accent: false
-  },
-  {
-    title: "W3School Certified",
-    description: "Completed comprehensive web development tracks with a consistent scoring of 80% and above in all technical assessments.",
-    icon: DatabaseIcon,
     accent: false
   }
 ];

@@ -1,57 +1,112 @@
-import { motion } from 'framer-motion';
-import ecommerce_mern from '../assets/ecommerce_mern.png';
-import bee_energy from '../assets/bee_energy.png';
-import aia_counselling from '../assets/aia_counselling.png';
-import signbee from '../assets/signbee.png';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { HugeiconsIcon } from '@hugeicons/react';
-import { Add01Icon } from '@hugeicons/core-free-icons';
+import { Add01Icon, Github01Icon } from '@hugeicons/core-free-icons';
+import ProjectModal from './ProjectModal';
+import ScreenshotCarousel from './ScreenshotCarousel';
+
+// Real, self-hosted screenshots (desktop + mobile) captured from each live site
+import fanceluxD from '../assets/projects/fancelux-desktop.png';
+import fanceluxM from '../assets/projects/fancelux-mobile.png';
+import vemuD from '../assets/projects/vemu-desktop.png';
+import vemuM from '../assets/projects/vemu-mobile.png';
+import beirootD from '../assets/projects/beiroot-desktop.png';
+import beirootM from '../assets/projects/beiroot-mobile.png';
+import foodbridgeD from '../assets/projects/foodbridge-desktop.png';
+import foodbridgeM from '../assets/projects/foodbridge-mobile.png';
+import ibajayD from '../assets/projects/ibajay-desktop.png';
+import ibajayM from '../assets/projects/ibajay-mobile.png';
+import aiaD from '../assets/projects/aia-desktop.png';
+import aiaM from '../assets/projects/aia-mobile.png';
+import fabulousD from '../assets/projects/fabulous-desktop.png';
+import fabulousM from '../assets/projects/fabulous-mobile.png';
+import labbridgeD from '../assets/projects/labbridge-desktop.png';
+import labbridgeM from '../assets/projects/labbridge-mobile.png';
 
 const projects = [
   {
-    type: "Web3/Hackathon",
-    title: "BlockDAG Hackathon",
-    description: "Built a suite of innovative solutions including Blault, KwaraAI, and Bitroot, focusing on blockchain integration and AI.",
-    image: signbee, // Placeholder for hackathon projects
-    link: "https://github.com/SamTeck01",
-    tags: ["Blockchain", "AI", "React"],
-    color: "#A855F7" // Purple
+    type: "Luxury E-commerce",
+    title: "FanceLux",
+    description: "A refined luxury e-commerce experience for designer bags, shoes, and fine jewelry — editorial hero, curated category browsing, and a polished, conversion-focused storefront that makes premium products feel premium.",
+    role: "Designed and built the storefront front-to-back — the editorial hero, category and product browsing, and a responsive, brand-forward shopping experience.",
+    link: "https://fancelux.vercel.app/",
+    tags: ["Next.js", "React", "Tailwind CSS"],
+    shots: [{ src: fanceluxD, type: "desktop" }, { src: fanceluxM, type: "mobile" }],
   },
   {
-    type: "E-commerce Website",
-    title: "Ecommerce Mern",
-    description: "A comprehensive digital shopping hub with core e-commerce functionality like product browsing.",
-    image: ecommerce_mern,
-    link: "https://ecommerce-mern-smtck.vercel.app/",
-    tags: ["MERN", "Tailwind"],
-    color: "#2DD4BF" // Teal
+    type: "Booking Platform",
+    title: "Vemu Homes",
+    description: "A full-stack shortlet and property booking platform where guests browse listings, check availability, and book stays, while admins manage properties, bookings, and availability from a dedicated dashboard.",
+    role: "Designed and built the entire application end-to-end — the customer booking flow, the admin dashboard, and the Supabase backend (database schema, authentication, and storage).",
+    link: "https://vemu-homes.vercel.app/",
+    tags: ["React", "Supabase"],
+    shots: [{ src: vemuD, type: "desktop" }, { src: vemuM, type: "mobile" }],
   },
   {
-    type: "Service Platform",
-    title: "Bee Energy Hive",
-    description: "A professional service site for solar and IoT power solutions, focusing on reliable inverter installations.",
-    image: bee_energy,
-    link: "https://bee-energy-hive.vercel.app/",
-    tags: ["React", "Tailwind"],
-    color: "#F472B6" // Pink
+    type: "Food Ordering",
+    title: "Beiroot NG",
+    description: "A modern food-ordering website for an authentic Lebanese restaurant, with an appetising menu, clean branding, and a smooth ordering experience across devices.",
+    role: "Built the frontend from the ground up with Next.js and Tailwind CSS — the menu, responsive layouts, and the ordering UI.",
+    link: "https://beiroot-ng.vercel.app/",
+    tags: ["Next.js", "React", "Tailwind CSS"],
+    shots: [{ src: beirootD, type: "desktop" }, { src: beirootM, type: "mobile" }],
   },
   {
-    type: "Counseling Consult",
-    title: "AIA Counselling",
-    description: "A psychology and platform offering professional consulting services with integrated features.",
-    image: aia_counselling,
+    type: "Social Impact",
+    title: "Food Bridge",
+    description: "A social-impact platform that connects surplus food from donors with the people and organisations who need it, including operational dashboards to track donations, requests, and distribution.",
+    role: "Frontend Technical Lead — I build and maintain core features in Next.js, implement the workflow dashboards, and integrate backend services with Appwrite, while leading frontend development alongside the team.",
+    link: "https://food-bridge-amber.vercel.app/",
+    tags: ["Next.js", "React", "Tailwind CSS", "Appwrite"],
+    shots: [{ src: foodbridgeD, type: "desktop" }, { src: foodbridgeM, type: "mobile" }],
+  },
+  {
+    type: "E-commerce",
+    title: "Ibajay Gadgets",
+    description: "An e-commerce storefront for gadgets and electronics, with product browsing, a clean catalogue layout, and a responsive shopping experience.",
+    role: "Developed the storefront and product-browsing experience with React and Next.js.",
+    link: "https://www.ibajaygadgets.ng/",
+    tags: ["React", "Next.js"],
+    shots: [{ src: ibajayD, type: "desktop" }, { src: ibajayM, type: "mobile" }],
+  },
+  {
+    type: "Counselling",
+    title: "AIA Counselling Consult",
+    description: "A professional website for a counselling and psychology practice — presenting services, building trust, and guiding visitors toward booking a consultation.",
+    role: "Built the full marketing site with Next.js and Tailwind CSS, focusing on clear service presentation and a strong booking call-to-action.",
     link: "https://aia-counselling-consult.vercel.app/",
-    tags: ["React", "Tailwind"],
-    color: "#FB923C" // Orange
+    tags: ["Next.js", "React", "Tailwind CSS"],
+    shots: [{ src: aiaD, type: "desktop" }, { src: aiaM, type: "mobile" }],
+  },
+  {
+    type: "E-commerce",
+    title: "Fabulous Gadgets",
+    description: "A modern e-commerce store for gadgets and accessories, with a polished product catalogue and a responsive, conversion-focused layout.",
+    role: "Built the storefront and product catalogue with Next.js and React.",
+    link: "https://fabulous-gadgets-and-accessories.vercel.app/",
+    tags: ["Next.js", "React"],
+    shots: [{ src: fabulousD, type: "desktop" }, { src: fabulousM, type: "mobile" }],
+  },
+  {
+    type: "Interactive 3D / EdTech",
+    title: "LabBridge",
+    description: "An interactive, browser-based 3D virtual science laboratory — realistic compound microscopy, optics, circuit boards, and chemical titrations — bringing hands-on practical science to students without access to a physical lab.",
+    role: "Built the 3D lab experience with Three.js and WebGL — interactive apparatus, real-time simulation, and the surrounding React UI.",
+    link: "https://labbridge-two.vercel.app/",
+    tags: ["Three.js", "WebGL", "React"],
+    shots: [{ src: labbridgeD, type: "desktop" }, { src: labbridgeM, type: "mobile" }],
   }
 ];
 
 export default function Projects() {
+  const [selected, setSelected] = useState(null);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     whileInView: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
       },
     },
   };
@@ -86,15 +141,14 @@ export default function Projects() {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="group"
+              onClick={() => setSelected(project)}
+              className="group cursor-pointer"
             >
               <div className="relative overflow-hidden rounded-5xl border-[3px] border-dark/5 bg-white shadow-sm hover:shadow-xl transition-all duration-500">
-                <div className="p-4 bg-white aspect-[16/10] overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover rounded-3xl transition-all duration-700 group-hover:scale-105"
-                  />
+                <div className="p-4 bg-white aspect-[16/10]">
+                  <div className="w-full h-full rounded-3xl overflow-hidden">
+                    <ScreenshotCarousel shots={project.shots} theme="light" />
+                  </div>
                 </div>
               </div>
 
@@ -111,10 +165,10 @@ export default function Projects() {
                     ))}
                   </div>
                 </div>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noreferrer"
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); setSelected(project); }}
+                  aria-label={`View ${project.title} details`}
                   className="group/btn flex-shrink-0 w-20 h-20 rounded-full border-[3px] border-dark/5 flexCenter transition-all duration-300 hover:border-dark hover:bg-dark"
                 >
                   <HugeiconsIcon
@@ -123,7 +177,7 @@ export default function Projects() {
                     className="text-dark group-hover/btn:text-accent group-hover/btn:rotate-90 transition-all duration-500"
                     strokeWidth={3}
                   />
-                </a>
+                </button>
               </div>
             </motion.div>
           ))}
@@ -135,14 +189,20 @@ export default function Projects() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <a href="#projects" className="inline-flex items-center gap-6 px-14 py-7 bg-accent text-dark font-black rounded-full hover:bg-dark hover:text-white transition-all duration-300 group shadow-xl">
-            See All projects
+          <a href="https://github.com/SamTeck01" target="_blank" rel="noreferrer" className="inline-flex items-center gap-6 px-14 py-7 bg-accent text-dark font-black rounded-full hover:bg-dark hover:text-white transition-all duration-300 group shadow-xl">
+            See More On GitHub
             <div className="w-12 h-12 rounded-full bg-dark/10 flex items-center justify-center group-hover:bg-accent transition-all">
-              <HugeiconsIcon icon={Add01Icon} size={24} color="currentColor" strokeWidth={3} />
+              <HugeiconsIcon icon={Github01Icon} size={24} color="currentColor" strokeWidth={2} />
             </div>
           </a>
         </motion.div>
       </div>
+
+      <AnimatePresence>
+        {selected && (
+          <ProjectModal project={selected} onClose={() => setSelected(null)} />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

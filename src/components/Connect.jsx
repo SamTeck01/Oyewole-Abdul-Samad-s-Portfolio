@@ -4,6 +4,8 @@ import {
   Mail01Icon,
   WhatsappIcon,
   Linkedin01Icon,
+  Github01Icon,
+  UpworkIcon,
   MailSend01Icon,
   ArrowUpRight01Icon,
   MagicWand01Icon
@@ -53,6 +55,12 @@ export default function Connect() {
               </a>
               <a href="https://www.linkedin.com/in/abdul-samad-oyewole-36b1a635b/" target="_blank" rel="noreferrer" className="hover:scale-110 transition-transform">
                 <HugeiconsIcon icon={Linkedin01Icon} size={32} strokeWidth={2} />
+              </a>
+              <a href="https://github.com/SamTeck01" target="_blank" rel="noreferrer" className="hover:scale-110 transition-transform">
+                <HugeiconsIcon icon={Github01Icon} size={32} strokeWidth={2} />
+              </a>
+              <a href="https://www.upwork.com/freelancers/~01a9e7570a64422593" target="_blank" rel="noreferrer" className="hover:scale-110 transition-transform">
+                <HugeiconsIcon icon={UpworkIcon} size={32} strokeWidth={2} />
               </a>
             </div>
             <p className="text-white/40 text-lg md:text-xl max-w-2xl font-inter font-medium leading-relaxed uppercase tracking-widest">

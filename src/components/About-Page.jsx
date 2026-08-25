@@ -32,14 +32,15 @@ export default function AboutPage() {
             variants={itemVariants}
             className="text-[26px] md:text-[42px] font-normal leading-[1.3] text-dark font-outfit mb-12"
           >
-            👋 Hello! I&apos;m <span className="font-semibold">Abdul Samad</span>, —— a creative and driven web and
-            <span className="text-purple font-semibold mx-2 underline underline-offset-[8px] decoration-[6px] decoration-purple/20">MOBILE DEVELOPER</span> with
-            <span className="text-purple font-semibold italic mx-2 underline underline-offset-[8px] decoration-[6px] decoration-purple/20">5 YEARS OF EXPERIENCE</span> in the field.
-            I thrive on turning imaginative ideas into digital realities, constantly seeking innovative ways to blend design and technology.
-            I possess a strong foundation in
-            <span className="text-purple font-semibold italic mx-2 underline underline-offset-[8px] decoration-[6px] decoration-purple/20">FRONT-END</span> and
-            <span className="text-purple font-semibold italic mx-2 underline underline-offset-[8px] decoration-[6px] decoration-purple/20">BACK-END</span> development,
-            as well as a keen eye for responsive design and user-centered interfaces.
+            👋 Hello! I&apos;m <span className="font-semibold">Abdul Samad</span> &mdash; a
+            <span className="text-purple font-semibold mx-2 underline underline-offset-[8px] decoration-[6px] decoration-purple/20">FRONTEND ENGINEER</span>
+            and technical founder who builds
+            <span className="text-purple font-semibold italic mx-2 underline underline-offset-[8px] decoration-[6px] decoration-purple/20">PRODUCTION-READY</span>
+            web apps, SaaS products, and dashboards with
+            <span className="text-purple font-semibold italic mx-2 underline underline-offset-[8px] decoration-[6px] decoration-purple/20">REACT, NEXT.JS &amp; TYPESCRIPT</span>.
+            I&apos;m comfortable across the stack &mdash; from pixel-perfect frontend architecture to API integration and data &mdash; and I currently serve as
+            <span className="text-purple font-semibold italic mx-2 underline underline-offset-[8px] decoration-[6px] decoration-purple/20">FOUNDER &amp; CTO AT TIQRA</span>
+            and Frontend Technical Lead at Food Bridge.
           </motion.h2>
 
           <motion.div variants={itemVariants} className="grid md:grid-cols-2 gap-12 mt-16 pt-16 border-t border-dark/10">
@@ -48,7 +49,7 @@ export default function AboutPage() {
                 <HugeiconsIcon icon={Location01Icon} size={32} color="#C3FF2E" strokeWidth={2} />
               </div>
               <p className="text-black/70 text-xl leading-relaxed">
-                Based in Nigeria, I specialize in crafting engaging websites and digital products. My approach combines aesthetic appeal with robust, scalable functionality.
+                Based in Nigeria, I build fast, responsive web products for startups and clients &mdash; from e-commerce and booking systems to full operational dashboards.
               </p>
             </div>
             <div className="flex gap-6">
@@ -56,7 +57,7 @@ export default function AboutPage() {
                 <HugeiconsIcon icon={RocketIcon} size={32} color="#C3FF2E" strokeWidth={2} />
               </div>
               <p className="text-black/70 text-xl leading-relaxed">
-                I am highly motivated and dedicated to staying at the forefront of modern web technologies, ensuring every project I touch is built with the highest standards.
+                I pair a founder&apos;s product mindset with hands-on engineering &mdash; shipping clean, scalable code that delivers real business value. Open to freelance work and new opportunities.
               </p>
             </div>
           </motion.div>

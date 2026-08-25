@@ -4,15 +4,19 @@ import { Award01Icon, Add01Icon } from '@hugeicons/core-free-icons';
 
 const achievements = [
   {
-    title: "Completed all skill courses on W3School, scoring 80% and above in all assessments.",
-    color: "#FACC15" // Yellow
-  },
-  {
-    title: "Participated in the BlockDAG Hackathon, where we successfully built Blault, KwaraAI, Bitroot, and several other innovative solutions.",
+    title: "Founder & CTO of Tiqra — architected and built a product-validation SaaS, including a Truth Layer Engine that flags unreliable survey responses using behavioral signals.",
     color: "#A855F7" // Purple
   },
   {
-    title: "Developed specialized web platforms for prominent companies, including AIA Counselling Consult, RedTech, and Bee Energy Hive.",
+    title: "Shipped 6+ production web apps — booking platforms, e-commerce stores, and operational dashboards — using React, Next.js, and TypeScript.",
+    color: "#C3FF2E" // Lime
+  },
+  {
+    title: "Built LabBridge, an interactive 3D virtual science laboratory powered by Three.js and WebGL.",
+    color: "#2DD4BF" // Teal
+  },
+  {
+    title: "Frontend Technical Lead at Food Bridge — leading UI development and Appwrite integration for a surplus-food distribution platform.",
     color: "#FB923C" // Orange
   }
 ];

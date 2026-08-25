@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import mypics from '../assets/samteck picture.jpg';
+import resume from '../assets/Abdul-Samad-Oyewole-Resume.pdf';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { AiChat02Icon, Download04Icon } from '@hugeicons/core-free-icons';
 
@@ -32,12 +33,12 @@ export default function Hero() {
                 >
                     <motion.h1 variants={itemVariants} className="text-[38px] md:text-[85px] font-black text-white leading-[1.2] mb-8 tracking-tighter">
                         CODING WITH <br />
-                        🔥PASSION, CRYING <br />
+                        🔥PASSION, BUILDING <br />
                         WITH PURPOSE
                     </motion.h1>
 
-                    <motion.p variants={itemVariants} className="text-white/60 text-base md:text-lg max-w-lg mb-12 font-inter leading-relaxed">
-                        Hello and welcome to my web developer portfolio! I&apos;m thrilled to showcase my passion for crafting captivating and functional websites
+                    <motion.p variants={itemVariants} className="text-white/60 text-base md:text-lg max-w-xl mb-12 font-inter leading-relaxed">
+                        I&apos;m a Frontend Engineer, full-stack developer, and technical founder. I build production-ready web apps, SaaS products, and dashboards with React, Next.js &amp; TypeScript &mdash; and I&apos;m currently open to freelance projects and new opportunities.
                     </motion.p>
 
                     <motion.div variants={itemVariants} className="flex flex-wrap gap-6 items-center mb-16">
@@ -47,7 +48,7 @@ export default function Hero() {
                             </div>
                             <span className="text-sm md:text-base uppercase tracking-widest">Let&apos;s Talk</span>
                         </a>
-                        <a href="/src/assets/Abdul Samad Oyewole Resume new.pdf" download className="px-10 py-3 md:py-4 border-2 border-white/20 text-white font-black rounded-full hover:border-white transition-all duration-300 flex items-center gap-4 group">
+                        <a href={resume} download className="px-10 py-3 md:py-4 border-2 border-white/20 text-white font-black rounded-full hover:border-white transition-all duration-300 flex items-center gap-4 group">
                             <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white flexCenter transition-transform group-hover:rotate-12">
                                 <HugeiconsIcon icon={Download04Icon} size={22} color="#080808" strokeWidth={2.5} />
                             </div>
@@ -57,17 +58,18 @@ export default function Hero() {
 
                     <motion.div variants={itemVariants} className="">
                         <p className="text-white/30 text-[10px] font-black uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
-                            Featured In:
+                            Currently
                         </p>
-                        <div className="flex items-center gap-4 md:gap-8">
-                            <div className="flex gap-4">
-                                {[1, 2, 3, 4].map((i) => (
-                                    <div key={i} className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 flexCenter opacity-50 hover:opacity-100 transition-opacity">
-                                        <div className="w-6 h-6 bg-white/20 rounded-full" />
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="h-[1px] flex-grow bg-white/10 ml-4"></div>
+                        <div className="flex flex-wrap items-center gap-3">
+                            <span className="px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-[11px] font-black uppercase tracking-widest">
+                                Open to Freelance &amp; Full-time
+                            </span>
+                            <span className="px-4 py-2 rounded-full border border-white/10 text-white/70 text-[11px] font-black uppercase tracking-widest">
+                                Founder &amp; CTO &middot; Tiqra
+                            </span>
+                            <span className="px-4 py-2 rounded-full border border-white/10 text-white/70 text-[11px] font-black uppercase tracking-widest">
+                                Frontend Lead &middot; Food Bridge
+                            </span>
                         </div>
                     </motion.div>
                 </motion.div>

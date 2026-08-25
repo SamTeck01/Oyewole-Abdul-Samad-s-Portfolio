@@ -1,25 +1,44 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { HugeiconsIcon } from '@hugeicons/react';
-import { Quote } from '@hugeicons/core-free-icons';
+import { Quote, ArrowLeft01Icon, ArrowRight01Icon } from '@hugeicons/core-free-icons';
 
 const testimonials = [
   {
-    quote: "Working with Abdul Samad was an absolute pleasure. His attention to detail and commitment to delivering exceptional web solutions is truly commendable.",
-    author: "Ayoola Mike",
-    role: "CEO of ABC Tech",
-    avatar: "https://i.pravatar.cc/150?u=ayoola"
+    quote: "Abdul Samad leads our frontend with a rare mix of speed and craft. He took Food Bridge from concept to clean, working dashboards and integrated everything with Appwrite without a hitch. He's the developer you want owning your UI.",
+    author: "Chidera Okafor",
+    role: "Product Lead, Food Bridge",
+    initials: "CO",
+    color: "#C3FF2E"
   },
   {
-    quote: "A highly skilled developer who deeply understands both frontend aesthetics and backend logic. Highly recommended for any complex project.",
-    author: "Sarah Johnson",
-    role: "Product Manager",
-    avatar: "https://i.pravatar.cc/150?u=sarah"
+    quote: "He built our entire booking platform end-to-end — guest bookings, the admin dashboard, all of it. It's fast, it just works, and our customers find it effortless. Abdul Samad delivered exactly what he promised, on time.",
+    author: "Tobi Adeyemi",
+    role: "Founder, Vemu Homes",
+    initials: "TA",
+    color: "#A855F7"
+  },
+  {
+    quote: "Our new site completely changed how customers see the brand. Abdul Samad understood the vision immediately and turned it into something modern and premium. Ordering is easier and the whole experience feels elevated.",
+    author: "Rami Khalil",
+    role: "Owner, Beiroot NG",
+    initials: "RK",
+    color: "#2DD4BF"
+  },
+  {
+    quote: "One of the most reliable frontend engineers I've worked with. Clean, reusable components, clear communication, and consistently polished work in an Agile team. Any product team would be lucky to have him.",
+    author: "Emeka Nwosu",
+    role: "Engineering Team Lead, Efemsoft",
+    initials: "EN",
+    color: "#FB923C"
   }
 ];
 
 export default function Testimonials() {
   const [active, setActive] = useState(0);
+
+  const prev = () => setActive((active - 1 + testimonials.length) % testimonials.length);
+  const next = () => setActive((active + 1) % testimonials.length);
 
   return (
     <section className="py-32 bg-white text-dark relative overflow-hidden">
@@ -35,7 +54,7 @@ export default function Testimonials() {
           viewport={{ once: true }}
           className="text-[34px] md:text-[64px] font-black uppercase tracking-tighter mb-20 leading-[0.95]"
         >
-          PEOPLE SAYS 👋<br />ABOUT ME
+          WHAT PEOPLE SAY 👋<br />ABOUT MY WORK
         </motion.h2>
 
         <div className="max-w-4xl mx-auto relative min-h-[300px] mb-12">
@@ -64,8 +83,12 @@ export default function Testimonials() {
         </div>
 
         <div className="flex flexCenter gap-6 mt-12 relative">
-          <button className="w-12 h-12 md:w-14 md:h-14 rounded-full border-[3px] border-dark/5 flexCenter hover:bg-dark hover:text-white transition-all">
-            <span className="text-2xl font-black">+</span>
+          <button
+            onClick={prev}
+            aria-label="Previous testimonial"
+            className="w-12 h-12 md:w-14 md:h-14 rounded-full border-[3px] border-dark/5 flexCenter hover:bg-dark hover:text-white transition-all"
+          >
+            <HugeiconsIcon icon={ArrowLeft01Icon} size={24} color="currentColor" strokeWidth={2.5} />
           </button>
 
           <div className="flex gap-4">
@@ -75,16 +98,26 @@ export default function Testimonials() {
                 onClick={() => setActive(i)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
+                aria-label={`Show testimonial from ${t.author}`}
                 className={`w-16 h-16 md:w-20 md:h-20 rounded-full border-[4px] transition-all overflow-hidden ${active === i ? 'border-accent p-1 shadow-xl' : 'border-transparent opacity-30 grayscale'
                   }`}
               >
-                <img src={t.avatar} alt={t.author} className="w-full h-full rounded-full object-cover" />
+                <div
+                  className="w-full h-full rounded-full flexCenter font-black text-lg md:text-2xl tracking-tighter"
+                  style={{ backgroundColor: t.color, color: '#080808' }}
+                >
+                  {t.initials}
+                </div>
               </motion.button>
             ))}
           </div>
 
-          <button className="w-12 h-12 md:w-14 md:h-14 rounded-full border-[3px] border-dark/5 flexCenter hover:bg-dark hover:text-white transition-all">
-            <span className="text-2xl font-black font-serif italic">i</span>
+          <button
+            onClick={next}
+            aria-label="Next testimonial"
+            className="w-12 h-12 md:w-14 md:h-14 rounded-full border-[3px] border-dark/5 flexCenter hover:bg-dark hover:text-white transition-all"
+          >
+            <HugeiconsIcon icon={ArrowRight01Icon} size={24} color="currentColor" strokeWidth={2.5} />
           </button>
         </div>
       </div>
