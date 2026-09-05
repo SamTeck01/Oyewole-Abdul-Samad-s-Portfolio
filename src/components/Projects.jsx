@@ -22,8 +22,30 @@ import fabulousD from '../assets/projects/fabulous-desktop.png';
 import fabulousM from '../assets/projects/fabulous-mobile.png';
 import labbridgeD from '../assets/projects/labbridge-desktop.png';
 import labbridgeM from '../assets/projects/labbridge-mobile.png';
+import luxorD from '../assets/projects/luxor-desktop.png';
+import luxorM from '../assets/projects/luxor-mobile.png';
+import bqD from '../assets/projects/bq-desktop.png';
+import bqM from '../assets/projects/bq-mobile.png';
 
 const projects = [
+  {
+    type: "Construction & Development",
+    title: "Luxor Builders",
+    description: "A multi-page site for a Texas construction and real-estate development firm, rebuilt from hand-drawn wireframes to be near-identical to the drawings — including a portfolio lightbox with a thumbnail rail, backed by a real route so project links stay shareable.",
+    role: "Built all seven pages from the supplied wireframes. Measured the drawings numerically rather than eyeballing them, and expressed every value — font sizes included — as a multiple of one custom CSS unit representing a single wireframe pixel, so the drawn proportions hold at any screen width instead of drifting between breakpoints.",
+    link: "https://samteck-demo-websites.vercel.app/demos/luxor",
+    tags: ["TanStack Start", "React", "TypeScript", "Tailwind CSS"],
+    shots: [{ src: luxorD, type: "desktop" }, { src: luxorM, type: "mobile" }],
+  },
+  {
+    type: "Food & Hospitality",
+    title: "BQ Cuisine",
+    description: "A site for a Nigerian food brand operating across Ilorin and Lagos — a scroll-driven video hero, category browsing, the full menu, party packages, and both locations.",
+    role: "Designed and built the site end-to-end in Next.js, including a hero that maps scroll position to individual video frames, and a menu and packages structure driven by the brand's own confirmed pricing.",
+    link: "https://bq-cuisine-samteck.vercel.app",
+    tags: ["Next.js", "React", "Tailwind CSS"],
+    shots: [{ src: bqD, type: "desktop" }, { src: bqM, type: "mobile" }],
+  },
   {
     type: "Luxury E-commerce",
     title: "FanceLux",
