@@ -16,10 +16,25 @@ const variants = {
  */
 export default function ScreenshotCarousel({ shots, theme = 'light', alwaysShowArrows = false }) {
   const [[index, dir], setState] = useState([0, 0]);
-  const count = shots.length;
-  const pos = ((index % count) + count) % count;
-  const current = shots[pos];
+  const list = shots ?? [];
+  const count = list.length;
   const isDark = theme === 'dark';
+
+  /* A card whose screenshots haven't been captured yet renders a neutral panel
+     rather than a broken image, so adding a project before its PNGs exist can't
+     take the build down. */
+  if (count === 0) {
+    return (
+      <div className={`w-full h-full flexCenter ${isDark ? 'bg-black/50' : 'bg-dark/[0.04]'}`}>
+        <span className="text-[11px] font-black uppercase tracking-widest text-dark/25">
+          Screenshot coming
+        </span>
+      </div>
+    );
+  }
+
+  const pos = ((index % count) + count) % count;
+  const current = list[pos];
 
   const paginate = (step, e) => {
     e?.stopPropagation();

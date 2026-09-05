@@ -22,20 +22,19 @@ import fabulousD from '../assets/projects/fabulous-desktop.png';
 import fabulousM from '../assets/projects/fabulous-mobile.png';
 import labbridgeD from '../assets/projects/labbridge-desktop.png';
 import labbridgeM from '../assets/projects/labbridge-mobile.png';
-import luxorD from '../assets/projects/luxor-desktop.png';
-import luxorM from '../assets/projects/luxor-mobile.png';
-import bqD from '../assets/projects/bq-desktop.png';
-import bqM from '../assets/projects/bq-mobile.png';
+/* Luxor and BQ Cuisine have no captured screenshots yet, so their cards pass an
+   empty `shots` array and the carousel renders its own neutral panel. Add the
+   PNGs to src/assets/projects/, import them here, and fill in the arrays. */
 
 const projects = [
   {
-    type: "Construction & Development",
+    type: "Wireframe-to-Build Study",
     title: "Luxor Builders",
-    description: "A multi-page site for a Texas construction and real-estate development firm, rebuilt from hand-drawn wireframes to be near-identical to the drawings — including a portfolio lightbox with a thumbnail rail, backed by a real route so project links stay shareable.",
-    role: "Built all seven pages from the supplied wireframes. Measured the drawings numerically rather than eyeballing them, and expressed every value — font sizes included — as a multiple of one custom CSS unit representing a single wireframe pixel, so the drawn proportions hold at any screen width instead of drifting between breakpoints.",
+    description: "A seven-page site for a construction and development firm, built from hand-drawn wireframes as an exercise in reproduction rather than reinterpretation — including a portfolio lightbox with a thumbnail rail, backed by a real route so project links stay shareable.",
+    role: "Self-directed build. Measured the drawings numerically instead of eyeballing them, then expressed every value — font sizes included — as a multiple of one custom CSS unit representing a single wireframe pixel, so the drawn proportions hold at any screen width instead of drifting between breakpoints. Identified the two typefaces from x-height-to-cap-height ratios measured off the drawings.",
     link: "https://samteck-demo-websites.vercel.app/demos/luxor",
     tags: ["TanStack Start", "React", "TypeScript", "Tailwind CSS"],
-    shots: [{ src: luxorD, type: "desktop" }, { src: luxorM, type: "mobile" }],
+    shots: [],
   },
   {
     type: "Food & Hospitality",
@@ -44,7 +43,7 @@ const projects = [
     role: "Designed and built the site end-to-end in Next.js, including a hero that maps scroll position to individual video frames, and a menu and packages structure driven by the brand's own confirmed pricing.",
     link: "https://bq-cuisine-samteck.vercel.app",
     tags: ["Next.js", "React", "Tailwind CSS"],
-    shots: [{ src: bqD, type: "desktop" }, { src: bqM, type: "mobile" }],
+    shots: [],
   },
   {
     type: "Luxury E-commerce",
