@@ -378,7 +378,7 @@ export const Step3: React.FC = () => {
         {rt > 0 && rt < 1 && (
           <div style={{ position: "absolute", left: ship[0] - 26 * s, top: ship[1] - 26 * s, width: 52 * s, height: 52 * s, borderRadius: 99, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 6px 20px rgba(0,0,0,.2)" }}><Ship size={30 * s} color={C.royal} /></div>
         )}
-        <Label size={(V ? 54 : 46) * s} color="#fff" weight={300} style={{ position: "absolute", width: "100%", textAlign: "center", bottom: (V ? 260 : 60) * s, opacity: prog(t, a + 3.2, 0.6) }}>Factory-direct to the <b style={{ fontWeight: 600 }}>{tr("USA")}</b></Label>
+        <Label size={(V ? 54 : 46) * s} color="#fff" weight={300} style={{ position: "absolute", width: "100%", textAlign: "center", bottom: (V ? 260 : 60) * s, opacity: prog(t, a + 3.2, 0.6) }}>{tr("Factory-direct to the ")}<b style={{ fontWeight: 600 }}>{tr("USA")}</b></Label>
       </div>
     </AbsoluteFill>
   );
