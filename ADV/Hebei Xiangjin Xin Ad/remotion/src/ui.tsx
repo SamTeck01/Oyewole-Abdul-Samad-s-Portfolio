@@ -54,11 +54,21 @@ const Dots: React.FC = () => {
   );
 };
 
-/** Turntable 3D render from Blender (24-frame loop) */
+const HERO: Record<string, number> = { flat_washer: 16, spring_washer: 16, circlip: 16, hex_nut: 16, nylon_nut: 16, cap_nut: 16, wing_nut: 16, custom: 19, solar: 13 };
+/** 3D part from Blender. Smooth 60 fps float/tilt on a fixed hero angle (no flip-book stutter). */
 export const Model: React.FC<{ name: string; size: number; speed?: number; style?: React.CSSProperties; offset?: number }> = ({ name, size, speed = 1, style, offset = 0 }) => {
   const f = useCurrentFrame();
-  const idx = (Math.floor((f * speed) / 8 + offset) % 24) + 1;
-  return <Img src={staticFile(`m/${name}/f_${String(idx).padStart(4, "0")}.png`)} style={{ width: size, height: size, objectFit: "contain", ...style }} />;
+  const ph = (f / 60) * speed + offset * 0.37;
+  const y = Math.sin(ph * 1.1) * size * 0.025;
+  const r = Math.sin(ph * 0.8) * 4;
+  const k = 1 + Math.sin(ph * 0.9) * 0.015;
+  const base = style?.transform ?? "";
+  return (
+    <Img
+      src={staticFile(`m/${name}/f_${String(HERO[name] ?? 4).padStart(4, "0")}.png`)}
+      style={{ width: size, height: size, objectFit: "contain", ...style, transform: `${base} translateY(${y}px) rotate(${r}deg) scale(${k})` }}
+    />
+  );
 };
 
 export const Card: React.FC<{ style?: React.CSSProperties; children: React.ReactNode }> = ({ style, children }) => (
