@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
+import { AbsoluteFill, interpolate, staticFile, useCurrentFrame } from "remotion";
 import { Check, Factory, Building2, Sun, Zap, FileText, Ship, MapPin } from "lucide-react";
 import { geoNaturalEarth1, geoPath, geoInterpolate } from "d3-geo";
 import { feature } from "topojson-client";
@@ -57,7 +57,7 @@ export const LogoScene: React.FC = () => {
 export const Range: React.FC = () => {
   const t = useT(); const f = useCurrentFrame(); const { V, W, H, s } = useV();
   const [a, b] = Q.S.range;
-  const slot = (V ? 300 : 270) * s;
+  const slot = (V ? 330 : 360) * s;
   // x position of each group
   let x = 0; const pos = Q.RANGE.map((g) => { const p = x; x += g.models.length * slot + 90 * s; return p; });
   const total = x;
@@ -71,7 +71,7 @@ export const Range: React.FC = () => {
   return (
     <AbsoluteFill style={{ opacity: fadeIO(t, a, b, 0.35) }}>
       <div style={{ position: "absolute", top: (V ? 170 : 70) * s, width: "100%", textAlign: "center", opacity: 1 - wall }}>
-        <Label size={(V ? 54 : 40) * s} color="#fff" weight={300}>The full fastener range · <b style={{ fontWeight: 600 }}>{String(counter).padStart(2, "0")}</b> / 15</Label>
+        <Label size={(V ? 54 : 46) * s} color="#fff" weight={300}>The full fastener range · <b style={{ fontWeight: 600 }}>{String(counter).padStart(2, "0")}</b> / 15</Label>
       </div>
       {/* shelf */}
       <div style={{ position: "absolute", left: W / 2 - cam, top: H * (V ? 0.36 : 0.3), width: total, height: slot * 1.6, opacity: 1 - wall, transform: `scale(${1 - wall * 0.3})`, transformOrigin: `${cam}px 50%` }}>
@@ -83,12 +83,13 @@ export const Range: React.FC = () => {
               <div style={{ display: "flex" }}>
                 {g.models.map((m, k) => (
                   <div key={k} style={{ width: slot, height: slot, position: "relative" }}>
-                    {isCustom ? <Blueprint t={t} t0={g.t} size={slot} /> : <Model name={m} size={slot} offset={k * 7 + i * 3} />}
+                    {isCustom ? <Blueprint t={t} t0={g.t} size={slot} /> : <div style={{ position: "absolute", left: slot * 0.08, right: slot * 0.08, bottom: slot * 0.04, height: slot * 0.16, borderRadius: "50%", background: "radial-gradient(rgba(255,255,255,.55), transparent 70%)" }} />}
+                    {!isCustom && <Model name={m} size={slot} offset={k * 7 + i * 3} style={{ transform: "scale(1.45)",  }} />}
                   </div>
                 ))}
               </div>
-              <Label size={(V ? 30 : 26) * s} color="#fff" weight={500} style={{ marginTop: 8 * s, textAlign: "center" }}>{g.label}</Label>
-              {g.note && <Label size={(V ? 24 : 21) * s} color="rgba(255,255,255,.8)" weight={300} style={{ marginTop: 4 }}>{g.note}</Label>}
+              <Label size={(V ? 34 : 32) * s} color="#fff" weight={500} style={{ marginTop: 8 * s, textAlign: "center", textShadow: "0 2px 12px rgba(10,40,90,.35)" }}>{g.label}</Label>
+              {g.note && <Label size={(V ? 28 : 26) * s} color="rgba(255,255,255,.8)" weight={300} style={{ marginTop: 4 }}>{g.note}</Label>}
             </div>
           );
         })}
@@ -112,9 +113,9 @@ const Wall: React.FC<{ p: number }> = ({ p }) => {
         {items.slice(0, 15).map((it, i) => {
           const q = Math.max(0, Math.min(1, p * 1.6 - i * 0.035));
           return (
-            <div key={i} style={{ width: cell, height: cell * (V ? 0.95 : 0.62), borderRadius: 16, background: "rgba(255,255,255,.18)", border: "1px solid rgba(255,255,255,.35)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", opacity: q, transform: `scale(${0.8 + 0.2 * q})` }}>
-              <Model name={it.m} size={cell * (V ? 0.66 : 0.42)} offset={i * 5} />
-              <Label size={(V ? 22 : 17) * s} color="#fff" weight={500} style={{ textAlign: "center", padding: "0 6px" }}>{it.l}</Label>
+            <div key={i} style={{ width: cell, height: cell * (V ? 0.95 : 0.62), borderRadius: 16, background: "rgba(18,62,128,.28)", border: "1px solid rgba(255,255,255,.35)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", opacity: q, transform: `scale(${0.8 + 0.2 * q})` }}>
+              <Model name={it.m} size={cell * (V ? 0.66 : 0.42)} offset={i * 5} style={{ transform: "scale(1.4)",  }} />
+              <Label size={(V ? 24 : 20) * s} color="#fff" weight={600} style={{ textAlign: "center", padding: "0 6px" }}>{it.l}</Label>
             </div>
           );
         })}
@@ -153,7 +154,7 @@ export const Materials: React.FC = () => {
     <AbsoluteFill style={{ opacity: fadeIO(t, a, b, 0.35), alignItems: "center" }}>
       <Label size={(V ? 58 : 46) * s} color="#fff" weight={300} style={{ position: "absolute", top: (V ? 200 : 80) * s }}>Materials & strength grades</Label>
       <div style={{ position: "absolute", top: (V ? 330 : 160) * s }}>
-        <Model name="hex_bolt" size={(V ? 640 : 520) * s} speed={0.7} />
+        <Model name="hex_bolt" size={(V ? 640 : 520) * s} speed={0.7} style={{ transform: "scale(1.3)",  }} />
         {gsel >= 0 && (
           <div style={{ position: "absolute", left: "50%", top: "18%", transform: `translateX(-50%) scale(${pop(f, Q.GRADES_T[gsel])})`, background: C.royal, color: "#fff", fontFamily: "Inter", fontWeight: 700, fontSize: 40 * s, padding: "6px 18px", borderRadius: 10 }}>{Q.GRADES[gsel]}</div>
         )}
@@ -191,7 +192,7 @@ export const Finishes: React.FC = () => {
       <div style={{ position: "absolute", top: (V ? 420 : 220) * s, display: "flex", flexWrap: "wrap", justifyContent: "center", width: V ? 3 * sz : undefined }}>
         {parts.map((m, i) => (
           <div key={i} style={{ position: "relative", width: sz, height: sz }}>
-            <Model name={m} size={sz} offset={i * 5} />
+            <Model name={m} size={sz} offset={i * 5} style={{ transform: "scale(1.35)",  }} />
             {sel >= 0 && <Tinted m={m} sz={sz} tint={Q.FINISHES[sel].tint} offset={i * 5} />}
           </div>
         ))}
@@ -211,8 +212,8 @@ export const Finishes: React.FC = () => {
 const Tinted: React.FC<{ m: string; sz: number; tint: string; offset: number }> = ({ m, sz, tint, offset }) => {
   const f = useCurrentFrame();
   const idx = (Math.floor(f / 8 + offset) % 24) + 1;
-  const url = `m/${m}/f_${String(idx).padStart(4, "0")}.png`;
-  return <div style={{ position: "absolute", inset: 0, background: tint, mixBlendMode: "multiply", WebkitMaskImage: `url(${url})`, WebkitMaskSize: "contain", WebkitMaskRepeat: "no-repeat", WebkitMaskPosition: "center" }} />;
+  const url = staticFile(`m/${m}/f_${String(idx).padStart(4, "0")}.png`);
+  return <div style={{ position: "absolute", inset: 0, transform: "scale(1.35)", background: tint, mixBlendMode: "multiply", WebkitMaskImage: `url(${url})`, WebkitMaskSize: "contain", WebkitMaskRepeat: "no-repeat", WebkitMaskPosition: "center" }} />;
 };
 
 /* 6 · Standards — blueprint grid + scan + checks */
@@ -225,7 +226,7 @@ export const Standards: React.FC = () => {
       <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.18) 1px, transparent 1px)", backgroundSize: `${60 * s}px ${60 * s}px` }} />
       <Label size={(V ? 58 : 46) * s} color="#fff" weight={300} style={{ position: "absolute", top: (V ? 200 : 80) * s }}>Made to standard</Label>
       <div style={{ position: "absolute", top: (V ? 380 : 170) * s }}>
-        <Model name="flange_bolt" size={(V ? 600 : 520) * s} speed={0.6} />
+        <Model name="flange_bolt" size={(V ? 600 : 520) * s} speed={0.6} style={{ transform: "scale(1.3)",  }} />
         <div style={{ position: "absolute", left: -40, right: -40, top: `${scan * 100}%`, height: 4, background: "#fff", boxShadow: `0 0 30px 8px ${C.sky}`, opacity: scan < 1 ? 1 : 0 }} />
       </div>
       <div style={{ position: "absolute", [V ? "bottom" : "right"]: (V ? 300 : 140) * s, top: V ? undefined : 330 * s, display: "flex", flexDirection: "column", gap: 18 * s } as React.CSSProperties}>

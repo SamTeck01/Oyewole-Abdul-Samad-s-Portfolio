@@ -15,8 +15,8 @@ export const S = {
   step1: [62.1, 68.6],
   step2: [68.6, 73.7],
   step3: [73.7, 79.1],
-  scale: [79.1, 88.2],
-  end: [88.2, AD_END],
+  scale: [79.1, 88.0],
+  end: [87.6, AD_END],
   card: [AD_END, TOTAL],
 } as const;
 
@@ -52,10 +52,10 @@ export const GRADES = ["4.8", "6.8", "8.8", "10.9", "12.9"];
 export const GRADES_T = [46.45, 46.9, 47.35, 47.85, 48.3];
 
 export const FINISHES = [
-  { t: 51.1, label: "Zinc", c: "#cfd8e0", tint: "rgba(210,222,232,0.55)" },
-  { t: 51.85, label: "Black oxide", c: "#2a2d33", tint: "rgba(30,32,38,0.85)" },
-  { t: 53.0, label: "Hot-dip galvanized", c: "#9aa4ab", tint: "rgba(140,150,158,0.6)" },
-  { t: 54.4, label: "Dacromet", c: "#b4b8bc", tint: "rgba(175,180,186,0.6)" },
+  { t: 51.1, label: "Zinc", c: "#cfd8e0", tint: "rgba(200,212,224,0.9)" },
+  { t: 51.85, label: "Black oxide", c: "#2a2d33", tint: "rgba(78,82,92,1)" },
+  { t: 53.0, label: "Hot-dip galvanized", c: "#9aa4ab", tint: "rgba(120,130,138,0.95)" },
+  { t: 54.4, label: "Dacromet", c: "#b4b8bc", tint: "rgba(160,166,172,0.95)" },
 ];
 
 export const STANDARDS = [
