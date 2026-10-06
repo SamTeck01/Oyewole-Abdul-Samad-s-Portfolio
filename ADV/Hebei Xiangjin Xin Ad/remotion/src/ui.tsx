@@ -72,11 +72,11 @@ export const Model: React.FC<{ name: string; size: number; speed?: number; style
 };
 
 export const Card: React.FC<{ style?: React.CSSProperties; children: React.ReactNode }> = ({ style, children }) => (
-  <div style={{ background: C.card, borderRadius: 14, boxShadow: "0 10px 30px rgba(22,48,79,0.10), 0 1px 2px rgba(22,48,79,0.08)", padding: "18px 24px", fontFamily: "Inter", color: C.ink, ...style }}>{children}</div>
+  <div style={{ background: C.card, borderRadius: 14, boxShadow: "0 10px 30px rgba(22,48,79,0.10), 0 1px 2px rgba(22,48,79,0.08)", padding: "18px 24px", fontFamily: "Inter, 'Noto Sans SC'", color: C.ink, ...style }}>{children}</div>
 );
 
 export const Label: React.FC<{ children: React.ReactNode; size?: number; color?: string; weight?: number; style?: React.CSSProperties }> = ({ children, size = 28, color = C.ink, weight = 400, style }) => (
-  <div style={{ fontFamily: "Inter", fontSize: size, color, fontWeight: weight, letterSpacing: "-0.01em", ...style }}>{children}</div>
+  <div style={{ fontFamily: "Inter, 'Noto Sans SC'", fontSize: size, color, fontWeight: weight, letterSpacing: "-0.01em", ...style }}>{children}</div>
 );
 
 export const Cursor: React.FC<{ x: number; y: number; click?: number }> = ({ x, y, click = 0 }) => (

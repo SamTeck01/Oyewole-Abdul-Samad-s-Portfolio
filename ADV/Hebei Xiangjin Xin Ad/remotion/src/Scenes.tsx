@@ -7,6 +7,7 @@ import world from "./countries-110m.json";
 import * as Q from "./cues";
 import { C, Card, Cursor, Gradient, Label, Model, Studio, ease, fadeIO, pop, prog, useT, useV } from "./ui";
 import { LogoFull } from "./Logo";
+import { tr, isZh } from "./i18n";
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
@@ -16,8 +17,8 @@ export const Hook: React.FC = () => {
   const settle = prog(t, 2.6, 0.9);
   return (
     <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", opacity: fadeIO(t, 0, Q.S.hook[1], 0.3) }}>
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 18 * s, maxWidth: V ? 900 : 1500 }}>
-        {Q.HOOK_WORDS.map((w, i) => {
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: (isZh() ? 4 : 18) * s, maxWidth: V ? 900 : 1500 }}>
+        {(isZh() ? ["在找", "靠谱的", "紧固件", "厂家", "吗？", ""] : Q.HOOK_WORDS).map((w, i) => {
           const a = prog(t, Q.HOOK_T[i], 0.7);
           const sx = 0, sy = (1 - a) * 40 * s;
           return (
@@ -42,7 +43,7 @@ export const LogoScene: React.FC = () => {
         <LogoFull size={(V ? 420 : 360) * s} p={p} dark={false} />
       </div>
       <div style={{ position: "absolute", top: (V ? 1050 : 640) * s, display: "flex", flexDirection: "column", alignItems: "center", opacity: famA, transform: `translateY(${(1 - famA) * 30}px)` }}>
-        <Label size={(V ? 64 : 56) * s} color="#fff" weight={300}>One factory. 15 product families.</Label>
+        <Label size={(V ? 64 : 56) * s} color="#fff" weight={300}>{tr("One factory. 15 product families.")}</Label>
         <div style={{ display: "flex", alignItems: "baseline", gap: 24 * s, marginTop: 26 * s, opacity: prog(t, 10.4, 0.4) }}>
           <Label size={(V ? 150 : 140) * s} color="#fff" weight={600}>M2</Label>
           <div style={{ width: 160 * s, height: 3, background: "rgba(255,255,255,.7)", transform: `scaleX(${prog(t, 10.6, 2.4)})`, transformOrigin: "left" }} />
@@ -64,7 +65,7 @@ export const Range: React.FC = () => {
   return (
     <AbsoluteFill style={{ opacity: fadeIO(t, a, b, 0.35), justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
       <Label size={(V ? 62 : 50) * s} color="#fff" weight={300} style={{ marginBottom: 26 * s }}>
-        <b style={{ fontWeight: 600 }}>{String(Math.min(15, shown)).padStart(2, "0")}</b> / 15 product families · <b style={{ fontWeight: 600 }}>M2–M120</b>
+        <b style={{ fontWeight: 600 }}>{String(Math.min(15, shown)).padStart(2, "0")}</b>{tr(" / 15 product families · ")}<b style={{ fontWeight: 600 }}>M2–M120</b>
       </Label>
       <div style={{ display: "grid", gridTemplateColumns: `repeat(${cols}, ${cell}px)`, gap }}>
         {items.map((it, i) => {
@@ -76,8 +77,8 @@ export const Range: React.FC = () => {
                 <div style={{ width: cell * (V ? 0.62 : 0.46), height: cell * (V ? 0.62 : 0.46), position: "relative" }}>
                   {isCustom ? <Blueprint t={t} t0={it.t} size={cell * (V ? 0.62 : 0.46)} /> : <Model name={it.m} size={cell * (V ? 0.62 : 0.46)} offset={i * 5} style={{ transform: "scale(1.45)" }} />}
                 </div>
-                <Label size={(V ? 26 : 21) * s} color="#fff" weight={600} style={{ textAlign: "center", padding: "0 8px", marginTop: 4 * s }}>{it.l}</Label>
-                {it.n && <Label size={(V ? 22 : 17) * s} color="rgba(255,255,255,.85)" weight={400}>{it.n}</Label>}
+                <Label size={(V ? 26 : 21) * s} color="#fff" weight={600} style={{ textAlign: "center", padding: "0 8px", marginTop: 4 * s }}>{tr(it.l)}</Label>
+                {it.n && <Label size={(V ? 22 : 17) * s} color="rgba(255,255,255,.85)" weight={400}>{tr(it.n)}</Label>}
               </div>
             </div>
           );
@@ -115,7 +116,7 @@ export const Materials: React.FC = () => {
   const gIn = prog(t, 44.9, 0.6);
   return (
     <AbsoluteFill style={{ opacity: fadeIO(t, a, b, 0.35), alignItems: "center" }}>
-      <Label size={(V ? 58 : 46) * s} color="#fff" weight={300} style={{ position: "absolute", top: (V ? 200 : 80) * s }}>Materials & strength grades</Label>
+      <Label size={(V ? 58 : 46) * s} color="#fff" weight={300} style={{ position: "absolute", top: (V ? 200 : 80) * s }}>{tr("Materials & strength grades")}</Label>
       <div style={{ position: "absolute", top: (V ? 330 : 160) * s }}>
         <Model name="hex_bolt" size={(V ? 640 : 520) * s} speed={0.7} style={{ transform: "scale(1.3)",  }} />
         {gsel >= 0 && (
@@ -127,13 +128,13 @@ export const Materials: React.FC = () => {
         {Q.MATERIALS.map((m, i) => (
           <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 * s, opacity: t >= m.t - 0.1 ? 1 : 0.35 }}>
             <div style={{ width: 70 * s, height: 70 * s, borderRadius: 99, background: `radial-gradient(circle at 35% 30%, #fff, ${m.c} 55%, #333 120%)`, outline: i === sel ? `4px solid ${C.blue}` : "none", outlineOffset: 4, transform: `scale(${i === sel ? 1.12 : 1})` }} />
-            <Label size={22 * s} weight={i === sel ? 600 : 400}>{m.label}</Label>
+            <Label size={22 * s} weight={i === sel ? 600 : 400}>{tr(m.label)}</Label>
           </div>
         ))}
       </Card>
       {/* grade chips */}
       <Card style={{ position: "absolute", bottom: (V ? 300 : 70) * s, display: "flex", alignItems: "center", gap: 14 * s, padding: `${14 * s}px ${24 * s}px`, opacity: gIn, transform: `translateY(${(1 - gIn) * 60}px)` }}>
-        <Label size={22 * s} weight={600} style={{ marginRight: 8 }}>Grade</Label>
+        <Label size={22 * s} weight={600} style={{ marginRight: 8 }}>{tr("Grade")}</Label>
         {Q.GRADES.map((g, i) => (
           <div key={g} style={{ fontFamily: "Inter", fontSize: 26 * s, fontWeight: 600, padding: `${6 * s}px ${16 * s}px`, borderRadius: 8, background: i <= gsel ? C.blue : "#EDF2F7", color: i <= gsel ? "#fff" : C.grey }}>{g}</div>
         ))}
@@ -151,7 +152,7 @@ export const Finishes: React.FC = () => {
   const sz = (V ? 270 : 300) * s;
   return (
     <AbsoluteFill style={{ opacity: fadeIO(t, a, b, 0.35), alignItems: "center" }}>
-      <Label size={(V ? 58 : 46) * s} color="#fff" weight={300} style={{ position: "absolute", top: (V ? 200 : 80) * s }}>Finishes</Label>
+      <Label size={(V ? 58 : 46) * s} color="#fff" weight={300} style={{ position: "absolute", top: (V ? 200 : 80) * s }}>{tr("Finishes")}</Label>
       <div style={{ position: "absolute", top: (V ? 420 : 220) * s, display: "flex", flexWrap: "wrap", justifyContent: "center", width: V ? 3 * sz : undefined }}>
         {parts.map((m, i) => (
           <div key={i} style={{ position: "relative", width: sz, height: sz }}>
@@ -163,7 +164,7 @@ export const Finishes: React.FC = () => {
         {Q.FINISHES.map((x, i) => (
           <div key={i} style={{ display: "flex", alignItems: "center", gap: 12 * s, opacity: t >= x.t - 0.1 ? 1 : 0.35 }}>
             <div style={{ width: 46 * s, height: 46 * s, borderRadius: 10, background: `linear-gradient(135deg, #fff -20%, ${x.c} 60%)`, outline: i === sel ? `3px solid ${C.blue}` : "none", outlineOffset: 3 }} />
-            <Label size={24 * s} weight={i === sel ? 600 : 400}>{x.label}</Label>
+            <Label size={24 * s} weight={i === sel ? 600 : 400}>{tr(x.label)}</Label>
           </div>
         ))}
       </Card>
@@ -186,7 +187,7 @@ export const Standards: React.FC = () => {
   return (
     <AbsoluteFill style={{ opacity: fadeIO(t, a, b, 0.35), alignItems: "center" }}>
       <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.18) 1px, transparent 1px)", backgroundSize: `${60 * s}px ${60 * s}px` }} />
-      <Label size={(V ? 58 : 46) * s} color="#fff" weight={300} style={{ position: "absolute", top: (V ? 200 : 80) * s }}>Made to standard</Label>
+      <Label size={(V ? 58 : 46) * s} color="#fff" weight={300} style={{ position: "absolute", top: (V ? 200 : 80) * s }}>{tr("Made to standard")}</Label>
       <div style={{ position: "absolute", top: (V ? 380 : 170) * s }}>
         <Model name="flange_bolt" size={(V ? 600 : 520) * s} speed={0.6} style={{ transform: "scale(1.3)",  }} />
         <div style={{ position: "absolute", left: -40, right: -40, top: `${scan * 100}%`, height: 4, background: "#fff", boxShadow: `0 0 30px 8px ${C.sky}`, opacity: scan < 1 ? 1 : 0 }} />
@@ -197,7 +198,7 @@ export const Standards: React.FC = () => {
           return (
             <Card key={i} style={{ display: "flex", alignItems: "center", gap: 16 * s, transform: `translateX(${(1 - p) * 120}px)`, opacity: Math.min(1, p * 1.5), padding: `${14 * s}px ${26 * s}px` }}>
               <div style={{ width: 40 * s, height: 40 * s, borderRadius: 99, background: C.blue, display: "flex", alignItems: "center", justifyContent: "center" }}><Check color="#fff" size={26 * s} strokeWidth={3} /></div>
-              <Label size={32 * s} weight={600}>{x.label}</Label>
+              <Label size={32 * s} weight={600}>{tr(x.label)}</Label>
             </Card>
           );
         })}
@@ -213,7 +214,7 @@ export const Chapter: React.FC = () => {
   const p = prog(t, a, 0.6);
   return (
     <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", opacity: fadeIO(t, a, b, 0.3) }}>
-      <Label size={(V ? 86 : 72) * s} color="#fff" weight={300} style={{ letterSpacing: `${(1 - p) * 0.3}em`, opacity: p }}>Here's how it works</Label>
+      <Label size={(V ? 86 : 72) * s} color="#fff" weight={300} style={{ letterSpacing: `${(1 - p) * 0.3}em`, opacity: p }}>{tr("Here's how it works")}</Label>
     </AbsoluteFill>
   );
 };
@@ -222,7 +223,7 @@ const StepTag: React.FC<{ n: number; title: string; t0: number }> = ({ n, title,
   const t = useT(); const { V, s } = useV(); const p = prog(t, t0, 0.6);
   return (
     <div style={{ position: "absolute", top: (V ? 160 : 70) * s, left: 0, right: 0, display: "flex", justifyContent: "center", alignItems: "center", gap: 18 * s, opacity: p, transform: `translateY(${(1 - p) * -30}px)` }}>
-      <div style={{ fontFamily: "Inter", fontWeight: 600, fontSize: 26 * s, color: "#fff", background: C.blue, borderRadius: 99, padding: `${6 * s}px ${18 * s}px` }}>Step {n}</div>
+      <div style={{ fontFamily: "Inter, 'Noto Sans SC'", fontWeight: 600, fontSize: 26 * s, color: "#fff", background: C.blue, borderRadius: 99, padding: `${6 * s}px ${18 * s}px` }}>{isZh() ? `第${n}步` : `Step ${n}`}</div>
       <Label size={(V ? 46 : 40) * s} weight={300}>{title}</Label>
     </div>
   );
@@ -248,7 +249,7 @@ export const Step1: React.FC = () => {
   return (
     <AbsoluteFill style={{ opacity: fadeIO(t, a, b, 0.35) }}>
       <Studio />
-      <StepTag n={1} title="Send your list or drawing" t0={a + 0.1} />
+      <StepTag n={1} title={tr("Send your list or drawing")} t0={a + 0.1} />
       {/* drawing sheet */}
       <div style={{ position: "absolute", left: V ? W / 2 - 260 * s : W * 0.12, top: (V ? 320 : 230) * s, transform: `translateY(${(1 - doc) * -300}px) rotate(${(1 - doc) * -8 - 3}deg)`, opacity: Math.min(1, doc * 2) }}>
         <Card style={{ width: 520 * s, height: (V ? 560 : 600) * s, padding: 0, overflow: "hidden" }}>
@@ -270,19 +271,19 @@ export const Step1: React.FC = () => {
       {/* order sheet */}
       <div style={{ position: "absolute", left: cx, top: cy, opacity: prog(t, 64.6, 0.5), transform: `translateY(${(1 - prog(t, 64.6, 0.5)) * 40}px)` }}>
         <Card style={{ width: cardW, padding: `${22 * s * k}px ${30 * s * k}px` }}>
-          <Label size={26 * s * k} weight={600} style={{ marginBottom: 12 * s }}>Order details</Label>
+          <Label size={26 * s * k} weight={600} style={{ marginBottom: 12 * s }}>{tr("Order details")}</Label>
           {Q.STEP1_FIELDS.map((x, i) => {
             const on = prog(t, x.t, 0.25);
             return (
               <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: rowH, borderTop: "1px solid #EDF2F6" }}>
-                <Label size={26 * s * k} color={C.grey}>{x.k}</Label>
-                <div style={{ fontFamily: "Inter", fontSize: 28 * s * k, fontWeight: 600, color: C.blue, padding: `${6 * s * k}px ${14 * s * k}px`, borderRadius: 8, background: on > 0 ? "#EAF3FC" : "transparent", opacity: on, transform: `translateX(${(1 - on) * 20}px)` }}>{x.v}</div>
+                <Label size={26 * s * k} color={C.grey}>{tr(x.k)}</Label>
+                <div style={{ fontFamily: "Inter", fontSize: 28 * s * k, fontWeight: 600, color: C.blue, padding: `${6 * s * k}px ${14 * s * k}px`, borderRadius: 8, background: on > 0 ? "#EAF3FC" : "transparent", opacity: on, transform: `translateX(${(1 - on) * 20}px)` }}>{tr(x.v)}</div>
               </div>
             );
           })}
           <div style={{ borderTop: "1px solid #EDF2F6", paddingTop: 16 * s }}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <Label size={26 * s * k} color={C.grey}>Quantity</Label><Label size={30 * s * k} weight={600} color={C.blue}>{qty.toLocaleString("en-US")}</Label>
+              <Label size={26 * s * k} color={C.grey}>{tr("Quantity")}</Label><Label size={30 * s * k} weight={600} color={C.blue}>{qty.toLocaleString("en-US")}</Label>
             </div>
             <div style={{ height: 6 * s * k, background: "#E4EBF1", borderRadius: 9, marginTop: 14 * s }}>
               <div style={{ height: "100%", width: `${(qty / 50000) * 100}%`, background: C.blue, borderRadius: 9 }} />
@@ -304,7 +305,7 @@ export const Step2: React.FC = () => {
   return (
     <AbsoluteFill style={{ opacity: fadeIO(t, a, b, 0.35) }}>
       <Studio />
-      <StepTag n={2} title="Made to your exact specification" t0={a + 0.1} />
+      <StepTag n={2} title={tr("Made to your exact specification")} t0={a + 0.1} />
       <div style={{ position: "absolute", left: 0, right: 0, top: (V ? 300 : 180) * s, bottom: 0, display: "flex", justifyContent: "center", alignItems: "center" }}>
         <div style={{ position: "relative", width: n * sz, height: rows * sz * 0.75 }}>
           {Array.from({ length: n * rows }, (_, i) => {
@@ -323,7 +324,7 @@ export const Step2: React.FC = () => {
       </div>
       <Card style={{ position: "absolute", left: V ? W / 2 - 230 * s : W * 0.07, bottom: (V ? 220 : 90) * s, display: "flex", alignItems: "center", gap: 14 * s, opacity: pop(t * 60, a + 3.3), transform: `scale(${0.85 + 0.15 * pop(t * 60, a + 3.3)})` }}>
         <div style={{ width: 40 * s, height: 40 * s, borderRadius: 99, background: C.blue, display: "flex", alignItems: "center", justifyContent: "center" }}><Check color="#fff" size={26 * s} strokeWidth={3} /></div>
-        <Label size={28 * s} weight={600}>M12 · 8.8 · HDG — to spec</Label>
+        <Label size={28 * s} weight={600}>{tr("M12 · 8.8 · HDG — to spec")}</Label>
       </Card>
     </AbsoluteFill>
   );
@@ -347,7 +348,7 @@ export const Step3: React.FC = () => {
   return (
     <AbsoluteFill style={{ opacity: fadeIO(t, a, b, 0.35) }}>
       <Studio />
-      <StepTag n={3} title="Packed & shipped" t0={a + 0.1} />
+      <StepTag n={3} title={tr("Packed & shipped")} t0={a + 0.1} />
       {/* carton */}
       <div style={{ position: "absolute", left: W / 2 - 230 * s, top: H / 2 - 120 * s, width: 460 * s, height: 300 * s }}>
         {[0, 1, 2, 3, 4, 5].map((i) => {
@@ -372,12 +373,12 @@ export const Step3: React.FC = () => {
           <circle cx={ux} cy={uy} r={10 * s * pop(t * 60, a + 4.4)} fill={C.royal} stroke="#fff" strokeWidth={3} />
           <circle cx={ex} cy={ey} r={8 * s * pop(t * 60, a + 4.6)} fill={C.royal} stroke="#fff" strokeWidth={3} />
         </svg>
-        <div style={{ position: "absolute", left: hx - 10, top: hy + 18 * s, opacity: pop(t * 60, a + 2.8) }}><Label size={24 * s} color="#fff" weight={600}>Hebei, China</Label></div>
-        <div style={{ position: "absolute", left: ux - 40 * s, top: uy + 18 * s, opacity: pop(t * 60, a + 4.5) }}><Label size={24 * s} color="#fff" weight={600}>USA</Label></div>
+        <div style={{ position: "absolute", left: hx - 10, top: hy + 18 * s, opacity: pop(t * 60, a + 2.8) }}><Label size={24 * s} color="#fff" weight={600}>{tr("Hebei, China")}</Label></div>
+        <div style={{ position: "absolute", left: ux - 40 * s, top: uy + 18 * s, opacity: pop(t * 60, a + 4.5) }}><Label size={24 * s} color="#fff" weight={600}>{tr("USA")}</Label></div>
         {rt > 0 && rt < 1 && (
           <div style={{ position: "absolute", left: ship[0] - 26 * s, top: ship[1] - 26 * s, width: 52 * s, height: 52 * s, borderRadius: 99, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 6px 20px rgba(0,0,0,.2)" }}><Ship size={30 * s} color={C.royal} /></div>
         )}
-        <Label size={(V ? 54 : 46) * s} color="#fff" weight={300} style={{ position: "absolute", width: "100%", textAlign: "center", bottom: (V ? 260 : 60) * s, opacity: prog(t, a + 3.2, 0.6) }}>Factory-direct to the <b style={{ fontWeight: 600 }}>USA</b></Label>
+        <Label size={(V ? 54 : 46) * s} color="#fff" weight={300} style={{ position: "absolute", width: "100%", textAlign: "center", bottom: (V ? 260 : 60) * s, opacity: prog(t, a + 3.2, 0.6) }}>Factory-direct to the <b style={{ fontWeight: 600 }}>{tr("USA")}</b></Label>
       </div>
     </AbsoluteFill>
   );
@@ -393,9 +394,9 @@ export const Scale: React.FC = () => {
   return (
     <AbsoluteFill style={{ opacity: fadeIO(t, a, b, 0.35), alignItems: "center" }}>
       <div style={{ position: "absolute", top: (V ? 520 - up * 260 : 300 - up * 170) * s, display: "flex", flexDirection: "column", alignItems: "center" }}>
-        <Label size={(V ? 50 : 44) * s} color="#fff" weight={300}>From sample batch to mass production</Label>
+        <Label size={(V ? 50 : 44) * s} color="#fff" weight={300}>{tr("From sample batch to mass production")}</Label>
         <Label size={(V ? 170 : 160) * s} color="#fff" weight={600} style={{ fontVariantNumeric: "tabular-nums", marginTop: 10 * s }}>{n.toLocaleString("en-US")}</Label>
-        <Label size={30 * s} color="rgba(255,255,255,.8)" weight={300}>pieces</Label>
+        <Label size={30 * s} color="rgba(255,255,255,.8)" weight={300}>{tr("pieces")}</Label>
       </div>
       <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", bottom: (V ? 360 : 140) * s, display: "grid", gridTemplateColumns: V ? "repeat(2, auto)" : "repeat(4, auto)", gap: 24 * s }}>
         {Q.MARKETS.map((m, i) => {
@@ -403,7 +404,7 @@ export const Scale: React.FC = () => {
           return (
             <Card key={i} style={{ width: (V ? 400 : 330) * s, display: "flex", flexDirection: "column", alignItems: "center", gap: 14 * s, padding: `${28 * s}px ${20 * s}px`, opacity: Math.min(1, p * 1.5), transform: `translateY(${(1 - p) * 60}px)` }}>
               <I size={56 * s} color={C.blue} strokeWidth={1.6} />
-              <Label size={26 * s} weight={600} style={{ textAlign: "center" }}>{m.label}</Label>
+              <Label size={26 * s} weight={600} style={{ textAlign: "center" }}>{tr(m.label)}</Label>
             </Card>
           );
         })}
@@ -423,12 +424,12 @@ export const End: React.FC = () => {
       <Studio />
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", flexDirection: "column", gap: 26 * s }}>
         <LogoFull size={(V ? 380 : 300) * s} p={p} />
-        <Label size={(V ? 52 : 44) * s} weight={300} style={{ opacity: prog(t, 90.2, 0.6) }}>Your one-stop fastener factory</Label>
+        <Label size={(V ? 52 : 44) * s} weight={300} style={{ opacity: prog(t, 90.2, 0.6) }}>{tr("Your one-stop fastener factory")}</Label>
         <div style={{ display: "flex", alignItems: "center", gap: 16 * s, background: "#25D366", borderRadius: 99, padding: `${14 * s}px ${30 * s}px`, opacity: Math.min(1, wa * 1.4), transform: `scale(${0.8 + 0.2 * wa})`, boxShadow: "0 10px 30px rgba(37,211,102,.35)" }}>
           <svg width={40 * s} height={40 * s} viewBox="0 0 24 24"><path fill="#fff" d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.79h-.01a9.9 9.9 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.83 9.83 0 0 1 7 2.9 9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.9 9.88M20.47 3.49A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.42" /></svg>
           <Label size={(V ? 44 : 38) * s} color="#fff" weight={600}>{Q.PHONE}</Label>
         </div>
-        <Label size={22 * s} color={C.grey} style={{ opacity: prog(t, 93.0, 0.6), letterSpacing: "0.08em" }}>M2–M120 · GRADES 4.8–12.9 · ISO / DIN / GB</Label>
+        <Label size={22 * s} color={C.grey} style={{ opacity: prog(t, 93.0, 0.6), letterSpacing: "0.08em" }}>{tr("M2–M120 · GRADES 4.8–12.9 · ISO / DIN / GB")}</Label>
       </AbsoluteFill>
     </AbsoluteFill>
   );

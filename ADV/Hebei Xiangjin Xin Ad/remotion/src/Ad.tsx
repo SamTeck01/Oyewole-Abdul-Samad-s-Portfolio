@@ -3,10 +3,12 @@ import { AbsoluteFill, Audio, staticFile } from "remotion";
 import { Gradient, useT } from "./ui";
 import { S } from "./cues";
 import * as Sc from "./Scenes";
+import { setLang } from "./i18n";
 
 const on = (t: number, r: readonly [number, number], pad = 0.5) => t >= r[0] - pad && t <= r[1] + pad;
 
-export const Ad: React.FC<{ withAudio?: boolean }> = ({ withAudio }) => {
+export const Ad: React.FC<{ withAudio?: boolean; lang?: "en" | "zh" }> = ({ withAudio, lang = "en" }) => {
+  setLang(lang);
   const t = useT();
   return (
     <AbsoluteFill style={{ background: "#EEF3F6" }}>
