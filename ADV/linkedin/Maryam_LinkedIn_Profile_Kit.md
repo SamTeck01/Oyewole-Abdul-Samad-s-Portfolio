@@ -10,7 +10,7 @@ Client Partner · SamTeck Studio
 **Name:** Maryam Alabi (or Alabi Maryam Abiodun)
 **Pronouns:** optional
 **Headline (220 chars max):**
-> Client Partner at SamTeck Studio | Motion ads, 3D product videos, explainers & websites for brands that want to stand out
+> Client Partner at SamTeck Studio | Motion graphics ads, 3D product animation & explainer videos for brands that want to stand out
 
 **Current position:** Client Partner, SamTeck Studio
 **Location:** her real city, Nigeria (clients like knowing your time zone)
@@ -19,9 +19,9 @@ Client Partner · SamTeck Studio
 **Contact info:** work email + WhatsApp Business number + studio website/portfolio link
 
 **Provide services (turn this on):** Profile → "Open to" → "Providing services"
-Pick: Video Production · Animation · Motion Graphics · Video Editing · Advertising · Brand Design · Web Design · Graphic Design
+Pick: Motion Graphics · Animation · 3D Animation · Video Production · Video Editing · Explainer Videos · Advertising
 Service description:
-> We make motion ads, 3D product videos, explainers and websites that help brands get seen and understood. Every project includes script, voiceover, original music and versions for every platform.
+> We make motion graphics ads, 3D product animations and explainer videos that help brands get seen and understood. Every video includes script, voiceover, original music and versions for every platform.
 
 **Banner:** `maryam_linkedin_banner.png` (1584×396)
 **Profile photo:** clear face, shoulders up, plain or blurred background, natural light, smiling. No group photos or filters.
@@ -32,16 +32,18 @@ Service description:
 
 > Most products don't fail because they're bad. They fail because nobody gets them fast enough.
 >
-> I work with SamTeck Studio, a creative studio that helps brands show what they sell, clearly and beautifully. I'm your point of contact from the first message to final delivery: I learn what you're selling, shape the brief, and make sure what we deliver works for your audience and arrives on time.
+> I work with SamTeck Studio, a motion design studio that helps brands show what they sell, clearly and beautifully, in motion. I'm your point of contact from the first message to final delivery: I learn what you're selling, shape the brief, and make sure what we deliver works for your audience and arrives on time.
 >
 > **What we create**
 > • Motion graphics ads for Meta, TikTok, YouTube and LinkedIn
 > • 3D product animation, from industrial parts to consumer products
-> • App and SaaS walkthroughs, launch videos and explainers
-> • Voiceover, original music and sound design, included
-> • Brand visuals: logos, banners, social content
-> • Websites and landing pages that match your video
-> • Pitch decks and product one-pagers
+> • Product launch videos
+> • App and SaaS walkthroughs
+> • Explainer videos (2D motion and character animation)
+> • Kinetic typography and logo animations
+> • Short-form motion content for social
+>
+> Every video includes script, voiceover, original music and sound design, in every format you need (9:16, 1:1, 16:9).
 >
 > **How we work**
 > You send the product and the goal → we pitch the idea and script → you approve → we deliver every format you need, ready to post.
@@ -62,7 +64,7 @@ Service description:
 ## 4. Experience
 
 **Client Partner** · SamTeck Studio · Freelance · [Month 2026] – Present · Remote
-> I connect brands with SamTeck Studio's motion and design team and manage projects from brief to delivery.
+> I connect brands with SamTeck Studio's motion design team and manage projects from brief to delivery.
 > • Find and onboard clients: startups, app founders, manufacturers and agencies
 > • Turn client goals into clear briefs (audience, message, format, length, deadline)
 > • Coordinate reviews and revisions so projects ship on time
@@ -80,8 +82,8 @@ Her real school(s). Add any certificate she actually completes (see §9).
 ---
 
 ## 6. Skills (pin the top 3)
-**Top 3:** Business Development · Client Relations · Video Marketing
-**Then:** Sales · Lead Generation · Project Coordination · Motion Graphics (services) · Social Media Advertising · Brand Strategy · Communication · Negotiation · Content Strategy
+**Top 3:** Business Development · Client Relations · Motion Graphics
+**Then:** Motion Graphics · Animation · Explainer Videos · Sales · Lead Generation · Project Coordination · Social Media Advertising · Communication · Negotiation
 
 ---
 
@@ -107,7 +109,7 @@ Ask 2–3 people who know her work ethic (an ex-boss, teacher, client) for a sho
 **Post 1: Intro**
 > New chapter: I've joined SamTeck Studio as Client Partner.
 >
-> We make motion ads, 3D product videos, explainers and websites for brands that need people to *get it* fast.
+> We make motion graphics ads, 3D product animations and explainer videos for brands that need people to *get it* fast.
 >
 > My job: understand your product, shape the brief, and make sure what we deliver works.
 >
@@ -153,14 +155,14 @@ Ask 2–3 people who know her work ethic (an ex-boss, teacher, client) for a sho
 
 **DM 1:**
 > Thanks for connecting, [Name].
-> Most factories send buyers a PDF catalog that nobody opens. We turn catalogs into 30–45s 3D product videos (all your ranges, specs, finishes and how ordering works) ready for Meta, LinkedIn and Alibaba.
+> Most factories send buyers a PDF catalog that nobody opens. We turn catalogs into 30–45s 3D product videos (all your ranges, specs, finishes and how ordering works) ready for Meta, LinkedIn and Alibaba ads.
 > Here's one we made for a fastener manufacturer: [link]. Want a quick idea for [Company]?
 
 **Follow-up:**
 > Hi [Name], following up in case this got buried. We can work straight from your existing catalog and photos, so it's no extra work for your team. Should I send a quote?
 
 ### C. Agencies (white-label)
-> Hi [Name], do you ever need extra motion/3D capacity for client projects? We work white-label for agencies: ads, explainers, product animation, delivered in your client's brand. Happy to share our reel.
+> Hi [Name], do you ever need extra motion/3D capacity for client projects? We work white-label for agencies: motion ads, explainers and 3D product animation, delivered in your client's brand. Happy to share our reel.
 
 ---
 
@@ -176,4 +178,4 @@ Ask 2–3 people who know her work ethic (an ex-boss, teacher, client) for a sho
 ---
 
 ## 13. Handoff to SamTeck (when a lead says yes)
-Collect and pass on: company, product, link/website, what they want (ad / explainer / walkthrough / 3D / website), platform & format, deadline, budget, logo & brand colours, reference videos they like, contact person.
+Collect and pass on: company, product, link/website, what they want (ad / explainer / walkthrough / 3D product animation / launch video), platform & format, deadline, budget, logo & brand colours, reference videos they like, contact person.
