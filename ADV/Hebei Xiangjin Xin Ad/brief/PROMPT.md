@@ -1,163 +1,140 @@
 # 河北向晋鑫 · Hebei Xiangjin Xin — Premium Motion Ad
-**Brief v1 — STEP 1 (not built yet, waiting for SamTeck's OK)**
+**Brief v2 — STEP 1 (not built yet, waiting for SamTeck's OK)**
+v2 changes: whole catalog (no single hero bolt) · full VO like the reference · WhatsApp CTA · deeper reference study.
 
 ---
 
 ## 0. Job card
 | | |
 |---|---|
-| Client | 河北向晋鑫 Hebei Xiangjin Xin — Chinese fastener manufacturer, Hebei |
+| Client | 河北向晋鑫 Hebei Xiangjin Xin — fastener manufacturer, Hebei, China |
 | Via | Dave (lulu.tech) |
-| Buyers | US B2B: procurement / distributors / contractors / solar installers / OEMs |
-| Reference | Xometry — "Your On-Demand Manufacturing Partner" (94 s, 1080p25) |
+| Audience | US B2B buyers: procurement, distributors, contractors, solar installers, OEMs |
+| Reference | Xometry — "Your On-Demand Manufacturing Partner" (94.4 s, 1080p25) |
 | Formats | 16:9 1920×1080 + 9:16 1080×1920, 60 fps, separate compositions |
-| Length | ~62 s + 2 s samteck end card (16:9) · ~32 s + end card (9:16) |
-| Voice | None proposed (music + SFX + type), same as reference. VO optional — see §6 |
-| Contact on end card | +49 176 41474606 |
+| Length | ~92 s + 2 s samteck card (16:9). 9:16: ~45 s cut-down + card |
+| Voice | Full VO, calm US male, like the reference |
+| CTA | WhatsApp **+49 176 41474606** |
 
 ---
 
-## 1. Reference study — Xometry (frame by frame, contact sheets every 0.5 s)
+## 1. Reference study (contact sheets every 0.5 s, full-res stills, VO transcribed with faster-whisper)
 
-**Structure (94 s)**
-| Time | Beat | Notes |
+### 1a. Structure = the VO
+The reference is **VO-led from the first frame to the last** (no gaps longer than ~2 s). Picture illustrates each sentence exactly.
+
+| Time | VO (transcribed) | Picture |
 |---|---|---|
-| 0–2.5 | Question hook | "Looking for the right manufacturer?" — words float in scattered, then settle onto one line. Thin light type, lots of air |
-| 3–5.5 | Logo slam | Wordmark huge → scales down to centre, tiny dot-grid accents |
-| 6–22 | Capability lineup | 5 frosted-glass 3D machines slide in L→R one by one, labels under each (CNC milling, turning, sheet metal, 3D printing, injection moulding). Headline "More than 4000 manufacturing partners". At 18 s a **material swatch tray** slides up (aluminium, steel, stainless, titanium, copper…) |
-| 22.5–23.5 | Chapter card | "Look how it works" — gradient bg, thin type |
-| 23.5–26.5 | Process UI | Browser window draws on white → URL types → cursor clicks "Upload your 3D models" |
-| 26.5–28 | Drawing → part | Line-drawing **blueprint extrudes into a solid white 3D part** |
-| 28–34 | Configure | Part multiplies into a field; floating white UI cards: **Quantity slider (1→30)**, **Materials list** (selection bar moves, part changes colour — copper turns it beige), **Post-processing checkbox** |
-| 34–45 | Analysis + quote | Part on blue blueprint grid, yellow highlight + warning badges ("computer analysis"), then white again; **Cost $500 / Delivery 2 weeks** cards — numbers count live as quantity changes |
-| 45–49 | Place order | Part becomes line-art, blue "Place order" button, cursor click → glow → paper-plane flies off |
-| 49.5–58 | Network map | Blue circle wipe with X logo → **flat US map, factory icons pop in, dotted route lines** to a partner factory |
-| 58–66 | Making it | 3D map dive into factory → white block → **robot arm machines it**, block shatters into the finished part. "Over 3,000 partners…" |
-| 66–71 | QC | Two checklist cards ("Manufacturer", "Xometry") tick ✓ |
-| 71–84 | Pack + ship | Part lands on pallet, blue straps, **cardboard box folds closed around it** |
-| 84–94 | End | Box dissolves, part floats; cursor clicks "New order"; wordmark + "Manufacturing on demand · ISO 9001 · xometry.com" |
+| 0.0–2.7 | "Looking for the right manufacturer for your parts?" | Words drift in scattered on blue gradient, settle onto one line |
+| 2.7–8.2 | "Xometry is the right fit with our network of over 4,000 manufacturing partners across the globe," | Wordmark huge → settles centre, dot-grid accents; then first frosted machine drops in |
+| 8.2–19.6 | "…over 3,000 in the US. We always have open capacity for CNC machining, sheet metal fabrication, 3D printing, injection molding, and more. We also offer hundreds of materials and finishes…" | **Capability lineup**: 5 frosted-blue 3D machines slide in one by one, each named in tiny type as the VO says it. Headline "More than 4000 manufacturing partners". At "materials and finishes" a **swatch tray** of 6 material spheres rises under the lineup |
+| 19.6–25.0 | "…as well as various inspection and quality control options. Here's how it works." | Lineup holds/pushes; chapter card "Look how it works" |
+| 25.0–30.5 | "Step 1. Upload your 3D models, indicate quantity, materials, and post-processing." | White studio: browser draws on, URL types, cursor clicks "Upload"; blueprint extrudes into the part; part multiplies; **Quantity slider**, **Materials list** (copper → part turns beige), **Post-processing checkbox** cards |
+| 31.3–42.7 | "In seconds, you'll receive an online quote with price, lead time, design-for-manufacturability feedback. You can adjust the part specifications and instantly see…" | Part on blueprint grid, yellow problem areas + warning badges, then **Cost / Delivery cards count live** as quantity changes |
+| 42.7–48.2 | "Step 2. Confirm your order details and click continue to check out." | Part → line-art, blue "Place order" button, cursor click, glow, paper-plane |
+| 48.2–58.2 | "We'll start production right away by pairing your work with an optimal manufacturer…" | Blue circle wipe with X logo → US map, factory icons pop, dotted routes to a chosen factory |
+| 59.4–64.8 | "Overall, we have over 3,000 partners in 46 US states and 1,000 more around the world." | Map dive into factory → white block, robot arm machines it, shatter-reveal of the part. Small stat text bottom-right |
+| 67.0–70.7 | "Once your parts have been manufactured, they are inspected and sent to you." | Checklist cards "Manufacturer ✓ / Xometry ✓" |
+| 73.2–76.2 | "Step 3. Get your parts delivered right to the doorstep." | Part on pallet, straps, cardboard box folds around it |
+| 77.8–94.2 | "Use Xometry to get instant quotes at any stage… from prototype manufacturing to scaling up your order to hundreds of thousands of parts. Xometry is your one-stop shop for manufacturing on demand. Try us today!" | Box dissolves, part floats, cursor clicks "New order", wordmark + "Manufacturing on demand · ITAR registered · ISO 9001 · xometry.com" |
 
-**Design language to match**
-- **Colour:** two worlds — (a) **blue→aqua/mint gradient** backgrounds (sky blue top-left → teal-mint bottom-right) for chapter moments; (b) **near-white / pale blue-grey** (#EEF3F6-ish) "studio" for product + UI. Product is white/frosted with blue accent lines.
-- **Type:** thin/light geometric sans, small and airy, never shouting. Labels tiny under objects.
-- **Camera:** slow orbit/dolly on 3D objects, soft contact shadows, gentle push-ins. Map does a tilted 3D fly-in.
-- **Transitions:** circle wipe (logo), blueprint → solid, object multiplies, shatter-reveal, box-fold, dissolve to white. Everything connected — the *same part* travels through the whole film.
-- **UI:** white rounded cards, hairline borders, blue selection bars, cursor clicks with glow.
-- **Pacing:** calm, one idea per 4–10 s, long holds on configuration. Feels confident, not hyper.
-- **Sound:** continuous upbeat corporate-electronic music bed, no silences, bass-heavy, transient ticks on UI moves. Integrated ≈ −16 LUFS. (I could not transcribe — faster-whisper isn't installed yet — spectrogram shows music-led; no clear VO.)
+### 1b. Rhetoric pattern we copy
+**Question → "We're the right fit" + big number → list every capability (each named on screen as it's spoken) → materials & finishes → quality → "Here's how it works" Step 1 / 2 / 3 → scale (prototype → hundreds of thousands) → "one-stop shop" → call to action.**
 
-**What we take:** colour worlds, thin type, white floating UI cards, blueprint→solid, the "one hero object travels through the whole story" idea, US map + routes, pack-and-ship ending.
-**What we change:** our hero is a **bolt** (real steel, not white plastic), our facts are the catalog's, our logo is a globe-X with orbit arrow, our map is **China → USA**, and the moves are rebuilt (no copied assets).
+### 1c. Look
+- **Two colour worlds:** (a) **blue gradient** — sky blue top-left → aqua/mint (#B9E3C6-ish) bottom-right — for brand/capability/map scenes; (b) **pale blue-grey white studio** (#EEF3F6) for the product + UI "how it works" scenes. Switches between them with circle wipes and soft dissolves.
+- **3D style:** stylised, not photoreal — objects in **frosted pale-blue / white matte material**, soft contact shadows, slight translucency on edges. Accent lines in brand blue.
+- **Type:** light-weight geometric sans, small, lots of air, sentence case. Headline top-centre; labels tiny under objects.
+- **UI cards:** white, ~8 px radius, hairline shadow, bold small label ("Quantity", "Materials:", "Cost:") + blue value; blue selection bar; slider with blue fill; arrow cursor with click glow.
+- **Camera:** slow lateral trucks along lineups, gentle orbits, 3D map tilt-in, one dive into the map.
+- **Transitions:** circle wipe with logo, blueprint → solid, multiply-into-field, shatter-reveal, box fold, dissolve to white.
+- **Pacing:** calm. Each VO clause gets its own visual change (~2–4 s). No fast cutting.
+- **Sound:** VO on top, upbeat corporate-electronic bed underneath throughout (bass-heavy, steady pulse), small ticks on UI moves, ref integrated −16.1 LUFS.
 
----
-
-## 2. What we're selling (outcome, not feature)
-> **"Any fastener you need — made exactly to your spec, factory-direct from China to the USA."**
-
-Buyer's real worry when sourcing from China: *Will it be right? Can one factory cover my whole list? Will it get here?* The ad answers all three: **Right spec. Full range. Shipped.**
+### 1d. What we take / change
+**Take:** the rhetoric pattern, the two colour worlds, frosted stylised 3D, named lineups, swatch tray, white UI cards + cursor, Step 1/2/3 chapters, blueprint→solid, map with routes, pack-and-ship, logo end frame with credentials line.
+**Change:** fasteners instead of machines, **all 15 catalog families**, China → USA world map instead of US-only, our own logo animation (globe + orbit arrow), our own moves. No Xometry assets reused.
 
 ---
 
-## 3. Concept — "One bolt. Every spec."
-Like Xometry's single part, **one hero hex bolt travels through the entire film**: it's questioned, configured, multiplied into the full range, drawn as a blueprint, checked, packed, shipped across the Pacific and lands on a US job site — then torques into the logo.
+## 2. What we're selling (outcome)
+> **"Every fastener on your list, from one factory, made exactly to your spec and shipped to the USA."**
+One-stop sourcing certainty: full range + exact spec + factory-direct.
 
-Tagline: **"Specified. Made. Shipped."**
+## 3. Concept — "Your one-stop fastener factory."
+Built on the reference's structure: the catalog *is* the capability lineup. Every product family in the PDF appears, named on screen as the VO says it, followed by materials, grades, finishes, standards, custom parts, the 3-step ordering flow, scale and the markets served.
 
 ---
 
-## 4. Beat sheet — 16:9 (~62 s + end card)
+## 4. VO script (~230 words ≈ 90 s at a calm 150 wpm)
+1. Looking for the right fastener manufacturer for your project?
+2. Hebei Xiangjin Xin is the right fit. One factory. Fifteen product families. From M2, all the way up to M120.
+3. Hex bolts. Flange and socket head bolts. Nuts and lock nuts. Machine and self-tapping screws. Special bolts. Threaded rod and U-bolts. Washers and retaining rings. Expansion and chemical anchors. Rivets and pins. Self-drilling screws. Solar mounting parts. Wire rope fittings. Pipe clamps and strut supports. And custom parts, built to your drawing.
+4. Choose carbon steel, alloy steel, or 304 and 316 stainless, in strength grades from 4.8 all the way to 12.9.
+5. Finish them in zinc, black oxide, hot-dip galvanized, or Dacromet.
+6. And every part is made to ISO, DIN, and GB standards.
+7. Here's how it works.
+8. Step one. Send us your list or your drawing: size, grade, material, finish, and quantity.
+9. Step two. We manufacture your fasteners to your exact specification.
+10. Step three. Your order is packed and shipped, factory-direct to the USA.
+11. From a small sample batch to full mass production — for general industry, steel structures, solar, and electrical installation.
+12. Hebei Xiangjin Xin. Your one-stop fastener factory. Message us on WhatsApp today.
 
-| # | Time | Scene | On screen | Motion / transition |
+**Pronunciation:** Hebei Xiangjin Xin → **"huh-BAY shyahng-JIN SHIN"** (phoneme-marked in Kokoro, checked with faster-whisper).
+**Voice:** Kokoro `am_michael` and `am_adam` (calm US male like the reference) — 2 takes each, you pick.
+
+---
+
+## 5. Beat sheet — 16:9 (timings re-cut to the chosen VO take)
+
+| # | ~Time | VO line | Picture | World |
 |---|---|---|---|---|
-| 1 | 0.0–3.0 | Hook | "Looking for the right **fastener** supplier?" | Words drift in scattered on blue→mint gradient, settle onto one line (our version: words *thread in* along a helix path) |
-| 2 | 3.0–6.0 | Logo | 河北向晋鑫 globe-X logo · HEBEI XIANGJIN XIN | Orbit arrow sweeps in, draws the globe, X locks with a click; logo scales down, dot-grid accents |
-| 3 | 6.0–10.0 | Hero bolt | White studio. One steel M12 hex bolt drops in, soft shadow, slow orbit | Gradient → white via horizontal wipe following the arrow |
-| 4 | 10.0–22.0 | **Configure your bolt** | Floating white UI cards around the bolt: **Size** slider M6→M24 (bolt grows, dimension lines snap), **Grade** chips 4.8 · 6.8 · 8.8 · 10.9 · 12.9 (grade stamps on the head), **Material** list Carbon steel / 304 / 316 (surface changes), **Finish** swatch tray: zinc · yellow zinc · black oxide · hot-dip galvanized · Dacromet (bolt re-skins each tap) | Cursor taps, blue selection bars, numbers tick. Each change = one beat |
-| 5 | 22.0–24.0 | Chapter | "Not just one bolt." | Blue gradient card, thin type |
-| 6 | 24.0–33.0 | **The full range** | Bolt multiplies → lineup of **15 product families** sliding in L→R in rows, tiny label + one key number under each: Hex bolts M6–M120 · Nuts M3–M64 · Anchors M6–M24 · Threaded rod up to 3000 mm · Washers & circlips · Rivets & pins · Self-drilling screws · Solar mounting · Rigging · Pipe clamps DN15–DN300 · … Headline: **"15 product families. M2 to M120."** | Real catalog photos cut out on white cards, staggered; camera trucks along the row |
-| 7 | 33.0–39.0 | **Custom to drawing** | "Non-standard? Send the drawing." Blueprint lines trace a custom part → **extrudes into solid steel** | Blueprint → solid (our version: lines fill with metal from the thread up) |
-| 8 | 39.0–44.0 | **Standards check** | Part on blue blueprint grid, scan line passes, check cards tick: ✓ ISO 4014 ✓ GB/T 5782 ✓ DIN 471/472 · "Made to standard." | Scan glow, ✓ pops |
-| 9 | 44.0–48.0 | **Sample → mass production** | "From sample batch to mass production." Quantity card counts 1 → 10 → 1,000 → 100,000 while bolts multiply into a field | Field fills like Xometry's multiply, faster |
-| 10 | 48.0–55.0 | **China → USA** | Circle wipe on the globe-X → flat world map, **Hebei pin → dotted route across the Pacific → US ports** (LA, Houston, New York pins pop) · "Factory-direct to the USA." | Tilted map fly-in, container icon travels the route |
-| 11 | 55.0–59.0 | **Packed + delivered** | Bolts drop into a branded carton, flaps fold, blue tape | Box fold (reverse of reference — box closes then slides out) |
-| 12 | 59.0–62.0 | **Close** | Nut spins onto the hero bolt, torques tight → flash → **logo forms** + "Specified. Made. Shipped." + phone icon (Lucide) **+49 176 41474606** | Torque hit, last chord rings |
-| — | 62.0–64.0 | samteck end card | "made by / samteck" | Last chord rings under |
+| 1 | 0–3.5 | 1 | "Looking for the right fastener manufacturer?" — words float in along a soft helix, settle into one line | Gradient |
+| 2 | 3.5–9 | 2 | Logo builds: orbit arrow sweeps → globe → X locks → 河北向晋鑫 + HEBEI XIANGJIN XIN. Then "15 product families" + counter **M2 → M120** rolls | Gradient |
+| 3 | 9–30 | 3 | **Range lineup** — frosted-blue 3D fasteners slide in on a shelf, **each named in small type the moment it's spoken**: hex bolt · flange bolt + socket cap · hex nut + nylon lock nut + cap nut · Phillips machine screw + self-tapper · T-bolt + eye bolt · threaded rod + U-bolt · flat washer + spring washer + circlip · wedge anchor + chemical anchor · rivet + pins · self-drilling screw with EPDM washer · solar T-bolt + clamp on rail · wire rope clip + turnbuckle + shackle · pipe clamp + strut channel · then a **blueprint draws and extrudes a custom part**. Camera trucks along; 3 shelves rise as the list grows; key number under some: "M3–M64", "up to 3000 mm", "DN15–DN300" | Gradient |
+| 4 | 30–37 | 4 | **Material tray** rises (carbon steel · alloy steel · 304 · 316 spheres) + **Grade card** — chips 4.8 · 6.8 · 8.8 · 10.9 · 12.9 select one by one; a hex bolt's head gets the grade stamp | Gradient |
+| 5 | 37–42 | 5 | **Finish swatches**: zinc · yellow zinc · black oxide · hot-dip galvanized · Dacromet — the lineup re-skins with each one | Gradient |
+| 6 | 42–46 | 6 | Bolt on blueprint grid, scan line, cards stamp ✓ ISO 4014 ✓ DIN 471/472 ✓ GB/T 5782 | Gradient→blueprint |
+| 7 | 46–48 | 7 | Chapter card "Here's how it works" | Gradient |
+| 8 | 48–58 | 8 | White studio. **Order sheet card** draws on; a drawing PDF drops in; cursor fills: **Size** M12 · **Grade** 8.8 · **Material** carbon steel · **Finish** hot-dip galvanized · **Quantity** slider 1 → 50,000. Part on screen updates live with each field | White |
+| 9 | 58–66 | 9 | "Step 2" — line-art bolt fills with metal from thread to head; lineup multiplies into a big field; "Manufactured to spec ✓" card | White |
+| 10 | 66–74 | 10 | "Step 3" — bolts pour into a carton, flaps fold, blue tape; circle wipe with the globe-X → **world map**: Hebei pin → dotted route across the Pacific → USA; container icon travels | White→Gradient |
+| 11 | 74–84 | 11 | Quantity counter 10 → 100,000 as boxes stack; then 4 small market tiles fade in with icons: general industry · steel structures · solar · electrical installation | Gradient |
+| 12 | 84–92 | 12 | White end frame: logo + "Your one-stop fastener factory" + **WhatsApp icon + +49 176 41474606**; under it tiny credentials line: "M2–M120 · Grades 4.8–12.9 · ISO / DIN / GB" | White |
+| — | 92–94 | — | samteck end card, last chord rings | — |
 
-## 5. Beat sheet — 9:16 reel (~32 s + end card) — separate composition
-Hook (0–2.5) → logo (2.5–4.5) → configure (4.5–13: size, grade, finish only, cards stacked vertically under the bolt) → range as a **fast vertical scroll** of 15 cards (13–19) → blueprint→steel (19–23) → China→USA map, vertical crop of the Pacific (23–27) → nut torque + logo + phone (27–32) → samteck. Big type (min 48 px), cuts on the beat.
-
----
-
-## 6. Script (on-screen type — no VO)
-1. Looking for the right fastener supplier?
-2. *(logo)*
-3. Built to your spec.
-4. Size · Grade · Material · Finish
-5. Not just one bolt.
-6. 15 product families. M2 to M120.
-7. Non-standard? Send the drawing.
-8. Made to standard.
-9. From sample batch to mass production.
-10. Factory-direct to the USA.
-11. Specified. Made. Shipped.
-
-**VO option (if you want it):** Kokoro `am_michael` or `af_heart`, same lines spoken. Brand name **not spoken** (Chinese name; on-screen only). If spoken: "Hebei Shyahng-jin Shin" (HUH-bay SHYAHNG-jin SHIN).
+## 6. 9:16 reel (~45 s, separate composition)
+Same VO structure, shortened script (lines 1, 2, 3 trimmed to "Bolts, nuts, screws, anchors, rods, washers, rivets, solar parts and custom parts — built to your drawing.", 4+5 combined, 7–10, 12). Lineup becomes a **vertical stacked scroll**, UI cards stacked under the part, map cropped to the Pacific. Type min 48 px.
 
 ---
 
 ## 7. Music
-Original, made in code (numpy/scipy). Upbeat modern corporate-electronic like the reference but **warmer**: 112 BPM, soft four-on-floor kick, plucked synth arpeggio, warm pad, sub bass. Builds at the range scene (24 s), lifts at the map (48 s), resolves on a big chord at the torque (59 s) that rings into the samteck card. Reel version: punchier 120 BPM cut, every scene change on a downbeat.
+Original (numpy/scipy), like the reference: upbeat, warm corporate-electronic, ~110 BPM, soft kick, plucky arpeggio, warm pad, sub bass. **≥15 dB under VO while words are spoken**, swells in VO gaps, lift at "Here's how it works", final chord under the logo ringing into the samteck card.
 
-## 8. SFX plan
-| Moment | Sound |
-|---|---|
-| Hook words | soft whoosh per word |
-| Logo arrow | swoosh + metallic "lock" click |
-| Bolt drop | low thud + ring of steel |
-| Slider / chip / swatch taps | UI tick + short **thread ratchet** on each change |
-| Grade stamp | punchy metal stamp |
-| Range cards | glassy clink per card, rising pitch |
-| Blueprint draw | pencil-scratch texture → metal fill shimmer |
-| Scan + ✓ | scan sweep, bright confirm tones |
-| Quantity counter | fast tick roll |
-| Map | air whoosh on fly-in, pin pops, ship horn-ish low swell (subtle) |
-| Box | cardboard folds, tape rip |
-| Torque | ratchet ×3 → deep hit + shimmer → logo |
-Master −14 LUFS / −1 dBTP.
+## 8. SFX
+Whoosh per hook word · logo arrow swoosh + metal lock click · soft "clink" as each fastener lands on the shelf (pitch rises along the list) · blueprint scratch + extrude shimmer · chip/swatch ticks · grade stamp · scan sweep + ✓ tones · cursor clicks + field ticks · slider tick roll · metal fill shimmer · bolts pouring, cardboard folds, tape rip · map fly-in air + pin pops · counter ticks · logo hit. Master **−14 LUFS / −1 dBTP**.
 
----
+## 9. Builds
+- **Blender:** stylised frosted-blue/white models of every family above (hex bolt, flange bolt, socket cap, hex/nylon/cap/wing nuts, machine screw, self-tapper, self-drilling screw + EPDM washer, T-bolt, eye bolt, threaded rod, U-bolt, flat/spring washer, circlip, wedge anchor, chemical anchor rod, blind rivet, dowel/cotter pins, solar rail + clamp + T-bolt, wire rope clip, turnbuckle, shackle, pipe clamp, strut channel, custom part, carton). Finish/material variants for the swatch scenes. Rendered as image sequences with alpha.
+- **Remotion:** gradients, type, logo animation, UI cards + cursor, counters, blueprint/scan, world map + route, market tiles, WhatsApp end frame, samteck card, motion blur.
+- **Logo:** redrawn as clean SVG from the supplied PNG, exact blues.
 
-## 9. Scenes / builds list
-- **Blender (3D):** hero hex bolt M12 (+ M6/M24 morph), nut, 5 finish materials (zinc, yellow zinc, black oxide, HDG, Dacromet) + 304/316 stainless; custom part from blueprint; carton box. White studio, soft shadow.
-- **Remotion:** gradient backgrounds, all type, UI cards (slider, chips, list, swatches, checklist, counter), cursor, range grid with catalog photos, blueprint line draws, world map + route, logo animation, end cards, motion blur.
-- **Logo:** rebuilt as clean vector (SVG) from the supplied PNG — exact shapes and blues.
-
-## 10. Assets list
+## 10. Assets list (needs your OK before downloads)
 | Asset | Source | Status |
 |---|---|---|
-| Logo | PNG from Dave (low-res, English line cropped at "…XIN") | have — will redraw as SVG |
-| Brand blues | sampled from logo: royal ~#1E5FC6 → sky ~#3FA9F5 | have |
-| Product photos (15) | extracted from catalog PDF | have — low-res, used small on cards |
-| Product facts | catalog PDF (all numbers in §11) | have |
-| Font | Inter (@fontsource) light/regular/semibold; Noto Sans SC for 河北向晋鑫 | free, bundle locally |
-| Icons | Lucide (phone, check, ship, pin) | free |
-| World map | Natural Earth (public domain) | needs your OK to download |
+| Logo | PNG from Dave (low-res, English line cropped at "…XIN") | have → redraw SVG |
+| Brand blues | sampled from logo (royal ~#1E5FC6 → sky ~#3FA9F5) | have |
+| Product facts | catalog PDF | have |
+| Product photos | catalog PDF (reference for modelling only, not shown — reference style is stylised 3D) | have |
+| Fonts | Inter (light/regular/semibold) + Noto Sans SC via @fontsource | free download |
+| Icons | Lucide + WhatsApp glyph (Simple Icons, CC0) | free download |
+| World map | Natural Earth 1:110m (public domain) | free download |
+| Voice | Kokoro TTS (Apache-2.0, commercial OK) | free download |
 | Music / SFX | made in code | — |
-| Photos (Unsplash/Pexels) | none planned | — |
 
-## 11. Facts that must be right (from the catalog only)
-- 15 product families · sizes **M2–M120** (custom), hex bolts M6–M24 std, high-strength M8–M30, oversize M30–M120 to drawing
-- Grades **4.8 · 6.8 · 8.8 · 10.9 · 12.9**; stainless **A2-70 (304) / A4-70 (316)**
-- Finishes: electro-zinc (silver/yellow), black oxide, hot-dip galvanized, Dacromet (+ black zinc, phosphate, nickel)
-- Nuts M3–M64 · threaded rod 100–3000 mm · pipe clamps DN15–DN300 · anchors M6–M24
-- Standards: ISO 4014 · GB/T 5782 · DIN 471/472
-- "From small sample batch to mass production"
-- **Not claimed (not in catalog):** prices, MOQ, lead time, ISO 9001, certifications, ports. US port pins on the map are illustrative only — confirm or I'll show "USA" only.
+## 11. Facts (catalog only — nothing invented)
+15 families · M2–M120 (custom), hex bolts M6–M24 std / M8–M30 high-strength / M30–M120 to drawing · nuts M3–M64 · threaded rod 100–3000 mm · pipe clamps DN15–DN300 · anchors M6–M24 · grades 4.8 / 6.8 / 8.8 / 10.9 / 12.9 · carbon steel, alloy steel, 304, 316 (A2-70 / A4-70) · zinc (silver/yellow), black oxide, hot-dip galvanized, Dacromet · ISO 4014, DIN 471/472, GB/T 5782 · "small sample batch to mass production" · markets: general industry, steel structures, solar, mechanical & electrical installation.
+**Not claimed:** prices, MOQ, lead time, quote speed, ISO 9001, inspection guarantees, specific US ports. "Shipped factory-direct to the USA" comes from Dave ("Chinese manufacturing company → American clients").
 
 ## 12. Avoid
-Cartoon/characters · dark backgrounds · copying Xometry's machines, map or box assets · any number not in §11 · iPhone/phone mockups.
-
-## 13. Open questions for SamTeck
-1. OK with **no VO**?
-2. US port pins on the map — keep (illustrative) or just "USA"?
-3. Phone number shown as plain phone or WhatsApp icon?
+Cartoon/characters · dark backgrounds · one-hero-bolt story · copying Xometry assets · any number not in §11.
