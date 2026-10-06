@@ -19,7 +19,7 @@ export const Hook: React.FC = () => {
       <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 18 * s, maxWidth: V ? 900 : 1500 }}>
         {Q.HOOK_WORDS.map((w, i) => {
           const a = prog(t, Q.HOOK_T[i], 0.7);
-          const sx = 0, sy = (1 - settle) * Math.cos(i * 1.7) * 70 * s;
+          const sx = 0, sy = (1 - a) * 40 * s;
           return (
             <span key={i} style={{ fontFamily: "Inter", fontWeight: 300, fontSize: (V ? 84 : 76) * s, color: "#fff", opacity: a, filter: `blur(${(1 - a) * 12}px)`, transform: `translate(${sx + (1 - a) * 60}px, ${sy}px)`, display: "inline-block" }}>{w}</span>
           );
@@ -76,7 +76,7 @@ export const Range: React.FC = () => {
       {/* shelf */}
       <div style={{ position: "absolute", left: W / 2 - cam, top: H * (V ? 0.36 : 0.3), width: total, height: slot * 1.6, opacity: 1 - wall, transform: `scale(${1 - wall * 0.3})`, transformOrigin: `${cam}px 50%` }}>
         {Q.RANGE.map((g, i) => {
-          const ap = pop(f, g.t);
+          const ap = pop(t * 60, g.t);
           const isCustom = g.models[0] === "custom";
           return (
             <div key={i} style={{ position: "absolute", left: pos[i], top: 0, display: "flex", flexDirection: "column", alignItems: "center", width: g.models.length * slot, opacity: Math.min(1, ap * 1.4), transform: `translateY(${(1 - ap) * 80}px)` }}>
@@ -156,7 +156,7 @@ export const Materials: React.FC = () => {
       <div style={{ position: "absolute", top: (V ? 330 : 160) * s }}>
         <Model name="hex_bolt" size={(V ? 640 : 520) * s} speed={0.7} style={{ transform: "scale(1.3)",  }} />
         {gsel >= 0 && (
-          <div style={{ position: "absolute", left: "50%", top: "18%", transform: `translateX(-50%) scale(${pop(f, Q.GRADES_T[gsel])})`, background: C.royal, color: "#fff", fontFamily: "Inter", fontWeight: 700, fontSize: 40 * s, padding: "6px 18px", borderRadius: 10 }}>{Q.GRADES[gsel]}</div>
+          <div style={{ position: "absolute", left: "50%", top: "18%", transform: `translateX(-50%) scale(${pop(t * 60, Q.GRADES_T[gsel])})`, background: C.royal, color: "#fff", fontFamily: "Inter", fontWeight: 700, fontSize: 40 * s, padding: "6px 18px", borderRadius: 10 }}>{Q.GRADES[gsel]}</div>
         )}
       </div>
       {/* material tray */}
@@ -185,15 +185,14 @@ export const Finishes: React.FC = () => {
   const [a, b] = Q.S.finish;
   const sel = Q.FINISHES.filter((x) => t >= x.t).length - 1;
   const parts = V ? ["hex_bolt", "hex_nut", "flat_washer"] : ["hex_bolt", "hex_nut", "flat_washer", "self_drill", "u_bolt"];
-  const sz = (V ? 330 : 300) * s;
+  const sz = (V ? 270 : 300) * s;
   return (
     <AbsoluteFill style={{ opacity: fadeIO(t, a, b, 0.35), alignItems: "center" }}>
       <Label size={(V ? 58 : 46) * s} color="#fff" weight={300} style={{ position: "absolute", top: (V ? 200 : 80) * s }}>Finishes</Label>
       <div style={{ position: "absolute", top: (V ? 420 : 220) * s, display: "flex", flexWrap: "wrap", justifyContent: "center", width: V ? 3 * sz : undefined }}>
         {parts.map((m, i) => (
           <div key={i} style={{ position: "relative", width: sz, height: sz }}>
-            <Model name={m} size={sz} offset={i * 5} style={{ transform: "scale(1.35)",  }} />
-            {sel >= 0 && <Tinted m={m} sz={sz} tint={Q.FINISHES[sel].tint} offset={i * 5} />}
+            <Model name={m} size={sz} offset={i * 5} style={{ transform: "scale(1.35)", filter: sel >= 0 ? Q.FINISHES[sel].tint : undefined }} />
           </div>
         ))}
       </div>
@@ -231,7 +230,7 @@ export const Standards: React.FC = () => {
       </div>
       <div style={{ position: "absolute", [V ? "bottom" : "right"]: (V ? 300 : 140) * s, top: V ? undefined : 330 * s, display: "flex", flexDirection: "column", gap: 18 * s } as React.CSSProperties}>
         {Q.STANDARDS.map((x, i) => {
-          const p = pop(f, x.t);
+          const p = pop(t * 60, x.t);
           return (
             <Card key={i} style={{ display: "flex", alignItems: "center", gap: 16 * s, transform: `translateX(${(1 - p) * 120}px)`, opacity: Math.min(1, p * 1.5), padding: `${14 * s}px ${26 * s}px` }}>
               <div style={{ width: 40 * s, height: 40 * s, borderRadius: 99, background: C.blue, display: "flex", alignItems: "center", justifyContent: "center" }}><Check color="#fff" size={26 * s} strokeWidth={3} /></div>
@@ -270,7 +269,7 @@ const StepTag: React.FC<{ n: number; title: string; t0: number }> = ({ n, title,
 export const Step1: React.FC = () => {
   const t = useT(); const f = useCurrentFrame(); const { V, W, s } = useV();
   const [a, b] = Q.S.step1;
-  const doc = pop(f, 63.9);
+  const doc = pop(t * 60, 63.9);
   const qty = Math.round(interpolate(t, [Q.STEP1_QTY_T, Q.STEP1_QTY_T + 0.9], [0, 50000], { ...clamp, easing: ease }));
   const k = V ? 1 : 1.25;
   const cardW = (V ? 860 : 620) * s * k;
@@ -359,7 +358,7 @@ export const Step2: React.FC = () => {
           })}
         </div>
       </div>
-      <Card style={{ position: "absolute", left: V ? W / 2 - 230 * s : W * 0.07, bottom: (V ? 220 : 90) * s, display: "flex", alignItems: "center", gap: 14 * s, opacity: pop(f, a + 3.3), transform: `scale(${0.85 + 0.15 * pop(f, a + 3.3)})` }}>
+      <Card style={{ position: "absolute", left: V ? W / 2 - 230 * s : W * 0.07, bottom: (V ? 220 : 90) * s, display: "flex", alignItems: "center", gap: 14 * s, opacity: pop(t * 60, a + 3.3), transform: `scale(${0.85 + 0.15 * pop(t * 60, a + 3.3)})` }}>
         <div style={{ width: 40 * s, height: 40 * s, borderRadius: 99, background: C.blue, display: "flex", alignItems: "center", justifyContent: "center" }}><Check color="#fff" size={26 * s} strokeWidth={3} /></div>
         <Label size={28 * s} weight={600}>M12 · 8.8 · HDG — to spec</Label>
       </Card>
@@ -374,7 +373,7 @@ export const Step3: React.FC = () => {
   const [a, b] = Q.S.step3;
   const wipe = prog(t, a + 2.1, 0.7);
   const box = prog(t, a + 0.3, 0.5), lid = prog(t, a + 1.3, 0.5);
-  const proj = geoNaturalEarth1().rotate([-180 + 30, 0]).fitExtent([[40, V ? 500 * s : 120 * s], [W - 40, V ? H - 500 * s : H - 80 * s]], countries);
+  const proj = geoNaturalEarth1().rotate([-180 + 30, 0]).fitExtent(V ? [[-W * 0.55, 450 * s], [W * 1.55, H - 450 * s]] : [[40, 120 * s], [W - 40, H - 80 * s]], countries);
   const path = geoPath(proj);
   const hebei: [number, number] = [115.5, 38.5], usa: [number, number] = [-118.2, 34.0], usaE: [number, number] = [-95.4, 29.8];
   const ip = geoInterpolate(hebei, usa);
@@ -406,12 +405,12 @@ export const Step3: React.FC = () => {
         <svg width={W} height={H} style={{ position: "absolute" }}>
           <g>{countries.features.map((c: any, i: number) => <path key={i} d={path(c) || ""} fill="rgba(255,255,255,.22)" stroke="rgba(255,255,255,.55)" strokeWidth={0.8} />)}</g>
           <polyline points={pts.slice(0, Math.max(2, Math.round(rt * 60))).map((p) => p.join(",")).join(" ")} fill="none" stroke="#fff" strokeWidth={3 * s} strokeDasharray={`${8 * s} ${8 * s}`} />
-          <circle cx={hx} cy={hy} r={10 * s * pop(f, a + 2.7)} fill={C.royal} stroke="#fff" strokeWidth={3} />
-          <circle cx={ux} cy={uy} r={10 * s * pop(f, a + 4.4)} fill={C.royal} stroke="#fff" strokeWidth={3} />
-          <circle cx={ex} cy={ey} r={8 * s * pop(f, a + 4.6)} fill={C.royal} stroke="#fff" strokeWidth={3} />
+          <circle cx={hx} cy={hy} r={10 * s * pop(t * 60, a + 2.7)} fill={C.royal} stroke="#fff" strokeWidth={3} />
+          <circle cx={ux} cy={uy} r={10 * s * pop(t * 60, a + 4.4)} fill={C.royal} stroke="#fff" strokeWidth={3} />
+          <circle cx={ex} cy={ey} r={8 * s * pop(t * 60, a + 4.6)} fill={C.royal} stroke="#fff" strokeWidth={3} />
         </svg>
-        <div style={{ position: "absolute", left: hx - 10, top: hy + 18 * s, opacity: pop(f, a + 2.8) }}><Label size={24 * s} color="#fff" weight={600}>Hebei, China</Label></div>
-        <div style={{ position: "absolute", left: ux - 40 * s, top: uy + 18 * s, opacity: pop(f, a + 4.5) }}><Label size={24 * s} color="#fff" weight={600}>USA</Label></div>
+        <div style={{ position: "absolute", left: hx - 10, top: hy + 18 * s, opacity: pop(t * 60, a + 2.8) }}><Label size={24 * s} color="#fff" weight={600}>Hebei, China</Label></div>
+        <div style={{ position: "absolute", left: ux - 40 * s, top: uy + 18 * s, opacity: pop(t * 60, a + 4.5) }}><Label size={24 * s} color="#fff" weight={600}>USA</Label></div>
         {rt > 0 && rt < 1 && (
           <div style={{ position: "absolute", left: ship[0] - 26 * s, top: ship[1] - 26 * s, width: 52 * s, height: 52 * s, borderRadius: 99, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 6px 20px rgba(0,0,0,.2)" }}><Ship size={30 * s} color={C.royal} /></div>
         )}
@@ -437,7 +436,7 @@ export const Scale: React.FC = () => {
       </div>
       <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", bottom: (V ? 360 : 140) * s, display: "grid", gridTemplateColumns: V ? "repeat(2, auto)" : "repeat(4, auto)", gap: 24 * s }}>
         {Q.MARKETS.map((m, i) => {
-          const p = pop(f, m.t); const I = icons[i];
+          const p = pop(t * 60, m.t); const I = icons[i];
           return (
             <Card key={i} style={{ width: (V ? 400 : 330) * s, display: "flex", flexDirection: "column", alignItems: "center", gap: 14 * s, padding: `${28 * s}px ${20 * s}px`, opacity: Math.min(1, p * 1.5), transform: `translateY(${(1 - p) * 60}px)` }}>
               <I size={56 * s} color={C.blue} strokeWidth={1.6} />
@@ -455,7 +454,7 @@ export const End: React.FC = () => {
   const t = useT(); const f = useCurrentFrame(); const { V, s } = useV();
   const [a, b] = Q.S.end;
   const p = interpolate(t, [a + 0.1, a + 2.2], [0, 1], { ...clamp, easing: ease });
-  const wa = pop(f, 92.5);
+  const wa = pop(t * 60, 92.5);
   return (
     <AbsoluteFill style={{ opacity: fadeIO(t, a, b + 0.3, 0.3) }}>
       <Studio />

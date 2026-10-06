@@ -52,10 +52,10 @@ export const GRADES = ["4.8", "6.8", "8.8", "10.9", "12.9"];
 export const GRADES_T = [46.45, 46.9, 47.35, 47.85, 48.3];
 
 export const FINISHES = [
-  { t: 51.1, label: "Zinc", c: "#cfd8e0", tint: "rgba(200,212,224,0.9)" },
-  { t: 51.85, label: "Black oxide", c: "#2a2d33", tint: "rgba(78,82,92,1)" },
-  { t: 53.0, label: "Hot-dip galvanized", c: "#9aa4ab", tint: "rgba(120,130,138,0.95)" },
-  { t: 54.4, label: "Dacromet", c: "#b4b8bc", tint: "rgba(160,166,172,0.95)" },
+  { t: 51.1, label: "Zinc", c: "#cfd8e0", tint: "brightness(1.08) saturate(0.5)" },
+  { t: 51.85, label: "Black oxide", c: "#2a2d33", tint: "brightness(0.32) contrast(1.2)" },
+  { t: 53.0, label: "Hot-dip galvanized", c: "#9aa4ab", tint: "grayscale(1) brightness(0.8) contrast(1.1)" },
+  { t: 54.4, label: "Dacromet", c: "#b4b8bc", tint: "grayscale(0.85) brightness(0.92) sepia(0.15)" },
 ];
 
 export const STANDARDS = [
