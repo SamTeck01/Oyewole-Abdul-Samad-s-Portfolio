@@ -33,7 +33,7 @@ def saw_soft(f, n, det=0.0):
         ph = (t * f * (1 + d)) % 1; out += 2 * ph - 1
     return out / 3
 
-AD_END = TOTAL - 2.2
+AD_END = TOTAL - 2.2  # real time
 nbars = int(np.ceil(TOTAL / bar))
 for b in range(nbars):
     t0 = b * bar
@@ -113,7 +113,15 @@ def rise(d=1.0, g=0.25):
         fc = 300 + 5000 * (i / n) ** 2; y[i:i + 2048] = bp(x[i:i + 2048], fc, fc * 1.6)
     return y * np.linspace(0, 1, n) ** 2 * g
 
-C = json.load(open(sys.argv[1].replace(".wav", "_cues.json")))
+C = json.load(open(sys.argv[4]))
+WP = json.load(open(sys.argv[5]))
+def W(x):
+    for i in range(1, len(WP)):
+        if x <= WP[i][0]:
+            a, b = WP[i - 1], WP[i]; return a[1] + (x - a[0]) / (b[0] - a[0]) * (b[1] - a[1])
+    return WP[-1][1] + (x - WP[-1][0])
+_place = place
+def place(buf, x, t, g=1.0): _place(buf, x, W(t), g)
 # hook words
 for tt in C["hook"]: place(sfx, whoosh(0.45, 600, 5000, 0.12), tt - 0.25)
 # logo: arrow swoosh + lock click + hit
@@ -159,7 +167,7 @@ for tt in C["markets"]: place(sfx, clink(1600, 0.15), tt); place(sfx, whoosh(0.3
 place(sfx, whoosh(1.2, 200, 3000, 0.35), 88.2); place(sfx, clink(1500, 0.3), 89.7); place(sfx, thud(0.5), 89.7)
 place(sfx, chime((1568, 2093), 0.18), 92.5)
 # samteck card
-place(sfx, whoosh(0.6, 300, 4000, 0.2), AD_END); place(sfx, chime((1046, 1568), 0.12), AD_END + 0.2)
+_place(sfx, whoosh(0.6, 300, 4000, 0.2), AD_END); _place(sfx, chime((1046, 1568), 0.12), AD_END + 0.2)
 
 # ---------------- VO + ducking ----------------
 vo, vsr = sf.read(VO, dtype="float64")

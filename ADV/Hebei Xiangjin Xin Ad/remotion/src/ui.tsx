@@ -1,6 +1,7 @@
 import React from "react";
 import { Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig, Easing } from "remotion";
 import { FPS } from "./cues";
+import { toDesign } from "./warp";
 
 export const C = {
   royal: "#1E4F96",
@@ -13,7 +14,7 @@ export const C = {
   card: "#FFFFFF",
 };
 
-export const useT = () => useCurrentFrame() / FPS;
+export const useT = () => toDesign(useCurrentFrame() / FPS);
 export const useV = () => {
   const { width, height } = useVideoConfig();
   return { V: height > width, W: width, H: height, s: Math.min(width, height) / 1080 };
