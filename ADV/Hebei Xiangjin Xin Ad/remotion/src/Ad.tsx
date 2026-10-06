@@ -1,6 +1,5 @@
 import React from "react";
 import { AbsoluteFill, Audio, staticFile } from "remotion";
-import { CameraMotionBlur } from "@remotion/motion-blur";
 import { Gradient, useT } from "./ui";
 import { S } from "./cues";
 import * as Sc from "./Scenes";
@@ -14,7 +13,7 @@ export const Ad: React.FC<{ withAudio?: boolean }> = ({ withAudio }) => {
       <Gradient />
       {on(t, S.hook) && <Sc.Hook />}
       {on(t, S.logo) && <Sc.LogoScene />}
-      {on(t, S.range) && <CameraMotionBlur samples={6} shutterAngle={160}><Sc.Range /></CameraMotionBlur>}
+      {on(t, S.range) && <Sc.Range />}
       {on(t, S.material) && <Sc.Materials />}
       {on(t, S.finish) && <Sc.Finishes />}
       {on(t, S.standards) && <Sc.Standards />}

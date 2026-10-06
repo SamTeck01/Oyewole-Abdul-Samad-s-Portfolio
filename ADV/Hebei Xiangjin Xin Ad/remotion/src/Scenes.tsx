@@ -53,69 +53,32 @@ export const LogoScene: React.FC = () => {
   );
 };
 
-/* 3 · Range lineup — truck along a shelf, then wall of 15 families */
+/* 3 · Range — the 15-family wall builds tile by tile as each family is named */
 export const Range: React.FC = () => {
-  const t = useT(); const f = useCurrentFrame(); const { V, W, H, s } = useV();
+  const t = useT(); const { V, s } = useV();
   const [a, b] = Q.S.range;
-  const slot = (V ? 330 : 360) * s;
-  // x position of each group
-  let x = 0; const pos = Q.RANGE.map((g) => { const p = x; x += g.models.length * slot + 90 * s; return p; });
-  const total = x;
-  // camera follows the newest group
-  let cur = 0; Q.RANGE.forEach((g, i) => { if (t >= g.t - 0.35) cur = i; });
-  const camTarget = (i: number) => pos[i] + (Q.RANGE[i].models.length * slot) / 2;
-  let cam = camTarget(0);
-  for (let i = 1; i < Q.RANGE.length; i++) cam = interpolate(t, [Q.RANGE[i].t - 0.45, Q.RANGE[i].t + 0.15], [cam, camTarget(i)], { ...clamp, easing: ease });
-  const wall = prog(t, Q.RANGE_GRID_T, 0.9);
-  const counter = Q.RANGE.filter((g) => t >= g.t).length;
+  const cols = V ? 3 : 5, cell = (V ? 320 : 330) * s, gap = 16 * s;
+  const items = Q.RANGE.map((g) => ({ m: g.models[0], l: g.label, n: g.note, t: g.t }));
+  items.splice(3, 0, { m: "wing_nut", l: "Wing & cap nuts", n: undefined, t: Q.RANGE[2].t + 0.35 });
+  const shown = items.filter((x) => t >= x.t - 0.1).length;
   return (
-    <AbsoluteFill style={{ opacity: fadeIO(t, a, b, 0.35) }}>
-      <div style={{ position: "absolute", top: (V ? 170 : 70) * s, width: "100%", textAlign: "center", opacity: 1 - wall }}>
-        <Label size={(V ? 54 : 46) * s} color="#fff" weight={300}>The full fastener range · <b style={{ fontWeight: 600 }}>{String(counter).padStart(2, "0")}</b> / 15</Label>
-      </div>
-      {/* shelf */}
-      <div style={{ position: "absolute", left: W / 2 - cam, top: H * (V ? 0.36 : 0.3), width: total, height: slot * 1.6, opacity: 1 - wall, transform: `scale(${1 - wall * 0.3})`, transformOrigin: `${cam}px 50%` }}>
-        {Q.RANGE.map((g, i) => {
-          const ap = pop(t * 60, g.t);
-          const isCustom = g.models[0] === "custom";
-          return (
-            <div key={i} style={{ position: "absolute", left: pos[i], top: 0, display: "flex", flexDirection: "column", alignItems: "center", width: g.models.length * slot, opacity: Math.min(1, ap * 1.4), transform: `translateY(${(1 - ap) * 80}px)` }}>
-              <div style={{ display: "flex" }}>
-                {g.models.map((m, k) => (
-                  <div key={k} style={{ width: slot, height: slot, position: "relative" }}>
-                    {isCustom ? <Blueprint t={t} t0={g.t} size={slot} /> : <div style={{ position: "absolute", left: slot * 0.08, right: slot * 0.08, bottom: slot * 0.04, height: slot * 0.16, borderRadius: "50%", background: "radial-gradient(rgba(255,255,255,.55), transparent 70%)" }} />}
-                    {!isCustom && <Model name={m} size={slot} offset={k * 7 + i * 3} style={{ transform: "scale(1.45)",  }} />}
-                  </div>
-                ))}
-              </div>
-              <Label size={(V ? 34 : 32) * s} color="#fff" weight={500} style={{ marginTop: 8 * s, textAlign: "center", textShadow: "0 2px 12px rgba(10,40,90,.35)" }}>{g.label}</Label>
-              {g.note && <Label size={(V ? 28 : 26) * s} color="rgba(255,255,255,.8)" weight={300} style={{ marginTop: 4 }}>{g.note}</Label>}
-            </div>
-          );
-        })}
-        <div style={{ position: "absolute", left: -2000, right: -2000, top: slot * 0.98, height: 2, background: "rgba(255,255,255,.35)" }} />
-      </div>
-      {/* wall of 15 families */}
-      {wall > 0 && <Wall p={wall} />}
-    </AbsoluteFill>
-  );
-};
-
-const Wall: React.FC<{ p: number }> = ({ p }) => {
-  const { V, W, s } = useV();
-  const cols = V ? 3 : 5, cell = (V ? 300 : 300) * s, gap = 18 * s;
-  const items = Q.RANGE.map((g) => ({ m: g.models[0], l: g.label }));
-  items.splice(11, 0, { m: "wing_nut", l: "Wing & cap nuts" }); // 15th tile from the nuts family
-  return (
-    <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
-      <Label size={(V ? 60 : 50) * s} color="#fff" weight={300} style={{ marginBottom: 26 * s, opacity: p }}>15 product families. <b style={{ fontWeight: 600 }}>M2 to M120.</b></Label>
+    <AbsoluteFill style={{ opacity: fadeIO(t, a, b, 0.35), justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
+      <Label size={(V ? 62 : 50) * s} color="#fff" weight={300} style={{ marginBottom: 26 * s }}>
+        <b style={{ fontWeight: 600 }}>{String(Math.min(15, shown)).padStart(2, "0")}</b> / 15 product families · <b style={{ fontWeight: 600 }}>M2–M120</b>
+      </Label>
       <div style={{ display: "grid", gridTemplateColumns: `repeat(${cols}, ${cell}px)`, gap }}>
-        {items.slice(0, 15).map((it, i) => {
-          const q = Math.max(0, Math.min(1, p * 1.6 - i * 0.035));
+        {items.map((it, i) => {
+          const q = prog(t, it.t - 0.1, 0.35);
+          const isCustom = it.m === "custom";
           return (
-            <div key={i} style={{ width: cell, height: cell * (V ? 0.95 : 0.62), borderRadius: 16, background: "rgba(18,62,128,.28)", border: "1px solid rgba(255,255,255,.35)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", opacity: q, transform: `scale(${0.8 + 0.2 * q})` }}>
-              <Model name={it.m} size={cell * (V ? 0.66 : 0.42)} offset={i * 5} style={{ transform: "scale(1.4)",  }} />
-              <Label size={(V ? 24 : 20) * s} color="#fff" weight={600} style={{ textAlign: "center", padding: "0 6px" }}>{it.l}</Label>
+            <div key={i} style={{ width: cell, height: cell * (V ? 0.92 : 0.66), borderRadius: 18, background: q > 0 ? "rgba(18,62,128,.28)" : "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.3)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+              <div style={{ opacity: q, transform: `scale(${0.6 + 0.4 * q}) translateY(${(1 - q) * 30}px)`, display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <div style={{ width: cell * (V ? 0.62 : 0.46), height: cell * (V ? 0.62 : 0.46), position: "relative" }}>
+                  {isCustom ? <Blueprint t={t} t0={it.t} size={cell * (V ? 0.62 : 0.46)} /> : <Model name={it.m} size={cell * (V ? 0.62 : 0.46)} offset={i * 5} style={{ transform: "scale(1.45)" }} />}
+                </div>
+                <Label size={(V ? 26 : 21) * s} color="#fff" weight={600} style={{ textAlign: "center", padding: "0 8px", marginTop: 4 * s }}>{it.l}</Label>
+                {it.n && <Label size={(V ? 22 : 17) * s} color="rgba(255,255,255,.85)" weight={400}>{it.n}</Label>}
+              </div>
             </div>
           );
         })}
