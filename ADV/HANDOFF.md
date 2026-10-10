@@ -26,3 +26,11 @@ Folder: `ADV/Hebei Xiangjin Xin Ad/` (brief, Blender script, Remotion code, audi
 - Blender 4.2.3 headless (download tarball from download.blender.org).
 - Python: numpy/scipy for music + SFX; ffmpeg for mix, master, contact sheets.
 - Renders: about 10–12 min per 44 s video at 1080p60, 4 cores.
+
+## Current job: Rothme (client: Riley Othmer, Discord r1ley0thmer), folder `ADV/Rothme Ad/`
+- Brand: rothme.app, dark navy + indigo (#6366F1), DM Sans / Space Grotesk, logo rebuilt as `assets_in/brand/rothme_mark.svg`. "Rothme" = ROTH-mee. CTA: rothme.app / "Get a demo" (no waitlist).
+- Done: **Product ad v2** (36.7 s, 16:9 + 9:16, music only) and **Explainer v1** (86 s, 16:9, Heart VO, character "Maya", captions). Code: `remotion/src/Scenes.tsx` (ad), `remotion/src/ex/` (explainer, Maya.tsx). Audio: `audio/build_audio.py`, `audio/explainer/vo.py` + `ex_audio.py`. Briefs: `brief/PROMPT.md`, `brief/EXPLAINER.md`. Renders (mp4 not in git) are regenerated with `npx remotion render`.
+- Send clients only the watermarked 720p CLIENT_PREVIEW files until paid.
+- **Next:** Riley wants his **Lead Map** feature shown: (A) a new ~45–60 s Lead Map video (Maya as a small agency owner finding local clients) and (B) Explainer v2 with a "04 Grow" Lead Map scene + fixes (more camera moves in desk scene 4–19 s, Maya typing/waving, move dotted line off "Fewer lost leads").
+- Lead Map facts (from rothme.app public JS): search city/ZIP + service radius + business type → "Find leads in this area"; OpenStreetMap pins; "Rothme Opportunity Score", Hot/Warm/Cold, reasons ("No website listed — a clear, specific service to offer", "No reviews yet…", "Light competition"); pipeline stages New, Researching, Contacted, Bid Submitted, Follow-Up, Won, Lost; est. job value, follow-up reminders to calendar, CSV import, target markets, "Create a campaign".
+- **Lead Map screenshots:** SamTeck added `ROTHME_EMAIL` / `ROTHME_PASSWORD` (his OWN account) as environment variables. Log in with Playwright (chromium at /opt/pw-browsers), open /lead-map, run a search so pins show, screenshot each step into `assets_in/leadmap/`. Read-only: don't change or delete anything; never write the credentials to files, logs or git.
