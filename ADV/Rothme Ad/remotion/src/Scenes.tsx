@@ -61,8 +61,8 @@ const MiniCard: React.FC<{ it: typeof STORM[number]; sc: number; i: number }> = 
         <div style={{ fontFamily: F.sans, fontWeight: 600, fontSize: 19 * sc, color: C.fg }}>{pName(it.k)}</div>
       </div>
       <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
-        <div style={{ fontFamily: F.sans, fontSize: 15 * sc, color: C.muted }}>{it.m}</div>
-        <div style={{ fontFamily: F.mono, fontSize: 13 * sc, color: it.bad ? C.red : C.green, opacity: flick ? 0.4 : 1 }}>{it.d}</div>
+        <div style={{ fontFamily: F.sans, fontSize: 19 * sc, color: C.muted }}>{it.m}</div>
+        <div style={{ fontFamily: F.mono, fontSize: 17 * sc, color: it.bad ? C.red : C.green, opacity: flick ? 0.4 : 1 }}>{it.d}</div>
       </div>
       <div style={{ fontFamily: F.sans, fontWeight: 600, fontSize: 30 * sc, color: C.fg, letterSpacing: "-0.02em" }}>{it.v}</div>
       <svg width={264 * sc} height={34 * sc} viewBox="0 0 100 20" preserveAspectRatio="none">
@@ -89,24 +89,26 @@ export const Storm: React.FC = () => {
       opacity: 1 - fly, filter: fly > 0.01 ? `blur(${fly * 18}px)` : undefined,
     }}>
       {STORM.map((it, i) => {
-        const ti = 0.03 + i * 0.16 + rnd(i) * 0.06;
+        const ti = i < 5 ? -0.55 + i * 0.04 : 0.05 + (i - 5) * 0.2 + rnd(i) * 0.06;
         const p = pop(t, ti, 0.5);
         const cols = V ? 3 : 4;
         const fx = ((i % cols) + 0.5) / cols + (rnd(i + 20) - 0.5) * 0.16;
         const rows = Math.ceil(STORM.length / cols);
         const fy = V ? 0.13 + 0.74 * (Math.floor(i / cols) / (rows - 1)) + (rnd(i + 40) - 0.5) * 0.06 : (Math.floor(i / cols) + 0.5) / rows + (rnd(i + 40) - 0.5) * 0.2;
+        const HERO = V ? [[0.3, 0.3], [0.7, 0.38], [0.32, 0.52], [0.7, 0.62], [0.42, 0.74]] : [[0.3, 0.38], [0.52, 0.3], [0.74, 0.46], [0.4, 0.64], [0.63, 0.72]];
+        const [hx, hy] = i < 5 ? HERO[i] : [fx, fy];
         const ang = rnd(i + 3) * Math.PI * 2;
         const dx = Math.cos(ang) * 900 * (1 - p), dy = Math.sin(ang) * 700 * (1 - p);
         const rot = (rnd(i + 8) - 0.5) * 22 + (1 - p) * 40 * (rnd(i + 9) - 0.5);
         return (
-          <div key={i} style={{ ...ab, left: fx * W - 150 * sc, top: fy * H - 95 * sc, opacity: Math.min(1, p * 1.5),
+          <div key={i} style={{ ...ab, left: hx * W - 150 * sc, top: hy * H - 95 * sc, opacity: Math.min(1, p * 1.5),
             transform: `translate(${dx}px,${dy}px) rotate(${rot}deg) scale(${0.6 + 0.4 * p})`, zIndex: i }}>
             <MiniCard it={it} sc={sc} i={i} />
           </div>
         );
       })}
       {ALERTS.map((s, i) => {
-        const ti = 0.6 + i * 0.42;
+        const ti = 0.2 + i * 0.45;
         const p = pop(t, ti, 0.45);
         const fx = [0.24, 0.7, 0.42, 0.8, 0.18][i], fy = V ? [0.18, 0.34, 0.55, 0.7, 0.86][i] : [0.2, 0.3, 0.62, 0.78, 0.86][i];
         return (
@@ -304,7 +306,7 @@ const Dashboard: React.FC<{ t0: number }> = ({ t0 }) => {
       </div>
       {/* row 1 */}
       {card(0, { left: 270, top: 92, width: 380, height: 220 }, <>
-        <Cap size={13}>Marketing Health</Cap>
+        <Cap size={16}>Marketing Health</Cap>
         <div style={{ display: "flex", alignItems: "center", gap: 22, marginTop: 14 }}>
           <div style={{ position: "relative", width: 130, height: 130 }}>
             <Ring v={hv} size={130} stroke={12} />
@@ -314,13 +316,13 @@ const Dashboard: React.FC<{ t0: number }> = ({ t0 }) => {
         </div>
       </>)}
       {card(1, { left: 670, top: 92, width: 360, height: 220 }, <>
-        <Cap size={13}>Lead Audit</Cap>
+        <Cap size={16}>Lead Audit</Cap>
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 22, fontSize: 26, fontWeight: 600 }}><span style={{ width: 12, height: 12, borderRadius: 9, background: C.green }} />Healthy</div>
         <div style={{ color: C.muted, fontSize: 16, marginTop: 10 }}>No critical issues detected.</div>
         <div style={{ color: C.primarySoft, fontSize: 15, marginTop: 30 }}>View Audit →</div>
       </>)}
       {card(2, { left: 1050, top: 92, width: 420, height: 220 }, <>
-        <Cap size={13}>Connected Platforms</Cap>
+        <Cap size={16}>Connected Platforms</Cap>
         <div style={{ fontSize: 26, fontWeight: 600, marginTop: 16 }}>14 Connected</div>
         <div style={{ display: "flex", gap: 10, marginTop: 18, flexWrap: "wrap" }}>
           {["meta", "gads", "shopify", "mailchimp", "instagram", "tiktok"].map((k, i) => <div key={k} style={{ transform: `scale(${pop(t, t0 + 0.5 + i * 0.07, 0.4)})` }}><PIcon k={k} size={44} /></div>)}
@@ -329,7 +331,7 @@ const Dashboard: React.FC<{ t0: number }> = ({ t0 }) => {
       </>)}
       {/* row 2 */}
       {card(3, { left: 270, top: 332, width: 760, height: 280 }, <>
-        <div style={{ display: "flex", justifyContent: "space-between" }}><Cap size={13}>Growth · Traffic & engagement</Cap><span style={{ color: C.green, fontSize: 16, fontWeight: 600 }}>+31.4%</span></div>
+        <div style={{ display: "flex", justifyContent: "space-between" }}><Cap size={16}>Growth · Traffic & engagement</Cap><span style={{ color: C.green, fontSize: 16, fontWeight: 600 }}>+31.4%</span></div>
         <svg width={716} height={200} viewBox="0 0 130 70" preserveAspectRatio="none" style={{ marginTop: 14 }}>
           <defs><linearGradient id="gf" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor={C.primary} stopOpacity=".5" /><stop offset="1" stopColor={C.primary} stopOpacity="0" /></linearGradient>
             <clipPath id="gc"><rect width={130 * grow} height="70" /></clipPath></defs>
@@ -340,7 +342,7 @@ const Dashboard: React.FC<{ t0: number }> = ({ t0 }) => {
         </svg>
       </>)}
       {card(4, { left: 1050, top: 332, width: 420, height: 280 }, <>
-        <Cap size={13}>Platform Performance</Cap>
+        <Cap size={16}>Platform Performance</Cap>
         {[["instagram", 92], ["facebook", 74], ["tiktok", 61], ["linkedin", 48], ["youtube", 39]].map(([k, v]: any, i) => (
           <div key={k} style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 15 }}>
             <PIcon k={k} size={28} tile={false} />
@@ -354,7 +356,7 @@ const Dashboard: React.FC<{ t0: number }> = ({ t0 }) => {
       {/* row 3 metrics */}
       {[["Followers", "48,204", "+3.2%"], ["Reach", "182,940", "+11.4%"], ["Leads", "1,204", "+14.2%"], ["Revenue", "$48,210", "+9.6%"]].map(([m, v, d], i) =>
         card(5 + i, { left: 270 + i * 300, top: 632, width: 280, height: 180 }, <>
-          <Cap size={13}>{m}</Cap>
+          <Cap size={16}>{m}</Cap>
           <div style={{ fontSize: 36, fontWeight: 600, marginTop: 18, letterSpacing: "-0.02em" }}>{v}</div>
           <div style={{ color: C.green, fontSize: 16, marginTop: 10, display: "flex", gap: 6, alignItems: "center" }}><TrendingUp size={16} />{d}<span style={{ color: C.muted }}>vs previous period</span></div>
         </>))}
@@ -408,7 +410,7 @@ const Feature: React.FC<{ a: number; b: number; words: any; wordsV?: any; cap: s
   return (
     <AbsoluteFill style={{ flexDirection: "row", alignItems: "center", perspective: 1800, padding: "0 150px 0 130px", gap: 60 }}>
       <div style={{ flex: 1 }}>
-        <Cap size={20} style={{ opacity: inOut(t, a + 0.05, b), marginBottom: 22, color: C.primarySoft, letterSpacing: "0.25em" }}>{cap}</Cap>
+        <Cap size={24} style={{ opacity: inOut(t, a + 0.05, b), marginBottom: 22, color: C.primarySoft, letterSpacing: "0.25em" }}>{cap}</Cap>
         <Kinetic t0={a + 0.1} t1={b} size={104} align="left" words={words} />
       </div>
       <div style={{ width: cardW, ...cardStyle }}>{card}</div>
@@ -430,7 +432,7 @@ export const Health: React.FC = () => {
       card={
         <Glass style={{ padding: 40, fontFamily: F.sans, color: C.fg }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <div style={{ display: "flex", gap: 10, alignItems: "center" }}><Gauge size={24} color={C.primarySoft} /><Cap size={17}>Marketing Health Score</Cap></div>
+            <div style={{ display: "flex", gap: 10, alignItems: "center" }}><Gauge size={24} color={C.primarySoft} /><Cap size={20}>Marketing Health Score</Cap></div>
             <div style={{ padding: "8px 16px", borderRadius: 99, background: "rgba(16,185,129,.16)", color: C.green, fontWeight: 600, fontSize: 19, transform: `scale(${0.6 + 0.4 * ex})`, opacity: ex }}>Excellent</div>
           </div>
           <div style={{ position: "relative", width: 340, height: 340, margin: "30px auto 10px" }}>
@@ -467,7 +469,7 @@ export const Bars: React.FC = () => {
       card={
         <Glass style={{ padding: 40, fontFamily: F.sans, color: C.fg }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
-            <Cap size={17}>Platform Performance</Cap><span style={{ color: C.muted, fontSize: 18 }}>Last 30 days</span>
+            <Cap size={20}>Platform Performance</Cap><span style={{ color: C.muted, fontSize: 20 }}>Last 30 days</span>
           </div>
           {data.map(([k, v], i) => {
             const p = prog(t, a + 0.5 + i * 0.13, 0.9);
@@ -490,7 +492,7 @@ export const Bars: React.FC = () => {
               const p = pop(t, a + 1.3 + i * 0.15, 0.5);
               return (
                 <div key={m} style={{ flex: 1, padding: 20, borderRadius: 16, border: `1px solid ${C.line}`, background: "rgba(255,255,255,.03)", opacity: p, transform: `scale(${0.85 + 0.15 * p})` }}>
-                  <Cap size={14}>{m}</Cap>
+                  <Cap size={18}>{m}</Cap>
                   <div style={{ display: "flex", alignItems: "baseline", gap: 12, marginTop: 8 }}>
                     <span style={{ fontSize: 36, fontWeight: 600 }}>{v}</span><span style={{ color: C.green, fontSize: 19 }}>{d}</span>
                   </div>
@@ -525,8 +527,8 @@ export const Audit: React.FC = () => {
         <div style={{ position: "relative" }}>
           <Glass style={{ padding: 40, fontFamily: F.sans, color: C.fg }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <div style={{ display: "flex", gap: 10, alignItems: "center" }}><ShieldCheck size={26} color={C.primarySoft} /><Cap size={17}>Lead Audit</Cap></div>
-              <div style={{ fontSize: 18, color: C.muted }}>142 leads tracked</div>
+              <div style={{ display: "flex", gap: 10, alignItems: "center" }}><ShieldCheck size={26} color={C.primarySoft} /><Cap size={20}>Lead Audit</Cap></div>
+              <div style={{ fontSize: 20, color: C.muted }}>142 leads tracked</div>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 14, marginTop: 24, fontSize: 36, fontWeight: 600 }}>
               <span style={{ width: 16, height: 16, borderRadius: 9, background: fixed > 0.5 ? C.green : C.amber, boxShadow: `0 0 16px ${fixed > 0.5 ? C.green : C.amber}` }} />
@@ -595,10 +597,10 @@ export const Cheat: React.FC = () => {
                   <div key={m} style={{ width: tw, height: 170, padding: 20, borderRadius: 16, boxSizing: "border-box",
                     border: `1px solid ${hi && open > 0 ? C.primarySoft : C.line}`, background: hi ? `rgba(99,102,241,${0.2 * open})` : "rgba(255,255,255,.03)",
                     opacity: Math.min(1, p * 1.4), transform: `scale(${(0.85 + 0.15 * p) * (hi ? 1 - press * 0.05 : 1)})` }}>
-                    <Cap size={14}>{m}</Cap>
+                    <Cap size={16} style={{ whiteSpace: "nowrap", letterSpacing: "0.06em" }}>{m}</Cap>
                     <div style={{ fontSize: 34, fontWeight: 600, marginTop: 14 }}>{v}</div>
                     <div style={{ color: C.green, fontSize: 17, marginTop: 6 }}>{d}</div>
-                    <div style={{ color: C.primarySoft, fontSize: 15, marginTop: 8 }}>Learn more</div>
+                    <div style={{ color: C.primarySoft, fontSize: 18, marginTop: 6 }}>Learn more</div>
                   </div>
                 );
               })}

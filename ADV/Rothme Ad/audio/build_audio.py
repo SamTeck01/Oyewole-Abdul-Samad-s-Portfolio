@@ -154,11 +154,12 @@ def alert(): return (ping(988) * 0.6 + np.pad(ping(784), (int(0.12 * SR), 0))[: 
 def rnd(i):
     x = np.sin(i * 127.1 + 311.7) * 43758.5453; return x - np.floor(x)
 
-# storm
-for i in range(12):
-    ti = 0.03 + i * 0.16 + rnd(i) * 0.06
+# storm (5 cards already on screen at frame 0: start on a hit)
+place(sfx, impact(70), 0.0, 0.35)
+for i in range(5, 12):
+    ti = 0.05 + (i - 5) * 0.2 + rnd(i) * 0.06
     place(sfx, pop_(700 + 500 * rnd(i + 1)), ti, 0.35); place(sfx, whoosh(0.25, 800, 6000), ti - 0.08, 0.12)
-for i in range(5): place(sfx, ping(1568 + 200 * (i % 3)), 0.6 + i * 0.42, 0.22)
+for i in range(5): place(sfx, ping(1568 + 200 * (i % 3)), 0.2 + i * 0.45, 0.22)
 place(sfx, whoosh(0.6, 200, 4000), 2.9, 0.5)
 place(sfx, impact(48), 3.0, 0.7)
 # headlines
