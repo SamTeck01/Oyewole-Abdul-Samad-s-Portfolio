@@ -1,0 +1,71 @@
+{
+ "voice": "af_heart",
+ "duration": 83.842,
+ "lines": [
+  {
+   "id": "hook",
+   "start": 0.5,
+   "end": 3.046
+  },
+  {
+   "id": "maya1",
+   "start": 3.746,
+   "end": 11.692
+  },
+  {
+   "id": "maya2",
+   "start": 12.292,
+   "end": 21.596
+  },
+  {
+   "id": "turn",
+   "start": 22.296,
+   "end": 25.789
+  },
+  {
+   "id": "meet",
+   "start": 26.489,
+   "end": 32.206
+  },
+  {
+   "id": "connect",
+   "start": 33.005,
+   "end": 39.199
+  },
+  {
+   "id": "understand1",
+   "start": 39.799,
+   "end": 45.454
+  },
+  {
+   "id": "understand2",
+   "start": 45.854,
+   "end": 50.855
+  },
+  {
+   "id": "act",
+   "start": 51.556,
+   "end": 60.535
+  },
+  {
+   "id": "more",
+   "start": 61.235,
+   "end": 66.731
+  },
+  {
+   "id": "benefits",
+   "start": 67.431,
+   "end": 70.67
+  },
+  {
+   "id": "proof",
+   "start": 71.37,
+   "end": 76.818
+  },
+  {
+   "id": "cta",
+   "start": 77.518,
+   "end": 83.342
+  }
+ ]
+}

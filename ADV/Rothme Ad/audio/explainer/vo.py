@@ -4,15 +4,18 @@ from kokoro_onnx import Kokoro
 M, VOICE, OUT = sys.argv[1:4]
 B = "Roth-mee"  # brand pronunciation (ROTH-mee), to be confirmed with Riley
 LINES = [
-  ("problem1", "Your marketing lives everywhere. Ads in one place. Social in another. Your website, your email, your sales. Each one tells part of the story.", 0.6),
-  ("problem2", "So you end up with too many dashboards, reports that are hard to understand, and problems nobody notices, until leads are lost.", 0.8),
-  ("meet", f"Meet {B}. It brings your marketing together, shows what's working, and tells you what needs attention.", 0.9),
-  ("connect", "First, connect. Link your ads, social, analytics, email, CRM and store, with secure connections.", 0.7),
-  ("understand1", "Next, understand. Everything lands in one dashboard. Your Marketing Health Score shows how your marketing is doing, at a glance.", 0.4),
-  ("understand2", "And if a number confuses you, click it. The Marketing Cheat Sheet explains it in plain English.", 0.8),
-  ("act1", "Then, act. Lead Audit watches for broken tracking, disconnected integrations and lost leads, so you can fix problems before they cost you.", 0.4),
-  ("act2", "Reports are ready when you need them. And AI help is there, only if you want it.", 0.8),
-  ("proof", "Fourteen plus platforms. A hundred and fifty plus metrics. A hundred plus health checks.", 0.8),
+  ("hook", "Do you actually know which of your marketing is working?", 0.7),
+  ("maya1", "Meet Maya. She runs ads, posts every day, sends emails, and sells online. But her numbers live in ten different places.", 0.6),
+  ("maya2", "Every platform tells part of the story. Reports are full of numbers nobody explains. And when something breaks, she doesn't notice, until the leads stop.", 0.7),
+  ("turn", "Maya doesn't need more dashboards. She needs one that makes sense.", 0.7),
+  ("meet", f"Meet {B}. It brings your marketing together, shows what's working, and tells you what needs attention.", 0.8),
+  ("connect", "First, connect. Maya links her ads, social, analytics, email and store, with secure connections.", 0.6),
+  ("understand1", "Now everything lands in one dashboard. Her Marketing Health Score shows how she's doing, at a glance.", 0.4),
+  ("understand2", "And when a number confuses her, she clicks it. The Cheat Sheet explains it in plain English.", 0.7),
+  ("act", f"Then, {B}'s Lead Audit spots a problem. Her contact form stopped sending leads. Maya fixes it in minutes, and the leads start coming in again.", 0.7),
+  ("more", "But there's more. Reports are ready every Monday. And AI help is there, only if she wants it.", 0.7),
+  ("benefits", "Less guessing. Fewer lost leads. Smarter decisions.", 0.7),
+  ("proof", "Fourteen plus platforms. A hundred and fifty plus metrics. A hundred plus health checks.", 0.7),
   ("cta", f"{B}. Stop guessing. Start understanding your marketing. Get a demo, at {B} dot app.", 0.0),
 ]
 k = Kokoro(f"{M}/kokoro-v1.0.onnx", f"{M}/voices-v1.0.bin")

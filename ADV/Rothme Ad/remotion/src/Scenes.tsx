@@ -261,7 +261,7 @@ export const Connect: React.FC = () => {
 const NAV: [any, string][] = [[LayoutDashboard, "Dashboard"], [BarChart3, "Analytics"], [ShieldCheck, "Lead Audit"], [Activity, "Marketing Health"],
   [BookOpen, "Cheat Sheet"], [FileText, "Reports"], [Plug, "Integrations"], [Bell, "Notifications"], [Settings, "Settings"]];
 
-const Ring: React.FC<{ v: number; size: number; stroke: number }> = ({ v, size, stroke }) => {
+export const Ring: React.FC<{ v: number; size: number; stroke: number }> = ({ v, size, stroke }) => {
   const r = (size - stroke) / 2, c = 2 * Math.PI * r;
   return (
     <svg width={size} height={size} style={{ transform: "rotate(-90deg)" }}>
@@ -273,7 +273,7 @@ const Ring: React.FC<{ v: number; size: number; stroke: number }> = ({ v, size, 
   );
 };
 
-const Dashboard: React.FC<{ t0: number }> = ({ t0 }) => {
+export const Dashboard: React.FC<{ t0: number }> = ({ t0 }) => {
   const t = useT();
   const cp = (i: number) => pop(t, t0 + 0.12 * i, 0.55);
   const card = (i: number, st: React.CSSProperties, children: React.ReactNode) => (
