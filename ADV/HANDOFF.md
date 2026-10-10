@@ -26,5 +26,3 @@ Folder: `ADV/Hebei Xiangjin Xin Ad/` (brief, Blender script, Remotion code, audi
 - Blender 4.2.3 headless (download tarball from download.blender.org).
 - Python: numpy/scipy for music + SFX; ffmpeg for mix, master, contact sheets.
 - Renders: about 10–12 min per 44 s video at 1080p60, 4 cores.
-
-## Other notes
