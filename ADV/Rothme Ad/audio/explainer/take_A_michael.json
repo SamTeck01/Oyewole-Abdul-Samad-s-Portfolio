@@ -1,0 +1,56 @@
+{
+ "voice": "am_michael",
+ "duration": 79.027,
+ "lines": [
+  {
+   "id": "problem1",
+   "start": 0.5,
+   "end": 9.939
+  },
+  {
+   "id": "problem2",
+   "start": 10.539,
+   "end": 19.274
+  },
+  {
+   "id": "meet",
+   "start": 20.074,
+   "end": 26.211
+  },
+  {
+   "id": "connect",
+   "start": 27.111,
+   "end": 33.963
+  },
+  {
+   "id": "understand1",
+   "start": 34.663,
+   "end": 42.869
+  },
+  {
+   "id": "understand2",
+   "start": 43.269,
+   "end": 48.98
+  },
+  {
+   "id": "act1",
+   "start": 49.78,
+   "end": 59.332
+  },
+  {
+   "id": "act2",
+   "start": 59.732,
+   "end": 64.803
+  },
+  {
+   "id": "proof",
+   "start": 65.603,
+   "end": 71.463
+  },
+  {
+   "id": "cta",
+   "start": 72.263,
+   "end": 78.527
+  }
+ ]
+}

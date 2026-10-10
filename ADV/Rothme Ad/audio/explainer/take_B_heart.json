@@ -1,0 +1,56 @@
+{
+ "voice": "af_heart",
+ "duration": 73.332,
+ "lines": [
+  {
+   "id": "problem1",
+   "start": 0.5,
+   "end": 9.161
+  },
+  {
+   "id": "problem2",
+   "start": 9.761,
+   "end": 17.524
+  },
+  {
+   "id": "meet",
+   "start": 18.324,
+   "end": 24.04
+  },
+  {
+   "id": "connect",
+   "start": 24.94,
+   "end": 31.381
+  },
+  {
+   "id": "understand1",
+   "start": 32.081,
+   "end": 39.589
+  },
+  {
+   "id": "understand2",
+   "start": 39.989,
+   "end": 45.29
+  },
+  {
+   "id": "act1",
+   "start": 46.09,
+   "end": 54.927
+  },
+  {
+   "id": "act2",
+   "start": 55.327,
+   "end": 59.96
+  },
+  {
+   "id": "proof",
+   "start": 60.76,
+   "end": 66.208
+  },
+  {
+   "id": "cta",
+   "start": 67.008,
+   "end": 72.832
+  }
+ ]
+}
