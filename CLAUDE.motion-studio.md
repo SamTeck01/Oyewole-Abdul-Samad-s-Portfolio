@@ -27,7 +27,7 @@ Study the reference frame by frame (contact sheets every 0.5 s; note pacing, tra
 camera moves, sound). Write the full brief to `ADV/[Client] Ad/brief/PROMPT.md` in this repo
 (what we're selling, concept, beat sheet with timings, script, voice, music, SFX plan, screens/scenes
 list, assets list), commit + push, show SamTeck. **Wait for OK.**
-(Cloud note: `~/Desktop/ADV/` doesn't exist in the container — SamTeck pulls the repo to their Desktop.)
+(Everything lives and runs in the cloud: brief, assets, code, renders all go in `ADV/` in this repo. Deliverables are sent in chat.)
 
 ## TOOLS (cloud session)
 - **Video:** Remotion (React) at 60 fps, `@remotion/motion-blur` for camera moves. Separate compositions per format (1920×1080, 1080×1920) — never crop one into the other.

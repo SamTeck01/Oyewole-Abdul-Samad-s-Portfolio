@@ -28,4 +28,3 @@ Folder: `ADV/Hebei Xiangjin Xin Ad/` (brief, Blender script, Remotion code, audi
 - Renders: about 10–12 min per 44 s video at 1080p60, 4 cores.
 
 ## Other notes
-- Maryam (SamTeck's partner) does client outreach. Her LinkedIn kit is in `ADV/linkedin/`. Resume that later.
