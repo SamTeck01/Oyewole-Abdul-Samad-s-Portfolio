@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <rect x="13" y="10" width="166" height="170" rx="34" fill="#08111E"/>
+  <!-- white R: top bar + bowl -->
+  <path fill="#FDFDFD" d="M52 47.5 H116 C134 47.5 145 58 145 76 C145 93 134 104 118 105 L104 105 L97 92 H114 C123 92 128 86 128 77 C128 68 123 63 114 63 H67 Z"/>
+  <!-- white leg -->
+  <path fill="#FDFDFD" d="M104 105 L118 105 L158 144 H139 Z"/>
+  <!-- blue diagonal -->
+  <path fill="#0771FA" d="M58 76 H79 L140 144 H119 Z"/>
+  <!-- bars -->
+  <g fill="#0771FA">
+    <rect x="50" y="128" width="10" height="16"/>
+    <rect x="64" y="124" width="10" height="20"/>
+    <rect x="78" y="120" width="9" height="24"/>
+  </g>
+  <!-- arrow -->
+  <path d="M47 129 C63 125 78 118 87 107" stroke="#0771FA" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+  <path fill="#0771FA" d="M90 103 L80 106 L87 112 Z"/>
+</svg>

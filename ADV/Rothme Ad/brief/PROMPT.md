@@ -1,6 +1,15 @@
 # Rothme: Product Ad (spec piece for Riley Othmer)
 
-Status: **BRIEF — waiting for SamTeck's OK.** Nothing built yet.
+Status: **Approved ("do the best"). Building preview v1.**
+
+### Changes made at build time (after reading all of rothme.app)
+- Logo rebuilt in vector from the app icon: `assets_in/brand/rothme_mark.svg`. Wordmark "ROTHME" in Space Grotesk.
+- No waitlist. End line: "Stop guessing. Start understanding your marketing." + rothme.app (both from the site).
+- The site says AI is optional, so the AI Brief beat became the **Marketing Cheat Sheet** (CTR explained in plain English, the site's own copy).
+- Three-word line is the site's own: **"Connect. Understand. Act."**
+- Headlines use the site's style: one word in italic indigo ("Your marketing data is *everywhere.*").
+- Platform logos: Simple Icons brand glyphs, small, on dark tiles, like Rothme's own site.
+- Length: 34.5 s ad + 2.2 s samteck card = 36.7 s. Music at 120 BPM.
 Next after this: Explainer video (separate brief, after this ad is approved).
 
 ## 1. Client and product
