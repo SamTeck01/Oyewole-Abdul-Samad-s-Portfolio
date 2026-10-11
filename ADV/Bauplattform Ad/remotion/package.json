@@ -1,11 +1,15 @@
 {
   "name": "bauplattform-film",
   "private": true,
-  "scripts": { "studio": "remotion studio src/index.ts" },
+  "scripts": {
+    "studio": "remotion studio src/index.ts"
+  },
   "dependencies": {
     "@fontsource/inter": "5.1.0",
+    "@fontsource/inter-tight": "^5.1.0",
     "@fontsource/manrope": "5.1.0",
     "@remotion/cli": "4.0.240",
+    "@remotion/media-utils": "^4.0.240",
     "@remotion/motion-blur": "4.0.240",
     "@types/react": "18.3.12",
     "lucide-react": "0.460.0",

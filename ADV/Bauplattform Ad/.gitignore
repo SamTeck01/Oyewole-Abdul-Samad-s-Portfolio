@@ -1,0 +1,7 @@
+# generated media (rebuilt by scripts; finals delivered separately)
+blender/renders/
+remotion/out/
+remotion/public/3d/
+remotion/public/*.wav
+audio/*.wav
+audio/vo/
