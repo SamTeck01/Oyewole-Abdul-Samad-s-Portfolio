@@ -2,3 +2,5 @@ out/
 node_modules/
 audio/vo.wav
 remotion/public/mix.wav
+audio/vo_en.wav
+remotion/public/mix_en.wav

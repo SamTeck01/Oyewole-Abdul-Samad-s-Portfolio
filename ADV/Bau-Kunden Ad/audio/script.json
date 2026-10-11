@@ -1,9 +1,37 @@
 [
-{"id":"l1","de":"Ihr Handwerk ist gut. Aber findet man Ihren Betrieb auch online?"},
-{"id":"l2","de":"Bau-Kunden übernimmt Ihr komplettes Online-Marketing."},
-{"id":"l3","de":"Anzeigen in Google-Suche und Maps, Texte, Zielgruppen und Auswertung."},
-{"id":"l4","de":"Für 500 Euro im Monat, plus mindestens 1.000 Euro Werbebudget."},
-{"id":"l5","de":"Jeden Monat ein klarer Report: ausgegeben, gesehen, angefragt."},
-{"id":"l6","de":"Und bleibt ein Monat ohne nachvollziehbare Anfrage, bekommen Sie hundert Prozent zurück."},
-{"id":"l7","de":"Monatlich kündbar. Sichern Sie sich jetzt Ihre kostenlose Erstberatung."}
+ {
+  "id": "l1",
+  "de": "Ihr Handwerk ist gut. Aber findet man Ihren Betrieb auch online?",
+  "en": "Your craft is great. But can customers actually find your business online?"
+ },
+ {
+  "id": "l2",
+  "de": "Bau-Kunden übernimmt Ihr komplettes Online-Marketing.",
+  "en": "Bau-Kunden takes care of your entire online marketing."
+ },
+ {
+  "id": "l3",
+  "de": "Anzeigen in Google-Suche und Maps, Texte, Zielgruppen und Auswertung.",
+  "en": "Ads on Google Search and Maps, copy, targeting and reporting."
+ },
+ {
+  "id": "l4",
+  "de": "Für 500 Euro im Monat, plus mindestens 1.000 Euro Werbebudget.",
+  "en": "For 500 euros a month, plus at least 1,000 euros in ad budget."
+ },
+ {
+  "id": "l5",
+  "de": "Jeden Monat ein klarer Report: ausgegeben, gesehen, angefragt.",
+  "en": "Every month, a clear report: spent, seen, inquired."
+ },
+ {
+  "id": "l6",
+  "de": "Und bleibt ein Monat ohne nachvollziehbare Anfrage, bekommen Sie hundert Prozent zurück.",
+  "en": "And if a month brings no traceable inquiry, you get one hundred percent back."
+ },
+ {
+  "id": "l7",
+  "de": "Monatlich kündbar. Sichern Sie sich jetzt Ihre kostenlose Erstberatung.",
+  "en": "Cancel monthly. Book your free consultation today."
+ }
 ]

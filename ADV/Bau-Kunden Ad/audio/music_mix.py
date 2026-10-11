@@ -1,7 +1,8 @@
 # Calm original music (pad + soft piano + sub) made in code, then VO mix with ducking, mastered to -14 LUFS.
 import json, numpy as np, soundfile as sf, pyloudnorm as pyln
 from scipy.signal import butter, sosfilt
-SR = 48000; c = json.load(open('../remotion/src/cues.json')); DUR = c['total']; N = int(DUR*SR); t = np.arange(N)/SR
+import sys; SUF = sys.argv[1] if len(sys.argv) > 1 else ''
+SR = 48000; c = json.load(open(f'../remotion/src/cues{SUF}.json')); DUR = c['total']; N = int(DUR*SR); t = np.arange(N)/SR
 rng = np.random.default_rng(7); lp = lambda x, f: sosfilt(butter(2, f, 'low', fs=SR, output='sos'), x)
 midi = lambda m: 440*2**((m-69)/12); BAR = 4*60/96
 prog = [[48,55,60,64,67],[45,52,57,60,64],[41,48,53,57,60],[43,50,55,59,62]]  # C  Am  F  G
@@ -21,9 +22,9 @@ for b in range(int(DUR/BAR)+1):
     if t0 > 4.5: add(sub, np.sin(2*np.pi*midi(ch[0]-12)*tt)*env*.25, t0)
 music = lp(pad, 1300)*.55 + lp(pno, 5000)*.9 + sub*.5
 music *= np.minimum(1, t/1.2)*np.clip((DUR-t)/2.2, 0, 1)**.7; music /= np.abs(music).max()
-vo, _ = sf.read('vo.wav', dtype='float32'); vo = np.pad(vo, (0, max(0, N-len(vo))))[:N]
+vo, _ = sf.read(f'vo{SUF}.wav', dtype='float32'); vo = np.pad(vo, (0, max(0, N-len(vo))))[:N]
 k = int(.25*SR); env = np.convolve(np.abs(vo), np.ones(k)/k, 'same')
 mix = vo + music*.35*10**((-15*np.clip(env/.02, 0, 1))/20)
 m = pyln.Meter(SR); y = pyln.normalize.loudness(mix, m.integrated_loudness(mix), -17)
-y = np.clip(y, -.89, .89); sf.write('../remotion/public/mix.wav', np.stack([y, y], 1).astype(np.float32), SR)
+y = np.clip(y, -.89, .89); sf.write(f'../remotion/public/mix{SUF}.wav', np.stack([y, y], 1).astype(np.float32), SR)
 print('LUFS(mono)', round(m.integrated_loudness(y), 2))

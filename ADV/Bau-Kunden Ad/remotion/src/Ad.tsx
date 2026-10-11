@@ -5,14 +5,37 @@ import '@fontsource/barlow/400.css';
 import '@fontsource/barlow/600.css';
 import '@fontsource/barlow/700.css';
 import {Search, MapPin, PenLine, Users, BarChart3, Phone, Mail, MessageSquare, Check} from 'lucide-react';
-import cues from './cues.json';
+import cuesDe from './cues.json';
+import cuesEn from './cues_en.json';
 
 export const FPS = 60;
 // Brand, taken from bau-kunden.app
 const C = {bg: '#f6f1ea', ink: '#231b15', red: '#ee333e', mute: '#6f665e', line: '#ddd4c8', card: '#fffdf9'};
 const HEAD = '"Bebas Neue", sans-serif';
 const BODY = 'Barlow, sans-serif';
-const L = Object.fromEntries(cues.lines.map((l) => [l.id, l]));
+type Lang = 'de' | 'en';
+const mk = (c: typeof cuesDe) => Object.fromEntries(c.lines.map((l) => [l.id, l])) as Record<string, {start: number; end: number}>;
+const LS = {de: mk(cuesDe), en: mk(cuesEn as typeof cuesDe)};
+const LangCtx = React.createContext<Lang>('de');
+const useLang = () => React.useContext(LangCtx);
+const useL = () => LS[useLang()];
+const TX = {
+  de: {h1a: 'IHR HANDWERK', h1b: 'IST GUT.', h1c: 'ABER FINDET MAN', h1d: 'SIE AUCH ONLINE?', q: 'Dachdecker in meiner Nähe',
+    b1: 'IHR KOMPLETTES', b2: 'ONLINE-MARKETING.', tag: 'Für Handwerk & Dienstleistung', we: 'WIR ÜBERNEHMEN.',
+    items: ['Google-Suche', 'Google Maps', 'Texte', 'Zielgruppen', 'Auswertung'],
+    p1: 'Betreuung', p1s: 'pauschal, alles inklusive', p2: '+ Werbebudget', p2s: 'mindestens, für Ihre Anzeigen', mo: ' /MTL.', vat: 'Alle Preise zzgl. gesetzl. MwSt.', loc: 'de-DE',
+    rep: 'IHR MONATSREPORT', rows: ['Ausgegeben', 'Gesehen', 'Angefragt'],
+    g0: 'Keine nachvollziehbare Anfrage im Monat?', g1: 'GELD ZURÜCK.', g2: 'Betreuungspauschale und ausgegebenes Werbebudget',
+    c1: 'VOLLE', c2: 'AUFTRAGSBÜCHER.', cta: 'KOSTENLOSE ERSTBERATUNG', c3: 'Monatlich kündbar · keine Mindestlaufzeit'},
+  en: {h1a: 'YOUR CRAFT', h1b: 'IS GREAT.', h1c: 'BUT CAN CUSTOMERS', h1d: 'FIND YOU ONLINE?', q: 'Roofer near me',
+    b1: 'YOUR ENTIRE', b2: 'ONLINE MARKETING.', tag: 'For trades & service businesses', we: 'WE HANDLE IT.',
+    items: ['Google Search', 'Google Maps', 'Ad copy', 'Targeting', 'Reporting'],
+    p1: 'Management', p1s: 'flat fee, all inclusive', p2: '+ Ad budget', p2s: 'minimum, for your ads', mo: ' /MO.', vat: 'All prices plus statutory VAT.', loc: 'en-GB',
+    rep: 'YOUR MONTHLY REPORT', rows: ['Spent', 'Seen', 'Inquired'],
+    g0: 'No traceable inquiry this month?', g1: 'MONEY BACK.', g2: 'Management fee and ad spend for that month',
+    c1: 'FULL', c2: 'ORDER BOOKS.', cta: 'FREE CONSULTATION', c3: 'Cancel monthly · no minimum term'},
+};
+const useT = () => TX[useLang()];
 const f = (s: number) => Math.round(s * FPS);
 
 const useIn = (delay = 0, damping = 18) => {
@@ -52,14 +75,15 @@ const Tag: React.FC<{children: React.ReactNode; k: number}> = ({children, k}) =>
 
 // 1 · Hook: a search for a trade, the business is not there
 const S1: React.FC<{k: number}> = ({k}) => {
+  const L = useL(); const T = useT();
   const fr = useCurrentFrame();
-  const q = 'Dachdecker in meiner Nähe';
+  const q = T.q;
   const typed = q.slice(0, Math.max(0, Math.floor((fr - f(1.2)) / 2)));
   const lineB = f(L.l1.start + 1.55 - 0.5);
   return (
     <div style={{width: 900 * k, display: 'flex', flexDirection: 'column', gap: 34 * k}}>
-      <Rise><div style={{fontFamily: HEAD, fontSize: 150 * k, lineHeight: 0.9, color: C.ink}}>IHR HANDWERK<br />IST GUT.</div></Rise>
-      <Rise d={lineB / FPS}><div style={{fontFamily: HEAD, fontSize: 112 * k, lineHeight: 0.92, color: C.red}}>ABER FINDET MAN<br />SIE AUCH ONLINE?</div></Rise>
+      <Rise><div style={{fontFamily: HEAD, fontSize: 150 * k, lineHeight: 0.9, color: C.ink}}>{T.h1a}<br />{T.h1b}</div></Rise>
+      <Rise d={lineB / FPS}><div style={{fontFamily: HEAD, fontSize: 112 * k, lineHeight: 0.92, color: C.red}}>{T.h1c}<br />{T.h1d}</div></Rise>
       <Rise d={0.6}>
         <div style={{display: 'flex', alignItems: 'center', gap: 18 * k, background: C.card, border: `2px solid ${C.line}`, padding: `${22 * k}px ${28 * k}px`, boxShadow: '0 20px 50px rgba(35,27,21,.10)'}}>
           <Search size={40 * k} color={C.mute} />
@@ -72,24 +96,26 @@ const S1: React.FC<{k: number}> = ({k}) => {
 
 // 2 · Brand
 const S2: React.FC<{k: number}> = ({k}) => {
+  const L = useL(); const T = useT();
   const p = useIn(0.1, 14);
   return (
     <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 46 * k}}>
       <div style={{transform: `scale(${0.85 + p * 0.15})`, opacity: p}}><Logo size={120 * k} /></div>
-      <Rise d={0.9}><div style={{fontFamily: HEAD, fontSize: 92 * k, lineHeight: 0.95, color: C.ink, textAlign: 'center'}}>IHR KOMPLETTES<br />ONLINE-MARKETING.</div></Rise>
-      <Rise d={1.5}><Tag k={k}>Für Handwerk &amp; Dienstleistung</Tag></Rise>
+      <Rise d={0.9}><div style={{fontFamily: HEAD, fontSize: 92 * k, lineHeight: 0.95, color: C.ink, textAlign: 'center'}}>{T.b1}<br />{T.b2}</div></Rise>
+      <Rise d={1.5}><Tag k={k}>{T.tag}</Tag></Rise>
     </div>
   );
 };
 
 // 3 · What's included
 const S3: React.FC<{k: number}> = ({k}) => {
-  const items: [any, string][] = [[Search, 'Google-Suche'], [MapPin, 'Google Maps'], [PenLine, 'Texte'], [Users, 'Zielgruppen'], [BarChart3, 'Auswertung']];
+  const L = useL(); const T = useT();
+  const items =  [Search, MapPin, PenLine, Users, BarChart3].map((I, i) => [I, T.items[i]]);
   const step = (L.l3.end - L.l3.start - 0.6) / items.length;
   return (
     <div style={{width: 900 * k, display: 'flex', flexDirection: 'column', gap: 22 * k}}>
-      <Rise><div style={{fontFamily: HEAD, fontSize: 110 * k, color: C.ink, lineHeight: 0.9, marginBottom: 14 * k}}>WIR ÜBERNEHMEN.</div></Rise>
-      {items.map(([I, t], i) => (
+      <Rise><div style={{fontFamily: HEAD, fontSize: 110 * k, color: C.ink, lineHeight: 0.9, marginBottom: 14 * k}}>{T.we}</div></Rise>
+      {(items as [any, string][]).map(([I, t], i) => (
         <Rise key={t} d={0.35 + i * step} y={30}>
           <div style={{display: 'flex', alignItems: 'center', gap: 26 * k, background: C.card, borderLeft: `8px solid ${C.red}`, padding: `${20 * k}px ${28 * k}px`, boxShadow: '0 14px 40px rgba(35,27,21,.08)'}}>
             <I size={46 * k} color={C.red} strokeWidth={2.2} />
@@ -104,6 +130,7 @@ const S3: React.FC<{k: number}> = ({k}) => {
 
 // 4 · Price
 const S4: React.FC<{k: number}> = ({k}) => {
+  const L = useL(); const T = useT();
   const fr = useCurrentFrame();
   const n = Math.round(interpolate(fr, [f(0.2), f(1.4)], [0, 500], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic)}));
   const b = Math.round(interpolate(fr, [f(2.4), f(3.6)], [0, 1000], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic)}));
@@ -111,29 +138,30 @@ const S4: React.FC<{k: number}> = ({k}) => {
     <Rise d={d}>
       <div style={{display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', borderBottom: `2px solid ${C.line}`, paddingBottom: 22 * k}}>
         <div style={{fontFamily: BODY, color: C.mute, fontSize: 34 * k, fontWeight: 600, lineHeight: 1.2}}>{label}<br /><span style={{fontWeight: 400, fontSize: 28 * k}}>{sub}</span></div>
-        <div style={{fontFamily: HEAD, fontSize: (big ? 170 : 120) * k, lineHeight: 0.85, color: big ? C.red : C.ink}}>{v}<span style={{fontSize: 40 * k, color: C.mute}}> /MTL.</span></div>
+        <div style={{fontFamily: HEAD, fontSize: (big ? 170 : 120) * k, lineHeight: 0.85, color: big ? C.red : C.ink}}>{v}<span style={{fontSize: 40 * k, color: C.mute}}>{T.mo}</span></div>
       </div>
     </Rise>
   );
   return (
     <div style={{width: 900 * k, display: 'flex', flexDirection: 'column', gap: 40 * k}}>
-      {row('Betreuung', 'pauschal, alles inklusive', `${n} €`, 0, true)}
-      {row('+ Werbebudget', 'mindestens, für Ihre Anzeigen', `${b.toLocaleString('de-DE')} €`, 2.2, false)}
-      <Rise d={3.2}><div style={{fontFamily: BODY, fontSize: 28 * k, color: C.mute}}>Alle Preise zzgl. gesetzl. MwSt.</div></Rise>
+      {row(T.p1, T.p1s, `${n} €`, 0, true)}
+      {row(T.p2, T.p2s, `${b.toLocaleString(T.loc)} €`, 2.2, false)}
+      <Rise d={3.2}><div style={{fontFamily: BODY, fontSize: 28 * k, color: C.mute}}>{T.vat}</div></Rise>
     </div>
   );
 };
 
 // 5 · Monthly report (no invented numbers, just the three things it shows)
 const S5: React.FC<{k: number}> = ({k}) => {
+  const L = useL(); const T = useT();
   const fr = useCurrentFrame();
-  const rows: [string, number][] = [['Ausgegeben', 0.62], ['Gesehen', 0.9], ['Angefragt', 0.45]];
+  const rows: [string, number][] = [[T.rows[0], 0.62], [T.rows[1], 0.9], [T.rows[2], 0.45]];
   const step = (L.l5.end - L.l5.start) / 4.2;
   return (
     <Rise y={60}>
       <div style={{width: 880 * k, background: C.card, padding: 52 * k, boxShadow: '0 30px 80px rgba(35,27,21,.14)', border: `2px solid ${C.line}`}}>
         <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 40 * k}}>
-          <div style={{fontFamily: HEAD, fontSize: 84 * k, color: C.ink, lineHeight: 1}}>IHR MONATSREPORT</div>
+          <div style={{fontFamily: HEAD, fontSize: 84 * k, color: C.ink, lineHeight: 1}}>{T.rep}</div>
           <div style={{width: 22 * k, height: 22 * k, background: C.red}} />
         </div>
         {rows.map(([t, v], i) => {
@@ -153,41 +181,44 @@ const S5: React.FC<{k: number}> = ({k}) => {
 
 // 6 · Guarantee
 const S6: React.FC<{k: number}> = ({k}) => {
+  const L = useL(); const T = useT();
   const fr = useCurrentFrame();
   const hit = f(L.l6.end - L.l6.start - 1.9);
   const p = spring({frame: fr - hit, fps: FPS, config: {damping: 12, mass: 0.8}});
   const icons = [Phone, Mail, MessageSquare];
   return (
     <div style={{width: 900 * k, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 30 * k}}>
-      <Rise><div style={{fontFamily: BODY, fontWeight: 600, fontSize: 40 * k, color: C.mute, textAlign: 'center'}}>Keine nachvollziehbare Anfrage im Monat?</div></Rise>
+      <Rise><div style={{fontFamily: BODY, fontWeight: 600, fontSize: 40 * k, color: C.mute, textAlign: 'center'}}>{T.g0}</div></Rise>
       <Rise d={0.5}><div style={{display: 'flex', gap: 30 * k}}>{icons.map((I, i) => (
         <div key={i} style={{width: 96 * k, height: 96 * k, border: `2px dashed ${C.line}`, display: 'flex', alignItems: 'center', justifyContent: 'center'}}><I size={42 * k} color={C.mute} /></div>
       ))}</div></Rise>
       <div style={{opacity: p, transform: `scale(${0.6 + 0.4 * p})`, fontFamily: HEAD, fontSize: 300 * k, lineHeight: 0.85, color: C.red, marginTop: 20 * k}}>100 %</div>
-      <div style={{opacity: p, fontFamily: HEAD, fontSize: 110 * k, color: C.ink, lineHeight: 0.9}}>GELD ZURÜCK.</div>
-      <div style={{opacity: p, fontFamily: BODY, fontSize: 30 * k, color: C.mute, textAlign: 'center'}}>Betreuungspauschale und ausgegebenes Werbebudget</div>
+      <div style={{opacity: p, fontFamily: HEAD, fontSize: 110 * k, color: C.ink, lineHeight: 0.9}}>{T.g1}</div>
+      <div style={{opacity: p, fontFamily: BODY, fontSize: 30 * k, color: C.mute, textAlign: 'center'}}>{T.g2}</div>
     </div>
   );
 };
 
 // 7 · CTA
 const S7: React.FC<{k: number}> = ({k}) => {
+  const L = useL(); const T = useT();
   const fr = useCurrentFrame();
   const pulse = 1 + 0.025 * Math.sin(Math.max(0, fr - f(2)) / 14);
   return (
     <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 40 * k}}>
       <Rise><Logo size={100 * k} /></Rise>
-      <Rise d={0.3}><div style={{fontFamily: HEAD, fontSize: 120 * k, color: C.ink, lineHeight: 0.9, textAlign: 'center'}}>VOLLE<br />AUFTRAGSBÜCHER.</div></Rise>
+      <Rise d={0.3}><div style={{fontFamily: HEAD, fontSize: 120 * k, color: C.ink, lineHeight: 0.9, textAlign: 'center'}}>{T.c1}<br />{T.c2}</div></Rise>
       <Rise d={1.2}>
-        <div style={{transform: `scale(${pulse})`, background: C.red, color: '#fff', fontFamily: BODY, fontWeight: 700, fontSize: 40 * k, letterSpacing: 3, padding: `${30 * k}px ${54 * k}px`}}>KOSTENLOSE ERSTBERATUNG</div>
+        <div style={{transform: `scale(${pulse})`, background: C.red, color: '#fff', fontFamily: BODY, fontWeight: 700, fontSize: 40 * k, letterSpacing: 3, padding: `${30 * k}px ${54 * k}px`}}>{T.cta}</div>
       </Rise>
       <Rise d={1.6}><div style={{fontFamily: BODY, fontWeight: 700, fontSize: 48 * k, color: C.ink}}>bau-kunden.app</div></Rise>
-      <Rise d={0.4}><Tag k={k}>Monatlich kündbar · keine Mindestlaufzeit</Tag></Rise>
+      <Rise d={0.4}><Tag k={k}>{T.c3}</Tag></Rise>
     </div>
   );
 };
 
-export const Ad: React.FC = () => {
+export const Ad: React.FC<{lang?: Lang}> = ({lang = 'de'}) => {
+  const L = LS[lang];
   const {width, height, durationInFrames} = useVideoConfig();
   const k = Math.min(width / 1080, height / 1350) * (height / width > 1.5 ? 1.08 : 1);
   const ids = ['l1', 'l2', 'l3', 'l4', 'l5', 'l6', 'l7'];
@@ -205,11 +236,11 @@ export const Ad: React.FC = () => {
         const Comp = S[i];
         return (
           <Sequence key={id} from={from} durationInFrames={to - from}>
-            <Scene len={to - from}><Comp k={k} /></Scene>
+            <LangCtx.Provider value={lang}><Scene len={to - from}><Comp k={k} /></Scene></LangCtx.Provider>
           </Sequence>
         );
       })}
-      <Audio src={staticFile('mix.wav')} />
+      <Audio src={staticFile(lang === 'en' ? 'mix_en.wav' : 'mix.wav')} />
     </AbsoluteFill>
   );
 };
