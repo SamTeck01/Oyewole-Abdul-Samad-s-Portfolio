@@ -1,10 +1,10 @@
 import React from 'react';
 import {AbsoluteFill, Sequence, Audio, staticFile} from 'remotion';
-import {CUES, L, FPS, SceneT, LangCtx, Lang, K} from './kit';
+import {CUES, L, FPS, SceneT, LangCtx, Lang, K, setCues, cuesFor} from './kit';
 import * as S from './scenes';
 
 const END_CARD = 2.4;
-export const FILM_SECONDS = CUES.total + END_CARD;
+export const filmSeconds = (lang: Lang) => cuesFor(lang).total + END_CARD;
 
 // scene boundaries in absolute seconds, all derived from the VO cues
 const cuts = () => {
@@ -36,10 +36,12 @@ const cuts = () => {
     {from: s('l30', 0.6), C: S.S24},
     {from: CUES.total, C: S.EndCard, props: {t0: CUES.total}},
   ];
-  return list.map((x, i) => ({...x, to: i + 1 < list.length ? list[i + 1].from : FILM_SECONDS}));
+  return list.map((x, i) => ({...x, to: i + 1 < list.length ? list[i + 1].from : CUES.total + END_CARD}));
 };
 
-export const Film: React.FC<{lang: Lang}> = ({lang}) => (
+export const Film: React.FC<{lang: Lang}> = ({lang}) => {
+  setCues(lang);
+  return (
   <LangCtx.Provider value={lang}>
     <AbsoluteFill style={{background: K.bg}}>
       {cuts().map(({from, to, C, props}, i) => {
@@ -56,4 +58,5 @@ export const Film: React.FC<{lang: Lang}> = ({lang}) => (
       <Audio src={staticFile(`mix_${lang}.wav`)} />
     </AbsoluteFill>
   </LangCtx.Provider>
-);
+  );
+};

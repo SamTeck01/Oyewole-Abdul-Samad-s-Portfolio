@@ -4,7 +4,8 @@ from scipy.signal import butter, sosfilt, resample_poly
 import pyloudnorm as pyln
 
 SR = 48000
-c = json.load(open('../remotion/src/cues.json'))
+LANG = sys.argv[1] if len(sys.argv) > 1 else 'en'
+c = json.load(open('../remotion/src/cues.json' if LANG == 'en' else '../remotion/src/cues_de.json'))
 L = {l['id']: l for l in c['lines']}
 TOTAL = c['total'] + 2.4
 N = int(TOTAL * SR)
@@ -48,7 +49,7 @@ def put(s, at):
 
 # soft tick on every word (vaylens: words land with a tiny click)
 for l in c['lines']:
-    for w in l['words']:
+    for w in (l['words'] if LANG == 'en' else l['dewords']):
         put(tick(0.035), w['s'])
 # whoosh into each scene cut (same cut list as Film.tsx)
 s_ = lambda i, d=0.4: L[i]['start'] - d
@@ -62,16 +63,16 @@ for k in range(3): put(hit(0.12), m0 + k * md / 3)
 put(hit(0.32), L['l04']['start']); put(hit(0.32), L['l29']['start'] - 0.05)
 put(whoosh(0.7, 0.14), L['l04']['end'] + 0.25)
 # logo chimes
-put(chime(0.16), L['l05']['words'][-1]['s'] - 0.05); put(chime(0.2), L['l30']['start'] - 0.3)
+put(chime(0.16), (L['l05']['words'][-1] if LANG == 'en' else next(w for w in L['l05']['dewords'] if 'check' in w['t']))['s'] - 0.05); put(chime(0.2), L['l30']['start'] - 0.3)
 # approval tap, flags, payments
 put(pop(0.14, 700), L['l17']['end'] - 0.3); put(chime(0.07), L['l17']['end'] - 0.25)
 for k in range(3): put(pop(0.08, 500 + k * 120), L['l15']['start'] + 0.2 + k * 0.35)
 put(pop(0.1, 420), L['l23']['start'] + 2.0)
-for k in range(4): put(pop(0.1, 600 + k * 150), L['l26']['words'][-4 + k]['s'])
+for k in range(4): put(pop(0.1, 600 + k * 150), L['l26']['words' if LANG == 'en' else 'dewords'][-4 + k]['s'])
 # end card
 put(pop(0.08, 800), c['total'] + 0.2)
 
-music, msr = sf.read('music.wav', dtype='float32')
+music, msr = sf.read('music.wav' if LANG == 'en' else 'music_de.wav', dtype='float32')
 music = music.mean(1)
 music = np.pad(music, (0, max(0, N - len(music))))[:N]
 
@@ -85,9 +86,9 @@ def master(x, target=-14.0):
         y = np.where(np.abs(y) > lim * 0.9, np.sign(y) * (lim * 0.9 + (np.abs(y) - lim * 0.9) / (1 + (np.abs(y) - lim * 0.9) / (lim * 0.1))), y)
     return y, meter.integrated_loudness(y)
 
-for lang in ('en', 'de'):
-    if lang == 'en':
-        vo, vsr = sf.read('vo_af_heart_full.wav', dtype='float32')
+for lang in (LANG,):
+    if True:
+        vo, vsr = sf.read('vo_af_heart_full.wav' if lang == 'en' else 'vo_de_full.wav', dtype='float32')
         vo = resample_poly(vo, SR, vsr).astype(np.float32)
         vo = np.pad(vo, (0, max(0, N - len(vo))))[:N]
         env = np.abs(vo)
@@ -99,7 +100,7 @@ for lang in ('en', 'de'):
         mix = vo * 1.0 + mus + sfx * 0.9
     else:
         mix = music * 0.75 + sfx * 0.9
-    y, lufs = master(mix)
+    y, lufs = master(mix, -17.0)  # mono -17 = -14 LUFS once written as dual-mono stereo
     st = np.stack([y, y], 1)
     sf.write(f'../remotion/public/mix_{lang}.wav', st.astype(np.float32), SR)
     sf.write(f'stems_{lang}_sfx.wav', sfx.astype(np.float32), SR)

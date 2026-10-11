@@ -6,7 +6,9 @@ from scipy.signal import butter, sosfilt
 SR = 48000
 BPM = 100
 BEAT = 60 / BPM
-cues = json.load(open('cues_en.json'))
+import sys
+LANG = sys.argv[1] if len(sys.argv) > 1 else 'en'
+cues = json.load(open('cues_en.json' if LANG == 'en' else '../remotion/src/cues_de.json'))
 DUR = cues['total'] + 3.2  # VO + end card ring-out
 N = int(DUR * SR)
 t = np.arange(N) / SR
@@ -25,7 +27,8 @@ BAR = BEAT * 4
 
 def section_level(sec):
     # energy curve: intro sparse, build at brand reveal, steady through phases, lift at the end
-    pts = [(0, .45), (14, .5), (17.5, 1.0), (40, .85), (60, 1.0), (110, 1.05), (122, .8), (DUR, .6)]
+    sc = DUR / 136.69  # energy curve stretches with the cut
+    pts = [(0, .45), (14 * sc, .5), (17.5 * sc, 1.0), (40 * sc, .85), (60 * sc, 1.0), (110 * sc, 1.05), (122 * sc, .8), (DUR, .6)]
     xs, ys = zip(*pts)
     return np.interp(sec, xs, ys)
 
@@ -106,5 +109,5 @@ out += drm
 out *= np.minimum(1, t / 1.5)
 out *= np.clip((DUR - t) / 2.5, 0, 1) ** .7
 out /= np.max(np.abs(out)) + 1e-9
-sf.write('music.wav', np.stack([out, np.roll(out, 240) * .98], 1).astype(np.float32), SR)
+sf.write(('music.wav' if LANG == 'en' else 'music_de.wav'), np.stack([out, np.roll(out, 240) * .98], 1).astype(np.float32), SR)
 print('music', round(DUR, 2))

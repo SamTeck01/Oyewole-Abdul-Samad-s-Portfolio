@@ -1,0 +1,2719 @@
+{
+ "total": 163.987,
+ "lines": [
+  {
+   "id": "l01",
+   "start": 1.2,
+   "end": 5.224,
+   "en": "Running a construction project shouldn't be rocket science.",
+   "de": "Ein Bauprojekt zu f\u00fchren sollte keine Raketenwissenschaft sein.",
+   "words": [
+    {
+     "t": "Running",
+     "s": 1.44,
+     "e": 1.7
+    },
+    {
+     "t": "a",
+     "s": 1.7,
+     "e": 2.12
+    },
+    {
+     "t": "construction",
+     "s": 2.12,
+     "e": 2.72
+    },
+    {
+     "t": "project",
+     "s": 2.72,
+     "e": 3.1
+    },
+    {
+     "t": "shouldn't",
+     "s": 3.1,
+     "e": 3.2
+    },
+    {
+     "t": "be",
+     "s": 3.2,
+     "e": 3.42
+    },
+    {
+     "t": "rocket",
+     "s": 3.42,
+     "e": 3.56
+    },
+    {
+     "t": "science.",
+     "s": 3.56,
+     "e": 3.98
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Ein",
+     "s": 1.2
+    },
+    {
+     "t": "Bauprojekt",
+     "s": 1.439
+    },
+    {
+     "t": "zu",
+     "s": 2.096
+    },
+    {
+     "t": "f\u00fchren",
+     "s": 2.275
+    },
+    {
+     "t": "sollte",
+     "s": 2.693
+    },
+    {
+     "t": "keine",
+     "s": 3.111
+    },
+    {
+     "t": "Raketenwissenschaft",
+     "s": 3.47
+    },
+    {
+     "t": "sein.",
+     "s": 4.664
+    }
+   ]
+  },
+  {
+   "id": "l02",
+   "start": 5.824,
+   "end": 11.508,
+   "en": "Yet every day, plans, costs, sites and invoices drift further apart.",
+   "de": "Doch jeden Tag driften Pl\u00e4ne, Kosten, Baustellen und Rechnungen weiter auseinander.",
+   "words": [
+    {
+     "t": "Yet",
+     "s": 4.56,
+     "e": 4.84
+    },
+    {
+     "t": "every",
+     "s": 4.84,
+     "e": 5.1
+    },
+    {
+     "t": "day,",
+     "s": 5.1,
+     "e": 5.38
+    },
+    {
+     "t": "plans,",
+     "s": 5.88,
+     "e": 6.06
+    },
+    {
+     "t": "costs,",
+     "s": 6.3,
+     "e": 6.56
+    },
+    {
+     "t": "sites",
+     "s": 6.98,
+     "e": 7.22
+    },
+    {
+     "t": "and",
+     "s": 7.22,
+     "e": 7.44
+    },
+    {
+     "t": "invoices",
+     "s": 7.44,
+     "e": 7.92
+    },
+    {
+     "t": "drift",
+     "s": 7.92,
+     "e": 8.26
+    },
+    {
+     "t": "further",
+     "s": 8.26,
+     "e": 8.6
+    },
+    {
+     "t": "apart.",
+     "s": 8.6,
+     "e": 9.06
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Doch",
+     "s": 5.78
+    },
+    {
+     "t": "jeden",
+     "s": 5.98
+    },
+    {
+     "t": "Tag",
+     "s": 6.24
+    },
+    {
+     "t": "driften",
+     "s": 6.64
+    },
+    {
+     "t": "Pl\u00e4ne,",
+     "s": 7.16
+    },
+    {
+     "t": "Kosten,",
+     "s": 8.08
+    },
+    {
+     "t": "Baustellen",
+     "s": 8.9
+    },
+    {
+     "t": "und",
+     "s": 9.46
+    },
+    {
+     "t": "Rechnungen",
+     "s": 9.76
+    },
+    {
+     "t": "weiter",
+     "s": 10.26
+    },
+    {
+     "t": "auseinander.",
+     "s": 10.58
+    }
+   ]
+  },
+  {
+   "id": "l03",
+   "start": 12.008,
+   "end": 13.636,
+   "en": "It feels complicated.",
+   "de": "Es wirkt kompliziert.",
+   "words": [
+    {
+     "t": "It",
+     "s": 9.72,
+     "e": 9.88
+    },
+    {
+     "t": "feels",
+     "s": 9.88,
+     "e": 10.14
+    },
+    {
+     "t": "complicated.",
+     "s": 10.14,
+     "e": 10.78
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Es",
+     "s": 11.98
+    },
+    {
+     "t": "wirkt",
+     "s": 12.2
+    },
+    {
+     "t": "kompliziert.",
+     "s": 12.56
+    }
+   ]
+  },
+  {
+   "id": "l04",
+   "start": 13.986,
+   "end": 15.273,
+   "en": "Intimidating.",
+   "de": "\u00dcberw\u00e4ltigend.",
+   "words": [
+    {
+     "t": "Intimidating.",
+     "s": 11.48,
+     "e": 11.9
+    }
+   ],
+   "dewords": [
+    {
+     "t": "\u00dcberw\u00e4ltigend.",
+     "s": 13.986
+    }
+   ]
+  },
+  {
+   "id": "l05",
+   "start": 16.273,
+   "end": 19.512,
+   "en": "That's why we built Baucheck24.",
+   "de": "Deshalb haben wir Baucheck24 gebaut.",
+   "words": [
+    {
+     "t": "That's",
+     "s": 13.1,
+     "e": 13.6
+    },
+    {
+     "t": "why",
+     "s": 13.6,
+     "e": 13.76
+    },
+    {
+     "t": "we",
+     "s": 13.76,
+     "e": 13.94
+    },
+    {
+     "t": "built",
+     "s": 13.94,
+     "e": 14.18
+    },
+    {
+     "t": "Baucheck24.",
+     "s": 14.18,
+     "e": 15.2
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Deshalb",
+     "s": 16.273
+    },
+    {
+     "t": "haben",
+     "s": 16.938
+    },
+    {
+     "t": "wir",
+     "s": 17.437
+    },
+    {
+     "t": "Baucheck24",
+     "s": 17.77
+    },
+    {
+     "t": "gebaut.",
+     "s": 18.685
+    }
+   ]
+  },
+  {
+   "id": "l06",
+   "start": 25.112,
+   "end": 27.813,
+   "en": "One platform for architecture and construction.",
+   "de": "Eine Plattform f\u00fcr Architektur und Bau.",
+   "words": [
+    {
+     "t": "One",
+     "s": 21.025,
+     "e": 21.249
+    },
+    {
+     "t": "platform",
+     "s": 21.249,
+     "e": 21.753
+    },
+    {
+     "t": "for",
+     "s": 21.753,
+     "e": 21.977
+    },
+    {
+     "t": "architecture",
+     "s": 21.977,
+     "e": 22.706
+    },
+    {
+     "t": "and",
+     "s": 22.706,
+     "e": 22.93
+    },
+    {
+     "t": "construction.",
+     "s": 22.93,
+     "e": 23.714
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Eine",
+     "s": 25.112
+    },
+    {
+     "t": "Plattform",
+     "s": 25.433
+    },
+    {
+     "t": "f\u00fcr",
+     "s": 26.074
+    },
+    {
+     "t": "Architektur",
+     "s": 26.331
+    },
+    {
+     "t": "und",
+     "s": 27.101
+    },
+    {
+     "t": "Bau.",
+     "s": 27.357
+    }
+   ]
+  },
+  {
+   "id": "l07",
+   "start": 28.413,
+   "end": 31.888,
+   "en": "From the first enquiry to the finished building.",
+   "de": "Von der ersten Anfrage bis zum fertigen Geb\u00e4ude.",
+   "words": [
+    {
+     "t": "From",
+     "s": 24.18,
+     "e": 24.44
+    },
+    {
+     "t": "the",
+     "s": 24.44,
+     "e": 24.58
+    },
+    {
+     "t": "first",
+     "s": 24.58,
+     "e": 24.82
+    },
+    {
+     "t": "enquiry",
+     "s": 24.82,
+     "e": 25.28
+    },
+    {
+     "t": "to",
+     "s": 25.28,
+     "e": 25.82
+    },
+    {
+     "t": "the",
+     "s": 25.82,
+     "e": 25.94
+    },
+    {
+     "t": "finished",
+     "s": 25.94,
+     "e": 26.16
+    },
+    {
+     "t": "building.",
+     "s": 26.16,
+     "e": 26.6
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Von",
+     "s": 28.44
+    },
+    {
+     "t": "der",
+     "s": 28.64
+    },
+    {
+     "t": "ersten",
+     "s": 28.84
+    },
+    {
+     "t": "Anfrage",
+     "s": 29.22
+    },
+    {
+     "t": "bis",
+     "s": 29.94
+    },
+    {
+     "t": "zum",
+     "s": 30.32
+    },
+    {
+     "t": "fertigen",
+     "s": 30.6
+    },
+    {
+     "t": "Geb\u00e4ude.",
+     "s": 31.2
+    }
+   ]
+  },
+  {
+   "id": "l08",
+   "start": 33.188,
+   "end": 37.754,
+   "en": "Many firms think they don't have the time or the people for another system.",
+   "de": "Viele Firmen glauben, ihnen fehlen Zeit und Leute f\u00fcr noch ein System.",
+   "words": [
+    {
+     "t": "Many",
+     "s": 28.036,
+     "e": 28.309
+    },
+    {
+     "t": "firms",
+     "s": 28.309,
+     "e": 28.636
+    },
+    {
+     "t": "think",
+     "s": 28.636,
+     "e": 28.963
+    },
+    {
+     "t": "they",
+     "s": 28.963,
+     "e": 29.235
+    },
+    {
+     "t": "don't",
+     "s": 29.235,
+     "e": 29.562
+    },
+    {
+     "t": "have",
+     "s": 29.562,
+     "e": 29.835
+    },
+    {
+     "t": "the",
+     "s": 29.835,
+     "e": 30.053
+    },
+    {
+     "t": "time",
+     "s": 30.053,
+     "e": 30.326
+    },
+    {
+     "t": "or",
+     "s": 30.326,
+     "e": 30.489
+    },
+    {
+     "t": "the",
+     "s": 30.489,
+     "e": 30.707
+    },
+    {
+     "t": "people",
+     "s": 30.707,
+     "e": 31.089
+    },
+    {
+     "t": "for",
+     "s": 31.089,
+     "e": 31.307
+    },
+    {
+     "t": "another",
+     "s": 31.307,
+     "e": 31.743
+    },
+    {
+     "t": "system.",
+     "s": 31.743,
+     "e": 32.179
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Viele",
+     "s": 33.04
+    },
+    {
+     "t": "Firmen",
+     "s": 33.5
+    },
+    {
+     "t": "glauben,",
+     "s": 33.98
+    },
+    {
+     "t": "ihnen",
+     "s": 34.7
+    },
+    {
+     "t": "fehlen",
+     "s": 34.84
+    },
+    {
+     "t": "Zeit",
+     "s": 35.36
+    },
+    {
+     "t": "und",
+     "s": 35.7
+    },
+    {
+     "t": "Leute",
+     "s": 36.04
+    },
+    {
+     "t": "f\u00fcr",
+     "s": 36.38
+    },
+    {
+     "t": "noch",
+     "s": 36.7
+    },
+    {
+     "t": "ein",
+     "s": 36.86
+    },
+    {
+     "t": "System.",
+     "s": 37.08
+    }
+   ]
+  },
+  {
+   "id": "l09",
+   "start": 38.354,
+   "end": 42.885,
+   "en": "Or they fear an AI that makes decisions nobody can check.",
+   "de": "Oder sie f\u00fcrchten eine KI, deren Entscheidungen niemand pr\u00fcfen kann.",
+   "words": [
+    {
+     "t": "Or",
+     "s": 32.54,
+     "e": 32.88
+    },
+    {
+     "t": "they",
+     "s": 32.88,
+     "e": 33.04
+    },
+    {
+     "t": "fear",
+     "s": 33.04,
+     "e": 33.32
+    },
+    {
+     "t": "an",
+     "s": 33.32,
+     "e": 33.46
+    },
+    {
+     "t": "AI",
+     "s": 33.46,
+     "e": 33.7
+    },
+    {
+     "t": "that",
+     "s": 33.7,
+     "e": 34.42
+    },
+    {
+     "t": "makes",
+     "s": 34.42,
+     "e": 34.62
+    },
+    {
+     "t": "decisions",
+     "s": 34.62,
+     "e": 35.1
+    },
+    {
+     "t": "nobody",
+     "s": 35.1,
+     "e": 35.72
+    },
+    {
+     "t": "can",
+     "s": 35.72,
+     "e": 36.08
+    },
+    {
+     "t": "check.",
+     "s": 36.08,
+     "e": 36.46
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Oder",
+     "s": 38.28
+    },
+    {
+     "t": "sie",
+     "s": 38.58
+    },
+    {
+     "t": "f\u00fcrchten",
+     "s": 38.8
+    },
+    {
+     "t": "eine",
+     "s": 39.32
+    },
+    {
+     "t": "KI,",
+     "s": 39.64
+    },
+    {
+     "t": "deren",
+     "s": 40.54
+    },
+    {
+     "t": "Entscheidungen",
+     "s": 40.76
+    },
+    {
+     "t": "niemand",
+     "s": 41.46
+    },
+    {
+     "t": "pr\u00fcfen",
+     "s": 41.84
+    },
+    {
+     "t": "kann.",
+     "s": 42.42
+    }
+   ]
+  },
+  {
+   "id": "l10",
+   "start": 43.785,
+   "end": 47.078,
+   "en": "So Baucheck24 works differently.",
+   "de": "Darum arbeitet Baucheck24 anders.",
+   "words": [
+    {
+     "t": "So",
+     "s": 37.5,
+     "e": 37.62
+    },
+    {
+     "t": "Baucheck24",
+     "s": 37.62,
+     "e": 38.44
+    },
+    {
+     "t": "works",
+     "s": 38.44,
+     "e": 38.96
+    },
+    {
+     "t": "differently.",
+     "s": 38.96,
+     "e": 39.36
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Darum",
+     "s": 43.785
+    },
+    {
+     "t": "arbeitet",
+     "s": 44.337
+    },
+    {
+     "t": "Baucheck24",
+     "s": 45.165
+    },
+    {
+     "t": "anders.",
+     "s": 46.177
+    }
+   ]
+  },
+  {
+   "id": "l11",
+   "start": 47.978,
+   "end": 53.129,
+   "en": "At its centre is an AI orchestrator, with specialist agents for every step.",
+   "de": "Im Zentrum steht ein KI-Orchestrator, mit Fachagenten f\u00fcr jeden Schritt.",
+   "words": [
+    {
+     "t": "At",
+     "s": 40.3,
+     "e": 40.6
+    },
+    {
+     "t": "its",
+     "s": 40.6,
+     "e": 40.74
+    },
+    {
+     "t": "centre",
+     "s": 40.74,
+     "e": 41.04
+    },
+    {
+     "t": "is",
+     "s": 41.04,
+     "e": 41.38
+    },
+    {
+     "t": "an",
+     "s": 41.38,
+     "e": 41.48
+    },
+    {
+     "t": "AI",
+     "s": 41.48,
+     "e": 41.88
+    },
+    {
+     "t": "orchestrator,",
+     "s": 41.88,
+     "e": 42.56
+    },
+    {
+     "t": "with",
+     "s": 42.56,
+     "e": 43.18
+    },
+    {
+     "t": "specialist",
+     "s": 43.18,
+     "e": 43.6
+    },
+    {
+     "t": "agents",
+     "s": 43.6,
+     "e": 44.1
+    },
+    {
+     "t": "for",
+     "s": 44.1,
+     "e": 44.4
+    },
+    {
+     "t": "every",
+     "s": 44.4,
+     "e": 44.72
+    },
+    {
+     "t": "step.",
+     "s": 44.72,
+     "e": 45.0
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Im",
+     "s": 48.1
+    },
+    {
+     "t": "Zentrum",
+     "s": 48.72
+    },
+    {
+     "t": "steht",
+     "s": 49.02
+    },
+    {
+     "t": "ein",
+     "s": 49.3
+    },
+    {
+     "t": "KI-Orchestrator,",
+     "s": 49.66
+    },
+    {
+     "t": "mit",
+     "s": 51.0
+    },
+    {
+     "t": "Fachagenten",
+     "s": 51.18
+    },
+    {
+     "t": "f\u00fcr",
+     "s": 52.02
+    },
+    {
+     "t": "jeden",
+     "s": 52.24
+    },
+    {
+     "t": "Schritt.",
+     "s": 52.54
+    }
+   ]
+  },
+  {
+   "id": "l12",
+   "start": 53.729,
+   "end": 58.135,
+   "en": "Each agent uses only the tools and data you allow.",
+   "de": "Jeder Agent nutzt nur die Werkzeuge und Daten, die Sie freigeben.",
+   "words": [
+    {
+     "t": "Each",
+     "s": 45.74,
+     "e": 46.02
+    },
+    {
+     "t": "agent",
+     "s": 46.02,
+     "e": 46.42
+    },
+    {
+     "t": "uses",
+     "s": 46.42,
+     "e": 46.84
+    },
+    {
+     "t": "only",
+     "s": 46.84,
+     "e": 47.28
+    },
+    {
+     "t": "the",
+     "s": 47.28,
+     "e": 47.44
+    },
+    {
+     "t": "tools",
+     "s": 47.44,
+     "e": 47.74
+    },
+    {
+     "t": "and",
+     "s": 47.74,
+     "e": 48.02
+    },
+    {
+     "t": "data",
+     "s": 48.02,
+     "e": 48.28
+    },
+    {
+     "t": "you",
+     "s": 48.28,
+     "e": 48.48
+    },
+    {
+     "t": "allow.",
+     "s": 48.48,
+     "e": 48.72
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Jeder",
+     "s": 53.72
+    },
+    {
+     "t": "Agent",
+     "s": 53.96
+    },
+    {
+     "t": "nutzt",
+     "s": 54.48
+    },
+    {
+     "t": "nur",
+     "s": 54.94
+    },
+    {
+     "t": "die",
+     "s": 55.2
+    },
+    {
+     "t": "Werkzeuge",
+     "s": 55.4
+    },
+    {
+     "t": "und",
+     "s": 56.1
+    },
+    {
+     "t": "Daten,",
+     "s": 56.32
+    },
+    {
+     "t": "die",
+     "s": 57.06
+    },
+    {
+     "t": "Sie",
+     "s": 57.2
+    },
+    {
+     "t": "freigeben.",
+     "s": 57.3
+    }
+   ]
+  },
+  {
+   "id": "l13",
+   "start": 59.635,
+   "end": 67.065,
+   "en": "It starts with the enquiry. Emails, plans and photos become a structured project.",
+   "de": "Alles beginnt mit der Anfrage. Aus E-Mails, Pl\u00e4nen und Fotos wird ein strukturiertes Projekt.",
+   "words": [
+    {
+     "t": "It",
+     "s": 50.433,
+     "e": 50.627
+    },
+    {
+     "t": "starts",
+     "s": 50.627,
+     "e": 51.078
+    },
+    {
+     "t": "with",
+     "s": 51.078,
+     "e": 51.401
+    },
+    {
+     "t": "the",
+     "s": 51.401,
+     "e": 51.659
+    },
+    {
+     "t": "enquiry.",
+     "s": 51.659,
+     "e": 52.24
+    },
+    {
+     "t": "Emails,",
+     "s": 52.24,
+     "e": 52.757
+    },
+    {
+     "t": "plans",
+     "s": 52.757,
+     "e": 53.144
+    },
+    {
+     "t": "and",
+     "s": 53.144,
+     "e": 53.402
+    },
+    {
+     "t": "photos",
+     "s": 53.402,
+     "e": 53.854
+    },
+    {
+     "t": "become",
+     "s": 53.854,
+     "e": 54.306
+    },
+    {
+     "t": "a",
+     "s": 54.306,
+     "e": 54.435
+    },
+    {
+     "t": "structured",
+     "s": 54.435,
+     "e": 55.145
+    },
+    {
+     "t": "project.",
+     "s": 55.145,
+     "e": 55.726
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Alles",
+     "s": 59.86
+    },
+    {
+     "t": "beginnt",
+     "s": 60.5
+    },
+    {
+     "t": "mit",
+     "s": 60.68
+    },
+    {
+     "t": "der",
+     "s": 60.86
+    },
+    {
+     "t": "Anfrage.",
+     "s": 62.1
+    },
+    {
+     "t": "Aus",
+     "s": 62.4
+    },
+    {
+     "t": "E-Mails,",
+     "s": 62.76
+    },
+    {
+     "t": "Pl\u00e4nen",
+     "s": 63.72
+    },
+    {
+     "t": "und",
+     "s": 64.1
+    },
+    {
+     "t": "Fotos",
+     "s": 64.4
+    },
+    {
+     "t": "wird",
+     "s": 65.06
+    },
+    {
+     "t": "ein",
+     "s": 65.34
+    },
+    {
+     "t": "strukturiertes",
+     "s": 65.54
+    },
+    {
+     "t": "Projekt.",
+     "s": 66.46
+    }
+   ]
+  },
+  {
+   "id": "l14",
+   "start": 68.165,
+   "end": 72.862,
+   "en": "Planning happens in CAD and BIM, checked across every trade.",
+   "de": "Geplant wird in CAD und BIM, gepr\u00fcft \u00fcber alle Gewerke.",
+   "words": [
+    {
+     "t": "Planning",
+     "s": 56.42,
+     "e": 57.06
+    },
+    {
+     "t": "happens",
+     "s": 57.06,
+     "e": 57.44
+    },
+    {
+     "t": "in",
+     "s": 57.44,
+     "e": 57.76
+    },
+    {
+     "t": "CAD",
+     "s": 57.76,
+     "e": 58.08
+    },
+    {
+     "t": "and",
+     "s": 58.08,
+     "e": 58.6
+    },
+    {
+     "t": "BIM,",
+     "s": 58.6,
+     "e": 59.12
+    },
+    {
+     "t": "checked",
+     "s": 59.52,
+     "e": 59.78
+    },
+    {
+     "t": "across",
+     "s": 59.78,
+     "e": 60.1
+    },
+    {
+     "t": "every",
+     "s": 60.1,
+     "e": 60.46
+    },
+    {
+     "t": "trade.",
+     "s": 60.46,
+     "e": 60.82
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Geplant",
+     "s": 68.02
+    },
+    {
+     "t": "wird",
+     "s": 68.6
+    },
+    {
+     "t": "in",
+     "s": 68.88
+    },
+    {
+     "t": "CAD",
+     "s": 69.1
+    },
+    {
+     "t": "und",
+     "s": 69.42
+    },
+    {
+     "t": "BIM,",
+     "s": 70.02
+    },
+    {
+     "t": "gepr\u00fcft",
+     "s": 71.08
+    },
+    {
+     "t": "\u00fcber",
+     "s": 71.6
+    },
+    {
+     "t": "alle",
+     "s": 71.84
+    },
+    {
+     "t": "Gewerke.",
+     "s": 72.16
+    }
+   ]
+  },
+  {
+   "id": "l15",
+   "start": 73.462,
+   "end": 77.649,
+   "en": "Clashes are found before they ever reach the site.",
+   "de": "Kollisionen werden gefunden, bevor sie die Baustelle erreichen.",
+   "words": [
+    {
+     "t": "Clashes",
+     "s": 61.58,
+     "e": 61.98
+    },
+    {
+     "t": "are",
+     "s": 61.98,
+     "e": 62.2
+    },
+    {
+     "t": "found",
+     "s": 62.2,
+     "e": 62.5
+    },
+    {
+     "t": "before",
+     "s": 62.5,
+     "e": 62.88
+    },
+    {
+     "t": "they",
+     "s": 62.88,
+     "e": 63.08
+    },
+    {
+     "t": "ever",
+     "s": 63.08,
+     "e": 63.36
+    },
+    {
+     "t": "reach",
+     "s": 63.36,
+     "e": 63.64
+    },
+    {
+     "t": "the",
+     "s": 63.64,
+     "e": 63.82
+    },
+    {
+     "t": "site.",
+     "s": 63.82,
+     "e": 64.12
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Kollisionen",
+     "s": 73.4
+    },
+    {
+     "t": "werden",
+     "s": 74.24
+    },
+    {
+     "t": "gefunden,",
+     "s": 74.46
+    },
+    {
+     "t": "bevor",
+     "s": 75.56
+    },
+    {
+     "t": "sie",
+     "s": 75.84
+    },
+    {
+     "t": "die",
+     "s": 76.12
+    },
+    {
+     "t": "Baustelle",
+     "s": 76.28
+    },
+    {
+     "t": "erreichen.",
+     "s": 76.86
+    }
+   ]
+  },
+  {
+   "id": "l16",
+   "start": 78.749,
+   "end": 84.509,
+   "en": "Quantities come straight from the model, so every cost is calculated, not guessed.",
+   "de": "Mengen kommen direkt aus dem Modell. Jede Zahl wird berechnet, nicht gesch\u00e4tzt.",
+   "words": [
+    {
+     "t": "Quantities",
+     "s": 65.32,
+     "e": 65.72
+    },
+    {
+     "t": "come",
+     "s": 65.72,
+     "e": 65.98
+    },
+    {
+     "t": "straight",
+     "s": 65.98,
+     "e": 66.3
+    },
+    {
+     "t": "from",
+     "s": 66.3,
+     "e": 66.52
+    },
+    {
+     "t": "the",
+     "s": 66.52,
+     "e": 66.64
+    },
+    {
+     "t": "model,",
+     "s": 66.64,
+     "e": 66.96
+    },
+    {
+     "t": "so",
+     "s": 67.3,
+     "e": 67.5
+    },
+    {
+     "t": "every",
+     "s": 67.5,
+     "e": 67.8
+    },
+    {
+     "t": "cost",
+     "s": 67.8,
+     "e": 68.14
+    },
+    {
+     "t": "is",
+     "s": 68.14,
+     "e": 68.32
+    },
+    {
+     "t": "calculated,",
+     "s": 68.32,
+     "e": 68.82
+    },
+    {
+     "t": "not",
+     "s": 69.26,
+     "e": 69.44
+    },
+    {
+     "t": "guessed.",
+     "s": 69.44,
+     "e": 69.82
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Mengen",
+     "s": 78.749
+    },
+    {
+     "t": "kommen",
+     "s": 79.228
+    },
+    {
+     "t": "direkt",
+     "s": 79.707
+    },
+    {
+     "t": "aus",
+     "s": 80.185
+    },
+    {
+     "t": "dem",
+     "s": 80.459
+    },
+    {
+     "t": "Modell.",
+     "s": 80.733
+    },
+    {
+     "t": "Jede",
+     "s": 81.28
+    },
+    {
+     "t": "Zahl",
+     "s": 81.622
+    },
+    {
+     "t": "wird",
+     "s": 81.964
+    },
+    {
+     "t": "berechnet,",
+     "s": 82.306
+    },
+    {
+     "t": "nicht",
+     "s": 83.058
+    },
+    {
+     "t": "gesch\u00e4tzt.",
+     "s": 83.469
+    }
+   ]
+  },
+  {
+   "id": "l17",
+   "start": 85.409,
+   "end": 89.406,
+   "en": "Offers are ready in minutes, and wait for your approval.",
+   "de": "Angebote stehen in Minuten und warten auf Ihre Freigabe.",
+   "words": [
+    {
+     "t": "Offers",
+     "s": 70.78,
+     "e": 71.34
+    },
+    {
+     "t": "are",
+     "s": 71.34,
+     "e": 71.52
+    },
+    {
+     "t": "ready",
+     "s": 71.52,
+     "e": 71.74
+    },
+    {
+     "t": "in",
+     "s": 71.74,
+     "e": 71.92
+    },
+    {
+     "t": "minutes,",
+     "s": 71.92,
+     "e": 72.18
+    },
+    {
+     "t": "and",
+     "s": 72.18,
+     "e": 72.7
+    },
+    {
+     "t": "wait",
+     "s": 72.7,
+     "e": 72.9
+    },
+    {
+     "t": "for",
+     "s": 72.9,
+     "e": 73.1
+    },
+    {
+     "t": "your",
+     "s": 73.1,
+     "e": 73.24
+    },
+    {
+     "t": "approval.",
+     "s": 73.24,
+     "e": 73.58
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Angebote",
+     "s": 85.38
+    },
+    {
+     "t": "stehen",
+     "s": 86.08
+    },
+    {
+     "t": "in",
+     "s": 86.44
+    },
+    {
+     "t": "Minuten",
+     "s": 86.76
+    },
+    {
+     "t": "und",
+     "s": 87.18
+    },
+    {
+     "t": "warten",
+     "s": 87.66
+    },
+    {
+     "t": "auf",
+     "s": 88.02
+    },
+    {
+     "t": "Ihre",
+     "s": 88.3
+    },
+    {
+     "t": "Freigabe.",
+     "s": 88.52
+    }
+   ]
+  },
+  {
+   "id": "l18",
+   "start": 90.506,
+   "end": 94.697,
+   "en": "Once signed, the project gets its budget and its schedule.",
+   "de": "Nach der Unterschrift erh\u00e4lt das Projekt Budget und Terminplan.",
+   "words": [
+    {
+     "t": "Once",
+     "s": 74.58,
+     "e": 75.06
+    },
+    {
+     "t": "signed,",
+     "s": 75.06,
+     "e": 75.46
+    },
+    {
+     "t": "the",
+     "s": 75.76,
+     "e": 75.86
+    },
+    {
+     "t": "project",
+     "s": 75.86,
+     "e": 76.2
+    },
+    {
+     "t": "gets",
+     "s": 76.2,
+     "e": 76.5
+    },
+    {
+     "t": "its",
+     "s": 76.5,
+     "e": 76.68
+    },
+    {
+     "t": "budget",
+     "s": 76.68,
+     "e": 77.0
+    },
+    {
+     "t": "and",
+     "s": 77.0,
+     "e": 77.38
+    },
+    {
+     "t": "its",
+     "s": 77.38,
+     "e": 77.5
+    },
+    {
+     "t": "schedule.",
+     "s": 77.5,
+     "e": 77.92
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Nach",
+     "s": 90.38
+    },
+    {
+     "t": "der",
+     "s": 90.72
+    },
+    {
+     "t": "Unterschrift",
+     "s": 90.94
+    },
+    {
+     "t": "erh\u00e4lt",
+     "s": 91.66
+    },
+    {
+     "t": "das",
+     "s": 92.08
+    },
+    {
+     "t": "Projekt",
+     "s": 92.3
+    },
+    {
+     "t": "Budget",
+     "s": 92.72
+    },
+    {
+     "t": "und",
+     "s": 93.28
+    },
+    {
+     "t": "Terminplan.",
+     "s": 93.74
+    }
+   ]
+  },
+  {
+   "id": "l19",
+   "start": 95.397,
+   "end": 103.777,
+   "en": "Baucheck24 compares the best, the fastest and the safest plan, on cost, time and CO2.",
+   "de": "Baucheck24 vergleicht den besten, den schnellsten und den sichersten Plan, nach Kosten, Zeit und CO2.",
+   "words": [
+    {
+     "t": "Baucheck24",
+     "s": 78.78,
+     "e": 79.74
+    },
+    {
+     "t": "compares",
+     "s": 79.74,
+     "e": 80.16
+    },
+    {
+     "t": "the",
+     "s": 80.16,
+     "e": 80.4
+    },
+    {
+     "t": "best,",
+     "s": 80.4,
+     "e": 80.72
+    },
+    {
+     "t": "the",
+     "s": 80.72,
+     "e": 81.26
+    },
+    {
+     "t": "fastest",
+     "s": 81.26,
+     "e": 81.68
+    },
+    {
+     "t": "and",
+     "s": 81.68,
+     "e": 82.0
+    },
+    {
+     "t": "the",
+     "s": 82.0,
+     "e": 82.14
+    },
+    {
+     "t": "safest",
+     "s": 82.14,
+     "e": 82.42
+    },
+    {
+     "t": "plan,",
+     "s": 82.42,
+     "e": 82.84
+    },
+    {
+     "t": "on",
+     "s": 82.84,
+     "e": 83.34
+    },
+    {
+     "t": "cost,",
+     "s": 83.34,
+     "e": 83.76
+    },
+    {
+     "t": "time",
+     "s": 84.14,
+     "e": 84.4
+    },
+    {
+     "t": "and",
+     "s": 84.4,
+     "e": 84.66
+    },
+    {
+     "t": "CO2.",
+     "s": 84.66,
+     "e": 85.24
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Baucheck24",
+     "s": 95.397
+    },
+    {
+     "t": "vergleicht",
+     "s": 96.256
+    },
+    {
+     "t": "den",
+     "s": 97.114
+    },
+    {
+     "t": "besten,",
+     "s": 97.426
+    },
+    {
+     "t": "den",
+     "s": 98.051
+    },
+    {
+     "t": "schnellsten",
+     "s": 98.363
+    },
+    {
+     "t": "und",
+     "s": 99.299
+    },
+    {
+     "t": "den",
+     "s": 99.612
+    },
+    {
+     "t": "sichersten",
+     "s": 99.924
+    },
+    {
+     "t": "Plan,",
+     "s": 100.782
+    },
+    {
+     "t": "nach",
+     "s": 101.251
+    },
+    {
+     "t": "Kosten,",
+     "s": 101.641
+    },
+    {
+     "t": "Zeit",
+     "s": 102.265
+    },
+    {
+     "t": "und",
+     "s": 102.656
+    },
+    {
+     "t": "CO2.",
+     "s": 102.968
+    }
+   ]
+  },
+  {
+   "id": "l20",
+   "start": 105.077,
+   "end": 109.023,
+   "en": "On site, materials are ordered within your limits.",
+   "de": "Auf der Baustelle wird Material innerhalb Ihrer Limits bestellt.",
+   "words": [
+    {
+     "t": "On",
+     "s": 86.708,
+     "e": 86.862
+    },
+    {
+     "t": "site,",
+     "s": 86.862,
+     "e": 87.17
+    },
+    {
+     "t": "materials",
+     "s": 87.17,
+     "e": 87.684
+    },
+    {
+     "t": "are",
+     "s": 87.684,
+     "e": 87.89
+    },
+    {
+     "t": "ordered",
+     "s": 87.89,
+     "e": 88.301
+    },
+    {
+     "t": "within",
+     "s": 88.301,
+     "e": 88.66
+    },
+    {
+     "t": "your",
+     "s": 88.66,
+     "e": 88.917
+    },
+    {
+     "t": "limits.",
+     "s": 88.917,
+     "e": 89.328
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Auf",
+     "s": 105.077
+    },
+    {
+     "t": "der",
+     "s": 105.308
+    },
+    {
+     "t": "Baustelle",
+     "s": 105.538
+    },
+    {
+     "t": "wird",
+     "s": 106.115
+    },
+    {
+     "t": "Material",
+     "s": 106.403
+    },
+    {
+     "t": "innerhalb",
+     "s": 106.923
+    },
+    {
+     "t": "Ihrer",
+     "s": 107.499
+    },
+    {
+     "t": "Limits",
+     "s": 107.845
+    },
+    {
+     "t": "bestellt.",
+     "s": 108.249
+    }
+   ]
+  },
+  {
+   "id": "l21",
+   "start": 109.723,
+   "end": 112.939,
+   "en": "Drones and scanners measure progress against the model.",
+   "de": "Drohnen und Scanner messen den Fortschritt am Modell.",
+   "words": [
+    {
+     "t": "Drones",
+     "s": 89.94,
+     "e": 90.32
+    },
+    {
+     "t": "and",
+     "s": 90.32,
+     "e": 90.6
+    },
+    {
+     "t": "scanners",
+     "s": 90.6,
+     "e": 91.0
+    },
+    {
+     "t": "measure",
+     "s": 91.0,
+     "e": 91.7
+    },
+    {
+     "t": "progress",
+     "s": 91.7,
+     "e": 92.12
+    },
+    {
+     "t": "against",
+     "s": 92.12,
+     "e": 92.48
+    },
+    {
+     "t": "the",
+     "s": 92.48,
+     "e": 92.7
+    },
+    {
+     "t": "model.",
+     "s": 92.7,
+     "e": 93.0
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Drohnen",
+     "s": 109.58
+    },
+    {
+     "t": "und",
+     "s": 110.16
+    },
+    {
+     "t": "Scanner",
+     "s": 110.44
+    },
+    {
+     "t": "messen",
+     "s": 110.82
+    },
+    {
+     "t": "den",
+     "s": 111.38
+    },
+    {
+     "t": "Fortschritt",
+     "s": 111.52
+    },
+    {
+     "t": "am",
+     "s": 112.2
+    },
+    {
+     "t": "Modell.",
+     "s": 112.4
+    }
+   ]
+  },
+  {
+   "id": "l22",
+   "start": 113.639,
+   "end": 117.228,
+   "en": "Every defect becomes a task for the right trade.",
+   "de": "Jeder Mangel wird zur Aufgabe f\u00fcr das richtige Gewerk.",
+   "words": [
+    {
+     "t": "Every",
+     "s": 93.78,
+     "e": 94.06
+    },
+    {
+     "t": "defect",
+     "s": 94.06,
+     "e": 94.36
+    },
+    {
+     "t": "becomes",
+     "s": 94.36,
+     "e": 94.78
+    },
+    {
+     "t": "a",
+     "s": 94.78,
+     "e": 95.0
+    },
+    {
+     "t": "task",
+     "s": 95.0,
+     "e": 95.32
+    },
+    {
+     "t": "for",
+     "s": 95.32,
+     "e": 95.56
+    },
+    {
+     "t": "the",
+     "s": 95.56,
+     "e": 95.68
+    },
+    {
+     "t": "right",
+     "s": 95.68,
+     "e": 95.88
+    },
+    {
+     "t": "trade.",
+     "s": 95.88,
+     "e": 96.24
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Jeder",
+     "s": 113.62
+    },
+    {
+     "t": "Mangel",
+     "s": 113.9
+    },
+    {
+     "t": "wird",
+     "s": 114.36
+    },
+    {
+     "t": "zur",
+     "s": 114.66
+    },
+    {
+     "t": "Aufgabe",
+     "s": 114.92
+    },
+    {
+     "t": "f\u00fcr",
+     "s": 115.46
+    },
+    {
+     "t": "das",
+     "s": 115.84
+    },
+    {
+     "t": "richtige",
+     "s": 116.04
+    },
+    {
+     "t": "Gewerk.",
+     "s": 116.46
+    }
+   ]
+  },
+  {
+   "id": "l23",
+   "start": 118.528,
+   "end": 125.007,
+   "en": "Invoices are matched against order and delivery, and booked straight to DATEV or Lexware.",
+   "de": "Rechnungen werden mit Bestellung und Lieferung abgeglichen und direkt an DATEV oder Lexware gebucht.",
+   "words": [
+    {
+     "t": "Invoices",
+     "s": 97.713,
+     "e": 98.223
+    },
+    {
+     "t": "are",
+     "s": 98.223,
+     "e": 98.449
+    },
+    {
+     "t": "matched",
+     "s": 98.449,
+     "e": 98.903
+    },
+    {
+     "t": "against",
+     "s": 98.903,
+     "e": 99.356
+    },
+    {
+     "t": "order",
+     "s": 99.356,
+     "e": 99.696
+    },
+    {
+     "t": "and",
+     "s": 99.696,
+     "e": 99.922
+    },
+    {
+     "t": "delivery,",
+     "s": 99.922,
+     "e": 100.489
+    },
+    {
+     "t": "and",
+     "s": 100.489,
+     "e": 100.715
+    },
+    {
+     "t": "booked",
+     "s": 100.715,
+     "e": 101.112
+    },
+    {
+     "t": "straight",
+     "s": 101.112,
+     "e": 101.621
+    },
+    {
+     "t": "to",
+     "s": 101.621,
+     "e": 101.791
+    },
+    {
+     "t": "DATEV",
+     "s": 101.791,
+     "e": 102.131
+    },
+    {
+     "t": "or",
+     "s": 102.131,
+     "e": 102.301
+    },
+    {
+     "t": "Lexware.",
+     "s": 102.301,
+     "e": 102.811
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Rechnungen",
+     "s": 118.528
+    },
+    {
+     "t": "werden",
+     "s": 119.198
+    },
+    {
+     "t": "mit",
+     "s": 119.625
+    },
+    {
+     "t": "Bestellung",
+     "s": 119.869
+    },
+    {
+     "t": "und",
+     "s": 120.539
+    },
+    {
+     "t": "Lieferung",
+     "s": 120.783
+    },
+    {
+     "t": "abgeglichen",
+     "s": 121.392
+    },
+    {
+     "t": "und",
+     "s": 122.124
+    },
+    {
+     "t": "direkt",
+     "s": 122.367
+    },
+    {
+     "t": "an",
+     "s": 122.794
+    },
+    {
+     "t": "DATEV",
+     "s": 122.977
+    },
+    {
+     "t": "oder",
+     "s": 123.342
+    },
+    {
+     "t": "Lexware",
+     "s": 123.647
+    },
+    {
+     "t": "gebucht.",
+     "s": 124.135
+    }
+   ]
+  },
+  {
+   "id": "l24",
+   "start": 125.807,
+   "end": 128.958,
+   "en": "And payments? Always made by a person.",
+   "de": "Und Zahlungen? Immer durch einen Menschen.",
+   "words": [
+    {
+     "t": "And",
+     "s": 103.611,
+     "e": 103.849
+    },
+    {
+     "t": "payments?",
+     "s": 103.849,
+     "e": 104.445
+    },
+    {
+     "t": "Always",
+     "s": 104.445,
+     "e": 104.862
+    },
+    {
+     "t": "made",
+     "s": 104.862,
+     "e": 105.16
+    },
+    {
+     "t": "by",
+     "s": 105.16,
+     "e": 105.338
+    },
+    {
+     "t": "a",
+     "s": 105.338,
+     "e": 105.457
+    },
+    {
+     "t": "person.",
+     "s": 105.457,
+     "e": 105.934
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Und",
+     "s": 125.82
+    },
+    {
+     "t": "Zahlungen?",
+     "s": 126.0
+    },
+    {
+     "t": "Immer",
+     "s": 127.3
+    },
+    {
+     "t": "durch",
+     "s": 127.56
+    },
+    {
+     "t": "einen",
+     "s": 127.84
+    },
+    {
+     "t": "Menschen.",
+     "s": 128.22
+    }
+   ]
+  },
+  {
+   "id": "l25",
+   "start": 130.358,
+   "end": 134.806,
+   "en": "At handover, the building lives on as a digital twin.",
+   "de": "Nach der \u00dcbergabe lebt das Geb\u00e4ude als digitaler Zwilling weiter.",
+   "words": [
+    {
+     "t": "At",
+     "s": 107.334,
+     "e": 107.515
+    },
+    {
+     "t": "handover,",
+     "s": 107.515,
+     "e": 108.117
+    },
+    {
+     "t": "the",
+     "s": 108.117,
+     "e": 108.358
+    },
+    {
+     "t": "building",
+     "s": 108.358,
+     "e": 108.901
+    },
+    {
+     "t": "lives",
+     "s": 108.901,
+     "e": 109.262
+    },
+    {
+     "t": "on",
+     "s": 109.262,
+     "e": 109.443
+    },
+    {
+     "t": "as",
+     "s": 109.443,
+     "e": 109.624
+    },
+    {
+     "t": "a",
+     "s": 109.624,
+     "e": 109.744
+    },
+    {
+     "t": "digital",
+     "s": 109.744,
+     "e": 110.226
+    },
+    {
+     "t": "twin.",
+     "s": 110.226,
+     "e": 110.588
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Nach",
+     "s": 130.358
+    },
+    {
+     "t": "der",
+     "s": 130.678
+    },
+    {
+     "t": "\u00dcbergabe",
+     "s": 130.934
+    },
+    {
+     "t": "lebt",
+     "s": 131.51
+    },
+    {
+     "t": "das",
+     "s": 131.831
+    },
+    {
+     "t": "Geb\u00e4ude",
+     "s": 132.087
+    },
+    {
+     "t": "als",
+     "s": 132.599
+    },
+    {
+     "t": "digitaler",
+     "s": 132.855
+    },
+    {
+     "t": "Zwilling",
+     "s": 133.495
+    },
+    {
+     "t": "weiter.",
+     "s": 134.071
+    }
+   ]
+  },
+  {
+   "id": "l26",
+   "start": 136.306,
+   "end": 142.612,
+   "en": "You decide what runs on its own. Green, yellow, orange, red.",
+   "de": "Sie entscheiden, was selbstst\u00e4ndig l\u00e4uft. Gr\u00fcn, Gelb, Orange, Rot.",
+   "words": [
+    {
+     "t": "You",
+     "s": 112.0,
+     "e": 112.18
+    },
+    {
+     "t": "decide",
+     "s": 112.18,
+     "e": 112.52
+    },
+    {
+     "t": "what",
+     "s": 112.52,
+     "e": 112.74
+    },
+    {
+     "t": "runs",
+     "s": 112.74,
+     "e": 113.0
+    },
+    {
+     "t": "on",
+     "s": 113.0,
+     "e": 113.12
+    },
+    {
+     "t": "its",
+     "s": 113.12,
+     "e": 113.26
+    },
+    {
+     "t": "own.",
+     "s": 113.26,
+     "e": 113.54
+    },
+    {
+     "t": "Green,",
+     "s": 114.0,
+     "e": 114.3
+    },
+    {
+     "t": "yellow,",
+     "s": 114.72,
+     "e": 114.92
+    },
+    {
+     "t": "orange,",
+     "s": 115.18,
+     "e": 115.54
+    },
+    {
+     "t": "red.",
+     "s": 115.68,
+     "e": 115.92
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Sie",
+     "s": 136.46
+    },
+    {
+     "t": "entscheiden,",
+     "s": 136.48
+    },
+    {
+     "t": "was",
+     "s": 137.56
+    },
+    {
+     "t": "selbstst\u00e4ndig",
+     "s": 137.68
+    },
+    {
+     "t": "l\u00e4uft.",
+     "s": 138.66
+    },
+    {
+     "t": "Gr\u00fcn,",
+     "s": 139.72
+    },
+    {
+     "t": "Gelb,",
+     "s": 140.44
+    },
+    {
+     "t": "Orange,",
+     "s": 141.12
+    },
+    {
+     "t": "Rot.",
+     "s": 142.02
+    }
+   ]
+  },
+  {
+   "id": "l27",
+   "start": 143.512,
+   "end": 147.363,
+   "en": "Every step has a source, a time and a name.",
+   "de": "Jeder Schritt hat eine Quelle, eine Zeit und einen Namen.",
+   "words": [
+    {
+     "t": "Every",
+     "s": 116.94,
+     "e": 117.22
+    },
+    {
+     "t": "step",
+     "s": 117.22,
+     "e": 117.46
+    },
+    {
+     "t": "has",
+     "s": 117.46,
+     "e": 117.66
+    },
+    {
+     "t": "a",
+     "s": 117.66,
+     "e": 117.76
+    },
+    {
+     "t": "source,",
+     "s": 117.76,
+     "e": 118.02
+    },
+    {
+     "t": "a",
+     "s": 118.38,
+     "e": 118.48
+    },
+    {
+     "t": "time",
+     "s": 118.48,
+     "e": 118.78
+    },
+    {
+     "t": "and",
+     "s": 118.78,
+     "e": 118.96
+    },
+    {
+     "t": "a",
+     "s": 118.96,
+     "e": 119.1
+    },
+    {
+     "t": "name.",
+     "s": 119.1,
+     "e": 119.4
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Jeder",
+     "s": 143.48
+    },
+    {
+     "t": "Schritt",
+     "s": 143.78
+    },
+    {
+     "t": "hat",
+     "s": 144.18
+    },
+    {
+     "t": "eine",
+     "s": 144.46
+    },
+    {
+     "t": "Quelle,",
+     "s": 144.74
+    },
+    {
+     "t": "eine",
+     "s": 145.56
+    },
+    {
+     "t": "Zeit",
+     "s": 145.76
+    },
+    {
+     "t": "und",
+     "s": 146.1
+    },
+    {
+     "t": "einen",
+     "s": 146.46
+    },
+    {
+     "t": "Namen.",
+     "s": 146.76
+    }
+   ]
+  },
+  {
+   "id": "l28",
+   "start": 148.763,
+   "end": 152.496,
+   "en": "So your team gets time back for what it does best.",
+   "de": "So gewinnt Ihr Team Zeit f\u00fcr das, was es am besten kann.",
+   "words": [
+    {
+     "t": "So",
+     "s": 120.8,
+     "e": 121.02
+    },
+    {
+     "t": "your",
+     "s": 121.02,
+     "e": 121.14
+    },
+    {
+     "t": "team",
+     "s": 121.14,
+     "e": 121.38
+    },
+    {
+     "t": "gets",
+     "s": 121.38,
+     "e": 121.68
+    },
+    {
+     "t": "time",
+     "s": 121.68,
+     "e": 121.96
+    },
+    {
+     "t": "back",
+     "s": 121.96,
+     "e": 122.28
+    },
+    {
+     "t": "for",
+     "s": 122.28,
+     "e": 122.5
+    },
+    {
+     "t": "what",
+     "s": 122.5,
+     "e": 122.64
+    },
+    {
+     "t": "it",
+     "s": 122.64,
+     "e": 122.74
+    },
+    {
+     "t": "does",
+     "s": 122.74,
+     "e": 122.9
+    },
+    {
+     "t": "best.",
+     "s": 122.9,
+     "e": 123.2
+    }
+   ],
+   "dewords": [
+    {
+     "t": "So",
+     "s": 148.763
+    },
+    {
+     "t": "gewinnt",
+     "s": 148.95
+    },
+    {
+     "t": "Ihr",
+     "s": 149.447
+    },
+    {
+     "t": "Team",
+     "s": 149.696
+    },
+    {
+     "t": "Zeit",
+     "s": 150.007
+    },
+    {
+     "t": "f\u00fcr",
+     "s": 150.318
+    },
+    {
+     "t": "das,",
+     "s": 150.567
+    },
+    {
+     "t": "was",
+     "s": 150.878
+    },
+    {
+     "t": "es",
+     "s": 151.127
+    },
+    {
+     "t": "am",
+     "s": 151.314
+    },
+    {
+     "t": "besten",
+     "s": 151.501
+    },
+    {
+     "t": "kann.",
+     "s": 151.936
+    }
+   ]
+  },
+  {
+   "id": "l29",
+   "start": 153.096,
+   "end": 153.627,
+   "en": "Building.",
+   "de": "Bauen.",
+   "words": [
+    {
+     "t": "Building.",
+     "s": 124.02,
+     "e": 124.36
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Bauen.",
+     "s": 153.04
+    }
+   ]
+  },
+  {
+   "id": "l30",
+   "start": 155.427,
+   "end": 159.987,
+   "en": "Baucheck24. From enquiry to handover.",
+   "de": "Baucheck24. Von der Anfrage bis zur \u00dcbergabe.",
+   "words": [
+    {
+     "t": "Baucheck24.",
+     "s": 126.3,
+     "e": 127.4
+    },
+    {
+     "t": "From",
+     "s": 127.84,
+     "e": 128.02
+    },
+    {
+     "t": "enquiry",
+     "s": 128.02,
+     "e": 128.48
+    },
+    {
+     "t": "to",
+     "s": 128.48,
+     "e": 128.78
+    },
+    {
+     "t": "handover.",
+     "s": 128.78,
+     "e": 129.36
+    }
+   ],
+   "dewords": [
+    {
+     "t": "Baucheck24.",
+     "s": 155.88
+    },
+    {
+     "t": "Von",
+     "s": 157.3
+    },
+    {
+     "t": "der",
+     "s": 157.62
+    },
+    {
+     "t": "Anfrage",
+     "s": 157.84
+    },
+    {
+     "t": "bis",
+     "s": 158.42
+    },
+    {
+     "t": "zur",
+     "s": 158.8
+    },
+    {
+     "t": "\u00dcbergabe.",
+     "s": 159.14
+    }
+   ]
+  }
+ ]
+}

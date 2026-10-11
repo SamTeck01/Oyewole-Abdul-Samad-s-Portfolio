@@ -5,6 +5,7 @@ import '@fontsource/inter-tight/500.css';
 import '@fontsource/inter-tight/600.css';
 import '@fontsource/inter-tight/700.css';
 import cuesJson from './cues.json';
+import cuesDeJson from './cues_de.json';
 
 export const FPS = 60;
 export const K = {
@@ -33,7 +34,12 @@ export const useT = () => {
 
 type Word = {t: string; s: number; e?: number};
 type Line = {id: string; start: number; end: number; en: string; de: string; words: Word[]; dewords: Word[]};
-export const CUES = cuesJson as unknown as {total: number; lines: Line[]};
+type Cues = {total: number; lines: Line[]};
+const CUES_BY: Record<Lang, Cues> = {en: cuesJson as unknown as Cues, de: cuesDeJson as unknown as Cues};
+// each language is cut to its own voice track; Film sets the active cues before its scenes render
+export let CUES: Cues = CUES_BY.en;
+export const setCues = (l: Lang) => { CUES = CUES_BY[l]; };
+export const cuesFor = (l: Lang) => CUES_BY[l];
 export const L = (id: string) => CUES.lines.find((l) => l.id === id)!;
 
 export const ease = Easing.bezier(0.25, 0.1, 0.1, 1);
@@ -128,9 +134,14 @@ export const PhaseTag: React.FC<{n: number; en: string; de: string; at: number; 
 };
 
 // 3D clip from Blender renders (public/3d/*.mp4). startAbs: absolute seconds the clip begins.
-export const Clip: React.FC<{name: string; style?: React.CSSProperties; rate?: number; startFrom?: number}> = ({name, style, rate = 1, startFrom = 0}) => (
-  <OffthreadVideo src={staticFile(`3d/${name}.mp4`)} muted playbackRate={rate} startFrom={startFrom} style={{width: '100%', height: '100%', objectFit: 'cover', ...style}} />
-);
+const CLIP_SECS: Record<string, number> = {rise: 8, bim: 7, explode: 5, site: 10, twin: 7};
+// slows a clip down when its scene is longer than the render, so it never runs out (DE scenes are longer)
+export const Clip: React.FC<{name: string; style?: React.CSSProperties; rate?: number; startFrom?: number}> = ({name, style, rate, startFrom = 0}) => {
+  const {durationInFrames, fps} = useVideoConfig();
+  const secs = CLIP_SECS[name] ?? 4;
+  const r = rate ?? Math.min(1, (secs - startFrom / fps - 0.25) / (durationInFrames / fps));
+  return <OffthreadVideo src={staticFile(`3d/${name}.mp4`)} muted playbackRate={r} startFrom={startFrom} style={{width: '100%', height: '100%', objectFit: 'cover', ...style}} />;
+};
 export const Still: React.FC<{name: string; style?: React.CSSProperties}> = ({name, style}) => (
   <Img src={staticFile(`3d/${name}.png`)} style={{width: '100%', height: '100%', objectFit: 'cover', ...style}} />
 );
