@@ -1,12 +1,19 @@
 import React from "react";
-import { AbsoluteFill, Audio, Easing, interpolate, staticFile, getStaticFiles } from "remotion";
+import { AbsoluteFill, Audio, Easing, interpolate, staticFile, getStaticFiles, Sequence } from "remotion";
 import { Lock, Check, AlertTriangle, BookOpen, FileText, Sparkles, Target, Users, Lightbulb, Bell, ShieldCheck, Plug, ArrowRight } from "lucide-react";
 import { C, F, useT, prog, pop, lerp, rnd, PIcon, pName, RothmeMark, Wordmark, Glass, Cap, Kinetic, Cursor } from "../brand";
 import { Dashboard, Ring } from "../Scenes";
 import { Maya, Hand, Mood } from "./Maya";
 import CAPS from "./captions.json";
+import GROW from "./grow.json";
+import { MapPanel, HeatChips, LeadCard, LEADS, heat } from "../lm/ui";
+import { mkW, chunks, CaptionBar, Word } from "../lm/vo";
+import { Globe, Swords, MapPin, CalendarCheck } from "lucide-react";
 
-export const EX_TOTAL = 86.2;
+/* v2: the "04 Grow" Lead Map scene is inserted after Act. Old scenes keep their v1 design times; everything after Act runs in a Sequence shifted by SHIFT. */
+const SHIFT_F = Math.round(GROW.shift * 60);
+const GROW_FROM = 61.0;
+export const EX_TOTAL = 86.2 + SHIFT_F / 60;
 const ab: React.CSSProperties = { position: "absolute" };
 const cc: React.CSSProperties = { justifyContent: "center", alignItems: "center" };
 
@@ -22,12 +29,12 @@ const Sc: React.FC<{ a: number; b: number; children: React.ReactNode; zoomOut?: 
 };
 
 /* living character: blinks + breathing */
-const LiveMaya: React.FC<{ mood: Mood; width: number; look?: number; tilt?: number; style?: React.CSSProperties; typing?: boolean }> = ({ mood, width, look = 0, tilt = 0, style, typing }) => {
+const LiveMaya: React.FC<{ mood: Mood; width: number; look?: number; tilt?: number; style?: React.CSSProperties; typing?: boolean; wave?: number }> = ({ mood, width, look = 0, tilt = 0, style, typing, wave = 0 }) => {
   const t = useT();
   const bt = (t * 1000) % 3700;
   const blink = bt < 120 ? Math.sin((bt / 120) * Math.PI) : 0;
   return <Maya mood={mood} width={width} blink={blink} look={look} breathe={Math.sin(t * 2.2)} headTilt={tilt + Math.sin(t * 1.3) * 1.2}
-    nod={typing ? Math.abs(Math.sin(t * 6)) * 0.3 : 0} style={style} />;
+    nod={typing ? Math.abs(Math.sin(t * 6)) * 0.3 : 0} typing={typing ? Math.sin(t * 22) : 0} wave={wave} waveAng={Math.sin(t * 9) * 16} style={style} />;
 };
 
 /* ---------- background ---------- */
@@ -46,8 +53,9 @@ const Bg: React.FC = () => {
 };
 
 /* ---------- captions ---------- */
-const Captions: React.FC = () => {
+const Captions: React.FC<{ lo?: number; hi?: number }> = ({ lo = -1, hi = 1e9 }) => {
   const t = useT();
+  if (t < lo || t > hi) return null;
   const c = (CAPS as any[]).find((x) => t >= x.s - 0.05 && t <= x.e + 0.35);
   if (!c || t > 83.6) return null;
   const p = prog(t, c.s - 0.05, 0.15);
@@ -129,13 +137,21 @@ const Desk: React.FC = () => {
   const mood: Mood = t < 9.2 ? "neutral" : t < 12.2 ? "focused" : "worried";
   /* camera: wide, then push in to her face at the end */
   const push = prog(t, 19.4, 2.4, Easing.inOut(Easing.cubic));
-  const cam = `translate(${-push * 120}px, ${push * 260}px) scale(${1 + push * 0.9})`;
+  /* v2: camera keeps moving: pan to each group of platforms as they are named, push in while she types, drift across the problem cards */
+  const ks: [number, number, number, number][] = [[3.5, 960, 540, 1.0], [4.9, 900, 520, 1.08], [5.7, 760, 470, 1.16], [6.9, 1180, 470, 1.16], [8.1, 760, 640, 1.14],
+    [9.3, 1160, 660, 1.14], [10.4, 960, 560, 1.22], [12.3, 960, 540, 1.0], [14.6, 860, 480, 1.1], [18.2, 1080, 520, 1.12], [19.4, 960, 540, 1.0]];
+  let kx = 960, ky = 540, kz = 1;
+  for (let i = 0; i < ks.length - 1; i++) {
+    const [ta, xa, ya, za] = ks[i], [tb, xb, yb, zb] = ks[i + 1];
+    if (t >= ta && t <= tb) { const p = Easing.inOut(Easing.cubic)((t - ta) / (tb - ta)); kx = lerp(xa, xb, p); ky = lerp(ya, yb, p); kz = lerp(za, zb, p); }
+  }
+  const cam = `translate(${960 - kx * kz}px, ${540 - ky * kz}px) scale(${kz}) translate(${-push * 120 / kz}px, ${push * 260 / kz}px) scale(${1 + push * 0.9})`;
   const problems: [string, number, number, number][] = [
     ["Too Many Dashboards", 12.5, 300, 250], ["Hard To Understand", 14.9, 1620, 250], ["Problems Go Unnoticed", 18.5, 290, 600], ["Leads Get Lost", 20.76, 1630, 600]];
   const drop = prog(t, 20.8, 1.0, Easing.in(Easing.quad));
   return (
     <Sc a={a} b={b}>
-      <AbsoluteFill style={{ transform: cam, transformOrigin: "50% 40%" }}>
+      <AbsoluteFill style={{ transform: cam, transformOrigin: "0 0" }}>
         {/* platform bubbles */}
         {!prob && <>
           <Bubble k="meta" x={520} y={260} t0={5.02} /><Bubble k="gads" x={420} y={430} t0={5.12} />
@@ -166,7 +182,7 @@ const Desk: React.FC = () => {
         {/* falling lead */}
         {t > 20.7 && <div style={{ ...ab, left: 1630 - 16, top: 680 + drop * 420, width: 32, height: 32, borderRadius: 99, background: C.green, boxShadow: "0 0 24px #10B981", opacity: 1 - drop }} />}
         {/* Maya at desk */}
-        <div style={{ ...ab, left: 960 - 290, top: 300 }}><LiveMaya mood={mood} width={580} look={prob ? 0 : Math.sin(t * 0.8) * 0.6} /></div>
+        <div style={{ ...ab, left: 960 - 290, top: 300 }}><LiveMaya mood={mood} width={580} look={prob ? 0 : Math.sin(t * 0.8) * 0.6} typing={t > 9.2 && t < 12.2} wave={prog(t, 3.6, 0.3) * (1 - prog(t, 4.9, 0.4))} /></div>
         <div style={{ ...ab, left: 0, right: 0, top: 860, height: 300, background: "linear-gradient(180deg,#2A2D73,#1D1F55)", borderTop: "8px solid #3B3F99" }} />
         <div style={{ ...ab, left: 960 - 260, top: 640 }}><Laptop w={520} back /></div>
         {/* coffee mug + plant */}
@@ -405,6 +421,66 @@ const Act: React.FC = () => {
   );
 };
 
+/* 8b. GROW (v2): Lead Map. Local time = global − GROW_FROM. */
+const gWords = (GROW.words as Word[]).map((w) => ({ ...w, s: w.s - GROW_FROM, e: w.e - GROW_FROM }));
+const GW = mkW(gWords);
+const GCAPS = chunks(gWords, { grow: GROW.grow.text });
+const GROW_END = GROW.grow.end - GROW_FROM + 0.75;
+const Grow: React.FC = () => {
+  const t = useT();
+  const tSearch = GW("grow", "searches"), tArea = GW("grow", "area"), tSalons = GW("grow", "salons"), tScored = GW("grow", "scored");
+  const tHot = GW("grow", "hot"), tWarm = GW("grow", "warm"), tCold = GW("grow", "cold"), tWhy = GW("grow", "reasons"), tSave = GW("grow", "saves"), tPipe = GW("grow", "pipeline"), tFu = GW("grow", "follows");
+  const hl = t > tCold + 0.8 ? null : t > tCold ? "cold" : t > tWarm ? "warm" : t > tHot ? "hot" : null;
+  const rise = prog(t, 0.2, 0.9);
+  const card = prog(t, tWhy - 0.3, 0.7, Easing.inOut(Easing.cubic));
+  const mapShift = card * -60;
+  const savePress = Math.max(0, 1 - Math.abs(t - tSave) / 0.12);
+  const names: [string, number, number][] = [["Glow & Co. Salon", 0, tSalons], ["Lumière Day Spa", 5, tSalons + 0.25], ["Bloom Beauty Bar", 11, GW("grow", "spas")]];
+  const query = "Austin, TX · Salons & spas";
+  const typed = query.slice(0, Math.floor(query.length * prog(t, tSearch, 0.9, Easing.linear)));
+  const fu = pop(t, tFu, 0.5);
+  const k = (1000 / 1600) * 1.4 * 1.25;   // MapPanel scale at zoom 1.4
+  return (
+    <Sc a={0} b={GROW_END}>
+      <Step n="04" label="Grow" t0={0.1} />
+      <div style={{ ...ab, left: 860, top: 104, fontFamily: F.sans, fontWeight: 600, fontSize: 30, color: C.primarySoft, opacity: prog(t, GW("grow", "lead"), 0.4), display: "flex", gap: 10, alignItems: "center" }}><MapPin size={30} />Lead Map</div>
+      <div style={{ ...ab, left: 120 + mapShift, top: 210, width: 1000, opacity: rise, transform: `translateY(${(1 - rise) * 200}px)` }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, width: 520, padding: "14px 20px", borderRadius: 14, background: "rgba(10,12,32,.85)", border: `1.5px solid ${t > tSearch ? C.primarySoft : C.line}`, fontFamily: F.sans, fontSize: 24, color: "#fff" }}>
+            <MapPin size={22} color={C.primarySoft} />{typed || <span style={{ color: C.muted }}>City, ZIP, or address</span>}</div>
+          <HeatChips active={hl as any} />
+        </div>
+        <div style={{ position: "relative" }}>
+          <MapPanel w={1000} h={640} t0={tArea + 0.2} radius={prog(t, tArea, 0.8)} zoom={1.4} highlight={hl as any} scores={prog(t, tScored, 1.0)} heroSel={card} />
+          {names.map(([n, id, ti]) => {
+            const l = LEADS[id]; const p = pop(t, ti, 0.45) * (1 - prog(t, tScored - 0.2, 0.3));
+            const x = 500 + (l.x - 800) * k, y = 320 + (l.y - 500) * k;
+            return <div key={n} style={{ ...ab, left: x + 14, top: y - 70, padding: "8px 14px", borderRadius: 10, background: "#fff", fontFamily: F.sans, fontWeight: 700, fontSize: 20, color: "#12142E", whiteSpace: "nowrap", transform: `scale(${p})`, transformOrigin: "0 100%", boxShadow: "0 10px 24px rgba(0,0,0,.4)" }}>{n}</div>;
+          })}
+        </div>
+      </div>
+      {/* lead card with reasons */}
+      <div style={{ ...ab, left: lerp(1960, 1090, card), top: 190, opacity: card }}>
+        <LeadCard name="Glow & Co. Salon" kind="Salon & spa" dist="1.4 mi" score={91} t0={tWhy - 0.2} w={740} s={1.08} saveT={tSave + 0.08} savePress={savePress} reasons={[
+          { icon: Lightbulb, title: "Strong fit", sub: "Offers skincare treatments, no retail line yet", t: tWhy + 0.05 },
+          { icon: Swords, title: "Light competition", sub: "Few similar shops nearby", t: tWhy + 0.35 },
+          { icon: Globe, title: "No website listed", sub: "A clear, specific reason to reach out", t: tWhy + 0.65 },
+        ]} />
+      </div>
+      {/* pipeline + follow-up */}
+      <div style={{ ...ab, left: 1090, top: 900, display: "flex", gap: 16, fontFamily: F.sans }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "14px 22px", borderRadius: 14, background: "rgba(139,140,248,.18)", border: "1px solid rgba(139,140,248,.5)", color: "#fff", fontWeight: 600, fontSize: 24,
+          transform: `scale(${pop(t, tPipe, 0.45)})` }}>Pipeline · New <span style={{ color: C.primarySoft }}>1</span></div>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "14px 22px", borderRadius: 14, background: "#fff", color: "#12142E", fontWeight: 700, fontSize: 24, transform: `scale(${fu})`, opacity: Math.min(1, fu * 2) }}>
+          <CalendarCheck size={26} color={C.green} />Follow up · Thu 10:00</div>
+      </div>
+      {t < tWhy + 0.4 && <div style={{ ...ab, left: 1240, top: 400, transform: `translateY(${(1 - prog(t, 0.3, 0.7)) * 600 + card * 700}px)` }}>
+        <LiveMaya mood={t > tArea ? "happy" : "focused"} width={540} look={-0.6} typing={t > tSearch - 0.2 && t < tArea + 0.3} /></div>}
+      <CaptionBar caps={GCAPS} />
+    </Sc>
+  );
+};
+
 /* 9. But there's more */
 const More: React.FC = () => {
   const t = useT();
@@ -446,7 +522,7 @@ const Benefits: React.FC = () => {
   return (
     <Sc a={67.2} b={71.2}>
       <svg width={1920} height={1080} style={ab}>
-        <path d="M480 520 Q720 380 960 520 T1440 520" stroke="rgba(201,204,255,.4)" strokeWidth="4" strokeDasharray="10 14" fill="none" pathLength={1}
+        <path d="M480 480 Q720 380 960 420 T1440 480" stroke="rgba(201,204,255,.4)" strokeWidth="4" strokeDasharray="10 14" fill="none" pathLength={1}
           style={{ strokeDashoffset: 0 }} opacity={prog(t, 67.4, 2.4)} />
       </svg>
       {items.map(([I, s, t0], i) => {
@@ -532,9 +608,18 @@ export const Explainer: React.FC<{ audio: boolean }> = ({ audio }) => {
   return (
     <AbsoluteFill style={{ background: "#090B20", overflow: "hidden" }}>
       <Bg />
-      <Hook /><Desk /><Turn /><Meet /><Connect /><Understand /><Act /><More /><Benefits /><Proof /><CTA />
-      <Captions />
-      <Samteck />
+      <Sequence durationInFrames={Math.round((GROW_FROM + 0.05) * 60)}>
+        <Hook /><Desk /><Turn /><Meet /><Connect /><Understand /><Act />
+        <Captions />
+      </Sequence>
+      <Sequence from={Math.round(GROW_FROM * 60)} durationInFrames={Math.round((GROW.grow.end - GROW_FROM + 0.8) * 60)}>
+        <Grow />
+      </Sequence>
+      <Sequence from={SHIFT_F}>
+        <More /><Benefits /><Proof /><CTA />
+        <Captions lo={60.9} />
+        <Samteck />
+      </Sequence>
       {has && <Audio src={staticFile("ex_mix.wav")} />}
     </AbsoluteFill>
   );

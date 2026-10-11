@@ -1,0 +1,884 @@
+{
+"voice": "af_heart",
+"duration": 52.959,
+"lines": [
+{
+"id": "hook",
+"start": 0.5,
+"end": 3.561,
+"text": "Need more local clients? They're closer than you think."
+},
+{
+"id": "maya",
+"start": 4.161,
+"end": 11.694,
+"text": "Meet Maya. She runs a small web design studio. Finding new clients used to mean hours of searching, and guessing who to call."
+},
+{
+"id": "search",
+"start": 12.294,
+"end": 20.027,
+"text": "Now she opens Rothme's Lead Map. She types her city, sets her service radius, picks a business type, and finds leads in the area."
+},
+{
+"id": "pins",
+"start": 20.527,
+"end": 27.131,
+"text": "Real local businesses drop onto the map. Each one gets a Rothme Opportunity Score. Hot, warm, or cold."
+},
+{
+"id": "why",
+"start": 27.631,
+"end": 35.166,
+"text": "And it tells her why. No website listed. No reviews yet. Light competition. A clear, specific service to offer."
+},
+{
+"id": "save",
+"start": 35.766,
+"end": 42.944,
+"text": "She saves the best ones to her pipeline, adds an estimated job value, and sets a follow-up reminder on her calendar."
+},
+{
+"id": "stages",
+"start": 43.444,
+"end": 46.342,
+"text": "From new, to contacted, to bid submitted, to won."
+},
+{
+"id": "cta",
+"start": 47.042,
+"end": 52.459,
+"text": "Rothme Lead Map. Free for every account. Find your next client, at Rothme dot app."
+}
+],
+"words": [
+{
+"w": "need",
+"s": 0.56,
+"e": 0.783,
+"line": "hook"
+},
+{
+"w": "more",
+"s": 0.783,
+"e": 1.006,
+"line": "hook"
+},
+{
+"w": "local",
+"s": 1.006,
+"e": 1.266,
+"line": "hook"
+},
+{
+"w": "clients",
+"s": 1.266,
+"e": 1.898,
+"line": "hook"
+},
+{
+"w": "they're",
+"s": 2.278,
+"e": 2.515,
+"line": "hook"
+},
+{
+"w": "closer",
+"s": 2.515,
+"e": 2.752,
+"line": "hook"
+},
+{
+"w": "than",
+"s": 2.752,
+"e": 2.929,
+"line": "hook"
+},
+{
+"w": "you",
+"s": 2.929,
+"e": 3.077,
+"line": "hook"
+},
+{
+"w": "think",
+"s": 3.077,
+"e": 3.521,
+"line": "hook"
+},
+{
+"w": "meet",
+"s": 4.221,
+"e": 4.417,
+"line": "maya"
+},
+{
+"w": "maya",
+"s": 4.417,
+"e": 4.877,
+"line": "maya"
+},
+{
+"w": "she",
+"s": 5.257,
+"e": 5.456,
+"line": "maya"
+},
+{
+"w": "runs",
+"s": 5.456,
+"e": 5.696,
+"line": "maya"
+},
+{
+"w": "a",
+"s": 5.696,
+"e": 5.815,
+"line": "maya"
+},
+{
+"w": "small",
+"s": 5.815,
+"e": 6.094,
+"line": "maya"
+},
+{
+"w": "web",
+"s": 6.094,
+"e": 6.294,
+"line": "maya"
+},
+{
+"w": "design",
+"s": 6.294,
+"e": 6.613,
+"line": "maya"
+},
+{
+"w": "studio",
+"s": 6.613,
+"e": 7.251,
+"line": "maya"
+},
+{
+"w": "finding",
+"s": 7.631,
+"e": 7.983,
+"line": "maya"
+},
+{
+"w": "new",
+"s": 7.983,
+"e": 8.178,
+"line": "maya"
+},
+{
+"w": "clients",
+"s": 8.178,
+"e": 8.53,
+"line": "maya"
+},
+{
+"w": "used",
+"s": 8.53,
+"e": 8.764,
+"line": "maya"
+},
+{
+"w": "to",
+"s": 8.764,
+"e": 8.92,
+"line": "maya"
+},
+{
+"w": "mean",
+"s": 8.92,
+"e": 9.155,
+"line": "maya"
+},
+{
+"w": "hours",
+"s": 9.155,
+"e": 9.428,
+"line": "maya"
+},
+{
+"w": "of",
+"s": 9.428,
+"e": 9.584,
+"line": "maya"
+},
+{
+"w": "searching",
+"s": 9.584,
+"e": 10.17,
+"line": "maya"
+},
+{
+"w": "and",
+"s": 10.17,
+"e": 10.365,
+"line": "maya"
+},
+{
+"w": "guessing",
+"s": 10.365,
+"e": 10.756,
+"line": "maya"
+},
+{
+"w": "who",
+"s": 10.756,
+"e": 10.951,
+"line": "maya"
+},
+{
+"w": "to",
+"s": 10.951,
+"e": 11.107,
+"line": "maya"
+},
+{
+"w": "call",
+"s": 11.107,
+"e": 11.654,
+"line": "maya"
+},
+{
+"w": "now",
+"s": 12.354,
+"e": 12.559,
+"line": "search"
+},
+{
+"w": "she",
+"s": 12.559,
+"e": 12.763,
+"line": "search"
+},
+{
+"w": "opens",
+"s": 12.763,
+"e": 13.05,
+"line": "search"
+},
+{
+"w": "rothme's",
+"s": 13.05,
+"e": 13.419,
+"line": "search"
+},
+{
+"w": "lead",
+"s": 13.419,
+"e": 13.664,
+"line": "search"
+},
+{
+"w": "map",
+"s": 13.664,
+"e": 14.197,
+"line": "search"
+},
+{
+"w": "she",
+"s": 14.577,
+"e": 14.783,
+"line": "search"
+},
+{
+"w": "types",
+"s": 14.783,
+"e": 15.072,
+"line": "search"
+},
+{
+"w": "her",
+"s": 15.072,
+"e": 15.279,
+"line": "search"
+},
+{
+"w": "city",
+"s": 15.279,
+"e": 15.692,
+"line": "search"
+},
+{
+"w": "sets",
+"s": 15.692,
+"e": 15.94,
+"line": "search"
+},
+{
+"w": "her",
+"s": 15.94,
+"e": 16.146,
+"line": "search"
+},
+{
+"w": "service",
+"s": 16.146,
+"e": 16.518,
+"line": "search"
+},
+{
+"w": "radius",
+"s": 16.518,
+"e": 17.013,
+"line": "search"
+},
+{
+"w": "picks",
+"s": 17.013,
+"e": 17.302,
+"line": "search"
+},
+{
+"w": "a",
+"s": 17.302,
+"e": 17.426,
+"line": "search"
+},
+{
+"w": "business",
+"s": 17.426,
+"e": 17.839,
+"line": "search"
+},
+{
+"w": "type",
+"s": 17.839,
+"e": 18.252,
+"line": "search"
+},
+{
+"w": "and",
+"s": 18.252,
+"e": 18.459,
+"line": "search"
+},
+{
+"w": "finds",
+"s": 18.459,
+"e": 18.748,
+"line": "search"
+},
+{
+"w": "leads",
+"s": 18.748,
+"e": 19.037,
+"line": "search"
+},
+{
+"w": "in",
+"s": 19.037,
+"e": 19.202,
+"line": "search"
+},
+{
+"w": "the",
+"s": 19.202,
+"e": 19.409,
+"line": "search"
+},
+{
+"w": "area",
+"s": 19.409,
+"e": 19.987,
+"line": "search"
+},
+{
+"w": "real",
+"s": 20.587,
+"e": 20.837,
+"line": "pins"
+},
+{
+"w": "local",
+"s": 20.837,
+"e": 21.129,
+"line": "pins"
+},
+{
+"w": "businesses",
+"s": 21.129,
+"e": 21.629,
+"line": "pins"
+},
+{
+"w": "drop",
+"s": 21.629,
+"e": 21.879,
+"line": "pins"
+},
+{
+"w": "onto",
+"s": 21.879,
+"e": 22.129,
+"line": "pins"
+},
+{
+"w": "the",
+"s": 22.129,
+"e": 22.338,
+"line": "pins"
+},
+{
+"w": "map",
+"s": 22.338,
+"e": 22.88,
+"line": "pins"
+},
+{
+"w": "each",
+"s": 23.26,
+"e": 23.497,
+"line": "pins"
+},
+{
+"w": "one",
+"s": 23.497,
+"e": 23.695,
+"line": "pins"
+},
+{
+"w": "gets",
+"s": 23.695,
+"e": 23.933,
+"line": "pins"
+},
+{
+"w": "a",
+"s": 23.933,
+"e": 24.051,
+"line": "pins"
+},
+{
+"w": "rothme",
+"s": 24.051,
+"e": 24.368,
+"line": "pins"
+},
+{
+"w": "opportunity",
+"s": 24.368,
+"e": 24.883,
+"line": "pins"
+},
+{
+"w": "score",
+"s": 24.883,
+"e": 25.476,
+"line": "pins"
+},
+{
+"w": "hot",
+"s": 25.856,
+"e": 26.157,
+"line": "pins"
+},
+{
+"w": "warm",
+"s": 26.157,
+"e": 26.49,
+"line": "pins"
+},
+{
+"w": "or",
+"s": 26.49,
+"e": 26.624,
+"line": "pins"
+},
+{
+"w": "cold",
+"s": 26.624,
+"e": 27.091,
+"line": "pins"
+},
+{
+"w": "and",
+"s": 27.691,
+"e": 27.828,
+"line": "why"
+},
+{
+"w": "it",
+"s": 27.828,
+"e": 27.938,
+"line": "why"
+},
+{
+"w": "tells",
+"s": 27.938,
+"e": 28.13,
+"line": "why"
+},
+{
+"w": "her",
+"s": 28.13,
+"e": 28.267,
+"line": "why"
+},
+{
+"w": "why",
+"s": 28.267,
+"e": 28.623,
+"line": "why"
+},
+{
+"w": "no",
+"s": 29.003,
+"e": 29.151,
+"line": "why"
+},
+{
+"w": "website",
+"s": 29.151,
+"e": 29.485,
+"line": "why"
+},
+{
+"w": "listed",
+"s": 29.485,
+"e": 30.077,
+"line": "why"
+},
+{
+"w": "no",
+"s": 30.457,
+"e": 30.606,
+"line": "why"
+},
+{
+"w": "reviews",
+"s": 30.606,
+"e": 30.942,
+"line": "why"
+},
+{
+"w": "yet",
+"s": 30.942,
+"e": 31.426,
+"line": "why"
+},
+{
+"w": "light",
+"s": 31.806,
+"e": 32.058,
+"line": "why"
+},
+{
+"w": "competition",
+"s": 32.058,
+"e": 32.811,
+"line": "why"
+},
+{
+"w": "a",
+"s": 33.191,
+"e": 33.303,
+"line": "why"
+},
+{
+"w": "clear",
+"s": 33.303,
+"e": 33.712,
+"line": "why"
+},
+{
+"w": "specific",
+"s": 33.712,
+"e": 34.084,
+"line": "why"
+},
+{
+"w": "service",
+"s": 34.084,
+"e": 34.419,
+"line": "why"
+},
+{
+"w": "to",
+"s": 34.419,
+"e": 34.568,
+"line": "why"
+},
+{
+"w": "offer",
+"s": 34.568,
+"e": 35.126,
+"line": "why"
+},
+{
+"w": "she",
+"s": 35.826,
+"e": 36.062,
+"line": "save"
+},
+{
+"w": "saves",
+"s": 36.062,
+"e": 36.393,
+"line": "save"
+},
+{
+"w": "the",
+"s": 36.393,
+"e": 36.629,
+"line": "save"
+},
+{
+"w": "best",
+"s": 36.629,
+"e": 36.912,
+"line": "save"
+},
+{
+"w": "ones",
+"s": 36.912,
+"e": 37.195,
+"line": "save"
+},
+{
+"w": "to",
+"s": 37.195,
+"e": 37.383,
+"line": "save"
+},
+{
+"w": "her",
+"s": 37.383,
+"e": 37.619,
+"line": "save"
+},
+{
+"w": "pipeline",
+"s": 37.619,
+"e": 38.28,
+"line": "save"
+},
+{
+"w": "adds",
+"s": 38.28,
+"e": 38.563,
+"line": "save"
+},
+{
+"w": "an",
+"s": 38.563,
+"e": 38.752,
+"line": "save"
+},
+{
+"w": "estimated",
+"s": 38.752,
+"e": 39.271,
+"line": "save"
+},
+{
+"w": "job",
+"s": 39.271,
+"e": 39.507,
+"line": "save"
+},
+{
+"w": "value",
+"s": 39.507,
+"e": 40.026,
+"line": "save"
+},
+{
+"w": "and",
+"s": 40.026,
+"e": 40.262,
+"line": "save"
+},
+{
+"w": "sets",
+"s": 40.262,
+"e": 40.545,
+"line": "save"
+},
+{
+"w": "a",
+"s": 40.545,
+"e": 40.686,
+"line": "save"
+},
+{
+"w": "followup",
+"s": 40.686,
+"e": 41.158,
+"line": "save"
+},
+{
+"w": "reminder",
+"s": 41.158,
+"e": 41.63,
+"line": "save"
+},
+{
+"w": "on",
+"s": 41.63,
+"e": 41.818,
+"line": "save"
+},
+{
+"w": "her",
+"s": 41.818,
+"e": 42.054,
+"line": "save"
+},
+{
+"w": "calendar",
+"s": 42.054,
+"e": 42.904,
+"line": "save"
+},
+{
+"w": "from",
+"s": 43.504,
+"e": 43.728,
+"line": "stages"
+},
+{
+"w": "new",
+"s": 43.728,
+"e": 44.063,
+"line": "stages"
+},
+{
+"w": "to",
+"s": 44.063,
+"e": 44.213,
+"line": "stages"
+},
+{
+"w": "contacted",
+"s": 44.213,
+"e": 44.772,
+"line": "stages"
+},
+{
+"w": "to",
+"s": 44.772,
+"e": 44.921,
+"line": "stages"
+},
+{
+"w": "bid",
+"s": 44.921,
+"e": 45.108,
+"line": "stages"
+},
+{
+"w": "submitted",
+"s": 45.108,
+"e": 45.667,
+"line": "stages"
+},
+{
+"w": "to",
+"s": 45.667,
+"e": 45.817,
+"line": "stages"
+},
+{
+"w": "won",
+"s": 45.817,
+"e": 46.302,
+"line": "stages"
+},
+{
+"w": "rothme",
+"s": 47.102,
+"e": 47.401,
+"line": "cta"
+},
+{
+"w": "lead",
+"s": 47.401,
+"e": 47.626,
+"line": "cta"
+},
+{
+"w": "map",
+"s": 47.626,
+"e": 48.113,
+"line": "cta"
+},
+{
+"w": "free",
+"s": 48.493,
+"e": 48.689,
+"line": "cta"
+},
+{
+"w": "for",
+"s": 48.689,
+"e": 48.853,
+"line": "cta"
+},
+{
+"w": "every",
+"s": 48.853,
+"e": 49.081,
+"line": "cta"
+},
+{
+"w": "account",
+"s": 49.081,
+"e": 49.637,
+"line": "cta"
+},
+{
+"w": "find",
+"s": 50.017,
+"e": 50.257,
+"line": "cta"
+},
+{
+"w": "your",
+"s": 50.257,
+"e": 50.497,
+"line": "cta"
+},
+{
+"w": "next",
+"s": 50.497,
+"e": 50.737,
+"line": "cta"
+},
+{
+"w": "client",
+"s": 50.737,
+"e": 51.218,
+"line": "cta"
+},
+{
+"w": "at",
+"s": 51.218,
+"e": 51.378,
+"line": "cta"
+},
+{
+"w": "rothme",
+"s": 51.378,
+"e": 51.698,
+"line": "cta"
+},
+{
+"w": "dot",
+"s": 51.698,
+"e": 51.898,
+"line": "cta"
+},
+{
+"w": "app",
+"s": 51.898,
+"e": 52.419,
+"line": "cta"
+}
+]
+}

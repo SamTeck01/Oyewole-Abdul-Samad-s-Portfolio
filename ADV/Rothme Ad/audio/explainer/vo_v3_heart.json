@@ -1,0 +1,1610 @@
+{
+"voice": "af_heart",
+"duration": 99.702,
+"lines": [
+{
+"id": "hook",
+"start": 0.5,
+"end": 3.046,
+"text": "Do you actually know which of your marketing is working?"
+},
+{
+"id": "maya1",
+"start": 3.746,
+"end": 11.692,
+"text": "Meet Maya. She runs ads, posts every day, sends emails, and sells online. But her numbers live in ten different places."
+},
+{
+"id": "maya2",
+"start": 12.292,
+"end": 21.596,
+"text": "Every platform tells part of the story. Reports are full of numbers nobody explains. And when something breaks, she doesn't notice, until the leads stop."
+},
+{
+"id": "turn",
+"start": 22.296,
+"end": 25.789,
+"text": "Maya doesn't need more dashboards. She needs one that makes sense."
+},
+{
+"id": "meet",
+"start": 26.489,
+"end": 32.206,
+"text": "Meet Rothme. It brings your marketing together, shows what's working, and tells you what needs attention."
+},
+{
+"id": "connect",
+"start": 33.005,
+"end": 39.199,
+"text": "First, connect. Maya links her ads, social, analytics, email and store, with secure connections."
+},
+{
+"id": "understand1",
+"start": 39.799,
+"end": 45.454,
+"text": "Now everything lands in one dashboard. Her Marketing Health Score shows how she's doing, at a glance."
+},
+{
+"id": "understand2",
+"start": 45.854,
+"end": 50.855,
+"text": "And when a number confuses her, she clicks it. The Cheat Sheet explains it in plain English."
+},
+{
+"id": "act",
+"start": 51.556,
+"end": 60.535,
+"text": "Then, Rothme's Lead Audit spots a problem. Her contact form stopped sending leads. Maya fixes it in minutes, and the leads start coming in again."
+},
+{
+"id": "grow",
+"start": 61.235,
+"end": 76.394,
+"text": "And to grow, there's Lead Map. Maya searches her area, and finds local salons and spas that could stock her products. Each one is scored hot, warm, or cold, with the reasons why. She saves the best ones to her pipeline, and follows up."
+},
+{
+"id": "more",
+"start": 77.094,
+"end": 82.59,
+"text": "But there's more. Reports are ready every Monday. And AI help is there, only if she wants it."
+},
+{
+"id": "benefits",
+"start": 83.29,
+"end": 86.53,
+"text": "Less guessing. Fewer lost leads. Smarter decisions."
+},
+{
+"id": "proof",
+"start": 87.23,
+"end": 92.678,
+"text": "Fourteen plus platforms. A hundred and fifty plus metrics. A hundred plus health checks."
+},
+{
+"id": "cta",
+"start": 93.378,
+"end": 99.202,
+"text": "Rothme. Stop guessing. Start understanding your marketing. Get a demo, at Rothme dot app."
+}
+],
+"words": [
+{
+"w": "do",
+"s": 0.56,
+"e": 0.692,
+"line": "hook"
+},
+{
+"w": "you",
+"s": 0.692,
+"e": 0.858,
+"line": "hook"
+},
+{
+"w": "actually",
+"s": 0.858,
+"e": 1.188,
+"line": "hook"
+},
+{
+"w": "know",
+"s": 1.188,
+"e": 1.386,
+"line": "hook"
+},
+{
+"w": "which",
+"s": 1.386,
+"e": 1.618,
+"line": "hook"
+},
+{
+"w": "of",
+"s": 1.618,
+"e": 1.75,
+"line": "hook"
+},
+{
+"w": "your",
+"s": 1.75,
+"e": 1.948,
+"line": "hook"
+},
+{
+"w": "marketing",
+"s": 1.948,
+"e": 2.312,
+"line": "hook"
+},
+{
+"w": "is",
+"s": 2.312,
+"e": 2.444,
+"line": "hook"
+},
+{
+"w": "working",
+"s": 2.444,
+"e": 3.006,
+"line": "hook"
+},
+{
+"w": "meet",
+"s": 3.806,
+"e": 4.082,
+"line": "maya1"
+},
+{
+"w": "maya",
+"s": 4.082,
+"e": 4.724,
+"line": "maya1"
+},
+{
+"w": "she",
+"s": 4.724,
+"e": 4.953,
+"line": "maya1"
+},
+{
+"w": "runs",
+"s": 4.953,
+"e": 5.229,
+"line": "maya1"
+},
+{
+"w": "ads",
+"s": 5.229,
+"e": 5.642,
+"line": "maya1"
+},
+{
+"w": "posts",
+"s": 5.642,
+"e": 5.963,
+"line": "maya1"
+},
+{
+"w": "every",
+"s": 5.963,
+"e": 6.284,
+"line": "maya1"
+},
+{
+"w": "day",
+"s": 6.284,
+"e": 6.697,
+"line": "maya1"
+},
+{
+"w": "sends",
+"s": 6.697,
+"e": 7.018,
+"line": "maya1"
+},
+{
+"w": "emails",
+"s": 7.018,
+"e": 7.569,
+"line": "maya1"
+},
+{
+"w": "and",
+"s": 7.569,
+"e": 7.798,
+"line": "maya1"
+},
+{
+"w": "sells",
+"s": 7.798,
+"e": 8.119,
+"line": "maya1"
+},
+{
+"w": "online",
+"s": 8.119,
+"e": 8.853,
+"line": "maya1"
+},
+{
+"w": "but",
+"s": 8.853,
+"e": 9.083,
+"line": "maya1"
+},
+{
+"w": "her",
+"s": 9.083,
+"e": 9.312,
+"line": "maya1"
+},
+{
+"w": "numbers",
+"s": 9.312,
+"e": 9.725,
+"line": "maya1"
+},
+{
+"w": "live",
+"s": 9.725,
+"e": 10.001,
+"line": "maya1"
+},
+{
+"w": "in",
+"s": 10.001,
+"e": 10.184,
+"line": "maya1"
+},
+{
+"w": "ten",
+"s": 10.184,
+"e": 10.414,
+"line": "maya1"
+},
+{
+"w": "different",
+"s": 10.414,
+"e": 10.918,
+"line": "maya1"
+},
+{
+"w": "places",
+"s": 10.918,
+"e": 11.652,
+"line": "maya1"
+},
+{
+"w": "every",
+"s": 12.352,
+"e": 12.667,
+"line": "maya2"
+},
+{
+"w": "platform",
+"s": 12.667,
+"e": 13.116,
+"line": "maya2"
+},
+{
+"w": "tells",
+"s": 13.116,
+"e": 13.43,
+"line": "maya2"
+},
+{
+"w": "part",
+"s": 13.43,
+"e": 13.699,
+"line": "maya2"
+},
+{
+"w": "of",
+"s": 13.699,
+"e": 13.879,
+"line": "maya2"
+},
+{
+"w": "the",
+"s": 13.879,
+"e": 14.103,
+"line": "maya2"
+},
+{
+"w": "story",
+"s": 14.103,
+"e": 14.777,
+"line": "maya2"
+},
+{
+"w": "reports",
+"s": 14.777,
+"e": 15.181,
+"line": "maya2"
+},
+{
+"w": "are",
+"s": 15.181,
+"e": 15.405,
+"line": "maya2"
+},
+{
+"w": "full",
+"s": 15.405,
+"e": 15.675,
+"line": "maya2"
+},
+{
+"w": "of",
+"s": 15.675,
+"e": 15.854,
+"line": "maya2"
+},
+{
+"w": "numbers",
+"s": 15.854,
+"e": 16.258,
+"line": "maya2"
+},
+{
+"w": "nobody",
+"s": 16.258,
+"e": 16.618,
+"line": "maya2"
+},
+{
+"w": "explains",
+"s": 16.618,
+"e": 17.426,
+"line": "maya2"
+},
+{
+"w": "and",
+"s": 17.426,
+"e": 17.65,
+"line": "maya2"
+},
+{
+"w": "when",
+"s": 17.65,
+"e": 17.92,
+"line": "maya2"
+},
+{
+"w": "something",
+"s": 17.92,
+"e": 18.413,
+"line": "maya2"
+},
+{
+"w": "breaks",
+"s": 18.413,
+"e": 18.952,
+"line": "maya2"
+},
+{
+"w": "she",
+"s": 18.952,
+"e": 19.177,
+"line": "maya2"
+},
+{
+"w": "doesn't",
+"s": 19.177,
+"e": 19.536,
+"line": "maya2"
+},
+{
+"w": "notice",
+"s": 19.536,
+"e": 20.075,
+"line": "maya2"
+},
+{
+"w": "until",
+"s": 20.075,
+"e": 20.389,
+"line": "maya2"
+},
+{
+"w": "the",
+"s": 20.389,
+"e": 20.613,
+"line": "maya2"
+},
+{
+"w": "leads",
+"s": 20.613,
+"e": 20.928,
+"line": "maya2"
+},
+{
+"w": "stop",
+"s": 20.928,
+"e": 21.556,
+"line": "maya2"
+},
+{
+"w": "maya",
+"s": 22.356,
+"e": 22.58,
+"line": "turn"
+},
+{
+"w": "doesn't",
+"s": 22.58,
+"e": 22.878,
+"line": "turn"
+},
+{
+"w": "need",
+"s": 22.878,
+"e": 23.102,
+"line": "turn"
+},
+{
+"w": "more",
+"s": 23.102,
+"e": 23.326,
+"line": "turn"
+},
+{
+"w": "dashboards",
+"s": 23.326,
+"e": 24.071,
+"line": "turn"
+},
+{
+"w": "she",
+"s": 24.071,
+"e": 24.258,
+"line": "turn"
+},
+{
+"w": "needs",
+"s": 24.258,
+"e": 24.519,
+"line": "turn"
+},
+{
+"w": "one",
+"s": 24.519,
+"e": 24.705,
+"line": "turn"
+},
+{
+"w": "that",
+"s": 24.705,
+"e": 24.929,
+"line": "turn"
+},
+{
+"w": "makes",
+"s": 24.929,
+"e": 25.19,
+"line": "turn"
+},
+{
+"w": "sense",
+"s": 25.19,
+"e": 25.749,
+"line": "turn"
+},
+{
+"w": "meet",
+"s": 26.549,
+"e": 26.788,
+"line": "meet"
+},
+{
+"w": "rothme",
+"s": 26.788,
+"e": 27.426,
+"line": "meet"
+},
+{
+"w": "it",
+"s": 27.426,
+"e": 27.585,
+"line": "meet"
+},
+{
+"w": "brings",
+"s": 27.585,
+"e": 27.904,
+"line": "meet"
+},
+{
+"w": "your",
+"s": 27.904,
+"e": 28.143,
+"line": "meet"
+},
+{
+"w": "marketing",
+"s": 28.143,
+"e": 28.581,
+"line": "meet"
+},
+{
+"w": "together",
+"s": 28.581,
+"e": 29.138,
+"line": "meet"
+},
+{
+"w": "shows",
+"s": 29.138,
+"e": 29.417,
+"line": "meet"
+},
+{
+"w": "what's",
+"s": 29.417,
+"e": 29.696,
+"line": "meet"
+},
+{
+"w": "working",
+"s": 29.696,
+"e": 30.214,
+"line": "meet"
+},
+{
+"w": "and",
+"s": 30.214,
+"e": 30.413,
+"line": "meet"
+},
+{
+"w": "tells",
+"s": 30.413,
+"e": 30.692,
+"line": "meet"
+},
+{
+"w": "you",
+"s": 30.692,
+"e": 30.891,
+"line": "meet"
+},
+{
+"w": "what",
+"s": 30.891,
+"e": 31.13,
+"line": "meet"
+},
+{
+"w": "needs",
+"s": 31.13,
+"e": 31.409,
+"line": "meet"
+},
+{
+"w": "attention",
+"s": 31.409,
+"e": 32.166,
+"line": "meet"
+},
+{
+"w": "first",
+"s": 33.066,
+"e": 33.544,
+"line": "connect"
+},
+{
+"w": "connect",
+"s": 33.544,
+"e": 34.284,
+"line": "connect"
+},
+{
+"w": "maya",
+"s": 34.284,
+"e": 34.545,
+"line": "connect"
+},
+{
+"w": "links",
+"s": 34.545,
+"e": 34.85,
+"line": "connect"
+},
+{
+"w": "her",
+"s": 34.85,
+"e": 35.068,
+"line": "connect"
+},
+{
+"w": "ads",
+"s": 35.068,
+"e": 35.459,
+"line": "connect"
+},
+{
+"w": "social",
+"s": 35.459,
+"e": 35.982,
+"line": "connect"
+},
+{
+"w": "analytics",
+"s": 35.982,
+"e": 36.635,
+"line": "connect"
+},
+{
+"w": "email",
+"s": 36.635,
+"e": 36.939,
+"line": "connect"
+},
+{
+"w": "and",
+"s": 36.939,
+"e": 37.157,
+"line": "connect"
+},
+{
+"w": "store",
+"s": 37.157,
+"e": 37.636,
+"line": "connect"
+},
+{
+"w": "with",
+"s": 37.636,
+"e": 37.897,
+"line": "connect"
+},
+{
+"w": "secure",
+"s": 37.897,
+"e": 38.245,
+"line": "connect"
+},
+{
+"w": "connections",
+"s": 38.245,
+"e": 39.159,
+"line": "connect"
+},
+{
+"w": "now",
+"s": 39.859,
+"e": 40.065,
+"line": "understand1"
+},
+{
+"w": "everything",
+"s": 40.065,
+"e": 40.559,
+"line": "understand1"
+},
+{
+"w": "lands",
+"s": 40.559,
+"e": 40.847,
+"line": "understand1"
+},
+{
+"w": "in",
+"s": 40.847,
+"e": 41.011,
+"line": "understand1"
+},
+{
+"w": "one",
+"s": 41.011,
+"e": 41.217,
+"line": "understand1"
+},
+{
+"w": "dashboard",
+"s": 41.217,
+"e": 41.999,
+"line": "understand1"
+},
+{
+"w": "her",
+"s": 41.999,
+"e": 42.205,
+"line": "understand1"
+},
+{
+"w": "marketing",
+"s": 42.205,
+"e": 42.657,
+"line": "understand1"
+},
+{
+"w": "health",
+"s": 42.657,
+"e": 42.986,
+"line": "understand1"
+},
+{
+"w": "score",
+"s": 42.986,
+"e": 43.274,
+"line": "understand1"
+},
+{
+"w": "shows",
+"s": 43.274,
+"e": 43.562,
+"line": "understand1"
+},
+{
+"w": "how",
+"s": 43.562,
+"e": 43.768,
+"line": "understand1"
+},
+{
+"w": "she's",
+"s": 43.768,
+"e": 44.015,
+"line": "understand1"
+},
+{
+"w": "doing",
+"s": 44.015,
+"e": 44.468,
+"line": "understand1"
+},
+{
+"w": "at",
+"s": 44.468,
+"e": 44.632,
+"line": "understand1"
+},
+{
+"w": "a",
+"s": 44.632,
+"e": 44.756,
+"line": "understand1"
+},
+{
+"w": "glance",
+"s": 44.756,
+"e": 45.414,
+"line": "understand1"
+},
+{
+"w": "and",
+"s": 45.914,
+"e": 46.107,
+"line": "understand2"
+},
+{
+"w": "when",
+"s": 46.107,
+"e": 46.339,
+"line": "understand2"
+},
+{
+"w": "a",
+"s": 46.339,
+"e": 46.455,
+"line": "understand2"
+},
+{
+"w": "number",
+"s": 46.455,
+"e": 46.763,
+"line": "understand2"
+},
+{
+"w": "confuses",
+"s": 46.763,
+"e": 47.149,
+"line": "understand2"
+},
+{
+"w": "her",
+"s": 47.149,
+"e": 47.497,
+"line": "understand2"
+},
+{
+"w": "she",
+"s": 47.497,
+"e": 47.689,
+"line": "understand2"
+},
+{
+"w": "clicks",
+"s": 47.689,
+"e": 47.998,
+"line": "understand2"
+},
+{
+"w": "it",
+"s": 47.998,
+"e": 48.461,
+"line": "understand2"
+},
+{
+"w": "the",
+"s": 48.461,
+"e": 48.654,
+"line": "understand2"
+},
+{
+"w": "cheat",
+"s": 48.654,
+"e": 48.924,
+"line": "understand2"
+},
+{
+"w": "sheet",
+"s": 48.924,
+"e": 49.195,
+"line": "understand2"
+},
+{
+"w": "explains",
+"s": 49.195,
+"e": 49.581,
+"line": "understand2"
+},
+{
+"w": "it",
+"s": 49.581,
+"e": 49.735,
+"line": "understand2"
+},
+{
+"w": "in",
+"s": 49.735,
+"e": 49.889,
+"line": "understand2"
+},
+{
+"w": "plain",
+"s": 49.889,
+"e": 50.159,
+"line": "understand2"
+},
+{
+"w": "english",
+"s": 50.159,
+"e": 50.816,
+"line": "understand2"
+},
+{
+"w": "then",
+"s": 51.616,
+"e": 52.066,
+"line": "act"
+},
+{
+"w": "rothme's",
+"s": 52.066,
+"e": 52.472,
+"line": "act"
+},
+{
+"w": "lead",
+"s": 52.472,
+"e": 52.742,
+"line": "act"
+},
+{
+"w": "audit",
+"s": 52.742,
+"e": 53.058,
+"line": "act"
+},
+{
+"w": "spots",
+"s": 53.058,
+"e": 53.373,
+"line": "act"
+},
+{
+"w": "a",
+"s": 53.373,
+"e": 53.509,
+"line": "act"
+},
+{
+"w": "problem",
+"s": 53.509,
+"e": 54.275,
+"line": "act"
+},
+{
+"w": "her",
+"s": 54.275,
+"e": 54.5,
+"line": "act"
+},
+{
+"w": "contact",
+"s": 54.5,
+"e": 54.906,
+"line": "act"
+},
+{
+"w": "form",
+"s": 54.906,
+"e": 55.176,
+"line": "act"
+},
+{
+"w": "stopped",
+"s": 55.176,
+"e": 55.582,
+"line": "act"
+},
+{
+"w": "sending",
+"s": 55.582,
+"e": 55.988,
+"line": "act"
+},
+{
+"w": "leads",
+"s": 55.988,
+"e": 56.664,
+"line": "act"
+},
+{
+"w": "maya",
+"s": 56.664,
+"e": 56.934,
+"line": "act"
+},
+{
+"w": "fixes",
+"s": 56.934,
+"e": 57.25,
+"line": "act"
+},
+{
+"w": "it",
+"s": 57.25,
+"e": 57.43,
+"line": "act"
+},
+{
+"w": "in",
+"s": 57.43,
+"e": 57.61,
+"line": "act"
+},
+{
+"w": "minutes",
+"s": 57.61,
+"e": 58.196,
+"line": "act"
+},
+{
+"w": "and",
+"s": 58.196,
+"e": 58.422,
+"line": "act"
+},
+{
+"w": "the",
+"s": 58.422,
+"e": 58.647,
+"line": "act"
+},
+{
+"w": "leads",
+"s": 58.647,
+"e": 58.962,
+"line": "act"
+},
+{
+"w": "start",
+"s": 58.962,
+"e": 59.278,
+"line": "act"
+},
+{
+"w": "coming",
+"s": 59.278,
+"e": 59.639,
+"line": "act"
+},
+{
+"w": "in",
+"s": 59.639,
+"e": 59.819,
+"line": "act"
+},
+{
+"w": "again",
+"s": 59.819,
+"e": 60.495,
+"line": "act"
+},
+{
+"w": "and",
+"s": 61.295,
+"e": 61.527,
+"line": "grow"
+},
+{
+"w": "to",
+"s": 61.527,
+"e": 61.712,
+"line": "grow"
+},
+{
+"w": "grow",
+"s": 61.712,
+"e": 62.175,
+"line": "grow"
+},
+{
+"w": "there's",
+"s": 62.175,
+"e": 62.546,
+"line": "grow"
+},
+{
+"w": "lead",
+"s": 62.546,
+"e": 62.824,
+"line": "grow"
+},
+{
+"w": "map",
+"s": 62.824,
+"e": 63.426,
+"line": "grow"
+},
+{
+"w": "maya",
+"s": 63.426,
+"e": 63.704,
+"line": "grow"
+},
+{
+"w": "searches",
+"s": 63.704,
+"e": 64.168,
+"line": "grow"
+},
+{
+"w": "her",
+"s": 64.168,
+"e": 64.4,
+"line": "grow"
+},
+{
+"w": "area",
+"s": 64.4,
+"e": 64.863,
+"line": "grow"
+},
+{
+"w": "and",
+"s": 64.863,
+"e": 65.095,
+"line": "grow"
+},
+{
+"w": "finds",
+"s": 65.095,
+"e": 65.419,
+"line": "grow"
+},
+{
+"w": "local",
+"s": 65.419,
+"e": 65.743,
+"line": "grow"
+},
+{
+"w": "salons",
+"s": 65.743,
+"e": 66.114,
+"line": "grow"
+},
+{
+"w": "and",
+"s": 66.114,
+"e": 66.346,
+"line": "grow"
+},
+{
+"w": "spas",
+"s": 66.346,
+"e": 66.624,
+"line": "grow"
+},
+{
+"w": "that",
+"s": 66.624,
+"e": 66.902,
+"line": "grow"
+},
+{
+"w": "could",
+"s": 66.902,
+"e": 67.226,
+"line": "grow"
+},
+{
+"w": "stock",
+"s": 67.226,
+"e": 67.55,
+"line": "grow"
+},
+{
+"w": "her",
+"s": 67.55,
+"e": 67.782,
+"line": "grow"
+},
+{
+"w": "products",
+"s": 67.782,
+"e": 68.616,
+"line": "grow"
+},
+{
+"w": "each",
+"s": 68.616,
+"e": 68.894,
+"line": "grow"
+},
+{
+"w": "one",
+"s": 68.894,
+"e": 69.126,
+"line": "grow"
+},
+{
+"w": "is",
+"s": 69.126,
+"e": 69.311,
+"line": "grow"
+},
+{
+"w": "scored",
+"s": 69.311,
+"e": 69.682,
+"line": "grow"
+},
+{
+"w": "hot",
+"s": 69.682,
+"e": 70.099,
+"line": "grow"
+},
+{
+"w": "warm",
+"s": 70.099,
+"e": 70.562,
+"line": "grow"
+},
+{
+"w": "or",
+"s": 70.562,
+"e": 70.748,
+"line": "grow"
+},
+{
+"w": "cold",
+"s": 70.748,
+"e": 71.211,
+"line": "grow"
+},
+{
+"w": "with",
+"s": 71.211,
+"e": 71.489,
+"line": "grow"
+},
+{
+"w": "the",
+"s": 71.489,
+"e": 71.721,
+"line": "grow"
+},
+{
+"w": "reasons",
+"s": 71.721,
+"e": 72.138,
+"line": "grow"
+},
+{
+"w": "why",
+"s": 72.138,
+"e": 72.74,
+"line": "grow"
+},
+{
+"w": "she",
+"s": 72.74,
+"e": 72.972,
+"line": "grow"
+},
+{
+"w": "saves",
+"s": 72.972,
+"e": 73.296,
+"line": "grow"
+},
+{
+"w": "the",
+"s": 73.296,
+"e": 73.528,
+"line": "grow"
+},
+{
+"w": "best",
+"s": 73.528,
+"e": 73.806,
+"line": "grow"
+},
+{
+"w": "ones",
+"s": 73.806,
+"e": 74.084,
+"line": "grow"
+},
+{
+"w": "to",
+"s": 74.084,
+"e": 74.269,
+"line": "grow"
+},
+{
+"w": "her",
+"s": 74.269,
+"e": 74.501,
+"line": "grow"
+},
+{
+"w": "pipeline",
+"s": 74.501,
+"e": 75.15,
+"line": "grow"
+},
+{
+"w": "and",
+"s": 75.15,
+"e": 75.381,
+"line": "grow"
+},
+{
+"w": "follows",
+"s": 75.381,
+"e": 75.798,
+"line": "grow"
+},
+{
+"w": "up",
+"s": 75.798,
+"e": 76.354,
+"line": "grow"
+},
+{
+"w": "but",
+"s": 77.154,
+"e": 77.354,
+"line": "more"
+},
+{
+"w": "there's",
+"s": 77.354,
+"e": 77.674,
+"line": "more"
+},
+{
+"w": "more",
+"s": 77.674,
+"e": 78.234,
+"line": "more"
+},
+{
+"w": "reports",
+"s": 78.234,
+"e": 78.593,
+"line": "more"
+},
+{
+"w": "are",
+"s": 78.593,
+"e": 78.793,
+"line": "more"
+},
+{
+"w": "ready",
+"s": 78.793,
+"e": 79.073,
+"line": "more"
+},
+{
+"w": "every",
+"s": 79.073,
+"e": 79.353,
+"line": "more"
+},
+{
+"w": "monday",
+"s": 79.353,
+"e": 79.992,
+"line": "more"
+},
+{
+"w": "and",
+"s": 79.992,
+"e": 80.192,
+"line": "more"
+},
+{
+"w": "ai",
+"s": 80.192,
+"e": 80.352,
+"line": "more"
+},
+{
+"w": "help",
+"s": 80.352,
+"e": 80.592,
+"line": "more"
+},
+{
+"w": "is",
+"s": 80.592,
+"e": 80.752,
+"line": "more"
+},
+{
+"w": "there",
+"s": 80.752,
+"e": 81.191,
+"line": "more"
+},
+{
+"w": "only",
+"s": 81.191,
+"e": 81.431,
+"line": "more"
+},
+{
+"w": "if",
+"s": 81.431,
+"e": 81.591,
+"line": "more"
+},
+{
+"w": "she",
+"s": 81.591,
+"e": 81.791,
+"line": "more"
+},
+{
+"w": "wants",
+"s": 81.791,
+"e": 82.071,
+"line": "more"
+},
+{
+"w": "it",
+"s": 82.071,
+"e": 82.55,
+"line": "more"
+},
+{
+"w": "less",
+"s": 83.35,
+"e": 83.586,
+"line": "benefits"
+},
+{
+"w": "guessing",
+"s": 83.586,
+"e": 84.292,
+"line": "benefits"
+},
+{
+"w": "fewer",
+"s": 84.292,
+"e": 84.567,
+"line": "benefits"
+},
+{
+"w": "lost",
+"s": 84.567,
+"e": 84.802,
+"line": "benefits"
+},
+{
+"w": "leads",
+"s": 84.802,
+"e": 85.391,
+"line": "benefits"
+},
+{
+"w": "smarter",
+"s": 85.391,
+"e": 85.744,
+"line": "benefits"
+},
+{
+"w": "decisions",
+"s": 85.744,
+"e": 86.49,
+"line": "benefits"
+},
+{
+"w": "fourteen",
+"s": 87.29,
+"e": 87.721,
+"line": "proof"
+},
+{
+"w": "plus",
+"s": 87.721,
+"e": 87.98,
+"line": "proof"
+},
+{
+"w": "platforms",
+"s": 87.98,
+"e": 88.799,
+"line": "proof"
+},
+{
+"w": "a",
+"s": 88.799,
+"e": 88.929,
+"line": "proof"
+},
+{
+"w": "hundred",
+"s": 88.929,
+"e": 89.317,
+"line": "proof"
+},
+{
+"w": "and",
+"s": 89.317,
+"e": 89.533,
+"line": "proof"
+},
+{
+"w": "fifty",
+"s": 89.533,
+"e": 89.834,
+"line": "proof"
+},
+{
+"w": "plus",
+"s": 89.834,
+"e": 90.093,
+"line": "proof"
+},
+{
+"w": "metrics",
+"s": 90.093,
+"e": 90.826,
+"line": "proof"
+},
+{
+"w": "a",
+"s": 90.826,
+"e": 90.956,
+"line": "proof"
+},
+{
+"w": "hundred",
+"s": 90.956,
+"e": 91.344,
+"line": "proof"
+},
+{
+"w": "plus",
+"s": 91.344,
+"e": 91.603,
+"line": "proof"
+},
+{
+"w": "health",
+"s": 91.603,
+"e": 91.948,
+"line": "proof"
+},
+{
+"w": "checks",
+"s": 91.948,
+"e": 92.638,
+"line": "proof"
+},
+{
+"w": "rothme",
+"s": 93.438,
+"e": 94.116,
+"line": "cta"
+},
+{
+"w": "stop",
+"s": 94.116,
+"e": 94.371,
+"line": "cta"
+},
+{
+"w": "guessing",
+"s": 94.371,
+"e": 95.134,
+"line": "cta"
+},
+{
+"w": "start",
+"s": 95.134,
+"e": 95.431,
+"line": "cta"
+},
+{
+"w": "understanding",
+"s": 95.431,
+"e": 96.067,
+"line": "cta"
+},
+{
+"w": "your",
+"s": 96.067,
+"e": 96.321,
+"line": "cta"
+},
+{
+"w": "marketing",
+"s": 96.321,
+"e": 97.127,
+"line": "cta"
+},
+{
+"w": "get",
+"s": 97.127,
+"e": 97.339,
+"line": "cta"
+},
+{
+"w": "a",
+"s": 97.339,
+"e": 97.466,
+"line": "cta"
+},
+{
+"w": "demo",
+"s": 97.466,
+"e": 97.89,
+"line": "cta"
+},
+{
+"w": "at",
+"s": 97.89,
+"e": 98.06,
+"line": "cta"
+},
+{
+"w": "rothme",
+"s": 98.06,
+"e": 98.399,
+"line": "cta"
+},
+{
+"w": "dot",
+"s": 98.399,
+"e": 98.611,
+"line": "cta"
+},
+{
+"w": "app",
+"s": 98.611,
+"e": 99.162,
+"line": "cta"
+}
+]
+}

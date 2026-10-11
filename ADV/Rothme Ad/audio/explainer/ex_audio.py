@@ -1,8 +1,14 @@
-"""Explainer music + SFX around the Heart VO, ducked under speech. usage: python ex_audio.py <outdir>"""
+"""Explainer v2 music + SFX around the Heart VO (v3 take with the Grow line), ducked under speech. usage: python ex_audio.py <outdir>
+Cues are written in v1 design time; everything after 61.0 s is shifted by SHIFT (the Grow insert)."""
 import sys, os, json, numpy as np, soundfile as sf
 from scipy import signal
 OUT = sys.argv[1]; os.makedirs(OUT, exist_ok=True)
-SR = 48000; TOTAL = 86.2; N = int(TOTAL * SR); rng = np.random.default_rng(5)
+import json as _j
+HERE0 = os.path.dirname(os.path.abspath(__file__))
+V3 = _j.load(open(os.path.join(HERE0, "vo_v3_heart.json")))
+SHIFT = round(round(([l for l in V3["lines"] if l["id"] == "more"][0]["start"] - 61.235) * 60) / 60, 4)
+GROW_FROM = 61.0
+SR = 48000; TOTAL = 86.2 + SHIFT; N = int(TOTAL * SR); rng = np.random.default_rng(5)
 HERE = os.path.dirname(os.path.abspath(__file__))
 def tt(d): return np.arange(int(d * SR)) / SR
 def mtof(m): return 440 * 2 ** ((m - 69) / 12)
@@ -10,7 +16,8 @@ def lp(x, f): return signal.sosfilt(signal.butter(2, f, "low", fs=SR, output="so
 def hp(x, f): return signal.sosfilt(signal.butter(2, f, "high", fs=SR, output="sos"), x)
 def bp(x, a, b): return signal.sosfilt(signal.butter(2, [a, b], "band", fs=SR, output="sos"), x)
 def env(n, a=0.005, r=0.3): t = np.arange(n) / SR; return np.minimum(1, t / max(a, 1e-4)) * np.exp(-t / r)
-def place(buf, x, t, g=1.0):
+def place(buf, x, t, g=1.0, raw=False):
+    if not raw and t >= GROW_FROM: t += SHIFT
     i = int(t * SR)
     if i < 0: x = x[-i:]; i = 0
     if i >= len(buf) or len(x) == 0: return
@@ -18,9 +25,9 @@ def place(buf, x, t, g=1.0):
 def noise(d): return rng.standard_normal(int(d * SR))
 
 # VO
-vo, vsr = sf.read(os.path.join(HERE, "vo_v2_heart.wav"), dtype="float32")
+vo, vsr = sf.read(os.path.join(HERE, "vo_v3_heart.wav"), dtype="float32")
 vo = signal.resample_poly(vo, 2, 1)  # 24k -> 48k
-VO = np.zeros(N); place(VO, vo, 0.0)
+VO = np.zeros(N); place(VO, vo, 0.0, raw=True)
 
 # ---------- music: warm keys, 96 BPM ----------
 BPM = 96; B = 60 / BPM; BAR = 4 * B
@@ -33,26 +40,26 @@ def epiano(m, d):
 def padc(root, iv, d):
     t = tt(d); x = sum(np.sin(2 * np.pi * mtof(root + 12 + i) * t * (1 + 0.002 * k)) for k, i in enumerate(iv)) / len(iv)
     a = np.minimum(1, t / 0.6) * np.minimum(1, (d - t) / 0.6); return lp(x, 1500) * a
-END = 84.0
+END = 84.0 + SHIFT
 nb = int(np.ceil(END / BAR))
 for b in range(nb):
     t0 = b * BAR; root, iv = PROG[b % 4]
-    place(pad, padc(root, iv, BAR + 0.3), t0, 0.5)
+    place(pad, padc(root, iv, BAR + 0.3), t0, 0.5, raw=True)
     pattern = [0, 1.5, 2, 3] if b % 2 == 0 else [0, 1, 2.5, 3.5]
     for k, pos in enumerate(pattern):
         notes = [root + 12 + iv[(k + j) % len(iv)] for j in (0, 2)]
-        for m in notes: place(keys, epiano(m, 1.2), t0 + pos * B, 0.18)
+        for m in notes: place(keys, epiano(m, 1.2), t0 + pos * B, 0.18, raw=True)
     for pos in (0, 2.5):
-        x = np.sin(2 * np.pi * mtof(root - 12) * tt(B * 1.4)) * env(int(B * 1.4 * SR), 0.01, 0.5); place(bass, lp(x, 300), t0 + pos * B, 0.5)
-    if 3.5 < t0 < 83:
+        x = np.sin(2 * np.pi * mtof(root - 12) * tt(B * 1.4)) * env(int(B * 1.4 * SR), 0.01, 0.5); place(bass, lp(x, 300), t0 + pos * B, 0.5, raw=True)
+    if 3.5 < t0 < 83 + SHIFT:
         for q in range(4):
-            place(perc, hp(noise(0.05), 6000) * env(int(0.05 * SR), 0.001, 0.015), t0 + q * B + B / 2, 0.12)
-            if q in (1, 3): place(perc, bp(noise(0.12), 1500, 5000) * env(int(0.12 * SR), 0.001, 0.04), t0 + q * B, 0.18)
+            place(perc, hp(noise(0.05), 6000) * env(int(0.05 * SR), 0.001, 0.015), t0 + q * B + B / 2, 0.12, raw=True)
+            if q in (1, 3): place(perc, bp(noise(0.12), 1500, 5000) * env(int(0.12 * SR), 0.001, 0.04), t0 + q * B, 0.18, raw=True)
             if q in (0, 2):
-                k = np.sin(2 * np.pi * np.cumsum(45 + 70 * np.exp(-tt(0.3) * 30)) / SR) * env(int(0.3 * SR), 0.001, 0.12); place(perc, k, t0 + q * B, 0.35)
+                k = np.sin(2 * np.pi * np.cumsum(45 + 70 * np.exp(-tt(0.3) * 30)) / SR) * env(int(0.3 * SR), 0.001, 0.12); place(perc, k, t0 + q * B, 0.35, raw=True)
 # final chord ringing under end card
 root, iv = PROG[0]
-x = sum(epiano(root + 12 + i, 3.5) for i in iv) / 3; place(keys, x, 83.4, 0.35); place(pad, padc(root, iv, 2.8), 83.4, 0.5)
+x = sum(epiano(root + 12 + i, 3.5) for i in iv) / 3; place(keys, x, 83.4, 0.35); place(pad, padc(root, iv, 2.8), 83.4, 0.5)  # (shifted)
 music = pad * 0.6 + keys + bass * 0.7 + perc
 
 # ducking: music ≥15 dB under VO while she speaks
@@ -97,6 +104,25 @@ for tt0 in (71.2, 73.18, 75.32):
     for k in range(8): place(sfx, tick(2200 + k * 100), tt0 + k * 0.08, 0.15)
 place(sfx, whoosh(0.7), 77.3, 0.3); place(sfx, click(), 81.6, 0.6); place(sfx, chime((72, 76, 79, 84)), 81.7, 0.3)
 place(sfx, whoosh(1.0), 83.9, 0.2)
+# v2 desk: soft whooshes on the new camera moves, keyboard taps while Maya types, a pop on her wave
+for tt0 in (4.9, 5.7, 6.9, 8.1, 9.3, 14.6): place(sfx, whoosh(0.5), tt0 - 0.2, 0.12)
+for k in range(30): place(sfx, click(), 9.3 + k * 0.095 + 0.02 * rng.random(), 0.12)
+place(sfx, pop_(1300), 3.65, 0.2)
+# v2 GROW (real time)
+GW = {}
+for w in V3["words"]:
+    if w["line"] == "grow": GW.setdefault(w["w"], []).append(w["s"])
+g = lambda w, n=0: GW[w][n]
+place(sfx, whoosh(0.7), GROW_FROM + 0.05, 0.3, raw=True)
+for k in range(12): place(sfx, click(), g("searches") + k * 0.07, 0.2, raw=True)
+place(sfx, whoosh(0.6), g("area") - 0.1, 0.2, raw=True)
+for k in range(34): place(sfx, pop_(700 + 25 * (k % 12)), g("area") + 0.2 + k * 0.045 + 0.3, 0.12, raw=True)
+for w in ("salons", "spas"): place(sfx, ping(1568), g(w), 0.16, raw=True)
+for w, f in (("hot", 1175), ("warm", 988), ("cold", 784)): place(sfx, ping(f), g(w), 0.18, raw=True)
+place(sfx, whoosh(0.6), g("reasons") - 0.4, 0.25, raw=True)
+for k in range(3): place(sfx, pop_(1000), g("reasons") + 0.05 + k * 0.3, 0.22, raw=True)
+place(sfx, click(), g("saves"), 0.55, raw=True); place(sfx, chime((76, 83, 88)), g("saves") + 0.1, 0.25, raw=True)
+place(sfx, pop_(900), g("pipeline"), 0.25, raw=True); place(sfx, chime((79, 84)), g("follows"), 0.22, raw=True)
 
 mix = VO * 1.0 + music * 0.17 + np.tanh(sfx) * 0.35
 fade = np.ones(N); fade[-int(0.4 * SR):] = np.linspace(1, 0, int(0.4 * SR)); mix *= fade

@@ -9,8 +9,8 @@ export type Mood = "neutral" | "worried" | "happy" | "focused";
 
 export const Maya: React.FC<{
   mood?: Mood; blink?: number; look?: number; headTilt?: number; nod?: number; breathe?: number;
-  armL?: number; armR?: number; typing?: number; width?: number; style?: React.CSSProperties;
-}> = ({ mood = "neutral", blink = 0, look = 0, headTilt = 0, nod = 0, breathe = 0, armL = 0, armR = 0, typing = 0, width = 600, style }) => {
+  armL?: number; armR?: number; typing?: number; wave?: number; waveAng?: number; width?: number; style?: React.CSSProperties;
+}> = ({ mood = "neutral", blink = 0, look = 0, headTilt = 0, nod = 0, breathe = 0, armL = 0, armR = 0, typing = 0, wave = 0, waveAng = 0, width = 600, style }) => {
   const eyeH = 13 * (1 - 0.92 * blink);
   const lx = look * 6;
   const brows = {
@@ -37,8 +37,8 @@ export const Maya: React.FC<{
         <path d="M270 330 L330 330 L336 410 C318 426 282 426 264 410 Z" fill={SK.skin} />
         <path d="M268 322 L332 322 L334 368 C312 382 288 382 266 368 Z" fill={SK.skinShade} />
         <path d="M240 402 Q300 452 360 402 L374 410 Q300 476 226 410 Z" fill={SK.collar} />
-        <g transform={`rotate(${armL} 160 470)`}><path d="M150 450 C120 500 112 570 118 640 L176 640 C174 580 182 520 200 480 Z" fill={SK.topShade} /></g>
-        <g transform={`rotate(${armR} 440 470)`}><path d="M450 450 C480 500 488 570 482 640 L424 640 C426 580 418 520 400 480 Z" fill={SK.topShade} opacity=".9" /></g>
+        <g transform={`rotate(${armL - typing * 4} 160 470)`}><path d="M150 450 C120 500 112 570 118 640 L176 640 C174 580 182 520 200 480 Z" fill={SK.topShade} /></g>
+        <g transform={`rotate(${armR + typing * 4} 440 470)`} opacity={1 - wave}><path d="M450 450 C480 500 488 570 482 640 L424 640 C426 580 418 520 400 480 Z" fill={SK.topShade} opacity=".9" /></g>
       </g>
       {/* head */}
       <g transform={`rotate(${headTilt} 300 300) translate(0 ${nod * 6})`}>
@@ -74,6 +74,23 @@ export const Maya: React.FC<{
         {mood === "happy" && <path d="M284 272 Q300 280 316 272 L314 268 Q300 274 286 268 Z" fill="#fff" opacity=".9" />}
         {mood === "worried" && <path d="M384 156 q9 15 0 24 q-9 -9 0 -24z" fill="#9FC8FF" />}
       </g>
+      {/* waving arm (raised forearm + open hand), rotates at the elbow */}
+      {wave > 0 && <g transform={`translate(0 ${sh + (1 - wave) * 200})`} opacity={Math.min(1, wave * 2)}>
+        <path d="M430 430 C470 440 500 470 512 520 L470 540 C462 500 448 476 420 466 Z" fill={SK.topShade} />
+        <g transform={`rotate(${waveAng} 492 528)`}>
+          <path d="M478 540 C470 470 474 420 486 372 L520 378 C512 424 512 476 512 532 Z" fill={SK.skin} />
+          <path d="M476 520 C486 512 506 512 514 520 L512 540 L476 540 Z" fill={SK.collar} />
+          <g fill={SK.skin}>
+            <ellipse cx="503" cy="352" rx="30" ry="34" />
+            <rect x="476" y="292" width="13" height="50" rx="6.5" transform="rotate(-12 482 330)" />
+            <rect x="492" y="282" width="13" height="56" rx="6.5" transform="rotate(-3 498 330)" />
+            <rect x="508" y="284" width="13" height="54" rx="6.5" transform="rotate(6 514 330)" />
+            <rect x="522" y="296" width="12" height="46" rx="6" transform="rotate(15 528 336)" />
+            <rect x="460" y="336" width="13" height="36" rx="6.5" transform="rotate(-48 466 360)" />
+          </g>
+          <path d="M486 372 C494 380 512 380 520 372" stroke={SK.skinShade} strokeWidth="4" fill="none" opacity=".6" />
+        </g>
+      </g>}
     </svg>
   );
 };
