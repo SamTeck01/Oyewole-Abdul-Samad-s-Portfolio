@@ -5,3 +5,4 @@ remotion/public/3d/
 remotion/public/*.wav
 audio/*.wav
 audio/vo/
+blender/*.log
