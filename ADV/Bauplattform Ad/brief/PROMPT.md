@@ -1,10 +1,10 @@
 # Architecture & Construction Platform: Product Film (EN + DE)
 
-Status: **Draft v2 (reference studied), waiting for SamTeck's OK.** Nothing built yet.
+Status: **Draft v3 (vaylens reference), waiting for SamTeck's OK.** Nothing built yet.
 
 Open items before build (defaults in brackets are what I'll use if you just say "go"):
 1. **Product name + logo + colours.** The PDF has none. [Working title "[NAME]", neutral wordmark slot, palette below. Real name and logo go in before finals.]
-2. **Reference video:** received (ArangoAI explainer). The film is now a flat-vector story in that style, see §3–§6.
+2. **Reference:** vaylens brand film. Kinetic type + Blender 3D, no real images, see §3–§8.
 3. **Length.** Client said "very detailed, any length". [~5:30 main film, 16:9. A 45 s Meta cutdown is an optional extra after the film is approved.]
 4. **German voice.** Kokoro has no German. [Piper `de_DE-thorsten-high` (free, offline). ElevenLabs Multilingual only if an `ELEVENLABS_API_KEY` is added to the environment secrets.]
 5. **German script check.** I write it from the client's own German wording, but a native read-through by the client or Dave is strongly recommended before VO.
@@ -33,69 +33,88 @@ Open items before build (defaults in brackets are what I'll use if you just say 
 - **9:16:** not for the 5-min film (nobody watches 5 min vertical). Offered later as 30–45 s cutdowns per language.
 - **Render estimate:** about 70–80 min per 5:30 render at 1080p60. EN + DE finals ≈ 2.5–3 h of rendering, run one after another in the background.
 
-## 3. Reference study: ArangoAI explainer (`assets_in/reference/reference.mp4`)
-2:05, 1280×720, 60 fps. Contact sheets every 0.5 s: `brief/contact/ref_01–09.jpg`. Male US narrator, continuous VO, calm and confident (transcribed with faster-whisper), soft music under it.
+## 3. Reference: vaylens brand film (`assets_in/reference/ref2_3d.mp4`)
+1:12, 1920×1080, 30 fps. Contact sheets every 1 s: `brief/contact/ref2_01–03.jpg`. (The earlier ArangoAI cartoon reference is dropped.)
 
-| Time | What happens | Move / technique |
+**How it works:** a calm female VO, and **every spoken word appears on screen as kinetic type**, typed or rolled in word by word, in sync with the voice. Between lines come full-frame media shots (stock photos in vaylens; **3D renders in ours**) and bold graphic transitions.
+
+| Time | What happens | Technique to rebuild |
 |---|---|---|
-| 0:00–0:07 | Flat cartoon dev at a desk, top-down. "ERROR" windows pile up, then cut to a close-up of his worried face | Camera push-in from top view to face; windows drift with parallax |
-| 0:07–0:11 | "You need something **smarter / sharper / connected**" | Kinetic type: last word slot-machine rolls up, bold green word |
-| 0:11–0:19 | Email/PDF/doc icons float on a dark navy → lime gradient, a light beam sweeps them into a glowing white orb | Light flare transition, orb drift |
-| 0:19–0:30 | Orb → three people at three green boards; the boards grow node graphs, cards pop | Wipe by white bar; staged 3-panel |
-| 0:30–0:35 | Logo reveal, nodes and links grow around it | Letter-by-letter drop, particles connect |
-| 0:35–0:48 | Isometric tiles stack: Graph, Document, Key/Value, Vector; then a query bar wires up to tools | Stack builds tile by tile; line-draw connectors |
-| 0:48–1:02 | "And when it comes to scale?" Character surrounded by "Memory overload" warnings → hands wave them away, panels turn into clean graphs | Overlapping UI cards, warnings pop, swipe resolve |
-| 1:02–1:07 | Hand holds a phone: "Ready for Market! Launch" | Hand-held phone close-up, tap |
-| 1:07–1:17 | Split screen: competitor with tangled lines and errors vs. our hero calmly connected | Split wipe, comparison |
-| 1:17–1:36 | "But there's more…" Browser app UI; a hand drags a PDF in, taps upload, plugin panel, graph builds itself, warnings clear | Real product flow with a cartoon hand: drag, tap, toggle |
-| 1:36–1:56 | Abstract node network on navy/lime; logo chip; three benefits as glowing circles: Lower risk · Faster delivery · Smarter decisions | Node network grows; benefits linked with dotted lines |
-| 1:56–2:03 | Hand-drawn wireframe sketches itself into a finished website; the three characters stand proudly in front | Sketch-to-UI morph |
-| 2:03–2:05 | Logo + URL pill on white/lime | Letter drop, pill pops |
+| 0:00–0:03 | "Managing electric car charging stations" on flat electric blue, word by word | Small white type, words drop in with baseline wobble |
+| 0:03–0:08 | "shouldn't be rocket science", grid of rounded photo tiles drifting, then tiles fly off | Media grid slides diagonally, tiles fall away one by one |
+| 0:08–0:10 | "complicated", "intimidating" alone on black | Single word, centre, hard cut per word |
+| 0:09 | Giant cropped letters ("ntir") fill frame | Oversized type as a wipe |
+| 0:11–0:15 | "we built" on a blue circle-shape wipe, logo mark morphs (drop shape), wordmark, then logo in a colour grid | Shape morph → logo; logo colour-variant grid |
+| 0:16–0:19 | Brand system: type specimen "Aa", colour swatches, angled posters, logo on a big screen | Brand-identity montage |
+| 0:20–0:24 | "It's a charging management software" over a blue-violet blur, then the product UI on a table, top view, frosted glass dashboard | Blur gradient, frosted glass UI over the media |
+| 0:25–0:36 | "with every business", pill-label words ("don't have resources", "product", "partner") over blurred media; arrow inside a blue square | Pill tags, rounded media frames, cut-outs, icon squares |
+| 0:37–0:44 | Tiny lines of text on blue, "the way we [image] recharge them" with an inline image between words | **Inline media inside the sentence** |
+| 0:44–0:52 | "At vaylens", big V shape wipe with a yellow dot, "tools / services", "as easy →", "buy · use · monetise" vertical list with a moving dot | Shape wipes, rolling vertical list, arrows |
+| 0:52–0:60 | "charging infrastructure", "helping thousands of companies" 4-photo grid, "feel → confident", "and freeing up time" arched type | Split layouts, curved text, arrow glyphs |
+| 1:00–1:08 | "worthwhile" huge, "everyone's investment ↗", "to [face] all" inline media | Huge words, inline media |
+| 1:08–1:12 | Logo mark spins, wordmark types on black | Logo resolve |
 
-**Style takeaways to rebuild (not copy):**
-- **Flat 2D vector cartoon** with simple people (no outlines, flat skin and clothes, round glasses), mixed with clean product UI and abstract node graphics.
-- **Palette:** lime/olive green to navy gradients, pale teal/white backgrounds, orange-red only for warnings. One hero colour.
-- **Pacing:** a new shot every 4–6 s, one idea per VO sentence; VO carries the story and on-screen text only punctuates (2–4 kinetic lines in the whole film).
-- **Transitions:** white bar wipes, light-flare/orb, split screen, things morph into the next scene (orb → people, wireframe → UI).
-- **Structure:** problem with a character → "you need something better" → logo → features one by one → "but there's more" → product demo with a hand → three benefits → team + logo + URL.
+**Style rules:** palette of electric blue `#3D3DF5`, near-black `#18181B`, off-white `#F0EFF7`, one accent yellow `#F2C94C`. One grotesk font (Neue Haas style; we use **Inter Tight**, free) in regular/medium, mostly small, with a few giant words. A cut every 1–3 s, hard cuts plus shape wipes. Lots of empty space. Rounded-corner media frames. Arrows (→ ↗) as graphic elements. Calm, confident, premium.
 
-## 4. Concept (built on the reference): "From enquiry to handover. One flow."
-A flat-vector story film. Our lead character is **Lena**, a project lead at a mid-size construction firm (her colleagues: **Tom**, site manager, and **Aylin**, architect). The film follows **one building**, a 4-storey residential block with a ground-floor shop, through all 8 phases in the PDF. The building grows on screen as the film goes: a site plan, then a BIM model, then scaffold and progress, then the finished building with live sensor data.
+## 4. Concept: "Bauen sollte nicht kompliziert sein." / "Building shouldn't be this complicated."
+The same story arc as vaylens, scaled up to the detail the client wants:
+**problem → "that's why we built [NAME]" → brand → what it is → why it matters → how it works (8 phases) → control → promise → logo.**
 
-- Like the reference, the problem opens on Lena drowning in windows ("Plan v7 vs v9", "Lieferung verspätet", "Rechnung stimmt nicht"), and the film ends on the trio in front of the finished building.
-- The platform's AI is drawn as the reference's **node network**: the orchestrator is a central glowing node, and each specialist agent is a small node lighting up when it works. That's our "orb".
-- In every chapter an **approval card** in its autonomy colour (Grün/Gelb/Orange/Rot) pops up and Lena taps it. By the end the viewer has seen all four levels, and then the control chapter explains them.
-- A thin **phase rail** (1–8) slides in at each chapter, so 5 minutes stays easy to follow.
+- Every VO word is kinetic type, exactly like vaylens.
+- Every vaylens photo becomes a **Blender 3D shot**: one stylised building in a clean studio world that we follow from blueprint to handover. Soft daylight, matte clay materials with blue accents, depth of field, slow orbiting cameras. No people's faces (simple matte figures at a distance only), no real photos or video.
+- The product UI appears as frosted-glass panels over the 3D, like vaylens' dashboard shot.
+- Length: about **4:00** (vaylens is 1:12; the client asked for detail). It can stretch to the full 5:30 script if you want every chapter.
 
-## 5. Look
-- **Palette (placeholder until brand arrives):** the reference's lime → navy gradient family, adapted for construction: blueprint navy `#1F2A44`, lime `#C8DC5A`, olive `#7A9A3A`, warm concrete white `#F4F2EE`, pale teal `#BFE0DF`. Autonomy colours only on approval cards: green `#22B573`, yellow `#F5C542`, orange `#F28A30`, red `#E5484D`. If the client's brand colours differ, they replace lime/olive.
-- **Characters:** flat vector, no outlines, simple shapes, matched to the reference's proportions. Lena, Tom, Aylin plus a client and a supplier. Hard hats and hi-vis vests on site.
-- **Type:** Inter (UI) + Manrope (headlines), bundled locally. Kinetic lines use the reference's slot-roll on the last word.
-- **UI:** clean browser and tablet screens with a cartoon hand dragging, tapping and toggling, like the reference's 1:17 demo.
-- **Building:** drawn as flat isometric vector (fits the cartoon style better than Blender 3D), built floor by floor like the reference's tile stack. Blender stays optional.
-- **New moves for this job:** blueprint line-draw that fills into flat colour, isometric floor stack, section cut, phase rail, approval stamp, scaffold that wipes away to the finished building.
+## 5. Blender 3D shot list (one shared scene, rendered once, used for EN and DE)
+1. **Chaos grid:** 12 rounded tiles of 3D mini-scenes (stacks of paper, a tangled cable, a crane, a red warning cone, a calculator) drifting diagonally, then falling away.
+2. **Blueprint table, top view:** plan lines draw on a table; the building rises out of the paper (hero shot for "we built").
+3. **Building grows:** floors stack one by one, isometric orbit (BIM chapter), with a section cut showing ducts and beams, and 3 clash points glowing orange then turning blue.
+4. **Exploded floors:** floors separate vertically into quantity "blocks" (concrete, drywall, cable) for costing.
+5. **Site:** crane, scaffold, delivery truck arriving, a drone orbiting and scanning (blue scan lines), a tablet on a site table.
+6. **Invoice / document stack:** 3D paper stack, three sheets slide into alignment (three-way match), one rejects with an orange edge.
+7. **Handover:** scaffold drops away, the finished building at golden hour, windows light up, small sensor dots pulse (digital twin).
+8. **Logo moment:** the [NAME] mark extruded in 3D, rotates once and settles flat into the 2D logo.
+All renders ≥120 frames per move at 1920×1080, Cycles or EEVEE (decided after a test), alpha where UI goes on top.
 
-## 6. Beat sheet (EN timings; DE re-timed to its VO)
+## 6. Beat sheet (~4:00 EN; DE re-timed to its VO). On-screen text = the VO words.
 
-| # | Time | Chapter | Picture |
+| # | Time | VO (EN) | Picture |
 |---|---|---|---|
-| 0 | 0:00–0:15 | Hook | Top view of Lena's desk, push-in to her face as 40 windows, emails, PDFs, site WhatsApp photos and Excel tabs pile up. |
-| 1 | 0:15–0:35 | The problem | Kinetic line with the slot-roll: "One building. **One flow.**" (DE: "Ein Gebäude. **Ein Ablauf.**"). Eight teams around one building; the lines between them snap. |
-| 2 | 0:35–1:05 | One platform | Light flare sweeps the clutter into one glowing node. Name + logo reveal, the node network grows: orchestrator in the centre, agents around it, tool gateway, connectors (CAD, BIM, Blender, Unity), rules and approvals, audit. |
-| 3 | 1:05–1:25 | 1 · Projektanfrage | An email with a PDF and site photos lands. A hand drags them in; the intake agent node lights up and fills a structured project card. Map pin drops. |
-| 4 | 1:25–2:00 | 2 · Planung | Aylin at a board: site plan line-draws, then the isometric BIM building stacks floor by floor. IFC/BCF chips. Clash check pops 3 warnings (duct vs. beam), each turns green. VR headset walk-through with the client. |
-| 5 | 2:00–2:25 | 3 · Kalkulation | Building explodes into quantity tiles (m³ concrete, m² drywall, m cable). GAEB bill of quantities fills; costs total up. |
-| 6 | 2:25–2:45 | 4 · Angebot | Three offer variants with margin bars. **Orange** approval card "Angebot über 1,84 Mio. € freigeben?" Lena taps approve. |
-| 7 | 2:45–3:15 | 5 · Auftrag + optimisation | Offer becomes a project with budget and Gantt. Three glowing circles like the reference's benefits: **Beste / Schnellste / Sicherste**, each with cost, time and CO2, and a one-line trade-off. |
-| 8 | 3:15–3:35 | 6a · Einkauf | Material agent compares 3 suppliers, orders within limit (**Gelb**), a delivery truck books its slot on the site map. |
-| 9 | 3:35–4:10 | 6b · Baustelle | Tom on site with a rugged tablet, "Offline" badge, daily report. Drone + LiDAR scan overlays the model: progress 62 %. Defect photo becomes a task for the right trade. Smart-helmet safety alert. |
-| 10 | 4:10–4:35 | 7 · Finanzen | Invoice arrives (XRechnung). Three-way match: order ✓ delivery ✓ invoice ✗ (12 m² too many). Flagged, corrected, booked to DATEV / Lexware. Payment card **Rot**: Lena pays herself. |
-| 11 | 4:35–4:55 | 8 · Abschluss + Betrieb | Scaffold wipes away; finished building, keys handed to the client. It turns into a digital twin with sensor bubbles (temperature, energy, leak); a maintenance task is scheduled. |
-| 12 | 4:55–5:15 | Control | The four autonomy levels side by side with the PDF's examples. Audit log scrolls: every action with source, time, agent, approver. "Not-Aus" switch. |
-| 13 | 5:15–5:30 | Close | Lena, Tom and Aylin in front of the finished building (the reference's trio ending). Integration chips orbit, collapse into the logo + URL pill. |
-| — | 5:30–5:32 | samteck end card | Last chord rings. |
+| 1 | 0:00–0:08 | Running a construction project shouldn't be rocket science. | Words on electric blue → 3D chaos grid drifts |
+| 2 | 0:08–0:16 | Yet plans, costs, site and invoices live in forty different places. It feels complicated. Intimidating. | Chaos tiles fall away; "complicated" / "intimidating" alone on black; giant cropped letters wipe |
+| 3 | 0:16–0:26 | That's why we built [NAME]. | Blue shape wipe, "we built"; 3D blueprint → building rises; logo mark morph; wordmark |
+| 4 | 0:26–0:34 | (music only) | Brand montage: type specimen, colour swatches, logo grid, angled posters with 3D stills |
+| 5 | 0:34–0:50 | It's one platform for architecture and construction, from the first enquiry to the finished building. | Blur gradient line; frosted dashboard over the 3D table, top view |
+| 6 | 0:50–1:05 | Many firms fear they don't have the time or the people for another system. Or that AI will make decisions nobody can check. | Pill tags ("no time", "no people", "no control") over blurred 3D; arrow in a blue square |
+| 7 | 1:05–1:20 | So at its centre is an AI orchestrator, with specialist agents that only use the tools you allow. | Node graphic: central dot, agent dots light up; "tools you allow" pill list with moving yellow dot |
+| 8 | 1:20–1:35 | 1. Enquiry. Emails, plans and photos become a structured project. | Phase number giant; inline 3D thumbnail inside the sentence |
+| 9 | 1:35–1:55 | 2. Planning. CAD and BIM, checked across every trade. Clashes found before they reach the site. | 3D building grows; section cut, clash points |
+| 10 | 1:55–2:10 | 3. Costing. 4. Offer. Quantities come straight from the model. Offers wait for your approval. | Exploded floors; orange approval card "1,84 Mio. € freigeben?" |
+| 11 | 2:10–2:25 | 5. Order. The best, the fastest and the safest plan, compared on cost, time and CO2. | Three columns, vertical list with moving dot (vaylens "buy · use · monetise") |
+| 12 | 2:25–2:50 | 6. Site. Materials ordered within your limits. Drones and scanners measure progress. Defects become tasks. | 3D site: truck, crane, drone scan; "62 %" huge |
+| 13 | 2:50–3:05 | 7. Finance. Invoices matched against order and delivery, booked to DATEV or Lexware. Payments, always by a person. | 3D paper stack match; red "never automatic" pill |
+| 14 | 3:05–3:20 | 8. Handover. The building lives on as a digital twin. | 3D golden hour, windows light, sensor dots |
+| 15 | 3:20–3:40 | Green, yellow, orange, red. You decide what runs on its own. And every step has a source and a name. | Four colour blocks wipe in like the vaylens colour grid; audit lines scroll |
+| 16 | 3:40–3:55 | So your team gets time back for what it does best: building. | "freeing up time" arched type → "worthwhile"-style giant "building" |
+| 17 | 3:55–4:05 | This is [NAME]. | 3D logo extrusion settles, wordmark types on black |
+| — | +2 s | samteck end card | |
 
-## 7. Script (EN draft)
+## 7. Voice & sound (like vaylens)
+- **VO:** calm female voice. EN: Kokoro `af_heart` / `af_bella` (2 takes). DE: Piper German female voice (Kokoro has no German); ElevenLabs only if a key is added.
+- **Music:** original, minimal, warm electronic with soft piano and a steady pulse, ≥15 dB under VO.
+- **SFX:** subtle clicks per word group, soft whooshes on wipes, low hits on giant words, gentle 3D ambience (crane hum, drone whir), logo chime.
+- **Timing:** the kinetic type is driven by word timestamps from the chosen VO (faster-whisper), so each word lands exactly when it's spoken. DE gets its own timing automatically.
+
+## 8. Production plan
+1. Brief OK (this).
+2. **10 s style test:** shots 1–3 (blue words, 3D chaos grid, "we built" + building rising) to judge type and 3D together.
+3. VO takes EN + DE → you pick.
+4. Blender: model the one building + site set, render shot list (long background renders).
+5. Remotion: full kinetic-type edit on the 3D, preview v1 EN with contact sheet → feedback.
+6. DE version, finals, stems.
+
+## 9. Script (long EN draft from v2, source for the beat sheet above)
+
 Short, clear sentences, readable on a phone speaker.
 
 **0 Hook.** One building. Forty programs. Hundreds of emails. And nobody sees the whole picture.
@@ -113,7 +132,7 @@ Short, clear sentences, readable on a phone speaker.
 **12 Control.** You decide how much runs on its own. Green: fully automatic. Yellow: automatic within your rules. Orange: prepared, waiting for approval. Red: never automatic. Every action has a source, a time and a name.
 **13 Close.** CAD, BIM, finance, site and building tech. One controlled flow. [NAME]. From enquiry to handover.
 
-## 8. Script (DE draft, needs native check)
+## 10. Script (DE draft, needs native check)
 **0** Ein Gebäude. Vierzig Programme. Hunderte E-Mails. Und niemand sieht das Ganze.
 **1** Pläne liegen hier. Kosten dort. Die Baustelle schickt Fotos. Lieferanten schicken Rechnungen. Und jede Lücke kostet Zeit und Geld.
 **2** Das ist [NAME]. Eine Plattform für Architektur und Bau, von der ersten Anfrage bis zum fertigen Gebäude. Im Zentrum: ein KI-Orchestrator. Er versteht die Aufgabe, wählt den passenden Fachagenten und nutzt nur die Werkzeuge, die Sie freigeben. Regeln und Freigaben kontrollieren jede echte Aktion. Und jeder Schritt wird protokolliert.
@@ -129,18 +148,7 @@ Short, clear sentences, readable on a phone speaker.
 **12** Sie entscheiden, wie viel selbstständig läuft. Grün: vollautomatisch. Gelb: automatisch nach Ihren Regeln. Orange: vorbereitet, wartet auf Freigabe. Rot: nie automatisch. Jede Aktion hat eine Quelle, eine Zeit und einen Namen.
 **13** CAD, BIM, Finanzen, Baustelle und Gebäudetechnik. Ein kontrollierter Ablauf. [NAME]. Von der Anfrage bis zur Übergabe.
 
-## 9. Voice
-- **EN:** Kokoro `am_michael` (closest to the reference narrator: calm male US voice) and `am_fenrir` → 2 takes, you pick.
-- **DE:** Piper `de_DE-thorsten-high` + one other Piper German voice → 2 takes. ElevenLabs Multilingual v2 only if the key is added (cost estimate first).
-- Brand name pronunciation: needs the name first. "DATEV" = DAH-tef, "Lexware" = LEX-ware.
-- Every take checked with faster-whisper; picture re-timed to the chosen take.
-
-## 10. Music and SFX
-- **Music:** original, made in code, ~5:30 in three movements so it never loops audibly: (a) tense, sparse pulse for the hook/problem; (b) warm, steady build at ~100 BPM through phases 1–8; (c) wide, resolved chords for control + close, last chord ringing under the end card. ≥15 dB under VO while words are spoken.
-- **SFX:** paper/pen scratch for blueprint lines, soft concrete "thunk" when a floor lands, click per BIM element, alarm blip on clashes, stamp on every approval card (different pitch per autonomy colour), drone whir, camera shutter, clean "match" chime for the three-way match, low hum + tick for sensor data, logo hit.
-- Master −14 LUFS / −1 dBTP per language.
-
-## 11. Screens to design in code (real device sizes, real-feeling German/English data)
+## 11. UI panels to design in code (frosted glass over the 3D)
 1. Inbox + intake card (email, PDF, photos → project).
 2. Project dashboard with phase rail.
 3. Architecture diagram (orchestrator, agents, gateway, rules, audit).
@@ -171,4 +179,4 @@ All numbers are illustrative demo data (e.g. offer 1.84 M €, progress 62 %) an
 - Optional later: 30–45 s cutdowns (16:9 + 9:16, EN + DE).
 
 ## Order of work
-Brief → OK → assets list → voice takes (EN + DE) → preview v1 EN + contact sheet → feedback → DE preview → finals.
+See §8.
