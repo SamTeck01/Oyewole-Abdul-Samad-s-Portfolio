@@ -246,6 +246,9 @@ def render(frames, name=None):
         i = argv.index('--frames'); S.frame_start, S.frame_end = int(argv[i + 1]), int(argv[i + 2])
     S.render.filepath = os.path.join(OUT, 'f_')
     S.frame_step = int(os.environ.get('STEP', '1'))
+    k = float(os.environ.get('STRETCH', '1'))  # slows the whole animation so clips outlast longer scenes
+    if k != 1:
+        S.render.frame_map_old = 100; S.render.frame_map_new = int(100 * k); S.frame_end = int(S.frame_end * k)
     S.render.resolution_percentage = int(os.environ.get('PCT', '100'))
     if os.environ.get('SAMPLES'): S.eevee.taa_render_samples = int(os.environ['SAMPLES'])
     bpy.ops.render.render(animation=True)

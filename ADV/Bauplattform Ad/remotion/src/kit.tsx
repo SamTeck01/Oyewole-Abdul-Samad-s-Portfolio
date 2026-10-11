@@ -134,7 +134,7 @@ export const PhaseTag: React.FC<{n: number; en: string; de: string; at: number; 
 };
 
 // 3D clip from Blender renders (public/3d/*.mp4). startAbs: absolute seconds the clip begins.
-const CLIP_SECS: Record<string, number> = {rise: 8, bim: 7, explode: 5, site: 10, twin: 7};
+const CLIP_SECS: Record<string, number> = {rise: 11.2, bim: 9.8, explode: 7, site: 14, twin: 9.8};
 // slows a clip down when its scene is longer than the render, so it never runs out (DE scenes are longer)
 export const Clip: React.FC<{name: string; style?: React.CSSProperties; rate?: number; startFrom?: number}> = ({name, style, rate, startFrom = 0}) => {
   const {durationInFrames, fps} = useVideoConfig();

@@ -68,7 +68,7 @@ for bi in range(int(DUR / BAR) + 1):
     for m in ch[1:4]:
         s = piano(midi(m + 12), 3.0, .18)
         i0 = int(t0 * SR); i1 = min(N, i0 + len(s)); pno[i0:i1] += s[:i1 - i0]
-    if 17 < t0 < 122:
+    if False:  # arpeggio removed: client found the music too busy
         arp = [ch[2] + 24, ch[3] + 24, ch[4] + 12, ch[5] + 12, ch[3] + 24, ch[4] + 12, ch[2] + 24, ch[5] + 12]
         for k, m in enumerate(arp):
             s = piano(midi(m), 1.2, .07 * lvl)
@@ -85,7 +85,7 @@ for bi in range(int(DUR / BAR) + 1):
         n = int(BEAT * .95 * SR); tt = np.arange(n) / SR
         s = np.sin(2 * np.pi * f * tt) * np.exp(-tt * 1.4) * np.minimum(1, tt / .01) * .22
         i0 = int((t0 + k * BEAT) * SR); i1 = min(N, i0 + n); bass[i0:i1] += s[:i1 - i0]
-out += bass
+out += bass * 0.45
 
 # --- gentle pulse: soft kick on 1 & 3, shaker on 8ths
 drm = np.zeros(N)
@@ -103,7 +103,7 @@ for b in range(nb):
         n = int(.06 * SR)
         s = hp(rng.standard_normal(n), 7000) * np.exp(-np.arange(n) / SR * 70) * (.05 if h else .03) * lvl
         i0 = int((tb + h * BEAT) * SR); i1 = min(N, i0 + n); drm[i0:i1] += s[:i1 - i0]
-out += drm
+# drums removed (client: music too busy)
 
 # fade in / ring-out
 out *= np.minimum(1, t / 1.5)

@@ -50,18 +50,18 @@ def put(s, at):
 # soft tick on every word (vaylens: words land with a tiny click)
 for l in c['lines']:
     for w in (l['words'] if LANG == 'en' else l['dewords']):
-        put(tick(0.035), w['s'])
+        pass  # per-word ticks removed (client: annoying)
 # whoosh into each scene cut (same cut list as Film.tsx)
 s_ = lambda i, d=0.4: L[i]['start'] - d
-cuts = [s_('l02', .5), s_('l03', .25), s_('l04', .15), s_('l05', .2), L['l05']['end'] + 1.8, s_('l06', .3), s_('l08'), s_('l10', .3), s_('l11', .3), s_('l12', .3), s_('l13'), s_('l14'), s_('l16'), s_('l17'), s_('l18'), s_('l19'), s_('l20'), s_('l23'), s_('l25'), s_('l26', .3), s_('l27', .3), s_('l28'), s_('l30', .6)]
+cuts = [s_('l02', .5), s_('l03', .25), s_('l04', .15), s_('l05', .2), L['l05']['end'] + 1.8, s_('l06', .3), s_('l08'), s_('l10', .3), s_('l12', .3), s_('l13'), s_('l14'), s_('l16'), s_('l17'), s_('l18'), s_('l19'), s_('l20'), s_('l22t'), s_('l23'), s_('l25'), s_('l26', .3), s_('l27', .3), s_('l28'), s_('l30', .6)]
 for k, t in enumerate(cuts):
-    put(whoosh(0.5, 0.10, up=k % 2 == 0), t - 0.3)
+    put(whoosh(0.5, 0.035, up=k % 2 == 0), t - 0.3)
 # montage beats
 m0 = L['l05']['end'] + 1.8; md = (L['l06']['start'] - 0.3) - m0
-for k in range(3): put(hit(0.12), m0 + k * md / 3)
+for k in range(3): put(hit(0.05), m0 + k * md / 3)
 # giant words
-put(hit(0.32), L['l04']['start']); put(hit(0.32), L['l29']['start'] - 0.05)
-put(whoosh(0.7, 0.14), L['l04']['end'] + 0.25)
+put(hit(0.14), L['l04']['start']); put(hit(0.14), L['l29']['start'] - 0.05)
+put(whoosh(0.7, 0.05), L['l04']['end'] + 0.25)
 # logo chimes
 put(chime(0.16), (L['l05']['words'][-1] if LANG == 'en' else next(w for w in L['l05']['dewords'] if 'check' in w['t']))['s'] - 0.05); put(chime(0.2), L['l30']['start'] - 0.3)
 # approval tap, flags, payments
@@ -88,7 +88,7 @@ def master(x, target=-14.0):
 
 for lang in (LANG,):
     if True:
-        vo, vsr = sf.read('vo_af_heart_full.wav' if lang == 'en' else 'vo_de_full.wav', dtype='float32')
+        vo, vsr = sf.read('vo_en_full.wav' if lang == 'en' else 'vo_de_full.wav', dtype='float32')
         vo = resample_poly(vo, SR, vsr).astype(np.float32)
         vo = np.pad(vo, (0, max(0, N - len(vo))))[:N]
         env = np.abs(vo)
@@ -96,7 +96,7 @@ for lang in (LANG,):
         env = np.convolve(env, np.ones(k) / k, 'same')
         active = np.clip(env / 0.02, 0, 1)
         duck = 10 ** ((-17 * active) / 20)
-        mus = music * 0.55 * duck
+        mus = music * 0.4 * duck
         mix = vo * 1.0 + mus + sfx * 0.9
     else:
         mix = music * 0.75 + sfx * 0.9

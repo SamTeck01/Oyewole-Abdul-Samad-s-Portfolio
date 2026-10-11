@@ -315,7 +315,7 @@ export const S11: React.FC = () => {
         </div>
       </div>
       <div style={{width: 900, display: 'flex', alignItems: 'center', paddingRight: 120}}>
-        <Words id="l12" size={50} align="left" maxWidth={760} highlight={(w, i) => (i >= 7 ? K.blue : undefined)} />
+        <Words id="l12" size={50} align="left" maxWidth={760} highlight={(w, i) => (i >= 4 ? K.blue : undefined)} />
       </div>
     </AbsoluteFill>
   );
@@ -598,6 +598,69 @@ export const S18: React.FC = () => {
       )}
       <div style={{position: 'absolute', left: 110, right: 110, bottom: 100}}>
         <Words id={which} size={52} align="left" />
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// ============ 18b · 06 Site: employee time tracking ============
+export const S18T: React.FC = () => {
+  const abs = useAbs();
+  const T = useT();
+  const a = L('l22t');
+  const tap = pop(abs, a.start + 0.9, {damping: 12, stiffness: 200});
+  const clocked = abs > a.start + 1.0;
+  const phone = pop(abs, a.start - 0.2);
+  const rows: [string, string, string, string, number][] = [
+    ['A. Yilmaz', 'Rohbau', 'Shell', '06:58', 8.5],
+    ['L. Weber', 'Elektro', 'Electrical', '07:04', 8.0],
+    ['T. Braun', 'Trockenbau', 'Drywall', '07:10', 7.5],
+    ['M. Kowalski', 'Haustechnik', 'Building services', '07:15', 6.5],
+  ];
+  const total = ramp(abs, a.start + 1.6, a.end, 0, 1, Easing.out(Easing.cubic));
+  return (
+    <AbsoluteFill style={bgFill()}>
+      <PhaseTag n={6} en="Site · Time tracking" de="Baustelle · Zeiterfassung" at={a.start - 0.3} />
+      {/* phone */}
+      <div style={{position: 'absolute', left: 190, top: 170, width: 360, height: 700, borderRadius: 56, background: K.navy, padding: 14, boxShadow: '0 40px 90px rgba(6,35,90,.25)', transform: `translateY(${(1 - phone) * 80}px)`, opacity: phone}}>
+        <div style={{width: '100%', height: '100%', borderRadius: 44, background: K.white, fontFamily: K.font, color: K.navy, display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: 70}}>
+          <div style={{fontSize: 22, color: K.grey}}>{T('Residential block, Leipzig', 'Wohnhaus, Leipzig')}</div>
+          <div style={{fontSize: 72, fontWeight: 500, letterSpacing: '-0.04em', marginTop: 20}}>07:04</div>
+          <div style={{fontSize: 22, color: K.grey, marginTop: 6}}>L. Weber · {T('Electrical', 'Elektro')}</div>
+          <div style={{marginTop: 70, width: 210, height: 210, borderRadius: 105, background: clocked ? K.green : K.blue, color: K.white, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8, fontSize: 28, fontWeight: 600, transform: `scale(${1 - 0.08 * Math.sin(Math.min(1, tap) * Math.PI)})`, boxShadow: `0 0 0 ${clocked ? 18 * (1 - Math.min(1, tap)) + 10 : 10}px ${clocked ? K.greenSoft : K.blueSoft}`}}>
+            {clocked ? <Check size={56} color={K.white} /> : <Clock size={56} color={K.white} />}
+            {clocked ? T('Clocked in', 'Eingestempelt') : T('Clock in', 'Einstempeln')}
+          </div>
+          <div style={{marginTop: 40, fontSize: 20, color: K.grey, display: 'flex', alignItems: 'center', gap: 8}}><span style={{width: 10, height: 10, borderRadius: 5, background: K.green, display: 'inline-block'}} />{T('On site · GPS verified', 'Auf der Baustelle · GPS bestätigt')}</div>
+        </div>
+      </div>
+      {/* timesheet */}
+      <Card style={{position: 'absolute', left: 680, top: 200, width: 1060, padding: '34px 40px', opacity: pop(abs, a.start + 0.4)}}>
+        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'baseline'}}>
+          <div style={{fontSize: 30, fontWeight: 600}}>{T('Timesheet · today', 'Stundenzettel · heute')}</div>
+          <div style={{fontSize: 22, color: K.grey}}>{T('Project #2207 · Residential block', 'Projekt #2207 · Wohnhaus')}</div>
+        </div>
+        <div style={{marginTop: 26, display: 'flex', flexDirection: 'column', gap: 14}}>
+          {rows.map(([name, de, en, t, h], i) => {
+            const p = pop(abs, a.start + 1.2 + i * 0.35);
+            return (
+              <div key={i} style={{display: 'grid', gridTemplateColumns: '260px 260px 120px 1fr 90px', alignItems: 'center', fontSize: 26, padding: '14px 0', borderTop: `1px solid ${K.line}`, opacity: p, transform: `translateX(${(1 - p) * 30}px)`}}>
+                <span style={{fontWeight: 500}}>{name}</span>
+                <span style={{color: K.grey}}>{T(en, de)}</span>
+                <span style={{color: K.grey}}>{t}</span>
+                <div style={{height: 12, borderRadius: 6, background: K.blueSoft, marginRight: 30}}><div style={{width: `${(h / 9) * 100 * p}%`, height: '100%', borderRadius: 6, background: K.blue}} /></div>
+                <span style={{textAlign: 'right', fontWeight: 600}}>{(h * Math.min(1, p)).toFixed(1)} h</span>
+              </div>
+            );
+          })}
+        </div>
+        <div style={{marginTop: 20, display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: `2px solid ${K.navy}`, paddingTop: 20}}>
+          <Pill at={a.start + 2.6} size={24} icon={<Check size={22} color={K.green} />}>{T('Booked to project & trade', 'Projekt & Gewerk zugeordnet')}</Pill>
+          <span style={{fontSize: 40, fontWeight: 600}}>{(30.5 * total).toFixed(1)} h</span>
+        </div>
+      </Card>
+      <div style={{position: 'absolute', left: 110, right: 110, bottom: 70}}>
+        <Words id="l22t" size={46} align="left" highlight={(w, i) => (/hour|Stunde|clock|stempeln/i.test(w) ? K.blue : undefined)} />
       </div>
     </AbsoluteFill>
   );
