@@ -53,7 +53,7 @@ for l in c['lines']:
         pass  # per-word ticks removed (client: annoying)
 # whoosh into each scene cut (same cut list as Film.tsx)
 s_ = lambda i, d=0.4: L[i]['start'] - d
-cuts = [s_('l02', .5), s_('l03', .25), s_('l04', .15), s_('l05', .2), L['l05']['end'] + 1.8, s_('l06', .3), s_('l08'), s_('l10', .3), s_('l12', .3), s_('l13'), s_('l14'), s_('l16'), s_('l17'), s_('l18'), s_('l19'), s_('l20'), s_('l22t'), s_('l23'), s_('l25'), s_('l26', .3), s_('l27', .3), s_('l28'), s_('l30', .6)]
+cuts = [s_('l02', .5), s_('l03', .25), s_('l04', .15), s_('l05', .2), L['l05']['end'] + 1.8, s_('l06', .3), s_('l08'), s_('l10', .3), s_('l12', .3), s_('l13'), s_('l14'), s_('l16'), s_('l17'), s_('l18'), s_('l19'), s_('l20'), s_('l22t'), s_('l23'), s_('l25'), s_('l26', .3), s_('l27', .3), s_('l27m', .3), s_('l28'), s_('l30', .6)]
 for k, t in enumerate(cuts):
     put(whoosh(0.5, 0.035, up=k % 2 == 0), t - 0.3)
 # montage beats

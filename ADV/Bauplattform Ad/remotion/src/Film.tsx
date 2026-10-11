@@ -32,6 +32,7 @@ const cuts = () => {
     {from: s('l25'), C: S.S20},
     {from: s('l26', 0.3), C: S.S21},
     {from: s('l27', 0.3), C: S.S22},
+    {from: s('l27m', 0.3), C: S.S22M},
     {from: s('l28'), C: S.S23},
     {from: s('l30', 0.6), C: S.S24},
     {from: CUES.total, C: S.EndCard, props: {t0: CUES.total}},

@@ -1,6 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, Easing, useVideoConfig, staticFile, Img} from 'remotion';
 import {ArrowUpRight, Mail, FileText, Image as ImageIcon, Lock, Check, AlertTriangle, MousePointer2, Clock, Thermometer, Zap, Droplets, Truck, Wrench} from 'lucide-react';
+import {CHAPTERS} from './chapters';
 import {K, L, Words, Center, Pill, Card, PhaseTag, Clip, Logo, pop, useAbs, ramp, useT, clamp, ease} from './kit';
 
 const W = 1920, H = 1080;
@@ -824,6 +825,35 @@ export const S22: React.FC = () => {
           })}
         </Card>
       </div>
+    </AbsoluteFill>
+  );
+};
+
+// ============ 22b · everything else: all 81 chapters of the spec ============
+export const S22M: React.FC = () => {
+  const abs = useAbs();
+  const T = useT();
+  const l = L('l27m');
+  const span = Math.max(2, l.end - l.start - 1.2);
+  const n = Math.round(ramp(abs, l.start, l.end - 0.6, 0, CHAPTERS.length, Easing.out(Easing.quad)));
+  return (
+    <AbsoluteFill style={bgFill()}>
+      <div style={{position: 'absolute', left: 110, right: 110, top: 70, display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', fontFamily: K.font, color: K.navy}}>
+        <div style={{fontSize: 34, fontWeight: 600}}>{T('Everything in the spec', 'Alles aus der Spezifikation')}</div>
+        <div style={{fontSize: 34, fontWeight: 500}}><span style={{color: K.blue, fontWeight: 600}}>{n}</span> {T('chapters', 'Kapitel')} · <span style={{color: K.blue, fontWeight: 600}}>{Math.round((1298 * n) / CHAPTERS.length).toLocaleString(T('en-US', 'de-DE'))}</span> {T('functions', 'Funktionen')}</div>
+      </div>
+      <div style={{position: 'absolute', left: 110, right: 110, top: 165, display: 'flex', flexWrap: 'wrap', gap: '10px 10px', alignContent: 'flex-start'}}>
+        {CHAPTERS.map(([en, de], i) => {
+          const p = pop(abs, l.start + (span * i) / CHAPTERS.length, {damping: 18, stiffness: 220});
+          return (
+            <div key={i} style={{display: 'inline-flex', alignItems: 'center', gap: 8, padding: '8px 13px', borderRadius: 999, background: K.white, border: `1px solid ${K.line}`, fontFamily: K.font, fontSize: 17, color: K.navy, fontWeight: 500, boxShadow: '0 6px 16px rgba(6,35,90,.06)', opacity: p, transform: `scale(${0.7 + 0.3 * p})`}}>
+              <Check size={16} color={K.green} />
+              {T(en, de)}
+            </div>
+          );
+        })}
+      </div>
+      {/* the voice carries this line; the wall of chapters is the picture */}
     </AbsoluteFill>
   );
 };
