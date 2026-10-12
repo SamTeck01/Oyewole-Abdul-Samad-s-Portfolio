@@ -56,14 +56,15 @@ const SceneFx: React.FC<{i: number; f0: number; children: React.ReactNode}> = ({
   const g = f0 + f;
   const ph = (g % beatF) / beatF;
   const beat = Math.floor(g / beatF);
-  const punch = 1 + 0.03 * Math.exp(-ph * 7);
-  const pair = Math.floor((g - f0 + 1) / (beatF * 2));  // reframe every 2 beats, counted from the cut
-  const fr = [[1, 0, 0], [1.06, 20, 14], [1.03, -16, -10], [1.07, -10, 18]][pair % 4];
-  const push = interpolate(f, [0, d], [1, 1.06]);
+  const punch = 1;  // no per-beat punch (read as shaking)
+  // smooth, eased camera glide across the scene instead of jump reframes
+  const gl = interpolate(f, [0, d], [0, 1], {easing: Easing.inOut(Easing.sin)});
+  const fr = [1, (i % 3 - 1) * 40 * gl, (i % 2 ? 1 : -1) * 18 * gl];
+  const push = interpolate(f, [0, d], [1, 1.08], {easing: Easing.out(Easing.quad)});
   const scale = push * fr[0] * punch * (1.18 - 0.18 * inP) * (1 + 0.06 * outP);
   const x = fr[1] + (1 - inP) * 260 * dir - outP * 160 * dir + interpolate(f, [0, d], [-14, 14]) * dir;
   const y = fr[2];
-  const rot = (1 - inP) * 2.5 * dir + Math.sin(beat * 1.7) * 0.4 * Math.exp(-ph * 5);
+  const rot = (1 - inP) * 2.5 * dir;
   const blur = (1 - inP) * 18 + outP * 14;
   const wipe = interpolate(f, [0, 9], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: e});
   return (
