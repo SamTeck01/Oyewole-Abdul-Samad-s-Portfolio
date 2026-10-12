@@ -82,10 +82,10 @@ export const Words: React.FC<{
   return (
     <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: align === 'center' ? 'center' : 'flex-start', columnGap: size * 0.26, rowGap: 0, maxWidth, fontFamily: K.font, fontSize: size, lineHeight, color, fontWeight: weight, letterSpacing: '-0.02em', opacity: exit, ...style}}>
       {words.map((w, i) => {
-        const p = spring({frame: (abs - w.s + 0.05) * fps, fps, config: {damping: 18, stiffness: 170, mass: 0.7}});
+        const p = spring({frame: (abs - w.s + 0.05) * fps, fps, config: {damping: 16, stiffness: 260, mass: 0.6}});
         const c = highlight?.(w.t, i);
         return (
-          <span key={i} style={{display: 'inline-block', opacity: Math.min(1, p * 1.4), transform: `translateY(${(1 - p) * size * 0.45}px) rotate(${(1 - p) * (i % 2 ? 4 : -4)}deg)`, color: c ?? color, fontWeight: bold?.(w.t, i) ? 600 : weight, whiteSpace: 'pre'}}>
+          <span key={i} style={{display: 'inline-block', opacity: Math.min(1, p * 1.4), transform: `translateY(${(1 - p) * size * 0.7}px) rotate(${(1 - p) * (i % 2 ? 6 : -6)}deg) scale(${0.85 + 0.15 * p})`, color: c ?? color, fontWeight: bold?.(w.t, i) ? 600 : weight, whiteSpace: 'pre'}}>
             {w.t}
           </span>
         );

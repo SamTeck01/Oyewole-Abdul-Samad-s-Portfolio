@@ -1,5 +1,5 @@
 import React from 'react';
-import {AbsoluteFill, Sequence, Audio, staticFile} from 'remotion';
+import {AbsoluteFill, Sequence, Audio, staticFile, useCurrentFrame, useVideoConfig, interpolate, Easing} from 'remotion';
 import {CUES, L, FPS, SceneT, LangCtx, Lang, K, setCues, cuesFor} from './kit';
 import * as S from './scenes';
 
@@ -40,6 +40,29 @@ const cuts = () => {
   return list.map((x, i) => ({...x, to: i + 1 < list.length ? list[i + 1].from : CUES.total + END_CARD}));
 };
 
+
+// camera energy on every scene (client: "much more dynamic"): whip in with blur, slow push-in, blur out,
+// and a blue wipe panel sweeping across each cut. Direction alternates scene to scene.
+const SceneFx: React.FC<{i: number; children: React.ReactNode}> = ({i, children}) => {
+  const f = useCurrentFrame();
+  const {durationInFrames: d} = useVideoConfig();
+  const dir = i % 2 ? -1 : 1;
+  const e = Easing.bezier(0.16, 1, 0.3, 1);
+  const inP = interpolate(f, [0, 16], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: e});
+  const outP = interpolate(f, [d - 10, d], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.in(Easing.cubic)});
+  const push = interpolate(f, [0, d], [1, 1.045]);
+  const scale = push * (1.08 - 0.08 * inP) * (1 + 0.04 * outP);
+  const x = (1 - inP) * 140 * dir - outP * 90 * dir;
+  const blur = (1 - inP) * 14 + outP * 10;
+  const wipe = interpolate(f, [0, 9], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: e});
+  return (
+    <AbsoluteFill style={{overflow: 'hidden'}}>
+      <AbsoluteFill style={{transform: `translateX(${x}px) scale(${scale})`, filter: blur > 0.3 ? `blur(${blur}px)` : undefined}}>{children}</AbsoluteFill>
+      {i > 0 && wipe < 1 && <AbsoluteFill style={{background: K.blue, transform: `translateX(${dir * wipe * 900}%) skewX(${-12 * dir}deg)`, width: '14%', left: dir > 0 ? '-16%' : '102%'}} />}
+    </AbsoluteFill>
+  );
+};
+
 export const Film: React.FC<{lang: Lang}> = ({lang}) => {
   setCues(lang);
   return (
@@ -51,7 +74,9 @@ export const Film: React.FC<{lang: Lang}> = ({lang}) => {
         return (
           <Sequence key={i} from={f0} durationInFrames={Math.max(1, f1 - f0)}>
             <SceneT.Provider value={f0 / FPS}>
-              <C {...(props ?? {})} />
+              <SceneFx i={i}>
+                <C {...(props ?? {})} />
+              </SceneFx>
             </SceneT.Provider>
           </Sequence>
         );

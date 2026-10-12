@@ -95,8 +95,8 @@ for lang in (LANG,):
         k = int(0.25 * SR)
         env = np.convolve(env, np.ones(k) / k, 'same')
         active = np.clip(env / 0.02, 0, 1)
-        duck = 10 ** ((-17 * active) / 20)
-        mus = music * 0.4 * duck
+        duck = 10 ** ((-18 * active) / 20)
+        mus = music * 0.26 * duck  # client: music quieter
         mix = vo * 1.0 + mus + sfx * 0.9
     else:
         mix = music * 0.75 + sfx * 0.9
