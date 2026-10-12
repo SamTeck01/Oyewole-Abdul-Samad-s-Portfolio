@@ -2,6 +2,7 @@ import React from 'react';
 import {AbsoluteFill, Sequence, Audio, staticFile, useCurrentFrame, useVideoConfig, interpolate, Easing} from 'remotion';
 import {CUES, L, FPS, SceneT, LangCtx, Lang, K, setCues, cuesFor} from './kit';
 import * as S from './scenes';
+import {Slams} from './slams';
 
 const END_CARD = 2.4;
 export const filmSeconds = (lang: Lang) => cuesFor(lang).total + END_CARD;
@@ -93,6 +94,7 @@ export const Film: React.FC<{lang: Lang}> = ({lang}) => {
           </Sequence>
         );
       })}
+      {lang === 'en' && <Slams />}
       <Audio src={staticFile(`mix_${lang}.wav`)} />
     </AbsoluteFill>
   </LangCtx.Provider>
