@@ -56,9 +56,43 @@ WARM = lambda: mat('warm', '#D9E2EE', 0.7)
 NAVY = lambda: mat('navy', '#0B2A63', 0.55)
 BLUE = lambda: mat('blue', '#1B74FF', 0.45)
 GREEN = lambda: mat('green', '#2DB453', 0.5)
-GLASS = lambda: mat('glass', '#7FA9E6', 0.05, alpha=0.8, metal=0.2)
+GLASS = lambda: mat('glass', '#8FB4E4', 0.03, alpha=0.72, metal=0.45)
 ORANGE = lambda: mat('orange', '#F28A30', 0.5)
 GREY = lambda: mat('grey', '#C9D1DE', 0.7)
+
+def tmat(name, c1, c2, kind='noise', scale=3.0, rough=0.8, bump=0.25, mortar='#E6E1D8'):
+    # procedural surface (concrete, plaster, brick, dirt) in object space, so it reads as a real material
+    if name in MATS: return MATS[name]
+    m = bpy.data.materials.new(name); m.use_nodes = True; nt = m.node_tree
+    b = nt.nodes['Principled BSDF']; b.inputs['Roughness'].default_value = rough
+    tc = nt.nodes.new('ShaderNodeTexCoord')
+    if kind == 'brick':
+        t = nt.nodes.new('ShaderNodeTexBrick'); t.inputs['Scale'].default_value = scale
+        t.inputs['Color1'].default_value = hexc(c1); t.inputs['Color2'].default_value = hexc(c2); t.inputs['Mortar'].default_value = hexc(mortar)
+        t.inputs['Mortar Size'].default_value = 0.012; t.offset = 0.5
+        # wall-plane mapping: horizontal = x + y, vertical = z, so bricks read on any wall orientation
+        sep = nt.nodes.new('ShaderNodeSeparateXYZ'); add = nt.nodes.new('ShaderNodeMath'); add.operation = 'ADD'; com = nt.nodes.new('ShaderNodeCombineXYZ')
+        nt.links.new(tc.outputs['Object'], sep.inputs[0]); nt.links.new(sep.outputs['X'], add.inputs[0]); nt.links.new(sep.outputs['Y'], add.inputs[1])
+        nt.links.new(add.outputs[0], com.inputs['X']); nt.links.new(sep.outputs['Z'], com.inputs['Y'])
+        nt.links.new(com.outputs[0], t.inputs['Vector']); nt.links.new(t.outputs['Color'], b.inputs['Base Color'])
+        fac = t.outputs['Fac']
+    else:
+        t = nt.nodes.new('ShaderNodeTexNoise'); t.inputs['Scale'].default_value = scale; t.inputs['Detail'].default_value = 8
+        ramp = nt.nodes.new('ShaderNodeValToRGB'); ramp.color_ramp.elements[0].color = hexc(c1); ramp.color_ramp.elements[1].color = hexc(c2)
+        nt.links.new(tc.outputs['Object'], t.inputs['Vector']); nt.links.new(t.outputs['Fac'], ramp.inputs['Fac']); nt.links.new(ramp.outputs['Color'], b.inputs['Base Color'])
+        fac = t.outputs['Fac']
+    bm = nt.nodes.new('ShaderNodeBump'); bm.inputs['Strength'].default_value = bump; bm.inputs['Distance'].default_value = 0.02
+    nt.links.new(fac, bm.inputs['Height']); nt.links.new(bm.outputs['Normal'], b.inputs['Normal'])
+    MATS[name] = m
+    return m
+
+CONCRETE = lambda: tmat('concrete', '#D9DBDE', '#BFC3C9', scale=2.5, rough=0.85, bump=0.35)
+PLASTER = lambda: tmat('plaster', '#F4F2EE', '#E4E0D8', scale=7, rough=0.8, bump=0.12)
+BRICK = lambda: tmat('brick_w', '#C8795C', '#B5684D', 'brick', scale=2.2, rough=0.85, bump=0.4)
+FRAME = lambda: mat('frame', '#3B4352', 0.4, metal=0.6)
+DIRT = lambda: tmat('dirt', '#C9B49A', '#A98F72', scale=0.6, rough=1.0, bump=0.6)
+STEEL = lambda: mat('steel', '#8E98A8', 0.35, metal=0.8)
+RUST = lambda: mat('rebar', '#8A5A3C', 0.6, metal=0.4)
 
 def box(name, size, loc, m, bevel=0.03, parent=None):
     bpy.ops.mesh.primitive_cube_add(size=1, location=loc)
@@ -145,22 +179,29 @@ NF = 5                           # ground-floor shop + 4 residential floors
 def floor_group(i, parent, glass=True, walls=True, mats=None):
     z = i * FH
     g = empty(f'floor{i}', (0, 0, z), parent)
-    box(f'slab{i}', (FW + 0.6, FD + 0.6, 0.32), (0, 0, 0.16), WHITE(), 0.04, g)
+    box(f'slab{i}', (FW + 0.6, FD + 0.6, 0.32), (0, 0, 0.16), CONCRETE(), 0.04, g)
     if walls:
         # corner piers + window bands
         for sx in (-1, 1):
             for sy in (-1, 1):
-                box(f'pier{i}{sx}{sy}', (0.6, 0.6, FH - 0.32), (sx * (FW / 2 - 0.3), sy * (FD / 2 - 0.3), 0.32 + (FH - 0.32) / 2), WHITE(), 0.03, g)
+                box(f'pier{i}{sx}{sy}', (0.6, 0.6, FH - 0.32), (sx * (FW / 2 - 0.3), sy * (FD / 2 - 0.3), 0.32 + (FH - 0.32) / 2), PLASTER(), 0.03, g)
         nwin = 6
         for k in range(nwin):
             x = -FW / 2 + 1.2 + k * (FW - 2.4) / (nwin - 1)
             for sy in (-1, 1):
                 if glass:
                     box(f'win{i}_{k}_{sy}', (1.6, 0.1, FH - 1.3), (x, sy * (FD / 2 - 0.18), 0.32 + 0.4 + (FH - 1.3) / 2), mats or GLASS(), 0.0, g)
+                    wz = 0.32 + 0.4 + (FH - 1.3) / 2
+                    for (fw, fh, dx, dz) in [(1.7, 0.08, 0, (FH - 1.3) / 2), (1.7, 0.08, 0, -(FH - 1.3) / 2), (0.08, FH - 1.3, 0.81, 0), (0.08, FH - 1.3, -0.81, 0), (0.05, FH - 1.3, 0, 0)]:
+                        box(f'winf{i}_{k}_{sy}_{dx}_{dz}', (fw, 0.14, fh), (x + dx, sy * (FD / 2 - 0.16), wz + dz), FRAME(), 0.0, g)
+                    if i > 0 and sy == -1 and k % 2 == 0:  # balconies with glass balustrade on the street side
+                        box(f'balc{i}_{k}', (2.1, 1.1, 0.16), (x, -(FD / 2 + 0.75), 0.4), CONCRETE(), 0.02, g)
+                        box(f'winrail{i}_{k}', (2.1, 0.04, 0.95), (x, -(FD / 2 + 1.28), 0.95), mat('railglass', '#BFD3EE', 0.05, alpha=0.45), 0.0, g)
+                        box(f'rail{i}_{k}', (2.1, 0.06, 0.06), (x, -(FD / 2 + 1.28), 1.45), STEEL(), 0.0, g)
                 # mullion fins (vertical white blades, the "architectural" detail)
-                box(f'fin{i}_{k}_{sy}', (0.18, 0.5, FH - 0.32), (x + 1.05, sy * (FD / 2 + 0.05), 0.32 + (FH - 0.32) / 2), WHITE(), 0.02, g)
+                box(f'fin{i}_{k}_{sy}', (0.18, 0.5, FH - 0.32), (x + 1.05, sy * (FD / 2 + 0.05), 0.32 + (FH - 0.32) / 2), PLASTER(), 0.02, g)
         for sx in (-1, 1):
-            box(f'side{i}{sx}', (0.25, FD - 1.2, FH - 0.32), (sx * (FW / 2 - 0.12), 0, 0.32 + (FH - 0.32) / 2), WARM(), 0.02, g)
+            box(f'side{i}{sx}', (0.25, FD - 1.2, FH - 0.32), (sx * (FW / 2 - 0.12), 0, 0.32 + (FH - 0.32) / 2), BRICK(), 0.0, g)
         if i == 0:  # shop: blue awning + big glass
             box('awning', (FW - 1.2, 1.2, 0.12), (0, -FD / 2 - 0.6, 2.7), BLUE(), 0.03, g)
     return g
@@ -168,8 +209,8 @@ def floor_group(i, parent, glass=True, walls=True, mats=None):
 def roof(parent):
     z = NF * FH
     r = empty('roof', (0, 0, z), parent)
-    box('roofslab', (FW + 0.8, FD + 0.8, 0.4), (0, 0, 0.2), WHITE(), 0.05, r)
-    box('parapet', (FW + 0.8, 0.25, 0.7), (0, -(FD / 2 + 0.28), 0.75), WHITE(), 0.03, r)
+    box('roofslab', (FW + 0.8, FD + 0.8, 0.4), (0, 0, 0.2), CONCRETE(), 0.05, r)
+    box('parapet', (FW + 0.8, 0.25, 0.7), (0, -(FD / 2 + 0.28), 0.75), PLASTER(), 0.03, r)
     for k in range(5):  # solar panels (navy) on the roof
         p = box(f'pv{k}', (2.4, 1.4, 0.08), (-5 + k * 2.6, 1.5, 0.75), NAVY(), 0.02, r)
         p.rotation_euler = (math.radians(-18), 0, 0)
@@ -253,6 +294,114 @@ def render(frames, name=None):
     if os.environ.get('SAMPLES'): S.eevee.taa_render_samples = int(os.environ['SAMPLES'])
     bpy.ops.render.render(animation=True)
 
+
+# ---------------- construction-site props ----------------
+YEL = lambda: mat('craneY', '#F2B82E', 0.45, metal=0.3)
+
+def strut(name, a, b, r, m, parent=None):
+    # thin cylinder from point a to point b (lattice members, rebar, scaffold tubes)
+    import mathutils
+    a = mathutils.Vector(a); b = mathutils.Vector(b); d = b - a
+    o = cyl(name, r, d.length, tuple((a + b) / 2), m, verts=6, parent=parent)
+    o.rotation_mode = 'QUATERNION'; o.rotation_quaternion = d.to_track_quat('Z', 'Y')
+    return o
+
+def worker(name, loc, vest='#F28A30', helmet='#FFFFFF', parent=None, rot=0):
+    w = empty(name, loc, parent); w.rotation_euler = (0, 0, rot)
+    for sx in (-0.11, 0.11):
+        cyl(f'{name}_leg{sx}', 0.085, 0.85, (sx, 0, 0.43), mat('workwear', '#2C3A55', 0.8), verts=8, parent=w)
+    box(f'{name}_torso', (0.42, 0.26, 0.6), (0, 0, 1.17), mat(f'vest{vest}', vest, 0.6), 0.06, w)
+    box(f'{name}_stripe', (0.43, 0.27, 0.05), (0, 0, 1.1), mat('reflect', '#E8EEF5', 0.2, metal=0.5), 0.0, w)
+    for sx in (-0.27, 0.27):
+        cyl(f'{name}_arm{sx}', 0.06, 0.55, (sx, 0, 1.15), mat(f'vest{vest}', vest, 0.6), verts=8, parent=w)
+    bpy.ops.mesh.primitive_uv_sphere_add(radius=0.13, location=(0, 0, 1.6)); h = bpy.context.active_object; h.name = f'{name}_head'
+    h.data.materials.append(mat('skin', '#D7A985', 0.6)); h.parent = w
+    bpy.ops.mesh.primitive_uv_sphere_add(radius=0.165, location=(0, 0, 1.66)); hm = bpy.context.active_object; hm.name = f'{name}_helmet'
+    hm.scale = (1, 1.1, 0.75); hm.data.materials.append(mat(f'helmet{helmet}', helmet, 0.3)); hm.parent = w
+    for o in (h, hm):
+        for pp in o.data.polygons: pp.use_smooth = True
+    return w
+
+def lattice_crane(loc, height=30, jib_len=28):
+    cr = empty('crane', loc)
+    seg = 1.6; n = int(height / seg); a = 0.75
+    corners = [(-a, -a), (a, -a), (a, a), (-a, a)]
+    for (x, y) in corners:
+        strut(f'mast_c{x}{y}', (x, y, 0), (x, y, height), 0.07, YEL(), cr)
+    for k in range(n):
+        z0, z1 = k * seg, (k + 1) * seg
+        for j in range(4):
+            (x0, y0), (x1, y1) = corners[j], corners[(j + 1) % 4]
+            strut(f'mast_d{k}{j}', (x0, y0, z0), (x1, y1, z1), 0.035, YEL(), cr)
+            strut(f'mast_h{k}{j}', (x0, y0, z1), (x1, y1, z1), 0.03, YEL(), cr)
+    box('crane_base', (4, 4, 0.8), (0, 0, 0.4), CONCRETE(), 0.05, cr)
+    jib = empty('jib', (0, 0, height), cr)
+    L = jib_len; c = 0.55
+    for (y, z) in [(-c, 0), (c, 0), (0, 0.9)]:
+        strut(f'jib_ch{y}{z}', (-L, y, z), (8, y, z), 0.06, YEL(), jib)
+    for k in range(int((L + 8) / 1.4)):
+        x0 = -L + k * 1.4; x1 = x0 + 1.4
+        strut(f'jib_d{k}a', (x0, -c, 0), (x1, 0, 0.9), 0.03, YEL(), jib)
+        strut(f'jib_d{k}b', (x0, c, 0), (x1, 0, 0.9), 0.03, YEL(), jib)
+    strut('tower_top', (0, 0, 0), (0, 0, 4.5), 0.12, YEL(), jib)
+    strut('tie1', (0, 0, 4.5), (-L * 0.6, 0, 0.9), 0.025, STEEL(), jib)
+    strut('tie2', (0, 0, 4.5), (7, 0, 0.9), 0.025, STEEL(), jib)
+    box('counter', (2.6, 1.6, 1.6), (6.5, 0, -0.6), CONCRETE(), 0.05, jib)
+    box('cab', (1.6, 1.6, 1.5), (0.4, 1.5, -0.6), mat('cab', '#FFFFFF', 0.4), 0.08, jib)
+    box('cabwin', (1.62, 1.0, 0.7), (0.4, 1.6, -0.4), GLASS(), 0.0, jib)
+    box('trolley', (1.0, 1.4, 0.5), (-L * 0.55, 0, -0.3), NAVY(), 0.03, jib)
+    strut('hook_cable', (-L * 0.55, 0, -0.3), (-L * 0.55, 0, -10), 0.02, STEEL(), jib)
+    load = empty('load', (-L * 0.55, 0, -10.6), jib)
+    for q in range(6):  # bundle of rebar hanging on the hook
+        strut(f'lrb{q}', (-2.5, -0.3 + q * 0.12, 0), (2.5, -0.3 + q * 0.12, 0), 0.04, RUST(), load)
+    return cr, jib
+
+def excavator(loc, rot=0):
+    ex = empty('excavator', loc); ex.rotation_euler = (0, 0, rot)
+    for sy in (-1.1, 1.1):
+        box(f'track{sy}', (4.2, 0.7, 0.9), (0, sy, 0.45), mat('track', '#2A2F38', 0.8), 0.25, ex)
+    body = empty('ex_body', (0, 0, 1.0), ex)
+    box('ex_house', (3.2, 2.4, 1.3), (-0.4, 0, 0.75), YEL(), 0.12, body)
+    box('ex_cab', (1.3, 1.1, 1.3), (0.7, 0.6, 2.0), YEL(), 0.08, body)
+    box('ex_cabwin', (1.32, 1.12, 0.8), (0.75, 0.6, 2.15), GLASS(), 0.0, body)
+    arm = empty('ex_arm', (1.2, -0.4, 1.3), body)
+    strut('ex_boom', (0, 0, 0), (2.6, 0, 2.1), 0.28, YEL(), arm)
+    strut('ex_stickm', (2.6, 0, 2.1), (3.7, 0, -0.7), 0.2, YEL(), arm)
+    strut('ex_ram', (0.3, 0, 0.5), (2.0, 0, 1.9), 0.08, STEEL(), arm)
+    box('ex_bucket', (0.9, 1.0, 0.7), (3.8, 0, -1.0), mat('track', '#2A2F38', 0.8), 0.1, arm)
+    key(body, 'rotation_euler', 1, (0, 0, math.radians(-25)))
+    key(body, 'rotation_euler', 420, (0, 0, math.radians(30)))
+    return ex
+
+def site_fence(w=46, d=34):
+    f = empty('fence')
+    pm = mat('fencepanel', '#E9EDF3', 0.5, alpha=0.6); post = STEEL()
+    for side, (x0, y0, x1, y1) in enumerate([(-w/2, -d/2, w/2, -d/2), (w/2, -d/2, w/2, d/2), (w/2, d/2, -w/2, d/2), (-w/2, d/2, -w/2, -d/2)]):
+        n = int(max(abs(x1 - x0), abs(y1 - y0)) / 3.5)
+        for k in range(n):
+            if side == 0 and 5 < k < 9: continue  # gate opening for trucks
+            t0, t1 = k / n, (k + 1) / n
+            ax, ay = x0 + (x1 - x0) * t0, y0 + (y1 - y0) * t0; bx, by = x0 + (x1 - x0) * t1, y0 + (y1 - y0) * t1
+            strut(f'fp{side}_{k}', (ax, ay, 0), (ax, ay, 2.0), 0.04, post, f)
+            o = box(f'fpan{side}_{k}', (max(abs(bx - ax), 0.04), max(abs(by - ay), 0.04), 1.8), ((ax + bx) / 2, (ay + by) / 2, 1.0), pm, 0.0, f)
+    return f
+
+def stacks():
+    st = empty('stacks')
+    for q in range(3):  # brick pallets
+        box(f'pal{q}', (1.2, 1.0, 0.15), (-14 + q * 1.5, 9, 0.08), mat('pallet', '#C8A97E', 0.9), 0.01, st)
+        box(f'brk{q}', (1.1, 0.95, 0.9), (-14 + q * 1.5, 9, 0.62), BRICK(), 0.02, st)
+    for q in range(14):  # rebar bundle
+        strut(f'rb{q}', (-6, 11 + (q % 7) * 0.08, 0.1 + (q // 7) * 0.08), (2, 11 + (q % 7) * 0.08, 0.1 + (q // 7) * 0.08), 0.03, RUST(), st)
+    for q in range(5):  # formwork boards
+        box(f'ply{q}', (2.5, 1.25, 0.05), (9, 11, 0.05 + q * 0.06), mat('ply', '#D9B97C', 0.8), 0.0, st)
+    box('container', (6, 2.4, 2.6), (16, -6, 1.3), BLUE(), 0.05, st)
+    box('container_win', (1.4, 0.05, 0.9), (15, -7.22, 1.6), GLASS(), 0.0, st)
+    box('container2', (6, 2.4, 2.6), (16, -6, 3.9), mat('cont2', '#FFFFFF', 0.5), 0.05, st)
+    cyl('mixer_silo', 1.0, 4.5, (-17, -3, 3.6), mat('silo', '#C9D1DE', 0.35, metal=0.5), parent=st)
+    for q in range(4): strut(f'silo_leg{q}', (-17 + (q % 2 - 0.5) * 1.6, -3 + (q // 2 - 0.5) * 1.6, 0), (-17 + (q % 2 - 0.5) * 1.2, -3 + (q // 2 - 0.5) * 1.2, 1.4), 0.06, STEEL(), st)
+    return st
+
 # ================= SHOTS =================
 def ease_cam(cam, tgt, keys):
     for f, loc, tl in keys:
@@ -329,36 +478,57 @@ elif SHOT == 'site':
         if i >= 3:
             for ch in g.children: ch.hide_render = True
     r.hide_render = True
+    for ch in r.children_recursive: ch.hide_render = True
     for ch in floors[3].children:
         if ch.name.startswith(('slab', 'pier')): ch.hide_render = False
-    # scaffold
+    # dirt site area, fence, materials, site office
+    bpy.ops.mesh.primitive_plane_add(size=1, location=(0, 0, 0.01)); dpl = bpy.context.active_object; dpl.scale = (44, 32, 1); dpl.data.materials.append(DIRT())
+    site_fence(); stacks()
+    # exposed rebar on the open 4th floor
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            for q in range(4):
+                x = sx * (FW / 2 - 0.3) + (q % 2 - 0.5) * 0.3; y = sy * (FD / 2 - 0.3) + (q // 2 - 0.5) * 0.3
+                strut(f'cbar{sx}{sy}{q}', (x, y, 4 * FH), (x, y, 4 * FH + 1.6), 0.025, RUST())
+    # scaffold: tubes, ledgers, braces, planks, toe boards
     sc = empty('scaffold')
     for k in range(9):
         x = -FW / 2 + k * FW / 8
-        cyl(f'sc_v{k}', 0.06, 4 * FH + 1, (x, -FD / 2 - 1.2, (4 * FH + 1) / 2), GREY(), verts=8, parent=sc)
+        for yy in (-FD / 2 - 0.9, -FD / 2 - 2.0):
+            strut(f'sc_v{k}{yy}', (x, yy, 0), (x, yy, 4 * FH + 1.2), 0.05, STEEL(), sc)
+        if k < 8:
+            for lv in range(4):
+                strut(f'sc_x{k}{lv}', (x, -FD / 2 - 2.0, lv * FH), (x + FW / 8, -FD / 2 - 2.0, (lv + 1) * FH), 0.03, STEEL(), sc)
     for lv in range(1, 5):
-        box(f'sc_p{lv}', (FW + 0.4, 1.0, 0.08), (0, -FD / 2 - 1.2, lv * FH), mat('plank', '#E7D9C2', 0.8), 0.01, sc)
-        box(f'sc_r{lv}', (FW + 0.4, 0.06, 0.06), (0, -FD / 2 - 1.7, lv * FH + 1), GREY(), 0, sc)
-    # crane
-    cr = empty('crane', (14, 8, 0))
-    box('mast', (1.2, 1.2, 30), (0, 0, 15), mat('craneY', '#F5C542', 0.5), 0.02, cr)
-    jib = empty('jib', (0, 0, 30), cr)
-    box('jibarm', (26, 0.9, 0.9), (-8, 0, 0.6), mat('craneY', '#F5C542', 0.5), 0.02, jib)
-    box('counter', (3, 1.6, 1.4), (6, 0, 0.3), GREY(), 0.05, jib)
-    box('cab', (1.6, 1.6, 1.4), (0.8, 1.4, -0.4), WHITE(), 0.05, jib)
-    cyl('cable', 0.03, 10, (-14, 0, -4.4), GREY(), verts=6, parent=jib)
-    box('load', (2.4, 1.2, 0.8), (-14, 0, -9.6), mat('pallet', '#D9DEE7', 0.7), 0.04, jib)
+        box(f'sc_p{lv}', (FW + 0.4, 1.1, 0.06), (0, -FD / 2 - 1.45, lv * FH), mat('plank', '#D9B97C', 0.8), 0.01, sc)
+        box(f'sc_t{lv}', (FW + 0.4, 0.03, 0.2), (0, -FD / 2 - 2.0, lv * FH + 0.12), mat('toe', '#F28A30', 0.6), 0.0, sc)
+        for yy in (-FD / 2 - 2.0,):
+            strut(f'sc_r{lv}', (-FW / 2 - 0.2, yy, lv * FH + 1.0), (FW / 2 + 0.2, yy, lv * FH + 1.0), 0.03, STEEL(), sc)
+    # workers on scaffold, roof and ground
+    worker('w1', (-4, -FD / 2 - 1.45, 2 * FH + 0.03), '#F28A30', '#FFFFFF')
+    worker('w2', (3, -FD / 2 - 1.45, 3 * FH + 0.03), '#F5C542', '#F28A30', rot=0.6)
+    worker('w3', (-5, 0, 3 * FH + 0.32), '#F28A30', '#F5C542', rot=1.2)
+    worker('w4', (4, 2, 3 * FH + 0.32), '#F5C542', '#FFFFFF', rot=-0.8)
+    worker('w5', (-11, -11, 0.02), '#F28A30', '#1B74FF', rot=0.3)
+    w6 = worker('w6', (8, -12, 0.02), '#F5C542', '#FFFFFF', rot=2.4)
+    key(w6, 'location', 1, (8, -12, 0.02)); key(w6, 'location', 420, (2, -13, 0.02))
+    w7 = worker('w7', (-2, -14, 0.02), '#F28A30', '#FFFFFF', rot=1.6)
+    key(w7, 'location', 1, (-2, -14, 0.02)); key(w7, 'location', 420, (-8, -13.5, 0.02))
+    # lattice tower crane and excavator
+    cr, jib = lattice_crane((14, 8, 0))
     key(jib, 'rotation_euler', 1, (0, 0, math.radians(-20)))
     key(jib, 'rotation_euler', 300, (0, 0, math.radians(35)))
-    # truck
-    tk = empty('truck', (-40, -16, 0))
+    excavator((-12, 3, 0.02), rot=math.radians(30))
+    # concrete mixer truck
+    tk = empty('truck', (3, -45, 0)); tk.rotation_euler = (0, 0, math.radians(90))
     box('cabin', (2.4, 2.4, 2.4), (3.6, 0, 1.6), BLUE(), 0.15, tk)
-    box('bed', (5.6, 2.4, 0.6), (-0.6, 0, 1.0), WHITE(), 0.05, tk)
-    cyl('drum', 1.0, 4.0, (-0.8, 0, 2.4), WHITE(), rot=(0, math.radians(80), 0), parent=tk)
-    for wx in (-2.4, 0, 3.4):
+    box('cabwin', (0.1, 2.0, 1.0), (4.82, 0, 2.2), GLASS(), 0.0, tk)
+    box('bed', (5.6, 2.4, 0.6), (-0.6, 0, 1.0), mat('chassis', '#3B4352', 0.6), 0.05, tk)
+    cyl('drum', 1.1, 4.0, (-0.8, 0, 2.5), mat('drum', '#F4F6F9', 0.35, metal=0.3), rot=(0, math.radians(80), 0), parent=tk)
+    for wx in (-2.4, -1.2, 3.4):
         for wy in (-1.2, 1.2):
-            cyl(f'wh{wx}{wy}', 0.5, 0.35, (wx, wy, 0.5), NAVY(), rot=(math.radians(90), 0, 0), parent=tk)
-    key(tk, 'location', 1, (-40, -16, 0)); key(tk, 'location', 150, (-12, -16, 0))
+            cyl(f'wh{wx}{wy}', 0.5, 0.35, (wx, wy, 0.5), mat('tyre', '#22262E', 0.9), rot=(math.radians(90), 0, 0), parent=tk)
+    key(tk, 'location', 1, (3, -45, 0)); key(tk, 'location', 170, (3, -21, 0))
     # drone + scan cone
     dr = empty('drone', (0, 0, 20))
     box('dbody', (0.9, 0.9, 0.25), (0, 0, 0), NAVY(), 0.08, dr)
