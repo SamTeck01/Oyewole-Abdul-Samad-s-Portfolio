@@ -38,22 +38,28 @@ const TX = {
 const useT = () => TX[useLang()];
 const f = (s: number) => Math.round(s * FPS);
 
-const useIn = (delay = 0, damping = 18) => {
+const useIn = (delay = 0, damping = 13) => {
   const fr = useCurrentFrame();
   const {fps} = useVideoConfig();
-  return spring({frame: fr - f(delay), fps, config: {damping, mass: 0.7}});
+  return spring({frame: fr - f(delay), fps, config: {damping, mass: 0.6, stiffness: 140}});
 };
-const Rise: React.FC<{d?: number; y?: number; children: React.ReactNode; style?: React.CSSProperties}> = ({d = 0, y = 40, children, style}) => {
+// Snappy entrance: rises, scales up with a little overshoot, un-blurs
+const Rise: React.FC<{d?: number; y?: number; children: React.ReactNode; style?: React.CSSProperties}> = ({d = 0, y = 90, children, style}) => {
   const p = useIn(d);
-  return <div style={{opacity: p, transform: `translateY(${(1 - p) * y}px)`, ...style}}>{children}</div>;
+  const o = Math.min(1, p * 1.6);
+  return <div style={{opacity: o, transform: `translateY(${(1 - p) * y}px) scale(${0.86 + 0.14 * p})`, filter: `blur(${Math.max(0, (1 - o) * 8)}px)`, ...style}}>{children}</div>;
 };
 
-// Scene wrapper: soft fade + small scale in and out (no hard cuts)
-const Scene: React.FC<{len: number; children: React.ReactNode}> = ({len, children}) => {
+// Scene wrapper: pushes in from the right, pushes out to the left, slow camera drift in between
+const Scene: React.FC<{len: number; children: React.ReactNode; dir?: number}> = ({len, children, dir = 1}) => {
   const fr = useCurrentFrame();
-  const o = interpolate(fr, [0, 14, len - 14, len], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-  const s = interpolate(fr, [0, len], [1.0, 1.035], {easing: Easing.inOut(Easing.quad)});
-  return <AbsoluteFill style={{opacity: o, transform: `scale(${s})`, alignItems: 'center', justifyContent: 'center'}}>{children}</AbsoluteFill>;
+  const {width} = useVideoConfig();
+  const e = Easing.bezier(0.7, 0, 0.2, 1);
+  const xin = interpolate(fr, [0, 16], [width * 0.9 * dir, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: e});
+  const xout = interpolate(fr, [len - 16, len], [0, -width * 0.9 * dir], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: e});
+  const s = interpolate(fr, [0, len], [1.0, 1.07]);
+  const r = interpolate(fr, [0, len], [-0.6, 0.6]) * dir;
+  return <AbsoluteFill style={{transform: `translateX(${xin + xout}px) scale(${s}) rotate(${r}deg)`, alignItems: 'center', justifyContent: 'center'}}>{children}</AbsoluteFill>;
 };
 
 const Logo: React.FC<{size: number}> = ({size}) => (
@@ -192,7 +198,7 @@ const S6: React.FC<{k: number}> = ({k}) => {
       <Rise d={0.5}><div style={{display: 'flex', gap: 30 * k}}>{icons.map((I, i) => (
         <div key={i} style={{width: 96 * k, height: 96 * k, border: `2px dashed ${C.line}`, display: 'flex', alignItems: 'center', justifyContent: 'center'}}><I size={42 * k} color={C.mute} /></div>
       ))}</div></Rise>
-      <div style={{opacity: p, transform: `scale(${0.6 + 0.4 * p})`, fontFamily: HEAD, fontSize: 300 * k, lineHeight: 0.85, color: C.red, marginTop: 20 * k}}>100 %</div>
+      <div style={{opacity: Math.min(1, p * 2), transform: `scale(${2.2 - 1.2 * p}) translate(${Math.sin(fr * 1.7) * 14 * Math.max(0, 1 - (fr - hit) / 20) * (fr > hit ? 1 : 0)}px, 0)`, fontFamily: HEAD, fontSize: 300 * k, lineHeight: 0.85, color: C.red, marginTop: 20 * k}}>100 %</div>
       <div style={{opacity: p, fontFamily: HEAD, fontSize: 110 * k, color: C.ink, lineHeight: 0.9}}>{T.g1}</div>
       <div style={{opacity: p, fontFamily: BODY, fontSize: 30 * k, color: C.mute, textAlign: 'center'}}>{T.g2}</div>
     </div>
@@ -229,6 +235,13 @@ export const Ad: React.FC<{lang?: Lang}> = ({lang = 'de'}) => {
     <AbsoluteFill style={{background: C.bg}}>
       {/* subtle grid texture + red corner rule, like the site */}
       <AbsoluteFill style={{backgroundImage: `linear-gradient(${C.line}55 1px, transparent 1px), linear-gradient(90deg, ${C.line}55 1px, transparent 1px)`, backgroundSize: '90px 90px', transform: `translateY(${-(fr * 0.25) % 90}px)`, height: height + 90}} />
+      <AbsoluteFill style={{overflow: 'hidden', opacity: 0.07}}>
+        {[0, 1, 2, 3, 4].map((r) => (
+          <div key={r} style={{position: 'absolute', top: r * height / 4 - 60, left: ((fr * (r % 2 ? 2.2 : -2.2)) % 1400) - 1400, whiteSpace: 'nowrap', fontFamily: HEAD, fontSize: 260, color: 'transparent', WebkitTextStroke: `3px ${C.ink}`}}>
+            BAU-KUNDEN · BAU-KUNDEN · BAU-KUNDEN · BAU-KUNDEN · BAU-KUNDEN
+          </div>
+        ))}
+      </AbsoluteFill>
       <div style={{position: 'absolute', left: 0, top: 0, height: 10, background: C.red, width: `${(fr / durationInFrames) * 100}%`}} />
       {ids.map((id, i) => {
         const from = starts[i];
@@ -236,9 +249,14 @@ export const Ad: React.FC<{lang?: Lang}> = ({lang = 'de'}) => {
         const Comp = S[i];
         return (
           <Sequence key={id} from={from} durationInFrames={to - from}>
-            <LangCtx.Provider value={lang}><Scene len={to - from}><Comp k={k} /></Scene></LangCtx.Provider>
+            <LangCtx.Provider value={lang}><Scene len={to - from} dir={1}><Comp k={k} /></Scene></LangCtx.Provider>
           </Sequence>
         );
+      })}
+      {starts.slice(1).map((c, i) => {
+        const x = interpolate(fr, [c - 4, c + 12], [1, -1.2], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.bezier(0.7, 0, 0.3, 1)});
+        if (x === 1 || x === -1.2) return null;
+        return <div key={i} style={{position: 'absolute', top: -200, bottom: -200, width: width * 0.35, left: width * 0.5 + x * width, background: i % 2 ? C.ink : C.red, transform: 'skewX(-12deg)'}} />;
       })}
       <Audio src={staticFile(lang === 'en' ? 'mix_en.wav' : 'mix.wav')} />
     </AbsoluteFill>

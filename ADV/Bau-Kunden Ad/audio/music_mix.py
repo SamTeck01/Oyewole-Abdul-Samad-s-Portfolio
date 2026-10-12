@@ -22,9 +22,20 @@ for b in range(int(DUR/BAR)+1):
     if t0 > 4.5: add(sub, np.sin(2*np.pi*midi(ch[0]-12)*tt)*env*.25, t0)
 music = lp(pad, 1300)*.55 + lp(pno, 5000)*.9 + sub*.5
 music *= np.minimum(1, t/1.2)*np.clip((DUR-t)/2.2, 0, 1)**.7; music /= np.abs(music).max()
+# soft whoosh on every scene cut + one low hit on the 100 % slam (no ticks)
+sfx = np.zeros(N)
+def whoosh(d=.5):
+    n = int(d*SR); x = rng.standard_normal(n); tt = np.arange(n)/SR
+    return sosfilt(butter(2, [500, 4000], 'band', fs=SR, output='sos'), x)*np.sin(np.pi*tt/d)**2*.05
+def boom():
+    n = int(1.0*SR); tt = np.arange(n)/SR; fr = 45+60*np.exp(-tt*16)
+    return np.sin(2*np.pi*np.cumsum(fr)/SR)*np.exp(-tt*4)*.22
+Lc = {l['id']: l for l in c['lines']}
+for i in ['l2','l3','l4','l5','l6','l7']: add(sfx, whoosh(), Lc[i]['start']-.3-.3)
+add(sfx, boom(), Lc['l6']['end']-2.2)
 vo, _ = sf.read(f'vo{SUF}.wav', dtype='float32'); vo = np.pad(vo, (0, max(0, N-len(vo))))[:N]
 k = int(.25*SR); env = np.convolve(np.abs(vo), np.ones(k)/k, 'same')
-mix = vo + music*.35*10**((-15*np.clip(env/.02, 0, 1))/20)
+mix = vo + sfx + music*.35*10**((-15*np.clip(env/.02, 0, 1))/20)
 m = pyln.Meter(SR); y = pyln.normalize.loudness(mix, m.integrated_loudness(mix), -17)
 y = np.clip(y, -.89, .89); sf.write(f'../remotion/public/mix{SUF}.wav', np.stack([y, y], 1).astype(np.float32), SR)
 print('LUFS(mono)', round(m.integrated_loudness(y), 2))
