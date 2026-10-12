@@ -139,7 +139,7 @@ const CLIP_SECS: Record<string, number> = {rise: 11.2, bim: 9.8, explode: 7, sit
 export const Clip: React.FC<{name: string; style?: React.CSSProperties; rate?: number; startFrom?: number}> = ({name, style, rate, startFrom = 0}) => {
   const {durationInFrames, fps} = useVideoConfig();
   const secs = CLIP_SECS[name] ?? 4;
-  const r = rate ?? Math.min(1, (secs - startFrom / fps - 0.25) / (durationInFrames / fps));
+  const r = rate ?? Math.min(2, (secs - startFrom / fps - 0.25) / (durationInFrames / fps));
   return <OffthreadVideo src={staticFile(`3d/${name}.mp4`)} muted playbackRate={r} startFrom={startFrom} style={{width: '100%', height: '100%', objectFit: 'cover', ...style}} />;
 };
 export const Still: React.FC<{name: string; style?: React.CSSProperties}> = ({name, style}) => (

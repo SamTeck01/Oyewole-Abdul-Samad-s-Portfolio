@@ -43,21 +43,32 @@ const cuts = () => {
 
 // camera energy on every scene (client: "much more dynamic"): whip in with blur, slow push-in, blur out,
 // and a blue wipe panel sweeping across each cut. Direction alternates scene to scene.
-const SceneFx: React.FC<{i: number; children: React.ReactNode}> = ({i, children}) => {
+const BPM = 124;
+const SceneFx: React.FC<{i: number; f0: number; children: React.ReactNode}> = ({i, f0, children}) => {
   const f = useCurrentFrame();
   const {durationInFrames: d} = useVideoConfig();
   const dir = i % 2 ? -1 : 1;
   const e = Easing.bezier(0.16, 1, 0.3, 1);
-  const inP = interpolate(f, [0, 16], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: e});
-  const outP = interpolate(f, [d - 10, d], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.in(Easing.cubic)});
-  const push = interpolate(f, [0, d], [1, 1.045]);
-  const scale = push * (1.08 - 0.08 * inP) * (1 + 0.04 * outP);
-  const x = (1 - inP) * 140 * dir - outP * 90 * dir;
-  const blur = (1 - inP) * 14 + outP * 10;
+  const inP = interpolate(f, [0, 12], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: e});
+  const outP = interpolate(f, [d - 8, d], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.in(Easing.cubic)});
+  // v6 (client: "god damn it dynamic"): constant camera drive, beat-synced punches and reframes
+  const beatF = (60 / BPM) * FPS;
+  const g = f0 + f;
+  const ph = (g % beatF) / beatF;
+  const beat = Math.floor(g / beatF);
+  const punch = 1 + 0.03 * Math.exp(-ph * 7);
+  const pair = Math.floor((g - f0 + 1) / (beatF * 2));  // reframe every 2 beats, counted from the cut
+  const fr = [[1, 0, 0], [1.06, 20, 14], [1.03, -16, -10], [1.07, -10, 18]][pair % 4];
+  const push = interpolate(f, [0, d], [1, 1.06]);
+  const scale = push * fr[0] * punch * (1.18 - 0.18 * inP) * (1 + 0.06 * outP);
+  const x = fr[1] + (1 - inP) * 260 * dir - outP * 160 * dir + interpolate(f, [0, d], [-14, 14]) * dir;
+  const y = fr[2];
+  const rot = (1 - inP) * 2.5 * dir + Math.sin(beat * 1.7) * 0.4 * Math.exp(-ph * 5);
+  const blur = (1 - inP) * 18 + outP * 14;
   const wipe = interpolate(f, [0, 9], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: e});
   return (
     <AbsoluteFill style={{overflow: 'hidden'}}>
-      <AbsoluteFill style={{transform: `translateX(${x}px) scale(${scale})`, filter: blur > 0.3 ? `blur(${blur}px)` : undefined}}>{children}</AbsoluteFill>
+      <AbsoluteFill style={{transform: `translate(${x}px, ${y}px) rotate(${rot}deg) scale(${scale})`, filter: blur > 0.3 ? `blur(${blur}px)` : undefined}}>{children}</AbsoluteFill>
       {i > 0 && wipe < 1 && <AbsoluteFill style={{background: K.blue, transform: `translateX(${dir * wipe * 900}%) skewX(${-12 * dir}deg)`, width: '14%', left: dir > 0 ? '-16%' : '102%'}} />}
     </AbsoluteFill>
   );
@@ -74,7 +85,7 @@ export const Film: React.FC<{lang: Lang}> = ({lang}) => {
         return (
           <Sequence key={i} from={f0} durationInFrames={Math.max(1, f1 - f0)}>
             <SceneT.Provider value={f0 / FPS}>
-              <SceneFx i={i}>
+              <SceneFx i={i} f0={f0}>
                 <C {...(props ?? {})} />
               </SceneFx>
             </SceneT.Provider>

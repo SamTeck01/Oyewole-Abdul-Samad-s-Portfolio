@@ -5,7 +5,7 @@ import numpy as np, soundfile as sf, json, sys
 from scipy.signal import butter, sosfilt
 
 SR = 48000
-BPM = 116
+BPM = 124
 BEAT = 60 / BPM
 BAR = BEAT * 4
 LANG = sys.argv[1] if len(sys.argv) > 1 else 'en'

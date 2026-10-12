@@ -1,220 +1,220 @@
 {
- "total": 139.429,
+ "total": 89.254,
  "lines": [
   {
    "id": "l01",
-   "start": 0.72,
-   "end": 3.923,
+   "start": 0.42,
+   "end": 3.442,
    "en": "Running a construction project shouldn't be rocket science.",
    "de": "Ein Bauprojekt zu f\u00fchren sollte keine Raketenwissenschaft sein."
   },
   {
    "id": "l02",
-   "start": 4.283,
-   "end": 8.738,
-   "en": "Yet every day, plans, costs, sites and invoices drift further apart.",
+   "start": 3.652,
+   "end": 6.533,
+   "en": "Plans, costs, sites and invoices drift apart.",
    "de": "Doch jeden Tag driften Pl\u00e4ne, Kosten, Baustellen und Rechnungen weiter auseinander."
   },
   {
    "id": "l03",
-   "start": 9.038,
-   "end": 10.467,
+   "start": 6.708,
+   "end": 7.973,
    "en": "It feels complicated.",
    "de": "Es wirkt kompliziert."
   },
   {
    "id": "l04",
-   "start": 10.677,
-   "end": 11.607,
+   "start": 8.095,
+   "end": 8.932,
    "en": "Intimidating.",
    "de": "\u00dcberw\u00e4ltigend."
   },
   {
    "id": "l05",
-   "start": 12.207,
-   "end": 14.34,
+   "start": 9.282,
+   "end": 11.358,
    "en": "That's why we built Baucheck24.",
    "de": "Deshalb haben wir Baucheck24 gebaut."
   },
   {
    "id": "l06",
-   "start": 18.54,
-   "end": 21.27,
+   "start": 13.958,
+   "end": 16.618,
    "en": "One platform for architecture and construction.",
    "de": "Eine Plattform f\u00fcr Architektur und Bau."
   },
   {
    "id": "l07",
-   "start": 21.63,
-   "end": 24.219,
-   "en": "From the first enquiry to the finished building.",
+   "start": 16.828,
+   "end": 18.918,
+   "en": "From first enquiry to finished building.",
    "de": "Von der ersten Anfrage bis zum fertigen Geb\u00e4ude."
   },
   {
    "id": "l08",
-   "start": 24.999,
-   "end": 29.125,
-   "en": "Many firms think they don't have the time or the people for another system.",
+   "start": 19.373,
+   "end": 20.997,
+   "en": "No time for another system?",
    "de": "Viele Firmen glauben, ihnen fehlen Zeit und Leute f\u00fcr noch ein System."
   },
   {
    "id": "l09",
-   "start": 29.485,
-   "end": 33.27,
-   "en": "Or they fear an AI that makes decisions nobody can check.",
+   "start": 21.207,
+   "end": 23.232,
+   "en": "Afraid of an AI nobody can check?",
    "de": "Oder sie f\u00fcrchten eine KI, deren Entscheidungen niemand pr\u00fcfen kann."
   },
   {
    "id": "l10",
-   "start": 33.81,
-   "end": 36.02,
-   "en": "So Baucheck24 works differently.",
+   "start": 23.547,
+   "end": 25.488,
+   "en": "Baucheck24 works differently.",
    "de": "Darum arbeitet Baucheck24 anders."
   },
   {
    "id": "l12",
-   "start": 36.38,
-   "end": 39.142,
+   "start": 25.698,
+   "end": 28.239,
    "en": "It only uses the tools and data you allow.",
    "de": "Es nutzt nur die Werkzeuge und Daten, die Sie freigeben."
   },
   {
    "id": "l13",
-   "start": 40.042,
-   "end": 45.479,
-   "en": "It starts with the enquiry. Emails, plans and photos become a structured project.",
+   "start": 28.764,
+   "end": 31.766,
+   "en": "Emails, plans and photos become a structured project.",
    "de": "Alles beginnt mit der Anfrage. Aus E-Mails, Pl\u00e4nen und Fotos wird ein strukturiertes Projekt."
   },
   {
    "id": "l14",
-   "start": 46.139,
-   "end": 50.588,
-   "en": "Planning happens in CAD and BIM, checked across every trade.",
+   "start": 32.151,
+   "end": 35.901,
+   "en": "Planning in CAD and BIM, checked across every trade.",
    "de": "Geplant wird in CAD und BIM, gepr\u00fcft \u00fcber alle Gewerke."
   },
   {
    "id": "l15",
-   "start": 50.948,
-   "end": 53.474,
-   "en": "Clashes are found before they ever reach the site.",
+   "start": 36.111,
+   "end": 37.564,
+   "en": "Clashes found before the site.",
    "de": "Kollisionen werden gefunden, bevor sie die Baustelle erreichen."
   },
   {
    "id": "l16",
-   "start": 54.134,
-   "end": 59.007,
-   "en": "Quantities come straight from the model, so every cost is calculated, not guessed.",
+   "start": 37.949,
+   "end": 40.875,
+   "en": "Quantities from the model. Every cost calculated.",
    "de": "Mengen kommen direkt aus dem Modell. Jede Zahl wird berechnet, nicht gesch\u00e4tzt."
   },
   {
    "id": "l17",
-   "start": 59.547,
-   "end": 62.67,
-   "en": "Offers are ready in minutes, and wait for your approval.",
+   "start": 41.19,
+   "end": 43.626,
+   "en": "Offers in minutes, waiting for your approval.",
    "de": "Angebote stehen in Minuten und warten auf Ihre Freigabe."
   },
   {
    "id": "l18",
-   "start": 63.33,
-   "end": 66.628,
-   "en": "Once signed, the project gets its budget and its schedule.",
+   "start": 44.011,
+   "end": 45.737,
+   "en": "Signed. Budget and schedule, set.",
    "de": "Nach der Unterschrift erh\u00e4lt das Projekt Budget und Terminplan."
   },
   {
    "id": "l19",
-   "start": 67.048,
-   "end": 73.71,
-   "en": "Baucheck24 compares the best, the fastest and the safest plan, on cost, time and CO2.",
+   "start": 45.982,
+   "end": 49.434,
+   "en": "Best, fastest, safest plan, on cost, time and CO2.",
    "de": "Baucheck24 vergleicht den besten, den schnellsten und den sichersten Plan, nach Kosten, Zeit und CO2."
   },
   {
    "id": "l20",
-   "start": 74.49,
-   "end": 77.291,
-   "en": "On site, materials are ordered within your limits.",
+   "start": 49.889,
+   "end": 51.854,
+   "en": "Materials ordered within your limits.",
    "de": "Auf der Baustelle wird Material innerhalb Ihrer Limits bestellt."
   },
   {
    "id": "l21",
-   "start": 77.711,
-   "end": 80.972,
-   "en": "Drones and scanners measure progress against the model.",
+   "start": 52.099,
+   "end": 54.338,
+   "en": "Drones measure progress against the model.",
    "de": "Drohnen und Scanner messen den Fortschritt am Modell."
   },
   {
    "id": "l22",
-   "start": 81.392,
-   "end": 84.125,
-   "en": "Every defect becomes a task for the right trade.",
+   "start": 54.583,
+   "end": 56.878,
+   "en": "Every defect, a task for the right trade.",
    "de": "Jeder Mangel wird zur Aufgabe f\u00fcr das richtige Gewerk."
   },
   {
    "id": "l22t",
-   "start": 84.785,
-   "end": 90.274,
-   "en": "Crews clock in on site by phone, and every hour is booked to the right project and trade.",
+   "start": 57.263,
+   "end": 61.066,
+   "en": "Crews clock in by phone. Every hour booked to the right project.",
    "de": "Teams stempeln auf der Baustelle per Handy ein, und jede Stunde wird dem richtigen Projekt und Gewerk zugeordnet."
   },
   {
    "id": "l23",
-   "start": 91.054,
-   "end": 96.366,
-   "en": "Invoices are matched against order and delivery, and booked straight to DATEV or Lexware.",
+   "start": 61.521,
+   "end": 64.138,
+   "en": "Invoices matched and booked to DATEV or Lexware.",
    "de": "Rechnungen werden mit Bestellung und Lieferung abgeglichen und direkt an DATEV oder Lexware gebucht."
   },
   {
    "id": "l24",
-   "start": 96.846,
-   "end": 99.257,
-   "en": "And payments? Always made by a person.",
+   "start": 64.418,
+   "end": 66.339,
+   "en": "Payments? Always made by a person.",
    "de": "Und Zahlungen? Immer durch einen Menschen."
   },
   {
    "id": "l25",
-   "start": 100.097,
-   "end": 103.26,
-   "en": "At handover, the building lives on as a digital twin.",
+   "start": 66.829,
+   "end": 68.522,
+   "en": "At handover, a digital twin.",
    "de": "Nach der \u00dcbergabe lebt das Geb\u00e4ude als digitaler Zwilling weiter."
   },
   {
    "id": "l26",
-   "start": 104.16,
-   "end": 108.15,
-   "en": "You decide what runs on its own. Green, yellow, orange, red.",
+   "start": 69.047,
+   "end": 70.837,
+   "en": "You decide what runs on its own.",
    "de": "Sie entscheiden, was selbstst\u00e4ndig l\u00e4uft. Gr\u00fcn, Gelb, Orange, Rot."
   },
   {
    "id": "l27",
-   "start": 108.69,
-   "end": 111.254,
+   "start": 71.152,
+   "end": 73.597,
    "en": "Every step has a source, a time and a name.",
    "de": "Jeder Schritt hat eine Quelle, eine Zeit und einen Namen."
   },
   {
    "id": "l27m",
-   "start": 111.854,
-   "end": 126.944,
-   "en": "And it covers everything else: building services, structure and fire safety, permits, tenders, subcontractors, staff and payroll, warehouse and fleet, site safety, the client portal, mobile apps and sustainability. All in one platform.",
+   "start": 73.947,
+   "end": 77.994,
+   "en": "Eighty-one chapters. Nearly thirteen hundred functions. One platform.",
    "de": "Und es deckt alles andere ab: Geb\u00e4udetechnik, Tragwerk und Brandschutz, Genehmigungen, Ausschreibungen, Subunternehmer, Personal und Lohn, Lager und Fuhrpark, Arbeitsschutz, das Kundenportal, mobile Apps und Nachhaltigkeit. Alles auf einer Plattform."
   },
   {
    "id": "l28",
-   "start": 127.784,
-   "end": 130.353,
+   "start": 78.484,
+   "end": 80.96,
    "en": "So your team gets time back for what it does best.",
    "de": "So gewinnt Ihr Team Zeit f\u00fcr das, was es am besten kann."
   },
   {
    "id": "l29",
-   "start": 130.713,
-   "end": 131.329,
+   "start": 81.17,
+   "end": 81.734,
    "en": "Building.",
    "de": "Bauen."
   },
   {
    "id": "l30",
-   "start": 132.409,
-   "end": 135.429,
+   "start": 82.364,
+   "end": 85.254,
    "en": "Baucheck24. From enquiry to handover.",
    "de": "Baucheck24. Von der Anfrage bis zur \u00dcbergabe."
   }
@@ -223,1547 +223,1032 @@
   {
    "w": "Running",
    "s": 0.0,
-   "e": 1.0
+   "e": 0.64
   },
   {
    "w": "a",
-   "s": 1.0,
-   "e": 1.28
+   "s": 0.64,
+   "e": 0.94
   },
   {
    "w": "construction",
-   "s": 1.28,
-   "e": 1.74
+   "s": 0.94,
+   "e": 1.32
   },
   {
    "w": "project",
-   "s": 1.74,
-   "e": 2.38
+   "s": 1.32,
+   "e": 1.98
   },
   {
    "w": "shouldn't",
-   "s": 2.38,
-   "e": 2.72
+   "s": 1.98,
+   "e": 2.32
   },
   {
    "w": "be",
-   "s": 2.72,
-   "e": 2.84
+   "s": 2.32,
+   "e": 2.42
   },
   {
    "w": "rocket",
-   "s": 2.84,
-   "e": 3.22
+   "s": 2.42,
+   "e": 2.76
   },
   {
-   "w": "science,",
-   "s": 3.22,
-   "e": 3.7
+   "w": "science.",
+   "s": 2.76,
+   "e": 3.18
   },
   {
-   "w": "yet",
-   "s": 4.2,
-   "e": 4.38
-  },
-  {
-   "w": "every",
-   "s": 4.38,
-   "e": 4.64
-  },
-  {
-   "w": "day,",
-   "s": 4.64,
-   "e": 4.94
-  },
-  {
-   "w": "plans,",
-   "s": 5.26,
-   "e": 5.66
+   "w": "Plans,",
+   "s": 3.7,
+   "e": 3.98
   },
   {
    "w": "costs,",
-   "s": 5.88,
-   "e": 6.14
+   "s": 4.2,
+   "e": 4.36
   },
   {
-   "w": "sites,",
-   "s": 6.52,
-   "e": 6.78
+   "w": "sites",
+   "s": 4.72,
+   "e": 5.02
   },
   {
    "w": "and",
-   "s": 6.98,
-   "e": 7.02
+   "s": 5.02,
+   "e": 5.26
   },
   {
    "w": "invoices",
-   "s": 7.02,
-   "e": 7.52
+   "s": 5.26,
+   "e": 5.72
   },
   {
    "w": "drift",
-   "s": 7.52,
-   "e": 7.84
-  },
-  {
-   "w": "further",
-   "s": 7.84,
-   "e": 8.2
+   "s": 5.72,
+   "e": 6.04
   },
   {
    "w": "apart.",
-   "s": 8.2,
-   "e": 8.68
+   "s": 6.04,
+   "e": 6.42
   },
   {
    "w": "It",
-   "s": 9.02,
-   "e": 9.14
+   "s": 6.7,
+   "e": 6.8
   },
   {
    "w": "feels",
-   "s": 9.14,
-   "e": 9.46
+   "s": 6.8,
+   "e": 7.04
   },
   {
    "w": "complicated,",
-   "s": 9.46,
-   "e": 10.14
+   "s": 7.04,
+   "e": 7.64
   },
   {
    "w": "intimidating.",
-   "s": 10.7,
-   "e": 11.18
+   "s": 8.12,
+   "e": 8.48
   },
   {
    "w": "That's",
-   "s": 12.2,
-   "e": 12.42
+   "s": 9.3,
+   "e": 9.48
   },
   {
    "w": "why",
-   "s": 12.42,
-   "e": 12.62
+   "s": 9.48,
+   "e": 9.68
   },
   {
    "w": "we",
-   "s": 12.62,
-   "e": 12.82
+   "s": 9.68,
+   "e": 9.88
   },
   {
    "w": "built",
-   "s": 12.82,
-   "e": 13.06
+   "s": 9.88,
+   "e": 10.14
   },
   {
    "w": "Bowcheck",
-   "s": 13.06,
-   "e": 13.52
+   "s": 10.14,
+   "e": 10.58
   },
   {
    "w": "24.",
-   "s": 13.52,
-   "e": 14.14
+   "s": 10.58,
+   "e": 11.14
   },
   {
    "w": "One",
-   "s": 18.0,
-   "e": 18.72
+   "s": 13.96,
+   "e": 14.12
   },
   {
    "w": "platform",
-   "s": 18.72,
-   "e": 19.14
+   "s": 14.12,
+   "e": 14.54
   },
   {
    "w": "for",
-   "s": 19.14,
-   "e": 19.5
+   "s": 14.54,
+   "e": 14.9
   },
   {
    "w": "architecture",
-   "s": 19.5,
-   "e": 20.08
+   "s": 14.9,
+   "e": 15.44
   },
   {
    "w": "and",
-   "s": 20.08,
-   "e": 20.56
+   "s": 15.44,
+   "e": 15.92
   },
   {
    "w": "construction,",
-   "s": 20.56,
-   "e": 21.06
+   "s": 15.92,
+   "e": 16.4
   },
   {
    "w": "from",
-   "s": 21.5,
-   "e": 21.76
-  },
-  {
-   "w": "the",
-   "s": 21.76,
-   "e": 21.9
+   "s": 16.74,
+   "e": 16.94
   },
   {
    "w": "first",
-   "s": 21.9,
-   "e": 22.18
+   "s": 16.94,
+   "e": 17.28
   },
   {
    "w": "inquiry",
-   "s": 22.18,
-   "e": 22.66
+   "s": 17.28,
+   "e": 17.68
   },
   {
    "w": "to",
-   "s": 22.66,
-   "e": 23.24
-  },
-  {
-   "w": "the",
-   "s": 23.24,
-   "e": 23.38
+   "s": 17.68,
+   "e": 18.14
   },
   {
    "w": "finished",
-   "s": 23.38,
-   "e": 23.66
+   "s": 18.14,
+   "e": 18.4
   },
   {
    "w": "building.",
-   "s": 23.66,
-   "e": 24.08
+   "s": 18.4,
+   "e": 18.78
   },
   {
-   "w": "Many",
-   "s": 24.88,
-   "e": 25.22
-  },
-  {
-   "w": "firms",
-   "s": 25.22,
-   "e": 25.58
-  },
-  {
-   "w": "think",
-   "s": 25.58,
-   "e": 25.94
-  },
-  {
-   "w": "they",
-   "s": 25.94,
-   "e": 26.14
-  },
-  {
-   "w": "don't",
-   "s": 26.14,
-   "e": 26.32
-  },
-  {
-   "w": "have",
-   "s": 26.32,
-   "e": 26.52
-  },
-  {
-   "w": "the",
-   "s": 26.52,
-   "e": 26.66
+   "w": "No",
+   "s": 19.36,
+   "e": 19.54
   },
   {
    "w": "time",
-   "s": 26.66,
-   "e": 27.08
-  },
-  {
-   "w": "or",
-   "s": 27.08,
-   "e": 27.6
-  },
-  {
-   "w": "the",
-   "s": 27.6,
-   "e": 27.72
-  },
-  {
-   "w": "people",
-   "s": 27.72,
-   "e": 28.04
+   "s": 19.54,
+   "e": 19.92
   },
   {
    "w": "for",
-   "s": 28.04,
-   "e": 28.28
+   "s": 19.92,
+   "e": 20.14
   },
   {
    "w": "another",
-   "s": 28.28,
-   "e": 28.52
+   "s": 20.14,
+   "e": 20.38
   },
   {
-   "w": "system,",
-   "s": 28.52,
-   "e": 29.0
+   "w": "system.",
+   "s": 20.38,
+   "e": 20.86
   },
   {
-   "w": "or",
-   "s": 29.42,
-   "e": 29.58
+   "w": "Afraid",
+   "s": 21.32,
+   "e": 21.44
   },
   {
-   "w": "they",
-   "s": 29.58,
-   "e": 29.72
-  },
-  {
-   "w": "fear",
-   "s": 29.72,
-   "e": 30.04
+   "w": "of",
+   "s": 21.44,
+   "e": 21.6
   },
   {
    "w": "an",
-   "s": 30.04,
-   "e": 30.18
+   "s": 21.6,
+   "e": 21.7
   },
   {
    "w": "AI",
-   "s": 30.18,
-   "e": 30.48
-  },
-  {
-   "w": "that",
-   "s": 30.48,
-   "e": 31.06
-  },
-  {
-   "w": "makes",
-   "s": 31.06,
-   "e": 31.26
-  },
-  {
-   "w": "decisions",
-   "s": 31.26,
-   "e": 31.8
+   "s": 21.7,
+   "e": 21.98
   },
   {
    "w": "nobody",
-   "s": 31.8,
-   "e": 32.4
+   "s": 21.98,
+   "e": 22.42
   },
   {
    "w": "can",
-   "s": 32.4,
-   "e": 32.78
+   "s": 22.42,
+   "e": 22.78
   },
   {
    "w": "check.",
-   "s": 32.78,
-   "e": 33.14
-  },
-  {
-   "w": "So",
-   "s": 33.76,
-   "e": 33.96
+   "s": 22.78,
+   "e": 23.1
   },
   {
    "w": "Bowcheck",
-   "s": 33.96,
-   "e": 34.42
+   "s": 23.48,
+   "e": 23.92
   },
   {
    "w": "24",
-   "s": 34.42,
-   "e": 34.92
+   "s": 23.92,
+   "e": 24.48
   },
   {
    "w": "works",
-   "s": 34.92,
-   "e": 35.38
+   "s": 24.48,
+   "e": 24.82
   },
   {
    "w": "differently.",
-   "s": 35.38,
-   "e": 35.82
+   "s": 24.82,
+   "e": 25.26
   },
   {
    "w": "It",
-   "s": 36.36,
-   "e": 36.48
+   "s": 25.68,
+   "e": 25.78
   },
   {
    "w": "only",
-   "s": 36.48,
-   "e": 36.76
+   "s": 25.78,
+   "e": 26.02
   },
   {
    "w": "uses",
-   "s": 36.76,
-   "e": 37.08
+   "s": 26.02,
+   "e": 26.32
   },
   {
    "w": "the",
-   "s": 37.08,
-   "e": 37.3
+   "s": 26.32,
+   "e": 26.54
   },
   {
    "w": "tools",
-   "s": 37.3,
-   "e": 37.66
+   "s": 26.54,
+   "e": 26.86
   },
   {
    "w": "and",
-   "s": 37.66,
-   "e": 38.1
+   "s": 26.86,
+   "e": 27.28
   },
   {
    "w": "data",
-   "s": 38.1,
-   "e": 38.42
+   "s": 27.28,
+   "e": 27.52
   },
   {
    "w": "you",
-   "s": 38.42,
-   "e": 38.66
+   "s": 27.52,
+   "e": 27.74
   },
   {
    "w": "allow.",
-   "s": 38.66,
-   "e": 38.96
-  },
-  {
-   "w": "It",
-   "s": 39.94,
-   "e": 40.14
-  },
-  {
-   "w": "starts",
-   "s": 40.14,
-   "e": 40.4
-  },
-  {
-   "w": "with",
-   "s": 40.4,
-   "e": 40.66
-  },
-  {
-   "w": "the",
-   "s": 40.66,
-   "e": 40.78
-  },
-  {
-   "w": "inquiry.",
-   "s": 40.78,
-   "e": 41.14
+   "s": 27.74,
+   "e": 28.08
   },
   {
    "w": "Emails,",
-   "s": 42.06,
-   "e": 42.54
+   "s": 28.58,
+   "e": 29.18
   },
   {
-   "w": "plans,",
-   "s": 42.84,
-   "e": 43.0
+   "w": "plans",
+   "s": 29.42,
+   "e": 29.56
   },
   {
    "w": "and",
-   "s": 43.26,
-   "e": 43.34
+   "s": 29.56,
+   "e": 29.84
   },
   {
    "w": "photos",
-   "s": 43.34,
-   "e": 43.64
+   "s": 29.84,
+   "e": 30.16
   },
   {
    "w": "become",
-   "s": 43.64,
-   "e": 44.12
+   "s": 30.16,
+   "e": 30.62
   },
   {
    "w": "a",
-   "s": 44.12,
-   "e": 44.34
+   "s": 30.62,
+   "e": 30.82
   },
   {
    "w": "structured",
-   "s": 44.34,
-   "e": 44.64
+   "s": 30.82,
+   "e": 31.1
   },
   {
    "w": "project.",
-   "s": 44.64,
-   "e": 45.3
+   "s": 31.1,
+   "e": 31.7
   },
   {
    "w": "Planning",
-   "s": 46.06,
-   "e": 46.38
-  },
-  {
-   "w": "happens",
-   "s": 46.38,
-   "e": 46.78
+   "s": 32.14,
+   "e": 32.42
   },
   {
    "w": "in",
-   "s": 46.78,
-   "e": 47.06
+   "s": 32.42,
+   "e": 32.64
   },
   {
    "w": "CAD",
-   "s": 47.06,
-   "e": 47.44
+   "s": 32.64,
+   "e": 33.0
   },
   {
    "w": "and",
-   "s": 47.44,
-   "e": 47.96
+   "s": 33.0,
+   "e": 33.48
   },
   {
    "w": "BIM,",
-   "s": 47.96,
-   "e": 48.52
+   "s": 33.48,
+   "e": 34.04
   },
   {
    "w": "checked",
-   "s": 48.98,
-   "e": 49.26
+   "s": 34.4,
+   "e": 34.66
   },
   {
    "w": "across",
-   "s": 49.26,
-   "e": 49.56
+   "s": 34.66,
+   "e": 34.98
   },
   {
    "w": "every",
-   "s": 49.56,
-   "e": 49.96
+   "s": 34.98,
+   "e": 35.34
   },
   {
    "w": "trade.",
-   "s": 49.96,
-   "e": 50.36
+   "s": 35.34,
+   "e": 35.72
   },
   {
    "w": "Clashes",
-   "s": 50.96,
-   "e": 51.3
-  },
-  {
-   "w": "are",
-   "s": 51.3,
-   "e": 51.52
+   "s": 36.16,
+   "e": 36.44
   },
   {
    "w": "found",
-   "s": 51.52,
-   "e": 51.9
+   "s": 36.44,
+   "e": 36.8
   },
   {
    "w": "before",
-   "s": 51.9,
-   "e": 52.18
-  },
-  {
-   "w": "they",
-   "s": 52.18,
-   "e": 52.38
-  },
-  {
-   "w": "ever",
-   "s": 52.38,
-   "e": 52.68
-  },
-  {
-   "w": "reach",
-   "s": 52.68,
-   "e": 52.96
+   "s": 36.8,
+   "e": 37.04
   },
   {
    "w": "the",
-   "s": 52.96,
-   "e": 53.14
+   "s": 37.04,
+   "e": 37.2
   },
   {
    "w": "site.",
-   "s": 53.14,
-   "e": 53.42
+   "s": 37.2,
+   "e": 37.5
   },
   {
    "w": "Quantities",
-   "s": 54.12,
-   "e": 54.52
-  },
-  {
-   "w": "come",
-   "s": 54.52,
-   "e": 54.8
-  },
-  {
-   "w": "straight",
-   "s": 54.8,
-   "e": 55.14
+   "s": 37.92,
+   "e": 38.32
   },
   {
    "w": "from",
-   "s": 55.14,
-   "e": 55.34
+   "s": 38.32,
+   "e": 38.54
   },
   {
    "w": "the",
-   "s": 55.34,
-   "e": 55.48
+   "s": 38.54,
+   "e": 38.66
   },
   {
    "w": "model,",
-   "s": 55.48,
-   "e": 55.84
-  },
-  {
-   "w": "so",
-   "s": 55.84,
-   "e": 56.28
+   "s": 38.66,
+   "e": 38.98
   },
   {
    "w": "every",
-   "s": 56.28,
-   "e": 56.66
+   "s": 39.36,
+   "e": 39.6
   },
   {
    "w": "cost",
-   "s": 56.66,
-   "e": 57.02
+   "s": 39.6,
+   "e": 39.94
   },
   {
-   "w": "is",
-   "s": 57.02,
-   "e": 57.22
-  },
-  {
-   "w": "calculated,",
-   "s": 57.22,
-   "e": 57.76
-  },
-  {
-   "w": "not",
-   "s": 58.18,
-   "e": 58.4
-  },
-  {
-   "w": "guessed.",
-   "s": 58.4,
-   "e": 58.86
+   "w": "calculated.",
+   "s": 39.94,
+   "e": 40.6
   },
   {
    "w": "Offers",
-   "s": 59.5,
-   "e": 59.94
-  },
-  {
-   "w": "are",
-   "s": 59.94,
-   "e": 60.14
-  },
-  {
-   "w": "ready",
-   "s": 60.14,
-   "e": 60.38
+   "s": 41.14,
+   "e": 41.52
   },
   {
    "w": "in",
-   "s": 60.38,
-   "e": 60.6
+   "s": 41.52,
+   "e": 41.72
   },
   {
-   "w": "minutes",
-   "s": 60.6,
-   "e": 60.9
+   "w": "minutes,",
+   "s": 41.72,
+   "e": 42.06
   },
   {
-   "w": "and",
-   "s": 60.9,
-   "e": 61.44
-  },
-  {
-   "w": "wait",
-   "s": 61.44,
-   "e": 61.68
+   "w": "waiting",
+   "s": 42.32,
+   "e": 42.62
   },
   {
    "w": "for",
-   "s": 61.68,
-   "e": 61.9
+   "s": 42.62,
+   "e": 42.88
   },
   {
    "w": "your",
-   "s": 61.9,
-   "e": 62.08
+   "s": 42.88,
+   "e": 43.06
   },
   {
    "w": "approval.",
-   "s": 62.08,
-   "e": 62.52
+   "s": 43.06,
+   "e": 43.46
   },
   {
-   "w": "Once",
-   "s": 63.28,
-   "e": 63.52
-  },
-  {
-   "w": "signed,",
-   "s": 63.52,
-   "e": 63.98
-  },
-  {
-   "w": "the",
-   "s": 64.26,
-   "e": 64.3
-  },
-  {
-   "w": "project",
-   "s": 64.3,
-   "e": 64.66
-  },
-  {
-   "w": "gets",
-   "s": 64.66,
-   "e": 64.96
-  },
-  {
-   "w": "its",
-   "s": 64.96,
-   "e": 65.16
+   "w": "Signed,",
+   "s": 44.0,
+   "e": 44.48
   },
   {
    "w": "budget",
-   "s": 65.16,
-   "e": 65.54
+   "s": 44.52,
+   "e": 44.72
   },
   {
    "w": "and",
-   "s": 65.54,
-   "e": 65.92
+   "s": 44.72,
+   "e": 44.94
   },
   {
-   "w": "its",
-   "s": 65.92,
-   "e": 66.06
+   "w": "schedule",
+   "s": 44.94,
+   "e": 45.24
   },
   {
-   "w": "schedule.",
-   "s": 66.06,
-   "e": 66.46
+   "w": "set.",
+   "s": 45.24,
+   "e": 45.66
   },
   {
-   "w": "Bowcheck",
-   "s": 67.08,
-   "e": 67.44
+   "w": "Best,",
+   "s": 46.0,
+   "e": 46.18
   },
   {
-   "w": "24",
-   "s": 67.44,
-   "e": 67.94
-  },
-  {
-   "w": "compares",
-   "s": 67.94,
-   "e": 68.46
-  },
-  {
-   "w": "the",
-   "s": 68.46,
-   "e": 68.7
-  },
-  {
-   "w": "best,",
-   "s": 68.7,
-   "e": 69.02
-  },
-  {
-   "w": "the",
-   "s": 69.46,
-   "e": 69.58
-  },
-  {
-   "w": "fastest",
-   "s": 69.58,
-   "e": 70.0
-  },
-  {
-   "w": "and",
-   "s": 70.0,
-   "e": 70.28
-  },
-  {
-   "w": "the",
-   "s": 70.28,
-   "e": 70.42
+   "w": "fastest,",
+   "s": 46.3,
+   "e": 46.7
   },
   {
    "w": "safest",
-   "s": 70.42,
-   "e": 70.7
+   "s": 47.0,
+   "e": 47.1
   },
   {
    "w": "plan",
-   "s": 70.7,
-   "e": 71.14
+   "s": 47.1,
+   "e": 47.52
   },
   {
    "w": "on",
-   "s": 71.14,
-   "e": 71.5
+   "s": 47.52,
+   "e": 47.74
   },
   {
    "w": "cost,",
-   "s": 71.5,
-   "e": 71.94
-  },
-  {
-   "w": "time,",
-   "s": 72.28,
-   "e": 72.64
-  },
-  {
-   "w": "and",
-   "s": 72.86,
-   "e": 73.0
-  },
-  {
-   "w": "CO2.",
-   "s": 73.0,
-   "e": 73.6
-  },
-  {
-   "w": "On",
-   "s": 74.46,
-   "e": 74.62
-  },
-  {
-   "w": "site,",
-   "s": 74.62,
-   "e": 74.96
-  },
-  {
-   "w": "materials",
-   "s": 75.18,
-   "e": 75.58
-  },
-  {
-   "w": "are",
-   "s": 75.58,
-   "e": 75.92
-  },
-  {
-   "w": "ordered",
-   "s": 75.92,
-   "e": 76.28
-  },
-  {
-   "w": "within",
-   "s": 76.28,
-   "e": 76.54
-  },
-  {
-   "w": "your",
-   "s": 76.54,
-   "e": 76.72
-  },
-  {
-   "w": "limits.",
-   "s": 76.72,
-   "e": 77.06
-  },
-  {
-   "w": "Drones",
-   "s": 77.74,
-   "e": 78.02
-  },
-  {
-   "w": "and",
-   "s": 78.02,
-   "e": 78.3
-  },
-  {
-   "w": "scanners",
-   "s": 78.3,
-   "e": 78.76
-  },
-  {
-   "w": "measure",
-   "s": 78.76,
-   "e": 79.46
-  },
-  {
-   "w": "progress",
-   "s": 79.46,
-   "e": 79.94
-  },
-  {
-   "w": "against",
-   "s": 79.94,
-   "e": 80.3
-  },
-  {
-   "w": "the",
-   "s": 80.3,
-   "e": 80.52
-  },
-  {
-   "w": "model.",
-   "s": 80.52,
-   "e": 80.86
-  },
-  {
-   "w": "Every",
-   "s": 81.26,
-   "e": 81.6
-  },
-  {
-   "w": "defect",
-   "s": 81.6,
-   "e": 81.9
-  },
-  {
-   "w": "becomes",
-   "s": 81.9,
-   "e": 82.34
-  },
-  {
-   "w": "a",
-   "s": 82.34,
-   "e": 82.6
-  },
-  {
-   "w": "task",
-   "s": 82.6,
-   "e": 82.92
-  },
-  {
-   "w": "for",
-   "s": 82.92,
-   "e": 83.14
-  },
-  {
-   "w": "the",
-   "s": 83.14,
-   "e": 83.26
-  },
-  {
-   "w": "right",
-   "s": 83.26,
-   "e": 83.48
-  },
-  {
-   "w": "trade.",
-   "s": 83.48,
-   "e": 83.92
-  },
-  {
-   "w": "Crews",
-   "s": 84.72,
-   "e": 85.08
-  },
-  {
-   "w": "clock",
-   "s": 85.08,
-   "e": 85.3
-  },
-  {
-   "w": "in",
-   "s": 85.3,
-   "e": 85.54
-  },
-  {
-   "w": "on",
-   "s": 85.54,
-   "e": 85.68
-  },
-  {
-   "w": "site",
-   "s": 85.68,
-   "e": 85.96
-  },
-  {
-   "w": "by",
-   "s": 85.96,
-   "e": 86.2
-  },
-  {
-   "w": "phone,",
-   "s": 86.2,
-   "e": 86.6
-  },
-  {
-   "w": "and",
-   "s": 87.0,
-   "e": 87.22
-  },
-  {
-   "w": "every",
-   "s": 87.22,
-   "e": 87.54
-  },
-  {
-   "w": "hour",
-   "s": 87.54,
-   "e": 87.92
-  },
-  {
-   "w": "is",
-   "s": 87.92,
-   "e": 88.18
-  },
-  {
-   "w": "booked",
-   "s": 88.18,
-   "e": 88.4
-  },
-  {
-   "w": "to",
-   "s": 88.4,
-   "e": 88.62
-  },
-  {
-   "w": "the",
-   "s": 88.62,
-   "e": 88.7
-  },
-  {
-   "w": "right",
-   "s": 88.7,
-   "e": 88.94
-  },
-  {
-   "w": "project",
-   "s": 88.94,
-   "e": 89.5
-  },
-  {
-   "w": "and",
-   "s": 89.5,
-   "e": 89.7
-  },
-  {
-   "w": "trade.",
-   "s": 89.7,
-   "e": 90.06
-  },
-  {
-   "w": "Invoices",
-   "s": 90.98,
-   "e": 91.56
-  },
-  {
-   "w": "are",
-   "s": 91.56,
-   "e": 91.78
-  },
-  {
-   "w": "matched",
-   "s": 91.78,
-   "e": 92.14
-  },
-  {
-   "w": "against",
-   "s": 92.14,
-   "e": 92.46
-  },
-  {
-   "w": "order",
-   "s": 92.46,
-   "e": 92.88
-  },
-  {
-   "w": "and",
-   "s": 92.88,
-   "e": 93.1
-  },
-  {
-   "w": "delivery,",
-   "s": 93.1,
-   "e": 93.48
-  },
-  {
-   "w": "and",
-   "s": 93.94,
-   "e": 94.18
-  },
-  {
-   "w": "booked",
-   "s": 94.18,
-   "e": 94.38
-  },
-  {
-   "w": "straight",
-   "s": 94.38,
-   "e": 94.8
-  },
-  {
-   "w": "to",
-   "s": 94.8,
-   "e": 95.02
-  },
-  {
-   "w": "DATEF",
-   "s": 95.02,
-   "e": 95.62
-  },
-  {
-   "w": "or",
-   "s": 95.62,
-   "e": 95.78
-  },
-  {
-   "w": "Lexware,",
-   "s": 95.78,
-   "e": 96.3
-  },
-  {
-   "w": "and",
-   "s": 96.66,
-   "e": 96.96
-  },
-  {
-   "w": "payments",
-   "s": 96.96,
-   "e": 97.32
-  },
-  {
-   "w": "always",
-   "s": 97.32,
-   "e": 98.06
-  },
-  {
-   "w": "made",
-   "s": 98.06,
-   "e": 98.48
-  },
-  {
-   "w": "by",
-   "s": 98.48,
-   "e": 98.66
-  },
-  {
-   "w": "a",
-   "s": 98.66,
-   "e": 98.8
-  },
-  {
-   "w": "person.",
-   "s": 98.8,
-   "e": 99.08
-  },
-  {
-   "w": "At",
-   "s": 100.02,
-   "e": 100.2
-  },
-  {
-   "w": "handover,",
-   "s": 100.2,
-   "e": 100.68
-  },
-  {
-   "w": "the",
-   "s": 101.08,
-   "e": 101.18
-  },
-  {
-   "w": "building",
-   "s": 101.18,
-   "e": 101.42
-  },
-  {
-   "w": "lives",
-   "s": 101.42,
-   "e": 101.84
-  },
-  {
-   "w": "on",
-   "s": 101.84,
-   "e": 102.16
-  },
-  {
-   "w": "as",
-   "s": 102.16,
-   "e": 102.36
-  },
-  {
-   "w": "a",
-   "s": 102.36,
-   "e": 102.48
-  },
-  {
-   "w": "digital",
-   "s": 102.48,
-   "e": 102.8
-  },
-  {
-   "w": "twin.",
-   "s": 102.8,
-   "e": 103.16
-  },
-  {
-   "w": "You",
-   "s": 104.02,
-   "e": 104.24
-  },
-  {
-   "w": "decide",
-   "s": 104.24,
-   "e": 104.64
-  },
-  {
-   "w": "what",
-   "s": 104.64,
-   "e": 104.88
-  },
-  {
-   "w": "runs",
-   "s": 104.88,
-   "e": 105.16
-  },
-  {
-   "w": "on",
-   "s": 105.16,
-   "e": 105.3
-  },
-  {
-   "w": "its",
-   "s": 105.3,
-   "e": 105.44
-  },
-  {
-   "w": "own,",
-   "s": 105.44,
-   "e": 105.76
-  },
-  {
-   "w": "green,",
-   "s": 106.14,
-   "e": 106.48
-  },
-  {
-   "w": "yellow,",
-   "s": 106.8,
-   "e": 107.0
-  },
-  {
-   "w": "orange,",
-   "s": 107.22,
-   "e": 107.56
-  },
-  {
-   "w": "red.",
-   "s": 107.74,
-   "e": 107.98
-  },
-  {
-   "w": "Every",
-   "s": 108.54,
-   "e": 108.88
-  },
-  {
-   "w": "step",
-   "s": 108.88,
-   "e": 109.14
-  },
-  {
-   "w": "has",
-   "s": 109.14,
-   "e": 109.36
-  },
-  {
-   "w": "a",
-   "s": 109.36,
-   "e": 109.46
-  },
-  {
-   "w": "source,",
-   "s": 109.46,
-   "e": 109.76
-  },
-  {
-   "w": "a",
-   "s": 110.12,
-   "e": 110.24
-  },
-  {
-   "w": "time,",
-   "s": 110.24,
-   "e": 110.6
-  },
-  {
-   "w": "and",
-   "s": 110.7,
-   "e": 110.78
-  },
-  {
-   "w": "a",
-   "s": 110.78,
-   "e": 110.88
-  },
-  {
-   "w": "name,",
-   "s": 110.88,
-   "e": 111.14
-  },
-  {
-   "w": "and",
-   "s": 111.54,
-   "e": 111.94
-  },
-  {
-   "w": "it",
-   "s": 111.94,
-   "e": 112.04
-  },
-  {
-   "w": "covers",
-   "s": 112.04,
-   "e": 112.26
-  },
-  {
-   "w": "everything",
-   "s": 112.26,
-   "e": 112.76
-  },
-  {
-   "w": "else.",
-   "s": 112.76,
-   "e": 113.14
-  },
-  {
-   "w": "Building",
-   "s": 113.78,
-   "e": 113.98
-  },
-  {
-   "w": "services,",
-   "s": 113.98,
-   "e": 114.48
-  },
-  {
-   "w": "structure",
-   "s": 114.86,
-   "e": 115.18
-  },
-  {
-   "w": "and",
-   "s": 115.18,
-   "e": 115.46
-  },
-  {
-   "w": "fire",
-   "s": 115.46,
-   "e": 115.74
-  },
-  {
-   "w": "safety,",
-   "s": 115.74,
-   "e": 116.22
-  },
-  {
-   "w": "permits,",
-   "s": 116.44,
-   "e": 116.72
-  },
-  {
-   "w": "tenders,",
-   "s": 117.18,
-   "e": 117.58
-  },
-  {
-   "w": "subcontractors,",
-   "s": 117.8,
-   "e": 118.62
-  },
-  {
-   "w": "staff",
-   "s": 118.76,
-   "e": 119.0
-  },
-  {
-   "w": "and",
-   "s": 119.0,
-   "e": 119.24
-  },
-  {
-   "w": "payroll,",
-   "s": 119.24,
-   "e": 119.66
-  },
-  {
-   "w": "warehouse",
-   "s": 120.06,
-   "e": 120.32
-  },
-  {
-   "w": "and",
-   "s": 120.32,
-   "e": 120.68
-  },
-  {
-   "w": "fleet,",
-   "s": 120.68,
-   "e": 121.0
-  },
-  {
-   "w": "site",
-   "s": 121.32,
-   "e": 121.48
-  },
-  {
-   "w": "safety,",
-   "s": 121.48,
-   "e": 121.96
-  },
-  {
-   "w": "the",
-   "s": 122.14,
-   "e": 122.2
-  },
-  {
-   "w": "client",
-   "s": 122.2,
-   "e": 122.5
-  },
-  {
-   "w": "portal,",
-   "s": 122.5,
-   "e": 122.82
-  },
-  {
-   "w": "mobile",
-   "s": 123.16,
-   "e": 123.48
-  },
-  {
-   "w": "apps",
-   "s": 123.48,
-   "e": 123.92
-  },
-  {
-   "w": "and",
-   "s": 123.92,
-   "e": 124.14
-  },
-  {
-   "w": "sustainability,",
-   "s": 124.14,
-   "e": 124.7
-  },
-  {
-   "w": "all",
-   "s": 125.5,
-   "e": 125.82
-  },
-  {
-   "w": "in",
-   "s": 125.82,
-   "e": 126.02
-  },
-  {
-   "w": "one",
-   "s": 126.02,
-   "e": 126.2
-  },
-  {
-   "w": "platform.",
-   "s": 126.2,
-   "e": 126.74
-  },
-  {
-   "w": "So",
-   "s": 127.5,
-   "e": 127.9
-  },
-  {
-   "w": "your",
-   "s": 127.9,
-   "e": 128.02
-  },
-  {
-   "w": "team",
-   "s": 128.02,
-   "e": 128.3
-  },
-  {
-   "w": "gets",
-   "s": 128.3,
-   "e": 128.62
+   "s": 47.74,
+   "e": 48.08
   },
   {
    "w": "time",
-   "s": 128.62,
-   "e": 128.94
+   "s": 48.36,
+   "e": 48.6
   },
   {
-   "w": "back",
-   "s": 128.94,
-   "e": 129.22
+   "w": "in",
+   "s": 48.6,
+   "e": 48.8
+  },
+  {
+   "w": "CO2.",
+   "s": 48.8,
+   "e": 49.34
+  },
+  {
+   "w": "Materials",
+   "s": 49.88,
+   "e": 50.38
+  },
+  {
+   "w": "ordered",
+   "s": 50.38,
+   "e": 50.74
+  },
+  {
+   "w": "within",
+   "s": 50.74,
+   "e": 51.08
+  },
+  {
+   "w": "your",
+   "s": 51.08,
+   "e": 51.3
+  },
+  {
+   "w": "limits.",
+   "s": 51.3,
+   "e": 51.64
+  },
+  {
+   "w": "Drones",
+   "s": 52.14,
+   "e": 52.42
+  },
+  {
+   "w": "measure",
+   "s": 52.42,
+   "e": 52.78
+  },
+  {
+   "w": "progress",
+   "s": 52.78,
+   "e": 53.26
+  },
+  {
+   "w": "against",
+   "s": 53.26,
+   "e": 53.68
+  },
+  {
+   "w": "the",
+   "s": 53.68,
+   "e": 53.92
+  },
+  {
+   "w": "model.",
+   "s": 53.92,
+   "e": 54.24
+  },
+  {
+   "w": "Every",
+   "s": 54.54,
+   "e": 54.78
+  },
+  {
+   "w": "defect,",
+   "s": 54.78,
+   "e": 55.08
+  },
+  {
+   "w": "a",
+   "s": 55.46,
+   "e": 55.58
+  },
+  {
+   "w": "task",
+   "s": 55.58,
+   "e": 55.84
   },
   {
    "w": "for",
-   "s": 129.22,
-   "e": 129.46
+   "s": 55.84,
+   "e": 56.06
   },
   {
-   "w": "what",
-   "s": 129.46,
-   "e": 129.6
+   "w": "the",
+   "s": 56.06,
+   "e": 56.14
   },
   {
-   "w": "it",
-   "s": 129.6,
-   "e": 129.72
+   "w": "right",
+   "s": 56.14,
+   "e": 56.32
   },
   {
-   "w": "does",
-   "s": 129.72,
-   "e": 129.88
+   "w": "trade.",
+   "s": 56.32,
+   "e": 56.7
   },
   {
-   "w": "best.",
-   "s": 129.88,
-   "e": 130.14
+   "w": "Crews",
+   "s": 56.7,
+   "e": 57.54
   },
   {
-   "w": "Building.",
-   "s": 130.78,
-   "e": 131.12
+   "w": "clock",
+   "s": 57.54,
+   "e": 57.78
   },
   {
-   "w": "Bowcheck",
-   "s": 132.16,
-   "e": 132.8
+   "w": "in",
+   "s": 57.78,
+   "e": 57.96
   },
   {
-   "w": "24,",
-   "s": 132.8,
-   "e": 133.36
+   "w": "by",
+   "s": 57.96,
+   "e": 58.14
   },
   {
-   "w": "from",
-   "s": 133.84,
-   "e": 134.02
+   "w": "phone.",
+   "s": 58.14,
+   "e": 58.5
   },
   {
-   "w": "inquiry",
-   "s": 134.02,
-   "e": 134.5
+   "w": "Every",
+   "s": 58.88,
+   "e": 59.2
+  },
+  {
+   "w": "hour",
+   "s": 59.2,
+   "e": 59.56
+  },
+  {
+   "w": "booked",
+   "s": 59.56,
+   "e": 59.84
   },
   {
    "w": "to",
-   "s": 134.5,
-   "e": 134.76
+   "s": 59.84,
+   "e": 60.04
+  },
+  {
+   "w": "the",
+   "s": 60.04,
+   "e": 60.12
+  },
+  {
+   "w": "right",
+   "s": 60.12,
+   "e": 60.32
+  },
+  {
+   "w": "project.",
+   "s": 60.32,
+   "e": 60.88
+  },
+  {
+   "w": "Invoices",
+   "s": 61.4,
+   "e": 61.92
+  },
+  {
+   "w": "matched",
+   "s": 61.92,
+   "e": 62.28
+  },
+  {
+   "w": "and",
+   "s": 62.28,
+   "e": 62.5
+  },
+  {
+   "w": "booked",
+   "s": 62.5,
+   "e": 62.66
+  },
+  {
+   "w": "to",
+   "s": 62.66,
+   "e": 62.88
+  },
+  {
+   "w": "DATEF",
+   "s": 62.88,
+   "e": 63.46
+  },
+  {
+   "w": "or",
+   "s": 63.46,
+   "e": 63.62
+  },
+  {
+   "w": "Lexware.",
+   "s": 63.62,
+   "e": 64.08
+  },
+  {
+   "w": "Payments,",
+   "s": 64.4,
+   "e": 64.78
+  },
+  {
+   "w": "always",
+   "s": 64.96,
+   "e": 65.24
+  },
+  {
+   "w": "made",
+   "s": 65.24,
+   "e": 65.58
+  },
+  {
+   "w": "by",
+   "s": 65.58,
+   "e": 65.78
+  },
+  {
+   "w": "a",
+   "s": 65.78,
+   "e": 65.92
+  },
+  {
+   "w": "person.",
+   "s": 65.92,
+   "e": 66.2
+  },
+  {
+   "w": "At",
+   "s": 66.78,
+   "e": 66.94
+  },
+  {
+   "w": "handover,",
+   "s": 66.94,
+   "e": 67.4
+  },
+  {
+   "w": "a",
+   "s": 67.62,
+   "e": 67.72
+  },
+  {
+   "w": "digital",
+   "s": 67.72,
+   "e": 68.02
+  },
+  {
+   "w": "twin.",
+   "s": 68.02,
+   "e": 68.38
+  },
+  {
+   "w": "You",
+   "s": 69.02,
+   "e": 69.14
+  },
+  {
+   "w": "decide",
+   "s": 69.14,
+   "e": 69.54
+  },
+  {
+   "w": "what",
+   "s": 69.54,
+   "e": 69.82
+  },
+  {
+   "w": "runs",
+   "s": 69.82,
+   "e": 70.18
+  },
+  {
+   "w": "on",
+   "s": 70.18,
+   "e": 70.38
+  },
+  {
+   "w": "its",
+   "s": 70.38,
+   "e": 70.52
+  },
+  {
+   "w": "own.",
+   "s": 70.52,
+   "e": 70.78
+  },
+  {
+   "w": "Every",
+   "s": 71.12,
+   "e": 71.36
+  },
+  {
+   "w": "step",
+   "s": 71.36,
+   "e": 71.6
+  },
+  {
+   "w": "has",
+   "s": 71.6,
+   "e": 71.8
+  },
+  {
+   "w": "a",
+   "s": 71.8,
+   "e": 71.9
+  },
+  {
+   "w": "source,",
+   "s": 71.9,
+   "e": 72.18
+  },
+  {
+   "w": "a",
+   "s": 72.52,
+   "e": 72.64
+  },
+  {
+   "w": "time",
+   "s": 72.64,
+   "e": 72.98
+  },
+  {
+   "w": "and",
+   "s": 72.98,
+   "e": 73.16
+  },
+  {
+   "w": "a",
+   "s": 73.16,
+   "e": 73.28
+  },
+  {
+   "w": "name.",
+   "s": 73.28,
+   "e": 73.5
+  },
+  {
+   "w": "81",
+   "s": 73.92,
+   "e": 74.26
+  },
+  {
+   "w": "chapters,",
+   "s": 74.26,
+   "e": 74.66
+  },
+  {
+   "w": "nearly",
+   "s": 75.24,
+   "e": 75.42
+  },
+  {
+   "w": "1300",
+   "s": 75.42,
+   "e": 75.94
+  },
+  {
+   "w": "functions,",
+   "s": 75.94,
+   "e": 76.54
+  },
+  {
+   "w": "one",
+   "s": 77.04,
+   "e": 77.28
+  },
+  {
+   "w": "platform.",
+   "s": 77.28,
+   "e": 77.7
+  },
+  {
+   "w": "So",
+   "s": 78.4,
+   "e": 78.58
+  },
+  {
+   "w": "your",
+   "s": 78.58,
+   "e": 78.7
+  },
+  {
+   "w": "team",
+   "s": 78.7,
+   "e": 78.96
+  },
+  {
+   "w": "gets",
+   "s": 78.96,
+   "e": 79.24
+  },
+  {
+   "w": "time",
+   "s": 79.24,
+   "e": 79.56
+  },
+  {
+   "w": "back",
+   "s": 79.56,
+   "e": 79.84
+  },
+  {
+   "w": "for",
+   "s": 79.84,
+   "e": 80.08
+  },
+  {
+   "w": "what",
+   "s": 80.08,
+   "e": 80.24
+  },
+  {
+   "w": "it",
+   "s": 80.24,
+   "e": 80.34
+  },
+  {
+   "w": "does",
+   "s": 80.34,
+   "e": 80.52
+  },
+  {
+   "w": "best.",
+   "s": 80.52,
+   "e": 80.8
+  },
+  {
+   "w": "Building,",
+   "s": 81.22,
+   "e": 81.5
+  },
+  {
+   "w": "Bowcheck",
+   "s": 82.24,
+   "e": 82.72
+  },
+  {
+   "w": "24,",
+   "s": 82.72,
+   "e": 83.28
+  },
+  {
+   "w": "from",
+   "s": 83.72,
+   "e": 83.84
+  },
+  {
+   "w": "inquiry",
+   "s": 83.84,
+   "e": 84.34
+  },
+  {
+   "w": "to",
+   "s": 84.34,
+   "e": 84.58
   },
   {
    "w": "handover.",
-   "s": 134.76,
-   "e": 135.3
+   "s": 84.58,
+   "e": 85.12
+  },
+  {
+   "w": "Thank",
+   "s": 87.82,
+   "e": 89.22
+  },
+  {
+   "w": "you.",
+   "s": 89.22,
+   "e": 89.22
   }
  ]
 }

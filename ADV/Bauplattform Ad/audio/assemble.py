@@ -8,7 +8,7 @@ for l in lines:
     a=np.frombuffer(subprocess.run(['ffmpeg','-v','error','-i',f'vo/am_michael_{l["id"]}.wav','-ar',str(sr),'-ac','1','-f','f32le','-'],capture_output=True).stdout,np.float32)
     # trim silence
     nz=np.where(np.abs(a)>0.01)[0]; a=a[max(0,nz[0]-240):nz[-1]+1200]
-    g=gap.get(l['id'],0.6); g=4.2 if l['id']=='l06' else g*0.6  # tighter pacing (client: faster)
+    g=gap.get(l['id'],0.6); g=2.6 if l['id']=='l06' else g*0.35  # v6: much tighter (client: dynamic)
     out.append(np.zeros(int(g*sr),np.float32)); t+=g
     cues.append({'id':l['id'],'start':round(t,3),'end':round(t+len(a)/sr,3),'en':l['en'],'de':l['de']})
     out.append(a); t+=len(a)/sr
