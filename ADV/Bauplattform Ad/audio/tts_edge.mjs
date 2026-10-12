@@ -2,10 +2,10 @@
 import {EdgeTTS} from '/tmp/claude-0/etts/node_modules/node-edge-tts/dist/edge-tts.js';
 import fs from 'fs';
 const lang = process.argv[2] ?? 'en';
-const V = {en: {voice: 'en-US-AvaMultilingualNeural', lang: 'en-US', rate: '-4%'}, de: {voice: 'de-DE-SeraphinaMultilingualNeural', lang: 'de-DE', rate: '-4%'}}[lang];
+const V = {en: {voice: 'en-US-AndrewMultilingualNeural', lang: 'en-US', rate: '-4%'}, de: {voice: 'de-DE-FlorianMultilingualNeural', lang: 'de-DE', rate: '-4%'}}[lang];
 const dir = lang === 'en' ? 'vo_en' : 'vo_de';
 fs.mkdirSync(dir, {recursive: true});
-const say = (t) => (lang === 'en' ? t.replace(/Baucheck24/g, 'Bowcheck 24').replace('DATEV', 'Dahtef') : t);
+const say = (t) => (lang === 'en' ? t.replace(/Baucheck24/g, 'Bowcheck twenty-four').replace('DATEV', 'Dahtef') : t);
 for (const l of JSON.parse(fs.readFileSync('script.json'))) {
   const out = `${dir}/${l.id}.mp3`;
   if (fs.existsSync(out)) continue;
