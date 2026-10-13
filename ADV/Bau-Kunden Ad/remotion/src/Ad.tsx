@@ -138,7 +138,7 @@ const S3: React.FC<{k: number}> = ({k}) => {
 const S4: React.FC<{k: number}> = ({k}) => {
   const L = useL(); const T = useT();
   const fr = useCurrentFrame();
-  const n = Math.round(interpolate(fr, [f(0.2), f(1.4)], [0, 500], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic)}));
+  const n = Math.round(interpolate(fr, [f(0.2), f(1.4)], [0, 249], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic)}));
   const b = Math.round(interpolate(fr, [f(2.4), f(3.6)], [0, 1000], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic)}));
   const row = (label: string, sub: string, v: string, d: number, big: boolean) => (
     <Rise d={d}>
