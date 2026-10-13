@@ -6,7 +6,7 @@
  },
  {
   "id": "l02",
-  "en": "Yet every day, plans, costs, sites and invoices drift further apart.",
+  "en": "Plans, costs, sites and invoices drift apart.",
   "de": "Doch jeden Tag driften Pläne, Kosten, Baustellen und Rechnungen weiter auseinander."
  },
  {
@@ -31,22 +31,22 @@
  },
  {
   "id": "l07",
-  "en": "From the first enquiry to the finished building.",
+  "en": "From first enquiry to finished building.",
   "de": "Von der ersten Anfrage bis zum fertigen Gebäude."
  },
  {
   "id": "l08",
-  "en": "Many firms think they don't have the time or the people for another system.",
+  "en": "No time for another system?",
   "de": "Viele Firmen glauben, ihnen fehlen Zeit und Leute für noch ein System."
  },
  {
   "id": "l09",
-  "en": "Or they fear an AI that makes decisions nobody can check.",
+  "en": "Afraid of an AI nobody can check?",
   "de": "Oder sie fürchten eine KI, deren Entscheidungen niemand prüfen kann."
  },
  {
   "id": "l10",
-  "en": "So Baucheck24 works differently.",
+  "en": "Baucheck24 works differently.",
   "de": "Darum arbeitet Baucheck24 anders."
  },
  {
@@ -56,77 +56,77 @@
  },
  {
   "id": "l13",
-  "en": "It starts with the enquiry. Emails, plans and photos become a structured project.",
+  "en": "Emails, plans and photos become a structured project.",
   "de": "Alles beginnt mit der Anfrage. Aus E-Mails, Plänen und Fotos wird ein strukturiertes Projekt."
  },
  {
   "id": "l14",
-  "en": "Planning happens in CAD and BIM, checked across every trade.",
+  "en": "Planning in CAD and BIM, checked across every trade.",
   "de": "Geplant wird in CAD und BIM, geprüft über alle Gewerke."
  },
  {
   "id": "l15",
-  "en": "Clashes are found before they ever reach the site.",
+  "en": "Clashes found before the site.",
   "de": "Kollisionen werden gefunden, bevor sie die Baustelle erreichen."
  },
  {
   "id": "l16",
-  "en": "Quantities come straight from the model, so every cost is calculated, not guessed.",
+  "en": "Quantities from the model. Every cost calculated.",
   "de": "Mengen kommen direkt aus dem Modell. Jede Zahl wird berechnet, nicht geschätzt."
  },
  {
   "id": "l17",
-  "en": "Offers are ready in minutes, and wait for your approval.",
+  "en": "Offers in minutes, waiting for your approval.",
   "de": "Angebote stehen in Minuten und warten auf Ihre Freigabe."
  },
  {
   "id": "l18",
-  "en": "Once signed, the project gets its budget and its schedule.",
+  "en": "Signed. Budget and schedule, set.",
   "de": "Nach der Unterschrift erhält das Projekt Budget und Terminplan."
  },
  {
   "id": "l19",
-  "en": "Baucheck24 compares the best, the fastest and the safest plan, on cost, time and CO2.",
+  "en": "Best, fastest, safest plan, on cost, time and CO2.",
   "de": "Baucheck24 vergleicht den besten, den schnellsten und den sichersten Plan, nach Kosten, Zeit und CO2."
  },
  {
   "id": "l20",
-  "en": "On site, materials are ordered within your limits.",
+  "en": "Materials ordered within your limits.",
   "de": "Auf der Baustelle wird Material innerhalb Ihrer Limits bestellt."
  },
  {
   "id": "l21",
-  "en": "Drones and scanners measure progress against the model.",
+  "en": "Drones measure progress against the model.",
   "de": "Drohnen und Scanner messen den Fortschritt am Modell."
  },
  {
   "id": "l22",
-  "en": "Every defect becomes a task for the right trade.",
+  "en": "Every defect, a task for the right trade.",
   "de": "Jeder Mangel wird zur Aufgabe für das richtige Gewerk."
  },
  {
   "id": "l22t",
-  "en": "Crews clock in on site by phone, and every hour is booked to the right project and trade.",
+  "en": "Crews clock in by phone. Every hour booked to the right project.",
   "de": "Teams stempeln auf der Baustelle per Handy ein, und jede Stunde wird dem richtigen Projekt und Gewerk zugeordnet."
  },
  {
   "id": "l23",
-  "en": "Invoices are matched against order and delivery, and booked straight to DATEV or Lexware.",
+  "en": "Invoices matched and booked to DATEV or Lexware.",
   "de": "Rechnungen werden mit Bestellung und Lieferung abgeglichen und direkt an DATEV oder Lexware gebucht."
  },
  {
   "id": "l24",
-  "en": "And payments? Always made by a person.",
+  "en": "Payments? Always made by a person.",
   "de": "Und Zahlungen? Immer durch einen Menschen."
  },
  {
   "id": "l25",
-  "en": "At handover, the building lives on as a digital twin.",
+  "en": "At handover, a digital twin.",
   "de": "Nach der Übergabe lebt das Gebäude als digitaler Zwilling weiter."
  },
  {
   "id": "l26",
-  "en": "You decide what runs on its own. Green, yellow, orange, red.",
+  "en": "You decide what runs on its own.",
   "de": "Sie entscheiden, was selbstständig läuft. Grün, Gelb, Orange, Rot."
  },
  {
@@ -136,7 +136,7 @@
  },
  {
   "id": "l27m",
-  "en": "And it covers everything else: building services, structure and fire safety, permits, tenders, subcontractors, staff and payroll, warehouse and fleet, site safety, the client portal, mobile apps and sustainability. All in one platform.",
+  "en": "Eighty-one chapters. Nearly thirteen hundred functions. One platform.",
   "de": "Und es deckt alles andere ab: Gebäudetechnik, Tragwerk und Brandschutz, Genehmigungen, Ausschreibungen, Subunternehmer, Personal und Lohn, Lager und Fuhrpark, Arbeitsschutz, das Kundenportal, mobile Apps und Nachhaltigkeit. Alles auf einer Plattform."
  },
  {

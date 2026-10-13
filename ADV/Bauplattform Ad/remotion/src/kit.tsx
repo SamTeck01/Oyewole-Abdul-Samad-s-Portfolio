@@ -71,7 +71,8 @@ export const Words: React.FC<{
   style?: React.CSSProperties;
   range?: [number, number]; // word index range
   exitAt?: number; // absolute secs
-}> = ({id, size = 46, color = K.navy, weight = 500, highlight, bold, align = 'center', maxWidth = 1500, lineHeight = 1.18, style, range, exitAt}) => {
+}> = ({id, size: size0 = 46, color = K.navy, weight = 600, highlight, bold, align = 'center', maxWidth = 1500, lineHeight = 1.18, style, range, exitAt}) => {
+  const size = size0 * 1.15;  // v8: bolder, bigger captions
   const lang = useLang();
   const abs = useAbs();
   const {fps} = useVideoConfig();
@@ -80,12 +81,12 @@ export const Words: React.FC<{
   if (range) words = words.slice(range[0], range[1]);
   const exit = exitAt !== undefined ? interpolate(abs, [exitAt, exitAt + 0.3], [1, 0], clamp) : 1;
   return (
-    <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: align === 'center' ? 'center' : 'flex-start', columnGap: size * 0.26, rowGap: 0, maxWidth, fontFamily: K.font, fontSize: size, lineHeight, color, fontWeight: weight, letterSpacing: '-0.02em', opacity: exit, ...style}}>
+    <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: align === 'center' ? 'center' : 'flex-start', columnGap: size * 0.26, rowGap: 0, maxWidth: maxWidth * 1.15, fontFamily: K.font, fontSize: size, lineHeight, color, fontWeight: weight, letterSpacing: '-0.02em', opacity: exit, ...style}}>
       {words.map((w, i) => {
-        const p = spring({frame: (abs - w.s + 0.05) * fps, fps, config: {damping: 18, stiffness: 170, mass: 0.7}});
+        const p = spring({frame: (abs - w.s + 0.05) * fps, fps, config: {damping: 16, stiffness: 260, mass: 0.6}});
         const c = highlight?.(w.t, i);
         return (
-          <span key={i} style={{display: 'inline-block', opacity: Math.min(1, p * 1.4), transform: `translateY(${(1 - p) * size * 0.45}px) rotate(${(1 - p) * (i % 2 ? 4 : -4)}deg)`, color: c ?? color, fontWeight: bold?.(w.t, i) ? 600 : weight, whiteSpace: 'pre'}}>
+          <span key={i} style={{display: 'inline-block', opacity: Math.min(1, p * 1.4), transform: `translateY(${(1 - p) * size * 0.6}px) scale(${0.9 + 0.1 * p})`, color: c ?? color, fontWeight: bold?.(w.t, i) ? 800 : weight, whiteSpace: 'pre'}}>
             {w.t}
           </span>
         );
@@ -139,7 +140,7 @@ const CLIP_SECS: Record<string, number> = {rise: 11.2, bim: 9.8, explode: 7, sit
 export const Clip: React.FC<{name: string; style?: React.CSSProperties; rate?: number; startFrom?: number}> = ({name, style, rate, startFrom = 0}) => {
   const {durationInFrames, fps} = useVideoConfig();
   const secs = CLIP_SECS[name] ?? 4;
-  const r = rate ?? Math.min(1, (secs - startFrom / fps - 0.25) / (durationInFrames / fps));
+  const r = rate ?? Math.min(2, (secs - startFrom / fps - 0.25) / (durationInFrames / fps));
   return <OffthreadVideo src={staticFile(`3d/${name}.mp4`)} muted playbackRate={r} startFrom={startFrom} style={{width: '100%', height: '100%', objectFit: 'cover', ...style}} />;
 };
 export const Still: React.FC<{name: string; style?: React.CSSProperties}> = ({name, style}) => (

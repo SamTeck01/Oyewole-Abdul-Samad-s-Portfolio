@@ -1,7 +1,8 @@
 import React from 'react';
-import {AbsoluteFill, Sequence, Audio, staticFile} from 'remotion';
+import {AbsoluteFill, Sequence, Audio, staticFile, useCurrentFrame, useVideoConfig, interpolate, Easing} from 'remotion';
 import {CUES, L, FPS, SceneT, LangCtx, Lang, K, setCues, cuesFor} from './kit';
 import * as S from './scenes';
+import {Slams} from './slams';
 
 const END_CARD = 2.4;
 export const filmSeconds = (lang: Lang) => cuesFor(lang).total + END_CARD;
@@ -40,6 +41,41 @@ const cuts = () => {
   return list.map((x, i) => ({...x, to: i + 1 < list.length ? list[i + 1].from : CUES.total + END_CARD}));
 };
 
+
+// camera energy on every scene (client: "much more dynamic"): whip in with blur, slow push-in, blur out,
+// and a blue wipe panel sweeping across each cut. Direction alternates scene to scene.
+const BPM = 124;
+const SceneFx: React.FC<{i: number; f0: number; children: React.ReactNode}> = ({i, f0, children}) => {
+  const f = useCurrentFrame();
+  const {durationInFrames: d} = useVideoConfig();
+  const dir = i % 2 ? -1 : 1;
+  const e = Easing.bezier(0.16, 1, 0.3, 1);
+  const inP = interpolate(f, [0, 12], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: e});
+  const outP = interpolate(f, [d - 8, d], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.in(Easing.cubic)});
+  // v6 (client: "god damn it dynamic"): constant camera drive, beat-synced punches and reframes
+  const beatF = (60 / BPM) * FPS;
+  const g = f0 + f;
+  const ph = (g % beatF) / beatF;
+  const beat = Math.floor(g / beatF);
+  const punch = 1;  // no per-beat punch (read as shaking)
+  // smooth, eased camera glide across the scene instead of jump reframes
+  const gl = interpolate(f, [0, d], [0, 1], {easing: Easing.inOut(Easing.sin)});
+  const fr = [1, (i % 3 - 1) * 40 * gl, (i % 2 ? 1 : -1) * 18 * gl];
+  const push = interpolate(f, [0, d], [1, 1.08], {easing: Easing.out(Easing.quad)});
+  const scale = push * fr[0] * punch * (1.18 - 0.18 * inP) * (1 + 0.06 * outP);
+  const x = fr[1] + (1 - inP) * 260 * dir - outP * 160 * dir + interpolate(f, [0, d], [-14, 14]) * dir;
+  const y = fr[2];
+  const rot = (1 - inP) * 2.5 * dir;
+  const blur = (1 - inP) * 18 + outP * 14;
+  const wipe = interpolate(f, [0, 9], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: e});
+  return (
+    <AbsoluteFill style={{overflow: 'hidden'}}>
+      <AbsoluteFill style={{transform: `translate(${x}px, ${y}px) rotate(${rot}deg) scale(${scale})`, filter: blur > 0.3 ? `blur(${blur}px)` : undefined}}>{children}</AbsoluteFill>
+      {i > 0 && wipe < 1 && <AbsoluteFill style={{background: K.blue, transform: `translateX(${dir * wipe * 900}%) skewX(${-12 * dir}deg)`, width: '14%', left: dir > 0 ? '-16%' : '102%'}} />}
+    </AbsoluteFill>
+  );
+};
+
 export const Film: React.FC<{lang: Lang}> = ({lang}) => {
   setCues(lang);
   return (
@@ -51,11 +87,14 @@ export const Film: React.FC<{lang: Lang}> = ({lang}) => {
         return (
           <Sequence key={i} from={f0} durationInFrames={Math.max(1, f1 - f0)}>
             <SceneT.Provider value={f0 / FPS}>
-              <C {...(props ?? {})} />
+              <SceneFx i={i} f0={f0}>
+                <C {...(props ?? {})} />
+              </SceneFx>
             </SceneT.Provider>
           </Sequence>
         );
       })}
+      {lang === 'en' && <Slams />}
       <Audio src={staticFile(`mix_${lang}.wav`)} />
     </AbsoluteFill>
   </LangCtx.Provider>
