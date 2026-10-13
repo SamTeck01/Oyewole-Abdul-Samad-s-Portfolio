@@ -12,12 +12,13 @@
  {
   "id": "l3",
   "de": "Anzeigen in Google-Suche und Maps, Texte, Zielgruppen und Auswertung.",
-  "en": "Ads on Google Search and Maps, copy, targeting and reporting."
+  "en": "Ads on Google Search and Maps, copy, targeting and reporting.",
+  "de_say": "Anzeigen in Guugel-Suche und Maps, Texte, Zielgruppen und Auswertung."
  },
  {
   "id": "l4",
-  "de": "Für 249 Euro im Monat, plus mindestens 1.000 Euro Werbebudget.",
-  "en": "For 249 euros a month, plus at least 1,000 euros in ad budget."
+  "de": "Für zweihundertneunundvierzig Euro im Monat, plus mindestens tausend Euro Werbebudget.",
+  "en": "For two hundred and forty-nine euros a month, plus at least one thousand euros in ad budget."
  },
  {
   "id": "l5",
@@ -31,7 +32,7 @@
  },
  {
   "id": "l7",
-  "de": "Monatlich kündbar, ohne Mindestlaufzeit. Sichern Sie sich jetzt Ihre kostenlose Erstberatung.",
+  "de": "Monatlich kündbar. Ohne Mindestlaufzeit. Sichern Sie sich jetzt Ihre kostenlose Erstberatung.",
   "en": "Cancel monthly. Book your free consultation today."
  }
 ]
