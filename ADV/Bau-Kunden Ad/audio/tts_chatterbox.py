@@ -5,15 +5,15 @@ import sys, os, json, re, difflib, perth, torch, numpy as np, soundfile as sf
 perth.PerthImplicitWatermarker = perth.DummyWatermarker
 from chatterbox.mtl_tts import ChatterboxMultilingualTTS
 from faster_whisper import WhisperModel
-ref, d = sys.argv[1], sys.argv[2]; N = int(sys.argv[3]) if len(sys.argv) > 3 else 3; os.makedirs(d, exist_ok=True)
+ref, d = sys.argv[1], sys.argv[2]; LANG = sys.argv[4] if len(sys.argv) > 4 else 'en'; N = int(sys.argv[3]) if len(sys.argv) > 3 else 3; os.makedirs(d, exist_ok=True)
 m = ChatterboxMultilingualTTS.from_pretrained(device='cpu'); w = WhisperModel('small', compute_type='int8')
 norm = lambda s: re.sub(r'[^a-z0-9 ]', '', s.lower().replace('-', ' '))
 for l in json.load(open('script.json')):
-    text = l.get('en_say', l['en']); best = None
+    text = l.get(LANG + '_say', l[LANG]); best = None
     for k in range(N):
-        torch.manual_seed(k); x = m.generate(text, language_id='en', audio_prompt_path=ref).squeeze().numpy()
+        torch.manual_seed(k); x = m.generate(text, language_id=LANG, audio_prompt_path=ref).squeeze().numpy()
         import librosa; a = librosa.resample(x, orig_sr=m.sr, target_sr=16000)
-        words = [z for s in w.transcribe(a, language='en', word_timestamps=True)[0] for z in s.words]
+        words = [z for s in w.transcribe(a, language=LANG, word_timestamps=True)[0] for z in s.words]
         # cut after the word that completes the line
         target = norm(text).split(); hyp = [norm(z.word).strip() for z in words]; end = len(words)
         for i in range(len(words)):
