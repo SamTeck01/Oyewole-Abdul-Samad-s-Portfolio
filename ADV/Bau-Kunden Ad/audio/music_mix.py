@@ -34,8 +34,11 @@ Lc = {l['id']: l for l in c['lines']}
 for i in ['l2','l3','l4','l5','l6','l7']: add(sfx, whoosh(), Lc[i]['start']-.3-.3)
 add(sfx, boom(), Lc['l6']['end']-2.2)
 vo, _ = sf.read(f'vo{SUF}.wav', dtype='float32'); vo = np.pad(vo, (0, max(0, N-len(vo))))[:N]
-k = int(.25*SR); env = np.convolve(np.abs(vo), np.ones(k)/k, 'same')
-mix = vo + sfx + music*.35*10**((-15*np.clip(env/.02, 0, 1))/20)
+# smooth ducking: one dip per VO line, held through the short gaps between lines, slow ramps (no pumping)
+duck = np.zeros(N)
+for l in c['lines']: duck[int(max(0, l['start']-.15)*SR):int(min(DUR, l['end']+.6)*SR)] = 1
+k = int(.6*SR); duck = np.convolve(duck, np.hanning(k)/np.hanning(k).sum(), 'same')
+mix = vo + sfx + music*.35*10**((-10*duck)/20)
 m = pyln.Meter(SR); y = pyln.normalize.loudness(mix, m.integrated_loudness(mix), -17)
 y = np.clip(y, -.89, .89); sf.write(f'../remotion/public/mix{SUF}.wav', np.stack([y, y], 1).astype(np.float32), SR)
 print('LUFS(mono)', round(m.integrated_loudness(y), 2))
