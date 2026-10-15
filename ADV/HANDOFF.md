@@ -26,3 +26,16 @@ Folder: `ADV/Hebei Xiangjin Xin Ad/` (brief, Blender script, Remotion code, audi
 - Blender 4.2.3 headless (download tarball from download.blender.org).
 - Python: numpy/scipy for music + SFX; ffmpeg for mix, master, contact sheets.
 - Renders: about 10–12 min per 44 s video at 1080p60, 4 cores.
+
+## Finished job: Bau-Kunden (Facebook ad, DE + EN) — paid
+Folder: `ADV/Bau-Kunden Ad/`. Finals: EN 9:16 v7, DE 9:16 v5 (both ~19.6 MB). 4:5 and 1:1 not rendered (comps exist).
+Lessons:
+- Edge TTS blocked from the cloud since Oct 12. Working free fallback: **Chatterbox multilingual** voice clone
+  (`audio/tts_chatterbox.py`, Python 3.12 venv, patch `perth.PerthImplicitWatermarker = perth.DummyWatermarker`).
+  Clone from the approved male Florian takes in `vo_m` (NOT `vo_f`, which is higher). Check pitch with librosa pyin:
+  male target ~120–130 Hz; DE clone came out 149 Hz → `rubberband=pitch=0.873:formant=preserved`.
+- Client rejected Piper "thorsten" (sounded effeminate). Speaks German names correctly in EN when cloned.
+- Lists ("ausgegeben, gesehen, angefragt"): write with full stops so pauses are even.
+- Music ducking: one held dip per VO line with slow ramps (see `music_mix.py`), not per-word.
+- Under 20 MB at full quality: x264 `-preset veryslow -tune animation -crf 16` (SSIM 0.998).
+- "Laggy" from the client meant the voice pacing, not the picture — ask before changing motion.
