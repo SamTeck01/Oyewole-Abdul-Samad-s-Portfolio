@@ -1,5 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Img, Sequence, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig, Easing} from 'remotion';
+import TL from './timeline.json';
 import '@fontsource/great-vibes';
 import '@fontsource/montserrat/500.css';
 import '@fontsource/montserrat/700.css';
@@ -150,130 +151,11 @@ const Off: React.FC = () => {
   );
 };
 
-const Stars: React.FC = () => {
-  const f = useCurrentFrame();
-  const g = 0.6 + 0.4 * Math.sin(f / 7);
-  return (
-    <AbsoluteFill style={{background: C.plum}}>
-      {[...Array(14)].map((_, i) => <Spark key={i} x={(i * 397) % 1000 + 40} y={(i * 613) % 1800 + 60} s={18 + (i % 4) * 12} c={i % 3 ? '#FFB6D5' : '#C9FFEA'} d={i * 2} />)}
-      <Dot x={540} y={860} r={420} c={C.mag} d={0} o={0.35} />
-      <div style={{position: 'absolute', inset: 0, filter: `drop-shadow(0 0 ${40 * g}px rgba(190,255,230,.55))`}}><Shot src={p('stars.jpg')} d={6} size={720} x={540} y={860} ring={C.pink} pos="62% 50%" /></div>
-      <Center y={1360}>
-        <Word text="GLOW" d={14} size={200} color={C.white} ls={10} />
-        <Word text="in the dark" d={26} size={110} color={C.blush} font={SCRIPT} weight={400} stagger={1} />
-      </Center>
-    </AbsoluteFill>
-  );
-};
-
-const Ring: React.FC = () => {
-  const f = useCurrentFrame();
-  const flash = interpolate(f, [16, 20, 40], [0, 1, 0.35], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-  return (
-    <AbsoluteFill style={{background: C.hot}}>
-      <AbsoluteFill style={{background: `radial-gradient(circle at 50% 42%, rgba(255,255,255,${flash}) 0%, rgba(255,255,255,0) 45%)`}} />
-      <Half x={540} y={1920} r={560} c={C.plum} d={2} rot={0} />
-      <Pop src={p('ringlight_cut.png')} d={4} w={1000} x={560} y={740} rot={8} glow={`rgba(255,255,255,${flash})`} />
-      <Center y={1390}>
-        <Word text="SHINE" d={14} size={220} color={C.white} ls={10} />
-        <Word text="selfie ring light" d={26} size={100} color={C.blush} font={SCRIPT} weight={400} stagger={1} />
-      </Center>
-    </AbsoluteFill>
-  );
-};
-
-const Gloss: React.FC = () => (
-  <AbsoluteFill style={{background: C.blush}}>
-    <Dot x={300} y={720} r={330} c={C.white} d={0} />
-    <Dot x={790} y={980} r={300} c={C.pink} d={4} />
-    <Pop src={p('gloss_cut.png')} d={6} w={640} x={330} y={720} rot={-8} crop="inset(0 0 0 22%)" />
-    <Pop src={p('aloe_cut.png')} d={14} w={640} x={780} y={980} rot={6} />
-    <Center y={1430}>
-      <Word text="GLOSS" d={18} size={170} color={C.plum} ls={8} />
-      <Word text="& self care" d={30} size={110} color={C.hot} font={SCRIPT} weight={400} stagger={1} />
-    </Center>
-  </AbsoluteFill>
-);
-
-const Totes: React.FC = () => (
-  <AbsoluteFill style={{background: C.plum}}>
-    <Half x={170} y={340} r={170} c={C.pink} d={4} rot={90} />
-    <Dot x={960} y={1560} r={200} c={C.mag} d={8} />
-    <Shot src={p('totes.jpg')} d={2} size={760} x={540} y={820} ring={C.pink} arch />
-    <Center y={1420}>
-      <Word text="CARRY" d={14} size={190} color={C.white} ls={10} />
-      <Word text="it in style" d={26} size={110} color={C.pink} font={SCRIPT} weight={400} stagger={1} />
-    </Center>
-  </AbsoluteFill>
-);
-
-const Pamper: React.FC = () => (
-  <AbsoluteFill style={{background: C.mag}}>
-    <Shot src={p('masks.jpg')} d={2} size={560} x={740} y={560} ring={C.blush} pos="50% 35%" />
-    <Pop src={p('perfume_cut.png')} d={10} w={660} x={330} y={1010} rot={-10} />
-    <Center y={1420}>
-      <Word text="PAMPER" d={16} size={180} color={C.white} ls={8} />
-      <Word text="yourself" d={28} size={110} color={C.blush} font={SCRIPT} weight={400} stagger={1} />
-    </Center>
-  </AbsoluteFill>
-);
-
-const Sip: React.FC = () => (
-  <AbsoluteFill style={{background: C.blush}}>
-    <Dot x={850} y={420} r={220} c={C.pink} d={0} />
-    <Shot src={p('mugs.jpg')} d={4} size={560} x={330} y={620} ring={C.white} />
-    <Pop src={p('cups_cut.png')} d={12} w={700} x={640} y={1040} rot={5} />
-    <Center y={1430}>
-      <Word text="SIP" d={18} size={220} color={C.plum} ls={14} />
-      <Word text="mugs & sippy cups" d={30} size={96} color={C.hot} font={SCRIPT} weight={400} stagger={1} />
-    </Center>
-  </AbsoluteFill>
-);
-
-const More: React.FC = () => (
-  <AbsoluteFill style={{background: C.pink}}>
-    <Half x={540} y={0} r={460} c={C.hot} d={0} rot={180} />
-    <Shot src={p('headbands.jpg')} d={2} size={540} x={360} y={640} ring={C.white} />
-    <Shot src={p('belt.jpg')} d={10} size={460} x={720} y={1010} ring={C.plum} pos="55% 40%" />
-    <Center y={1430}>
-      <Word text="& MORE" d={16} size={190} color={C.white} ls={8} />
-      <Word text="gadgets you'll love" d={28} size={96} color={C.plum} font={SCRIPT} weight={400} stagger={1} />
-    </Center>
-  </AbsoluteFill>
-);
-
-const ALL = ['ringlight_cut.png', 'gloss_cut.png', 'totes.jpg', 'perfume_cut.png', 'stars.jpg', 'masks.jpg', 'aloe_cut.png', 'mugs.jpg', 'cups_cut.png', 'headbands.jpg', 'belt.jpg', 'ringlight_cut.png'];
-const Grid: React.FC = () => {
-  const f = useCurrentFrame();
-  return (
-    <AbsoluteFill style={{background: C.plum}}>
-      <div style={{position: 'absolute', top: 200, left: 50, right: 50, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 26}}>
-        {ALL.map((n, i) => {
-          const s = spring({frame: f - i * 3, fps: FPS, config: {damping: 12, stiffness: 180, mass: 0.6}});
-          const cut = n.endsWith('_cut.png');
-          return (
-            <div key={i} style={{aspectRatio: '1', borderRadius: '50%', background: i % 2 ? C.pink : C.blush, overflow: 'hidden', transform: `scale(${s})`, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-              <Img src={p(n)} style={cut ? {width: '80%', height: '80%', objectFit: 'contain'} : {width: '100%', height: '100%', objectFit: 'cover'}} />
-            </div>
-          );
-        })}
-      </div>
-      <Center y={1130}>
-        <Word text="EVERYTHING" d={30} size={130} color={C.white} ls={6} />
-        <div style={{marginTop: 10, background: C.pink, borderRadius: 100, padding: '14px 40px', transform: `scale(${useSpring(44, 10, 200)})`}}>
-          <Word text="20% OFF" d={46} size={110} color={C.white} />
-        </div>
-        <div style={{marginTop: 30}}><Word text="ENDS MON 19 OCT" d={56} size={60} color={C.blush} weight={700} ls={8} stagger={1} /></div>
-      </Center>
-    </AbsoluteFill>
-  );
-};
-
 // Simplified Nigeria outline (normalised); Ibadan sits in the south-west
 const NG = 'M80 300 L95 230 L120 180 L170 150 L215 95 L290 70 L360 80 L420 60 L480 70 L540 30 L585 60 L600 120 L640 150 L620 210 L560 260 L520 330 L470 400 L410 430 L330 420 L270 460 L200 440 L150 400 L110 390 Z';
 const Deliver: React.FC = () => {
   const f = useCurrentFrame();
-  const t = interpolate(f, [10, 70], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: ease});
+  const t = interpolate(f, [60, 140], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: ease});
   const pts = [[150, 330], [300, 250], [420, 160], [520, 300], [560, 120]];
   return (
     <AbsoluteFill style={{background: C.cream}}>
@@ -293,9 +175,14 @@ const Deliver: React.FC = () => {
         </g>
       </svg>
       <div style={{position: 'absolute', left: 150, top: 930, fontFamily: SANS, fontWeight: 700, fontSize: 46, color: C.plum, opacity: interpolate(f, [6, 16], [0, 1], {extrapolateRight: 'clamp'})}}>Ibadan</div>
-      <Center y={1180}>
-        <Word text="DELIVERY" d={16} size={160} color={C.plum} ls={8} />
-        <Word text="nationwide" d={28} size={130} color={C.pink} font={SCRIPT} weight={400} stagger={1} />
+      <Center y={1150}>
+        <Word text="BASED IN IBADAN" d={14} size={96} color={C.plum} ls={4} />
+        <div style={{height: 20}} />
+        <Word text="we deliver outside Ibadan" d={70} size={92} color={C.pink} font={SCRIPT} weight={400} stagger={1} />
+        <div style={{height: 26}} />
+        <div style={{background: C.plum, borderRadius: 100, padding: '16px 44px', transform: `scale(${useSpring(110, 11, 180)})`}}>
+          <Word text="NATIONWIDE DELIVERY" d={114} size={58} color={C.white} weight={800} ls={4} stagger={1} />
+        </div>
       </Center>
     </AbsoluteFill>
   );
@@ -327,11 +214,189 @@ const End: React.FC = () => {
   );
 };
 
-// [component, length in beats, reveal origin x%, y%]
-const SC: [React.FC, number, number, number][] = [
-  [Hook, 5, 50, 50], [Off, 4, 50, 67], [Stars, 3, 80, 20], [Ring, 3, 20, 80], [Gloss, 3, 50, 0], [Totes, 3, 100, 50],
-  [Pamper, 3, 0, 50], [Sip, 3, 50, 100], [More, 3, 80, 80], [Grid, 4, 50, 50], [Deliver, 3, 20, 20], [End, 7, 50, 40],
+
+// @@NEW@@
+// ---------- flat icons for products without photos ----------
+const IconPhone: React.FC = () => (
+  <svg viewBox="0 0 200 200" width="100%" height="100%">
+    <rect x="40" y="150" width="120" height="16" rx="8" fill={C.plum} />
+    <path d="M100 150 L100 112" stroke={C.plum} strokeWidth="12" strokeLinecap="round" />
+    <path d="M70 118 L130 118" stroke={C.plum} strokeWidth="10" strokeLinecap="round" />
+    <rect x="68" y="20" width="64" height="104" rx="12" fill={C.white} stroke={C.plum} strokeWidth="6" />
+    <rect x="76" y="32" width="48" height="76" rx="4" fill={C.pink} />
+    <circle cx="100" cy="116" r="3.5" fill={C.plum} />
+  </svg>
+);
+const IconHook: React.FC = () => (
+  <svg viewBox="0 0 200 200" width="100%" height="100%">
+    <rect x="30" y="34" width="140" height="28" rx="14" fill={C.white} stroke={C.plum} strokeWidth="6" />
+    {[60, 100, 140].map((x) => <path key={x} d={`M${x} 62 L${x} 120 Q${x} 146 ${x + 20} 146 Q${x + 34} 146 ${x + 34} 128`} fill="none" stroke={C.pink} strokeWidth="10" strokeLinecap="round" />)}
+    <circle cx="40" cy="48" r="5" fill={C.plum} /><circle cx="160" cy="48" r="5" fill={C.plum} />
+  </svg>
+);
+const IconBottle: React.FC = () => (
+  <svg viewBox="0 0 200 200" width="100%" height="100%">
+    <rect x="44" y="18" width="40" height="18" rx="6" fill={C.plum} />
+    <rect x="34" y="36" width="60" height="146" rx="22" fill={C.white} stroke={C.plum} strokeWidth="6" />
+    <rect x="40" y="96" width="48" height="80" rx="16" fill="#8FD8FF" opacity=".8" />
+    <path d="M118 84 Q118 60 140 60 Q162 60 162 84" fill="none" stroke={C.plum} strokeWidth="7" />
+    <rect x="104" y="80" width="72" height="100" rx="14" fill={C.pink} stroke={C.plum} strokeWidth="6" />
+    <path d="M124 124 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4z" fill={C.white} />
+  </svg>
+);
+const ICONS: Record<string, React.FC> = {phone: IconPhone, hooks: IconHook, bottles: IconBottle};
+
+// ---------- product scenes (one per product the client listed) ----------
+type Media = {kind: 'cut' | 'shot' | 'arch' | 'icon'; src: string; pos?: string; crop?: string};
+type Prod = {id: string; bg: string; dot: string; ring: string; title: string; tc: string; sub: string; sc: string; m: Media; note?: string};
+const PRODUCTS: Prod[] = [
+  {id: 'ringlight', bg: C.hot, dot: C.plum, ring: C.white, title: 'SHINE', tc: C.white, sub: 'selfie ring light', sc: C.blush, m: {kind: 'cut', src: 'ringlight_cut.png'}, note: 'clip-on · 3 light modes'},
+  {id: 'totes', bg: C.cream, dot: C.pink, ring: C.pink, title: 'CARRY', tc: C.plum, sub: 'face tote bags', sc: C.pink, m: {kind: 'arch', src: 'totes.jpg'}, note: 'many prints to pick from'},
+  {id: 'stars', bg: '#1E0718', dot: C.mag, ring: C.pink, title: 'GLOW', tc: C.white, sub: 'glow in the dark stars', sc: '#C9FFEA', m: {kind: 'shot', src: 'stars.jpg', pos: '62% 50%'}, note: 'light up your room'},
+  {id: 'gloss', bg: C.pink, dot: C.blush, ring: C.white, title: 'GLOSS', tc: C.white, sub: 'lip gloss', sc: C.plum, m: {kind: 'cut', src: 'gloss_cut.png', crop: 'inset(0 0 0 22%)'}, note: 'long-lasting shine'},
+  {id: 'masks', bg: C.blush, dot: C.pink, ring: C.white, title: 'PAMPER', tc: C.plum, sub: 'facial masks', sc: C.hot, m: {kind: 'shot', src: 'masks.jpg', pos: '50% 35%'}, note: 'self-care night, sorted'},
+  {id: 'aloe', bg: C.plum, dot: C.mag, ring: C.white, title: 'SOOTHE', tc: C.white, sub: 'aloe vera gel', sc: C.blush, m: {kind: 'cut', src: 'aloe_cut.png'}, note: 'soothing & moisture'},
+  {id: 'perfume', bg: C.mag, dot: C.hot, ring: C.white, title: 'SCENT', tc: C.white, sub: 'perfume oils', sc: C.blush, m: {kind: 'cut', src: 'perfume_cut.png'}, note: 'lots of scents'},
+  {id: 'phone', bg: C.pink, dot: C.blush, ring: C.white, title: 'HOLD', tc: C.white, sub: 'phone holders', sc: C.plum, m: {kind: 'icon', src: 'phone'}, note: 'hands-free scrolling'},
+  {id: 'hooks', bg: C.cream, dot: C.blush, ring: C.pink, title: 'HANG', tc: C.plum, sub: 'wall hooks', sc: C.pink, m: {kind: 'icon', src: 'hooks'}, note: 'tidy home, no drilling stress'},
+  {id: 'bottles', bg: C.hot, dot: C.pink, ring: C.white, title: 'HYDRATE', tc: C.white, sub: 'water bottles & bags', sc: C.blush, m: {kind: 'icon', src: 'bottles'}, note: 'take it everywhere'},
+  {id: 'cups', bg: C.blush, dot: C.white, ring: C.pink, title: 'SIP', tc: C.plum, sub: 'sippy cups', sc: C.hot, m: {kind: 'cut', src: 'cups_cut.png'}, note: 'with lid & straw'},
+  {id: 'mugs', bg: C.plum, dot: C.mag, ring: C.blush, title: 'WARM', tc: C.white, sub: 'mug warmer sets', sc: C.blush, m: {kind: 'shot', src: 'mugs.jpg'}, note: 'keeps your drink warm'},
+  {id: 'headbands', bg: C.pink, dot: C.hot, ring: C.white, title: 'STYLE', tc: C.white, sub: 'headbands', sc: C.plum, m: {kind: 'shot', src: 'headbands.jpg'}, note: 'soft · many colours'},
+  {id: 'belt', bg: C.cream, dot: C.blush, ring: C.pink, title: 'RELAX', tc: C.plum, sub: 'heating belt', sc: C.pink, m: {kind: 'shot', src: 'belt.jpg', pos: '55% 40%'}, note: 'warm comfort for cramps'},
 ];
+
+const SaleTag: React.FC<{d: number}> = ({d}) => {
+  const s = useSpring(d, 9, 220);
+  return (
+    <div style={{position: 'absolute', right: 70, top: 130, width: 210, height: 210, borderRadius: '50%', background: C.white, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+      transform: `scale(${s}) rotate(${12 + (1 - s) * 40}deg)`, boxShadow: '0 16px 40px rgba(58,13,46,.3)'}}>
+      <div style={{fontFamily: SANS, fontWeight: 900, fontSize: 76, color: C.hot, lineHeight: 0.9}}>20%</div>
+      <div style={{fontFamily: SANS, fontWeight: 900, fontSize: 40, color: C.plum, letterSpacing: 4}}>OFF</div>
+    </div>
+  );
+};
+
+const makeProduct = (pr: Prod, i: number): React.FC => () => {
+  const f = useCurrentFrame();
+  const left = i % 2 === 0;
+  const k = useSpring(4, 13, 140);
+  const m = pr.m;
+  const Icon = m.kind === 'icon' ? ICONS[m.src] : null;
+  return (
+    <AbsoluteFill style={{background: pr.bg, overflow: 'hidden'}}>
+      <Dot x={left ? 760 : 320} y={820} r={440} c={pr.dot} d={0} o={0.9} />
+      <Half x={left ? 120 : 960} y={1930} r={170} c={pr.ring} d={8} rot={0} />
+      {m.kind === 'cut' && <Pop src={p(m.src)} d={6} w={900} x={540} y={800} rot={left ? -6 : 6} crop={m.crop} />}
+      {m.kind === 'shot' && <Shot src={p(m.src)} d={4} size={760} x={540} y={800} ring={pr.ring} pos={m.pos} />}
+      {m.kind === 'arch' && <Shot src={p(m.src)} d={4} size={740} x={540} y={820} ring={pr.ring} arch />}
+      {Icon && (
+        <div style={{position: 'absolute', left: 540 - 380, top: 800 - 380, width: 760, height: 760, borderRadius: '50%', background: C.white, boxShadow: `0 0 0 14px ${pr.ring}, 0 40px 80px rgba(58,13,46,.3)`,
+          transform: `scale(${k})`, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <div style={{width: 520, height: 520, transform: `translateY(${Math.sin(f / 20) * 10}px) rotate(${Math.sin(f / 30) * 3}deg)`}}><Icon /></div>
+        </div>
+      )}
+      <Spark x={left ? 140 : 940} y={360} s={70} d={14} c={pr.tc} />
+      <Spark x={left ? 930 : 150} y={1260} s={44} d={20} c={pr.tc} />
+      <SaleTag d={22} />
+      <Center y={1300}>
+        <Word text={pr.title} d={12} size={pr.title.length > 5 ? 165 : 200} color={pr.tc} ls={6} />
+        <Word text={pr.sub} d={24} size={104} color={pr.sc} font={SCRIPT} weight={400} stagger={1} />
+        {pr.note && <div style={{marginTop: 22, opacity: interpolate(f, [40, 52], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}}>
+          <Word text={pr.note.toUpperCase()} d={40} size={34} color={pr.tc} weight={600} ls={6} stagger={0.5} /></div>}
+      </Center>
+    </AbsoluteFill>
+  );
+};
+
+const Intro: React.FC = () => (
+  <AbsoluteFill style={{background: `radial-gradient(circle at 50% 45%, #FF63AE 0%, ${C.pink} 35%, ${C.mag} 85%)`}}>
+    {[...Array(12)].map((_, i) => <Spark key={i} x={(i * 331) % 1000 + 40} y={(i * 571) % 1800 + 60} s={14 + (i % 3) * 10} c="rgba(255,255,255,.75)" d={6 + i * 3} />)}
+    <Center y={700}><Logo d={6} /></Center>
+    <Center y={1240}><Word text="your one-stop shop" d={70} size={96} color={C.white} font={SCRIPT} weight={400} stagger={1} /></Center>
+  </AbsoluteFill>
+);
+
+const GRID: [string, boolean][] = [['ringlight_cut.png', true], ['totes.jpg', false], ['stars.jpg', false], ['gloss_cut.png', true], ['masks.jpg', false], ['aloe_cut.png', true],
+  ['perfume_cut.png', true], ['phone', true], ['hooks', true], ['bottles', true], ['cups_cut.png', true], ['mugs.jpg', false], ['headbands.jpg', false], ['belt.jpg', false], ['sale', true]];
+const Grid: React.FC = () => {
+  const f = useCurrentFrame();
+  return (
+    <AbsoluteFill style={{background: C.plum}}>
+      <Center y={110}><Word text="ALL OF THIS" d={0} size={96} color={C.white} ls={6} /></Center>
+      <div style={{position: 'absolute', top: 280, left: 60, right: 60, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24}}>
+        {GRID.map(([n, cut], i) => {
+          const s = spring({frame: f - 6 - i * 3, fps: FPS, config: {damping: 12, stiffness: 180, mass: 0.6}});
+          const Icon = ICONS[n];
+          return (
+            <div key={i} style={{aspectRatio: '1.25', borderRadius: 40, background: n === 'sale' ? C.pink : i % 2 ? C.blush : C.white, overflow: 'hidden', transform: `scale(${s})`, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+              {n === 'sale' ? <div style={{fontFamily: SANS, fontWeight: 900, fontSize: 70, color: C.white, lineHeight: 0.9, textAlign: 'center'}}>20%<br /><span style={{fontSize: 40}}>OFF</span></div>
+                : Icon ? <div style={{width: '70%', height: '85%'}}><Icon /></div>
+                : <Img src={p(n)} style={cut ? {width: '82%', height: '82%', objectFit: 'contain'} : {width: '100%', height: '100%', objectFit: 'cover'}} />}
+            </div>
+          );
+        })}
+      </div>
+      <Center y={1600}>
+        <div style={{background: C.pink, borderRadius: 100, padding: '18px 48px', transform: `scale(${useSpring(60, 10, 200)})`}}>
+          <Word text="EVERYTHING 20% OFF" d={62} size={72} color={C.white} ls={2} stagger={1} />
+        </div>
+      </Center>
+    </AbsoluteFill>
+  );
+};
+
+const Prices: React.FC = () => {
+  const f = useCurrentFrame();
+  const bubble = (d: number, side: 'l' | 'r', children: React.ReactNode) => {
+    const s = useSpring(d, 12, 170);
+    return <div style={{alignSelf: side === 'l' ? 'flex-start' : 'flex-end', background: side === 'l' ? C.white : C.pink, color: side === 'l' ? C.plum : C.white, fontFamily: SANS, fontWeight: 700, fontSize: 50,
+      padding: '28px 40px', borderRadius: side === 'l' ? '40px 40px 40px 8px' : '40px 40px 8px 40px', transform: `scale(${s})`, transformOrigin: side === 'l' ? '0% 100%' : '100% 100%', maxWidth: 760, boxShadow: '0 14px 30px rgba(58,13,46,.2)'}}>{children}</div>;
+  };
+  return (
+    <AbsoluteFill style={{background: C.blush}}>
+      <Dot x={540} y={-160} r={680} c={C.pink} d={0} />
+      <Center y={140}><Word text="HOW MUCH?" d={6} size={130} color={C.white} ls={6} /></Center>
+      <div style={{position: 'absolute', left: 80, right: 80, top: 520, display: 'flex', flexDirection: 'column', gap: 40}}>
+        {bubble(20, 'l', 'Hi! How much is the ring light? 😍')}
+        {bubble(50, 'r', 'Send us a message, we reply fast 💖')}
+        {bubble(80, 'l', 'Do you deliver to Lagos? 🚚')}
+        {bubble(108, 'r', 'Yes! Anywhere in Nigeria ✅')}
+      </div>
+      <Center y={1420}>
+        <Word text="CONTACT US" d={130} size={130} color={C.plum} ls={6} />
+        <Word text="for prices" d={142} size={110} color={C.hot} font={SCRIPT} weight={400} stagger={1} />
+        <div style={{marginTop: 26, display: 'flex', gap: 40, transform: `scale(${useSpring(150, 10, 200)})`, opacity: f > 148 ? 1 : 0}}><WA size={110} /><Tik size={110} /></div>
+      </Center>
+    </AbsoluteFill>
+  );
+};
+
+const Countdown: React.FC = () => {
+  const f = useCurrentFrame();
+  const flip = useSpring(20, 12, 120);
+  const pulse = 1 + 0.04 * Math.sin(f / 6);
+  return (
+    <AbsoluteFill style={{background: C.plum}}>
+      {[...Array(10)].map((_, i) => <Spark key={i} x={(i * 397) % 1000 + 40} y={(i * 613) % 1800 + 60} s={16 + (i % 3) * 10} c="#FFB6D5" d={i * 3} />)}
+      <Center y={260}><Word text="HURRY!" d={4} size={150} color={C.pink} ls={10} /><Word text="the sale ends" d={16} size={110} color={C.white} font={SCRIPT} weight={400} stagger={1} /></Center>
+      <div style={{position: 'absolute', left: 240, top: 720, width: 600, height: 600, borderRadius: 60, background: C.white, overflow: 'hidden', boxShadow: '0 40px 90px rgba(0,0,0,.4)',
+        transform: `perspective(1400px) rotateX(${(1 - flip) * 90}deg) scale(${pulse})`, transformOrigin: '50% 0%'}}>
+        <div style={{height: 170, background: C.pink, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: SANS, fontWeight: 900, fontSize: 84, color: C.white, letterSpacing: 10}}>MON</div>
+        <div style={{fontFamily: SANS, fontWeight: 900, fontSize: 290, color: C.plum, textAlign: 'center', lineHeight: 1.05}}>19</div>
+        <div style={{fontFamily: SANS, fontWeight: 800, fontSize: 70, color: C.hot, textAlign: 'center', letterSpacing: 14}}>OCT</div>
+      </div>
+      <Center y={1480}><Word text="DON'T MISS 20% OFF" d={60} size={78} color={C.white} ls={3} stagger={1} /></Center>
+    </AbsoluteFill>
+  );
+};
+
+const HookOff: React.FC = () => <Off />;
+const T = TL as unknown as {bpm: number; drop: number; scenes: [string, number][]};
+const BY_ID: Record<string, React.FC> = {intro: Intro, hook: Hook, off: HookOff, grid: Grid, ibadan: Deliver, prices: Prices, countdown: Countdown, end: End};
+PRODUCTS.forEach((pr, i) => (BY_ID[pr.id] = makeProduct(pr, i)));
+const ORIG: [number, number][] = [[50, 50], [80, 20], [20, 80], [50, 0], [100, 50], [0, 50], [50, 100], [80, 80], [20, 20]];
+const SC: [React.FC, number, number, number][] = T.scenes.map(([id, len], i) => [BY_ID[id], len, ...ORIG[i % ORIG.length]] as [React.FC, number, number, number]);
 export const TOTAL = SC.reduce((a, s) => a + s[1], 0) * BEAT;
 export const CUTS = SC.reduce<number[]>((a, s, i) => (i ? [...a, a[a.length - 1] + SC[i - 1][1] * BEAT] : [0]), []);
 
@@ -344,7 +409,6 @@ export const Ad: React.FC = () => {
           {i === 0 ? <Comp /> : <Reveal bg="transparent" cx={cx} cy={cy}><Comp /></Reveal>}
         </Sequence>
       ))}
-      {/* thin progress line in brand pink */}
       <div style={{position: 'absolute', left: 0, bottom: 0, height: 8, width: `${(f / TOTAL) * 100}%`, background: C.white, opacity: 0.8}} />
       <Audio src={staticFile('music.wav')} />
     </AbsoluteFill>

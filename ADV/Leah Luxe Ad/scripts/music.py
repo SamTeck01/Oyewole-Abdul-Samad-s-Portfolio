@@ -2,9 +2,14 @@
 # SFX (whoosh + pop) on every scene cut. Mastered to about -14 LUFS, true peak under -1 dB. usage: python music.py out.wav
 import sys, numpy as np, soundfile as sf, pyloudnorm as pyln
 from scipy.signal import butter, sosfilt
-SR = 48000; BPM = 120; B = 60 / BPM; BEATS = 44; DUR = BEATS * B + 1.0; N = int(DUR * SR)
-CUTS = [0, 5, 9, 12, 15, 18, 21, 24, 27, 30, 34, 37]  # scene starts in beats (match Ad.tsx)
-DROP, OUTRO = 5, 37
+import json, os
+TL = json.load(open(os.path.join(os.path.dirname(__file__), '../remotion/src/timeline.json')))
+SR = 48000; BPM = TL['bpm']; B = 60 / BPM
+CUTS, acc = [], 0
+for _, n in TL['scenes']: CUTS.append(acc); acc += n
+BEATS = acc; DUR = BEATS * B + 1.0; N = int(DUR * SR)
+ids = [s[0] for s in TL['scenes']]
+DROP, OUTRO = CUTS[ids.index('off')], CUTS[ids.index('end')]
 rng = np.random.default_rng(3); t = np.arange(N) / SR
 f = lambda m: 440 * 2 ** ((m - 69) / 12)
 filt = lambda x, fr, kind='low', o=2: sosfilt(butter(o, fr, kind, fs=SR, output='sos'), x)
@@ -35,7 +40,7 @@ drums, music, sub, sfx = (np.zeros(N) for _ in range(4))
 for b in range(BEATS):
     at = b * B; root, ch = prog[(b // 4) % 4]
     full = DROP <= b < OUTRO
-    if full or b >= OUTRO and b < OUTRO + 4:
+    if full or b >= OUTRO and b < BEATS - 2:
         add(drums, kick(), at, .95 if full else .6)
         if b % 2 == 1: add(drums, clap(), at, .55)
         add(drums, hat(b % 4 == 3), at + B / 2, 1)
@@ -60,8 +65,9 @@ for c in CUTS[2:]:
     add(sfx, filt(rng.standard_normal(n), [800, 6000], 'band') * np.sin(np.pi * tt / .35) ** 2 * .10, c * B - .22)
     n = int(.12 * SR); tt = np.arange(n) / SR
     add(sfx, np.sin(2 * np.pi * np.cumsum(900 * np.exp(-tt * 30) + 300) / SR) * np.exp(-tt * 40) * .25, c * B + .02)
-# sparkle chime on the logo
-for k, m in enumerate([81, 85, 88, 93]): add(sfx, np.sin(2 * np.pi * f(m) * np.arange(int(1.2 * SR)) / SR) * np.exp(-np.arange(int(1.2 * SR)) / SR * 4) * .12, OUTRO * B + .5 + k * .07)
+# sparkle chime on the logo (intro and end)
+for at0 in (0.4, OUTRO * B + .5):
+  for k, m in enumerate([81, 85, 88, 93]): add(sfx, np.sin(2 * np.pi * f(m) * np.arange(int(1.2 * SR)) / SR) * np.exp(-np.arange(int(1.2 * SR)) / SR * 4) * .12, at0 + k * .07)
 # intro: filtered plucks only (low-pass that opens toward the drop)
 cut = int(DROP * B * SR); music[:cut] = filt(music[:cut], 1800)
 # sidechain-style pump on music/bass from the kick
