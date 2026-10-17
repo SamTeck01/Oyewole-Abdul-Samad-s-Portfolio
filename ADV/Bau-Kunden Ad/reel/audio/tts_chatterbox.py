@@ -11,7 +11,7 @@ norm = lambda s: re.sub(r'[^a-z0-9 ]', '', s.lower().replace('-', ' '))
 for l in json.load(open('script.json')):
     text = l.get(LANG + '_say', l[LANG]); best = None
     for k in range(N):
-        torch.manual_seed(k); x = m.generate(text, language_id=LANG, audio_prompt_path=ref, exaggeration=0.7, cfg_weight=0.35).squeeze().numpy()
+        torch.manual_seed(k); x = m.generate(text, language_id=LANG, audio_prompt_path=ref, exaggeration=0.9, cfg_weight=0.3, temperature=0.85).squeeze().numpy()
         import librosa; a = librosa.resample(x, orig_sr=m.sr, target_sr=16000)
         words = [z for s in w.transcribe(a, language=LANG, word_timestamps=True)[0] for z in s.words]
         # cut after the word that completes the line
