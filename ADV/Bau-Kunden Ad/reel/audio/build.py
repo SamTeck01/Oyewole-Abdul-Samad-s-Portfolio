@@ -4,7 +4,7 @@
 import sys, json, subprocess, re, numpy as np, soundfile as sf, pyloudnorm as pyln, librosa
 from scipy.signal import butter, sosfilt
 from faster_whisper import WhisperModel
-LANG = sys.argv[1]; SR = 48000; LEAD = 0.6; GAP = 0.18; TAIL = 3.0
+LANG = sys.argv[1]; SR = 48000; LEAD = 0.15; GAP = 0.18; TAIL = 2.6
 PITCH = 1.0  # Edge voices need no pitch fix (the old DE clone used 0.873)
 def load(p):
     af = ['-af', f'rubberband=pitch={PITCH}:formant=preserved'] if PITCH != 1 else []
@@ -22,7 +22,8 @@ for l in lines:
         tm = [(a + (b - a) * c[i], a + (b - a) * c[i + 1]) for i in range(len(words))]
     cues.append({'id': l['id'], 'start': round(t, 3), 'end': round(t + dur, 3), 'words': [{'w': w, 's': round(t + s, 3), 'e': round(t + e, 3)} for w, (s, e) in zip(words, tm)]})
     print(l['id'], len(ws), len(words), ' '.join(w.word.strip() for w in ws))
-    out += [x, np.zeros(int(GAP * SR), np.float32)]; t += dur + GAP
+    g = {'l4': .45, 'l9': .35}.get(l['id'], GAP)  # breathe before the turn to the solution and before the close
+    out += [x, np.zeros(int(g * SR), np.float32)]; t += dur + g
 total = t + TAIL; N = int(total * SR); vo = np.concatenate(out); vo = np.pad(vo, (0, N - len(vo)))[:N]
 json.dump({'total': round(total, 3), 'lines': cues}, open(f'../../remotion/src/reel_cues_{LANG}.json', 'w'), indent=1, ensure_ascii=False)
 # ---- music: punchy 124 BPM track made in code: impact + kick on the open, drop on the solution (l5), hits on every cut
@@ -57,7 +58,7 @@ n = int(2 * SR); x = np.arange(n) / SR
 add(sfx, filt(rng.standard_normal(n), 2500, 'high') * (x / x[-1]) ** 2.5 * .22, sol - 2)
 for c in cues:
     n = int(1.0 * SR); x = np.arange(n) / SR; big = c['id'] in ('l1', 'l5', 'l8', 'l10')
-    add(sfx, (np.sin(2 * np.pi * np.cumsum(40 + 90 * np.exp(-x * 14)) / SR) * np.exp(-x * (3 if big else 6)) + filt(rng.standard_normal(n), 3000) * np.exp(-x * 18) * .5) * (.75 if big else .4), c['start'] - .08)
+    add(sfx, (np.sin(2 * np.pi * np.cumsum(40 + 90 * np.exp(-x * 14)) / SR) * np.exp(-x * (3 if big else 6)) + filt(rng.standard_normal(n), 3000) * np.exp(-x * 18) * .5) * (.42 if big else .24), c['start'] - .08)
     n = int(.3 * SR); x = np.arange(n) / SR
     add(sfx, filt(rng.standard_normal(n), [700, 6000], 'band') * np.sin(np.pi * x / .3) ** 2 * .08, c['start'] - .3)
 music = drums + bass + filt(stab, 4000)

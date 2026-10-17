@@ -150,13 +150,13 @@ const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
     const t0 = W(4);
     const n = Math.floor(interpolate(f, [t0, t0 + 36], [0, t.q.length], cl));
     return (
-      <AbsoluteFill style={{alignItems: 'center', paddingTop: 230}}>
+      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', paddingBottom: 40}}>
         <Stack line={{...line, words: line.words.slice(0, 4)}} g0={g0} t={t} color={C.ink} size={150} mode="type" />
-        <Pop d={t0 - 8} style={{width: 920, marginTop: 50}}><Box style={{display: 'flex', alignItems: 'center', gap: 22, padding: '26px 32px'}}>
-          <Search size={46} color={C.ink} /><div style={{fontFamily: BODY, fontWeight: 600, fontSize: 46, color: C.ink}}>{t.q.slice(0, n)}<span style={{color: C.red, opacity: Math.floor(f / 12) % 2}}>|</span></div></Box></Pop>
+        <Pop d={t0 - 8} style={{width: 1000, marginTop: 50}}><Box style={{display: 'flex', alignItems: 'center', gap: 22, padding: '26px 32px'}}>
+          <Search size={46} color={C.ink} /><div style={{fontFamily: BODY, fontWeight: 600, fontSize: 54, color: C.ink}}>{t.q.slice(0, n)}<span style={{color: C.red, opacity: Math.floor(f / 12) % 2}}>|</span></div></Box></Pop>
         {t.comp.map((c, i) => (
-          <Pop key={i} d={t0 + 40 + i * 7} from="right" style={{width: 920, marginTop: 14}}><Box style={{display: 'flex', alignItems: 'center', gap: 20, padding: '20px 30px'}}>
-            <MapPin size={40} color={C.red} /><div style={{flex: 1, fontFamily: BODY, fontWeight: 700, fontSize: 40, color: C.ink}}>{c}</div>
+          <Pop key={i} d={t0 + 40 + i * 7} from="right" style={{width: 1000, marginTop: 14}}><Box style={{display: 'flex', alignItems: 'center', gap: 20, padding: '20px 30px'}}>
+            <MapPin size={40} color={C.red} /><div style={{flex: 1, fontFamily: BODY, fontWeight: 700, fontSize: 48, color: C.ink}}>{c}</div>
             <div style={{fontFamily: BODY, fontWeight: 700, fontSize: 20, letterSpacing: 3, color: C.mute, border: `2px solid ${C.line}`, padding: '4px 10px'}}>{t.ad}</div></Box></Pop>
         ))}
       </AbsoluteFill>);
@@ -176,28 +176,28 @@ const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
   l4: {dark: true, C: ({line, g0, t, W}) => {
     const f = useCurrentFrame();
     return (
-      <AbsoluteFill style={{alignItems: 'center', paddingTop: 260}}>
+      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', paddingBottom: 40}}>
         <Stack line={line} g0={g0} t={t} color={C.cream} size={170} mode="slide" />
-        <div style={{marginTop: 60, width: 920}}>
+        <div style={{marginTop: 60, width: 1000}}>
           {t.jobs.map((j, i) => {
             const go = interpolate(f - W(4) - i * 7, [0, 18], [0, 1], {...cl, easing: Easing.in(Easing.cubic)});
             return <Pop key={i} d={4 + i * 5} from="left" style={{marginTop: 14}}><div style={{transform: `translateX(${go * 1200}px)`, filter: go > 0.05 ? `blur(${go * 12}px)` : undefined}}>
               <Box dark style={{padding: '22px 30px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                <div style={{fontFamily: BODY, fontWeight: 700, fontSize: 38, color: C.cream}}>{j}</div>
+                <div style={{fontFamily: BODY, fontWeight: 700, fontSize: 46, color: C.cream}}>{j}</div>
                 <div style={{fontFamily: BODY, fontWeight: 700, fontSize: 22, letterSpacing: 2, color: C.red}}>→ {t.comp2}</div></Box></div></Pop>;
           })}
         </div>
       </AbsoluteFill>);
   }},
   l5: {dark: false, C: ({line, g0, t, W}) => (
-    <AbsoluteFill style={{alignItems: 'center', paddingTop: 220}}>
+    <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', paddingBottom: 40}}>
       <Pop d={0} from="scale"><Logo size={150} /></Pop>
       <div style={{marginTop: 50}}><Stack line={{...line, words: line.words.slice(1)}} g0={g0} t={t} color={C.ink} size={120} maxW={940} mode="stretch" /></div>
       <div style={{display: 'flex', gap: 24, marginTop: 50}}>
         {[t.g1, t.g2].map((g, i) => (
-          <Pop key={i} d={W(Math.round(line.words.length * 0.55)) + i * 14} from={i === 0 ? 'left' : 'right'}><Box style={{width: 440, padding: '26px 28px', borderTop: `8px solid ${C.red}`}}>
+          <Pop key={i} d={W(Math.round(line.words.length * 0.55)) + i * 14} from={i === 0 ? 'left' : 'right'}><Box style={{width: 488, padding: '30px 32px', borderTop: `8px solid ${C.red}`}}>
             {i === 0 ? <Search size={56} color={C.red} /> : <MapPin size={56} color={C.red} />}
-            <div style={{fontFamily: HEAD, fontSize: 70, color: C.ink, marginTop: 12}}>{g}</div></Box></Pop>
+            <div style={{fontFamily: HEAD, fontSize: 84, color: C.ink, marginTop: 12}}>{g}</div></Box></Pop>
         ))}
       </div>
     </AbsoluteFill>)},
@@ -227,14 +227,14 @@ const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
     const f = useCurrentFrame();
     const ws = line.words.slice(-3).map((w) => Math.round(w.s * KFPS) - g0);
     return (
-      <AbsoluteFill style={{alignItems: 'center', paddingTop: 250}}>
+      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', paddingBottom: 40}}>
         <Stack line={{...line, words: line.words.slice(0, -3)}} g0={g0} t={t} color={C.ink} size={150} mode="flip" />
-        <Pop d={4} style={{width: 920, marginTop: 50}}><Box style={{padding: '30px 36px'}}>
-          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 26}}><div style={{fontFamily: HEAD, fontSize: 70, color: C.ink}}>{t.rep}</div><BarChart3 size={50} color={C.red} /></div>
+        <Pop d={4} style={{width: 1000, marginTop: 50}}><Box style={{padding: '30px 36px'}}>
+          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 26}}><div style={{fontFamily: HEAD, fontSize: 86, color: C.ink}}>{t.rep}</div><BarChart3 size={50} color={C.red} /></div>
           {t.rows.map((r, i) => {
             const k = interpolate(f - ws[i], [0, 20], [0, 1], {...cl, easing: out});
             return <div key={i} style={{marginBottom: 26}}>
-              <div style={{display: 'flex', justifyContent: 'space-between', fontFamily: BODY, fontWeight: 700, fontSize: 42, color: k > 0 ? C.ink : C.line}}><span>{r}</span><span style={{color: i === 2 ? C.red : C.ink}}>{k > 0.05 ? t.vals[i] : ''}</span></div>
+              <div style={{display: 'flex', justifyContent: 'space-between', fontFamily: BODY, fontWeight: 700, fontSize: 50, color: k > 0 ? C.ink : C.line}}><span>{r}</span><span style={{color: i === 2 ? C.red : C.ink}}>{k > 0.05 ? t.vals[i] : ''}</span></div>
               <div style={{height: 20, background: '#efe7dc', marginTop: 10}}><div style={{height: '100%', width: `${k * [70, 92, 48][i]}%`, background: i === 2 ? C.red : C.ink}} /></div>
             </div>;
           })}
@@ -246,13 +246,13 @@ const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
     const hit = W(line.words.findIndex((w) => w.w.startsWith('100')));
     const v = Math.round(interpolate(f - hit, [0, 26], [0, 100], {...cl, easing: out}));
     return (
-      <AbsoluteFill style={{alignItems: 'center', paddingTop: 260}}>
+      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', paddingBottom: 40}}>
         <Stack line={{...line, words: line.words.slice(0, line.words.findIndex((w) => w.w.startsWith('100')))}} g0={g0} t={t} color={C.cream} size={120} mode="blur" />
-        {f >= hit && <div style={{textAlign: 'center', marginTop: 40}}>
+        <div style={{textAlign: 'center', marginTop: 40, opacity: f >= hit ? 1 : 0}}>
           <div style={{fontFamily: HEAD, fontSize: 400, color: C.red, lineHeight: 0.9, transform: `scale(${1 + 0.06 * Math.max(0, 1 - (f - hit - 26) / 10) * (f > hit + 26 ? 1 : 0)})`}}>{v} %</div>
           <Pop d={hit + 20} from="scale"><div style={{fontFamily: HEAD, fontSize: 180, color: C.cream, lineHeight: 0.9}}>{t.back}</div></Pop>
           <Pop d={hit + 34}><div style={{fontFamily: BODY, fontWeight: 600, fontSize: 32, color: '#b8ab9d', marginTop: 20}}>{t.backS}</div></Pop>
-        </div>}
+        </div>
       </AbsoluteFill>);
   }},
   l9: {dark: false, C: ({line, t}) => {
@@ -261,7 +261,7 @@ const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
       <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', gap: 30}}>
         {[t.t1, t.t2].map((x, i) => (
           <Pop key={i} d={Math.round((line.words[i === 0 ? 0 : half].s - line.start) * KFPS) + 14} from={i === 0 ? 'left' : 'right'}>
-            <Box style={{width: 940, padding: '34px 40px', display: 'flex', alignItems: 'center', gap: 30, borderLeft: `14px solid ${C.red}`}}>
+            <Box style={{width: 1000, padding: '40px 44px', display: 'flex', alignItems: 'center', gap: 30, borderLeft: `14px solid ${C.red}`}}>
               <Check size={90} color={C.red} strokeWidth={3.5} /><div style={{fontFamily: HEAD, fontSize: 116, color: C.ink, lineHeight: 0.95}}>{x}</div></Box></Pop>
         ))}
       </AbsoluteFill>);
@@ -270,16 +270,16 @@ const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
     const f = useCurrentFrame();
     const btnAt = W(Math.max(0, line.words.length - 4));
     return (
-      <AbsoluteFill style={{alignItems: 'center', paddingTop: 300}}>
+      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', paddingBottom: 40}}>
         <Pop d={0} from="scale"><Logo size={110} dark /></Pop>
         <Pop d={6}><div style={{fontFamily: BODY, fontWeight: 700, fontSize: 26, letterSpacing: 4, color: '#b8ab9d', marginTop: 26}}>{t.tag}</div></Pop>
         <div style={{marginTop: 50, textAlign: 'center'}}>
           <Pop d={W(0)} from="scale"><div style={{fontFamily: HEAD, fontSize: 160, color: C.cream, lineHeight: 0.9}}>{t.e1}</div></Pop>
           <Pop d={W(2)} from="scale"><div style={{fontFamily: HEAD, fontSize: 160, color: C.red, lineHeight: 0.9}}>{t.e2}</div></Pop>
         </div>
-        <Pop d={btnAt} style={{marginTop: 70}}><div style={{background: C.red, color: '#fff', fontFamily: BODY, fontWeight: 700, fontSize: 44, padding: '30px 52px', display: 'flex', alignItems: 'center', gap: 16,
+        <Pop d={btnAt} style={{marginTop: 70}}><div style={{background: C.red, color: '#fff', fontFamily: BODY, fontWeight: 700, fontSize: 52, padding: '34px 56px', display: 'flex', alignItems: 'center', gap: 16,
           transform: `scale(${1 + 0.03 * Math.sin(f / 9)})`}}>{t.btn} <ArrowUpRight size={46} /></div></Pop>
-        <Pop d={btnAt + 10}><div style={{fontFamily: BODY, fontWeight: 700, fontSize: 40, letterSpacing: 3, color: C.cream, marginTop: 34}}>{t.url}</div></Pop>
+        <Pop d={btnAt + 10}><div style={{fontFamily: BODY, fontWeight: 700, fontSize: 48, letterSpacing: 3, color: C.cream, marginTop: 34}}>{t.url}</div></Pop>
       </AbsoluteFill>);
   }},
 };
