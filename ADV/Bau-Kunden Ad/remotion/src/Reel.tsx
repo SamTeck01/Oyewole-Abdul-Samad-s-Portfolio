@@ -82,7 +82,8 @@ const Stamp: React.FC<{d: number; text: string; color: string; rot?: number; sty
 };
 const Count: React.FC<{d: number; to: number; dur?: number; loc: string}> = ({d, to, dur = 45, loc}) => {
   const f = useCurrentFrame();
-  return <>{Math.round(interpolate(f - d, [0, dur], [0, to], {...cl, easing: out})).toLocaleString(loc)}</>;
+  const v = Math.round(interpolate(f - d, [0, dur], [0, to], {...cl, easing: out})).toLocaleString(loc);
+  return <>{loc === 'en-GB' ? `€${v}` : `${v} €`}</>;
 };
 const Logo: React.FC<{size: number}> = ({size}) => (
   <div style={{display: 'flex', alignItems: 'center', gap: size * 0.28}}>
@@ -168,7 +169,7 @@ const Lost: React.FC<G> = ({t, at, loc}) => {
       ))}
       <In d={flips[2] + 6} style={{marginTop: 14}}><Card tint="red" style={{padding: '18px 26px', textAlign: 'center'}}>
         <div style={{fontFamily: BODY, fontWeight: 800, fontSize: 20, letterSpacing: 3, color: C.red}}>{t.lost}</div>
-        <div style={{fontFamily: HEAD, fontSize: 110, color: C.red, lineHeight: 1}}><Count d={flips[2] + 8} to={73400} loc={loc} /> €</div>
+        <div style={{fontFamily: HEAD, fontSize: 110, color: C.red, lineHeight: 1}}><Count d={flips[2] + 8} to={73400} loc={loc} /></div>
       </Card></In>
     </div>
   );
@@ -196,12 +197,12 @@ const Price: React.FC<G> = ({t, at, loc}) => {
     <div style={{width: CW, display: 'flex', flexDirection: 'column', gap: 16}}>
       <In d={0}><Card style={{padding: '24px 30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
         <div><div style={{fontFamily: BODY, fontWeight: 700, fontSize: 36, color: C.ink}}>{t.fee}</div><div style={{fontFamily: BODY, fontWeight: 500, fontSize: 24, color: C.mute}}>{t.feeS}</div></div>
-        <div style={{fontFamily: HEAD, fontSize: 130, color: C.red, lineHeight: 0.9}}><Count d={4} to={249} loc={loc} /> €<span style={{fontFamily: BODY, fontWeight: 700, fontSize: 28, color: C.ink}}> {t.mo}</span></div>
+        <div style={{fontFamily: HEAD, fontSize: 130, color: C.red, lineHeight: 0.9}}><Count d={4} to={249} loc={loc} /><span style={{fontFamily: BODY, fontWeight: 700, fontSize: 28, color: C.ink}}> {t.mo}</span></div>
       </Card></In>
       <div style={{display: 'flex', gap: 12, justifyContent: 'center'}}>{t.chips.map((c, i) => <Chip key={i} d={30 + i * 8}><Check size={20} style={{verticalAlign: '-3px', marginRight: 6}} />{c}</Chip>)}</div>
       <In d={b}><Card style={{padding: '22px 30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
         <div><div style={{fontFamily: BODY, fontWeight: 700, fontSize: 32, color: C.ink}}>{t.bud}</div><div style={{fontFamily: BODY, fontWeight: 500, fontSize: 22, color: C.mute}}>{t.budS}</div></div>
-        <div style={{fontFamily: HEAD, fontSize: 96, color: C.ink, lineHeight: 0.9}}><Count d={b + 4} to={1000} loc={loc} /> €</div>
+        <div style={{fontFamily: HEAD, fontSize: 96, color: C.ink, lineHeight: 0.9}}><Count d={b + 4} to={1000} loc={loc} /></div>
       </Card></In>
       <In d={b + 30}><div style={{fontFamily: BODY, fontWeight: 500, fontSize: 22, color: C.mute, textAlign: 'center'}}>{t.vat}</div></In>
     </div>
