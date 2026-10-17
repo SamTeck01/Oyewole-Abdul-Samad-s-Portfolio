@@ -1,54 +1,12 @@
 [
- {
-  "id": "l1",
-  "de": "Warum haben gute Handwerksbetriebe trotzdem leere Auftragsbücher?",
-  "en": "Why do great trade businesses still have empty order books?"
- },
- {
-  "id": "l2",
-  "de": "Viele Kunden suchen online: Dachdecker in meiner Nähe.",
-  "en": "Customers search online for a roofer near me."
- },
- {
-  "id": "l3",
-  "de": "Dein Betrieb? Nicht auf Seite eins.",
-  "en": "Your business? Not on page one."
- },
- {
-  "id": "l4",
-  "de": "Die Aufträge gehen an die Konkurrenz.",
-  "en": "The jobs go to the competition."
- },
- {
-  "id": "l5",
-  "de": "Bau-Kunden schaltet deine Anzeigen bei Google, in der Suche und auf Maps. Texte, Zielgruppen, Auswertung.",
-  "en": "Bau-Kunden runs your ads on Google Search and Maps. Copy, targeting, reporting."
- },
- {
-  "id": "l7",
-  "de": "Jeden Monat ein klarer Report. Ausgegeben. Gesehen. Angefragt.",
-  "en": "Every month, a clear report. Spent. Seen. Inquired."
- },
- {
-  "id": "l8",
-  "de": "Und bleibt ein Monat ohne nachvollziehbare Anfrage, bekommst du hundert Prozent zurück.",
-  "en": "And if a month brings no traceable inquiry, you get one hundred percent back.",
-  "de_cap": "Und bleibt ein Monat ohne nachvollziehbare Anfrage, bekommst du 100 % zurück.",
-  "en_cap": "And if a month brings no traceable inquiry, you get 100 % back."
- },
- {
-  "id": "l9",
-  "de": "Neue Anfrage? Zusagen.",
-  "en": "New inquiry? Say yes."
- },
- {
-  "id": "l10",
-  "de": "Monatlich kündbar. Kostenlose Erstberatung, Link unten.",
-  "en": "Cancel monthly. Free consultation, link below."
- },
- {
-  "id": "l11",
-  "de": "Wie viele Anfragen hattest du letzten Monat? Schreib's in die Kommentare.",
-  "en": "How many inquiries did you get last month? Tell us in the comments."
- }
+ {"id": "l1", "de": "Ihr Handwerk überzeugt. Aber wird es auch gefunden?", "en": "Your craft is great. But can anyone find it?"},
+ {"id": "l2", "de": "Ihre Kunden suchen jetzt: Dachdecker in meiner Nähe.", "en": "Your customers are searching right now: roofer near me."},
+ {"id": "l3", "de": "Ihr Betrieb? Seite drei.", "en": "Your business? Page three."},
+ {"id": "l4", "de": "Die Aufträge gehen an die Konkurrenz.", "en": "The jobs go to your competition."},
+ {"id": "l5", "de": "Bau-Kunden bringt Ihren Betrieb in die Google-Suche und auf Google Maps.", "en": "Bau-Kunden puts your business on Google Search and Google Maps."},
+ {"id": "l6", "de": "Anzeigen. Texte. Zielgruppen. Optimierung. Alles inklusive.", "en": "Ads. Copy. Targeting. Optimisation. All inclusive."},
+ {"id": "l7", "de": "Jeden Monat ein klarer Report: ausgegeben, gesehen, angefragt.", "en": "Every month, a clear report: spent, seen, inquired."},
+ {"id": "l8", "de": "Keine nachvollziehbare Anfrage im Monat? Hundert Prozent Geld zurück.", "en": "No traceable inquiry in a month? One hundred percent money back.", "de_cap": "Keine nachvollziehbare Anfrage im Monat? 100 % Geld zurück.", "en_cap": "No traceable inquiry in a month? 100 % money back."},
+ {"id": "l9", "de": "Monatlich kündbar. Keine Mindestlaufzeit.", "en": "Cancel monthly. No minimum term."},
+ {"id": "l10", "de": "Mehr Anfragen. Aus Ihrer Region. Jetzt kostenlos prüfen lassen.", "en": "More inquiries. From your region. Get your free check now."}
 ]
