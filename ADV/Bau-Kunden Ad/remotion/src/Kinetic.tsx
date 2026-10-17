@@ -25,18 +25,20 @@ const cl = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 const out = Easing.bezier(0.16, 1, 0.3, 1);
 
 const TX = {
-  de: {q: 'Dachdecker in meiner Nähe', comp: ['Dachbau Schneider', 'Meister Dach GmbH', 'Bedachungen Kraus'], ad: 'ANZEIGE', you: 'IHR BETRIEB', nf: 'NICHT GEFUNDEN',
-    jobs: ['Dachsanierung · 52.000 €', 'Neubau EFH · 18.000 €', 'Reparatur · 3.400 €'], comp2: 'AN DIE KONKURRENZ', g1: 'GOOGLE-SUCHE', g2: 'GOOGLE MAPS',
-    rep: 'MONATSREPORT', rows: ['Ausgegeben', 'Gesehen', 'Angefragt'], vals: ['1.000 €', '18.400', '23'], incl: 'ALLES INKLUSIVE',
-    back: 'GELD ZURÜCK', backS: 'Betreuungspauschale + Werbebudget des Monats', t1: 'MONATLICH KÜNDBAR', t2: 'KEINE MINDESTLAUFZEIT',
-    e1: 'MEHR ANFRAGEN.', e2: 'AUS IHRER REGION.', btn: 'Region & Gewerk kostenlos prüfen', url: 'bau-kunden.app', tag: 'MARKETING FÜR HANDWERK & DIENSTLEISTUNG',
-    hl: ['gefunden', 'konkurrenz', 'drei', 'google', 'maps', 'inklusive', 'angefragt', 'zurück', 'region'], skip: ['l6']},
-  en: {q: 'Roofer near me', comp: ['Schneider Roofing', 'Master Roof Ltd', 'Kraus Roofworks'], ad: 'SPONSORED', you: 'YOUR BUSINESS', nf: 'NOT FOUND',
-    jobs: ['Roof renovation · €52,000', 'New house · €18,000', 'Repair · €3,400'], comp2: 'TO THE COMPETITION', g1: 'GOOGLE SEARCH', g2: 'GOOGLE MAPS',
-    rep: 'MONTHLY REPORT', rows: ['Spent', 'Seen', 'Inquired'], vals: ['€1,000', '18,400', '23'], incl: 'ALL INCLUSIVE',
-    back: 'MONEY BACK', backS: 'Management fee + that month\'s ad spend', t1: 'CANCEL MONTHLY', t2: 'NO MINIMUM TERM',
-    e1: 'MORE INQUIRIES.', e2: 'FROM YOUR REGION.', btn: 'Get your free check', url: 'bau-kunden.app', tag: 'MARKETING FOR TRADES & SERVICES',
-    hl: ['find', 'competition', 'three', 'google', 'maps', 'inclusive', 'inquired', 'back', 'region'], skip: ['l6']},
+  de: {pain: ['Gute Arbeit. Bei Google kaum sichtbar.', 'Empfehlungen kommen nicht jeden Monat.', 'Keine Zeit für eigene Kampagnen.'],
+    g1: 'GOOGLE-SUCHE', g2: 'GOOGLE MAPS', q: 'Dachdecker in meiner Nähe', region: 'IHRE REGION', now: 'SUCHT JETZT',
+    items: ['ANZEIGEN', 'TEXTE', 'ZIELGRUPPEN', 'OPTIMIERUNG'], you: 'SIE KÜMMERN SICH UM IHREN BETRIEB.',
+    rep: 'MONATSREPORT', rows: ['Ausgegeben', 'Gesehen', 'Angefragt'], sample: 'Beispielreport · Muster', trans: 'TRANSPARENTE ZAHLEN', trans2: 'STATT LEERER VERSPRECHEN.',
+    back: 'GELD ZURÜCK', backS: 'Betreuungspauschale + Werbebudget des Monats', t1: 'MONATLICH KÜNDBAR', t2: 'PERSÖNLICHE BETREUUNG',
+    e1: 'REGION & GEWERK', e2: 'KOSTENLOS PRÜFEN.', btn: 'Kostenlose Erstberatung anfragen', url: 'bau-kunden.app', tag: 'EHRLICHES MARKETING FÜR MACHER',
+    hl: ['google', 'sichtbar', 'zeit', 'maps', 'jetzt', 'region', 'betrieb', 'transparente', 'angefragt', 'zurück', '100', 'kostenlos', 'macher']},
+  en: {pain: ['Great work. Hardly visible on Google.', 'Referrals don\'t come every month.', 'No time for your own campaigns.'],
+    g1: 'GOOGLE SEARCH', g2: 'GOOGLE MAPS', q: 'Roofer near me', region: 'YOUR REGION', now: 'SEARCHING NOW',
+    items: ['ADS', 'COPY', 'TARGETING', 'OPTIMISATION'], you: 'YOU FOCUS ON YOUR BUSINESS.',
+    rep: 'MONTHLY REPORT', rows: ['Spent', 'Seen', 'Inquired'], sample: 'Sample report · illustration', trans: 'TRANSPARENT NUMBERS', trans2: 'INSTEAD OF EMPTY PROMISES.',
+    back: 'MONEY BACK', backS: 'Management fee + that month\'s ad spend', t1: 'CANCEL MONTHLY', t2: 'PERSONAL SUPPORT',
+    e1: 'CHECK YOUR REGION', e2: 'AND TRADE FOR FREE.', btn: 'Book your free consultation', url: 'bau-kunden.app', tag: 'HONEST MARKETING FOR DOERS',
+    hl: ['google', 'visible', 'time', 'maps', 'now', 'region', 'business', 'transparent', 'inquired', 'back', '100', 'free', 'doers']},
 };
 type T = typeof TX.de;
 const norm = (w: string) => w.toLowerCase().replace(/[^a-zäöüß0-9%]/g, '');
@@ -139,57 +141,31 @@ const Logo: React.FC<{size: number; dark?: boolean}> = ({size, dark}) => (
 
 // ---------- scenes (one per VO line); dark = ink section like the site's hero / 100 % block ----------
 type SP = {line: Line; g0: number; t: T; W: (i: number) => number; next: number};
+// frame (relative to the line start) of the first word that starts with `p`, else a fraction of the line
+const findW = (line: Line, g0: number, p: string, frac = 0.5) => {
+  const w = line.words.find((x) => norm(x.w).startsWith(p)) ?? line.words[Math.floor(line.words.length * frac)];
+  return Math.round(w.s * KFPS) - g0;
+};
 const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
+  // hook: the site's own question, slammed in
   l1: {dark: true, C: ({line, g0, t}) => (
     <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', padding: 60}}>
-      <div style={{position: 'absolute', top: 230}}><Num n="01" dark /></div>
-      <Stack line={line} g0={g0} t={t} color={C.cream} size={210} mode="slam" />
+      <Stack line={line} g0={g0} t={t} color={C.cream} size={200} mode="slam" />
     </AbsoluteFill>)},
-  l2: {dark: false, C: ({line, g0, t, W}) => {
-    const f = useCurrentFrame();
-    const t0 = W(4);
-    const n = Math.floor(interpolate(f, [t0, t0 + 36], [0, t.q.length], cl));
+  // the three pain points from the site, numbered 01–03 like the site
+  l2: {dark: false, C: ({line, g0, t}) => {
+    const at = [0, findW(line, g0, t.pain[1].split(' ')[0].toLowerCase(), 0.05), findW(line, g0, line.words[Math.ceil(line.words.length / 2)].w.toLowerCase().replace(/[^a-zäöüß]/g, ''), 0.55)];
     return (
-      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', paddingBottom: 40}}>
-        <Stack line={{...line, words: line.words.slice(0, 4)}} g0={g0} t={t} color={C.ink} size={150} mode="type" />
-        <Pop d={t0 - 8} style={{width: 1000, marginTop: 50}}><Box style={{display: 'flex', alignItems: 'center', gap: 22, padding: '26px 32px'}}>
-          <Search size={46} color={C.ink} /><div style={{fontFamily: BODY, fontWeight: 600, fontSize: 54, color: C.ink}}>{t.q.slice(0, n)}<span style={{color: C.red, opacity: Math.floor(f / 12) % 2}}>|</span></div></Box></Pop>
-        {t.comp.map((c, i) => (
-          <Pop key={i} d={t0 + 40 + i * 7} from="right" style={{width: 1000, marginTop: 14}}><Box style={{display: 'flex', alignItems: 'center', gap: 20, padding: '20px 30px'}}>
-            <MapPin size={40} color={C.red} /><div style={{flex: 1, fontFamily: BODY, fontWeight: 700, fontSize: 48, color: C.ink}}>{c}</div>
-            <div style={{fontFamily: BODY, fontWeight: 700, fontSize: 20, letterSpacing: 3, color: C.mute, border: `2px solid ${C.line}`, padding: '4px 10px'}}>{t.ad}</div></Box></Pop>
+      <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', gap: 22}}>
+        {t.pain.map((p, i) => (
+          <Pop key={i} d={at[i] + (i === 0 ? 4 : 0)} from={i % 2 ? 'right' : 'left'}><Box style={{width: 1000, padding: '34px 40px', display: 'flex', gap: 30, alignItems: 'center', borderLeft: `12px solid ${i === 0 ? C.ink : C.red}`}}>
+            <div style={{fontFamily: HEAD, fontSize: 110, color: C.red, lineHeight: 1}}>0{i + 1}</div>
+            <div style={{fontFamily: HEAD, fontSize: 76, color: C.ink, lineHeight: 0.98}}>{p.toUpperCase()}</div></Box></Pop>
         ))}
       </AbsoluteFill>);
   }},
-  l3: {dark: true, C: ({line, g0, t, W}) => {
-    const f = useCurrentFrame();
-    const roll = Math.min(3, 1 + Math.floor(interpolate(f, [W(2), W(2) + 24], [0, 2.99], cl)));
-    return (
-      <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center'}}>
-        <Stack line={{...line, words: line.words.slice(0, 2)}} g0={g0} t={t} color={C.cream} size={200} mode="drop" />
-        <div style={{position: 'relative', marginTop: 10, opacity: f >= W(2) ? 1 : 0}}>
-          <div style={{fontFamily: HEAD, fontSize: 420, color: C.red, lineHeight: 0.9, textAlign: 'center'}}>{t.you === 'IHR BETRIEB' ? 'SEITE' : 'PAGE'} {roll}</div>
-          <Stamp d={W(3) + 12} text={t.nf} rot={-9} size={96} style={{left: 120, top: 150}} />
-        </div>
-      </AbsoluteFill>);
-  }},
-  l4: {dark: true, C: ({line, g0, t, W}) => {
-    const f = useCurrentFrame();
-    return (
-      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', paddingBottom: 40}}>
-        <Stack line={line} g0={g0} t={t} color={C.cream} size={170} mode="slide" />
-        <div style={{marginTop: 60, width: 1000}}>
-          {t.jobs.map((j, i) => {
-            const go = interpolate(f - W(4) - i * 7, [0, 18], [0, 1], {...cl, easing: Easing.in(Easing.cubic)});
-            return <Pop key={i} d={4 + i * 5} from="left" style={{marginTop: 14}}><div style={{transform: `translateX(${go * 1200}px)`, filter: go > 0.05 ? `blur(${go * 12}px)` : undefined}}>
-              <Box dark style={{padding: '22px 30px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                <div style={{fontFamily: BODY, fontWeight: 700, fontSize: 46, color: C.cream}}>{j}</div>
-                <div style={{fontFamily: BODY, fontWeight: 700, fontSize: 22, letterSpacing: 2, color: C.red}}>→ {t.comp2}</div></Box></div></Pop>;
-          })}
-        </div>
-      </AbsoluteFill>);
-  }},
-  l5: {dark: false, C: ({line, g0, t, W}) => (
+  // solution: logo + Google Search / Maps
+  l3: {dark: false, C: ({line, g0, t, W}) => (
     <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', paddingBottom: 40}}>
       <Pop d={0} from="scale"><Logo size={150} /></Pop>
       <div style={{marginTop: 50}}><Stack line={{...line, words: line.words.slice(1)}} g0={g0} t={t} color={C.ink} size={120} maxW={940} mode="stretch" /></div>
@@ -201,61 +177,85 @@ const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
         ))}
       </div>
     </AbsoluteFill>)},
-  // rapid fire: each item full screen with its number, then ALLES INKLUSIVE stamp
-  l6: {dark: true, C: ({line, g0, t}) => {
+  // the right people, right now: search bar typing + pulsing region pin
+  l4: {dark: true, C: ({line, g0, t}) => {
     const f = useCurrentFrame();
-    const items = line.words.slice(0, 4);
-    const lastAt = Math.round(line.words[4].s * KFPS) - g0;
-    let cur = -1;
-    items.forEach((w, i) => { if (f >= Math.round(w.s * KFPS) - g0 - 3) cur = i; });
-    const k = cur >= 0 ? spring({frame: f - (Math.round(items[cur].s * KFPS) - g0 - 3), fps: KFPS, config: {damping: 12, stiffness: 320, mass: 0.6}}) : 0;
-    return (
-      <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center'}}>
-        {cur >= 0 && f < lastAt && <div style={{textAlign: 'center', overflow: 'hidden', height: 360}}><div style={{transform: `translateY(${(1 - k) * 100}%)`, filter: k < 0.9 ? `blur(${(1 - k) * 10}px)` : undefined}}>
-          <div style={{fontFamily: HEAD, fontSize: 120, color: C.red}}>0{cur + 1}</div>
-          <div style={{fontFamily: HEAD, fontSize: 230, color: C.cream, lineHeight: 0.9}}>{items[cur].w.replace(/[.,]/g, '').toUpperCase()}</div>
-        </div></div>}
-        {f >= lastAt && <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14}}>
-          {items.map((w, i) => <Pop key={i} d={lastAt + i * 3} from="left"><div style={{display: 'flex', alignItems: 'center', gap: 22, width: 820}}>
-            <div style={{fontFamily: HEAD, fontSize: 70, color: C.red, width: 90}}>0{i + 1}</div>
-            <div style={{flex: 1, fontFamily: HEAD, fontSize: 120, color: C.cream, lineHeight: 1}}>{w.w.replace(/[.,]/g, '').toUpperCase()}</div><Check size={70} color={C.red} strokeWidth={3.5} /></div></Pop>)}
-          <div style={{position: 'relative', height: 200, width: 900}}><Stamp d={lastAt + 16} text={t.incl} rot={-5} size={124} style={{left: 90, top: 40}} /></div>
-        </div>}
-      </AbsoluteFill>);
-  }},
-  l7: {dark: false, C: ({line, g0, t}) => {
-    const f = useCurrentFrame();
-    const ws = line.words.slice(-3).map((w) => Math.round(w.s * KFPS) - g0);
+    const n = Math.floor(interpolate(f, [10, 50], [0, t.q.length], cl));
+    const ring = (f % 50) / 50;
     return (
       <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', paddingBottom: 40}}>
-        <Stack line={{...line, words: line.words.slice(0, -3)}} g0={g0} t={t} color={C.ink} size={150} mode="flip" />
-        <Pop d={4} style={{width: 1000, marginTop: 50}}><Box style={{padding: '30px 36px'}}>
-          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 26}}><div style={{fontFamily: HEAD, fontSize: 86, color: C.ink}}>{t.rep}</div><BarChart3 size={50} color={C.red} /></div>
-          {t.rows.map((r, i) => {
-            const k = interpolate(f - ws[i], [0, 20], [0, 1], {...cl, easing: out});
-            return <div key={i} style={{marginBottom: 26}}>
-              <div style={{display: 'flex', justifyContent: 'space-between', fontFamily: BODY, fontWeight: 700, fontSize: 50, color: k > 0 ? C.ink : C.line}}><span>{r}</span><span style={{color: i === 2 ? C.red : C.ink}}>{k > 0.05 ? t.vals[i] : ''}</span></div>
-              <div style={{height: 20, background: '#efe7dc', marginTop: 10}}><div style={{height: '100%', width: `${k * [70, 92, 48][i]}%`, background: i === 2 ? C.red : C.ink}} /></div>
-            </div>;
-          })}
-        </Box></Pop>
-      </AbsoluteFill>);
-  }},
-  l8: {dark: true, C: ({line, g0, t, W}) => {
-    const f = useCurrentFrame();
-    const hit = W(line.words.findIndex((w) => w.w.startsWith('100')));
-    const v = Math.round(interpolate(f - hit, [0, 26], [0, 100], {...cl, easing: out}));
-    return (
-      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', paddingBottom: 40}}>
-        <Stack line={{...line, words: line.words.slice(0, line.words.findIndex((w) => w.w.startsWith('100')))}} g0={g0} t={t} color={C.cream} size={120} mode="blur" />
-        <div style={{textAlign: 'center', marginTop: 40, opacity: f >= hit ? 1 : 0}}>
-          <div style={{fontFamily: HEAD, fontSize: 400, color: C.red, lineHeight: 0.9, transform: `scale(${1 + 0.06 * Math.max(0, 1 - (f - hit - 26) / 10) * (f > hit + 26 ? 1 : 0)})`}}>{v} %</div>
-          <Pop d={hit + 20} from="scale"><div style={{fontFamily: HEAD, fontSize: 180, color: C.cream, lineHeight: 0.9}}>{t.back}</div></Pop>
-          <Pop d={hit + 34}><div style={{fontFamily: BODY, fontWeight: 600, fontSize: 32, color: '#b8ab9d', marginTop: 20}}>{t.backS}</div></Pop>
+        <Stack line={line} g0={g0} t={t} color={C.cream} size={120} maxW={980} mode="slide" />
+        <div style={{position: 'relative', marginTop: 60, width: 1000, height: 380}}>
+          <Pop d={4} style={{position: 'absolute', left: 0, right: 0, top: 0}}><Box dark style={{display: 'flex', alignItems: 'center', gap: 22, padding: '28px 32px'}}>
+            <Search size={50} color={C.cream} /><div style={{fontFamily: BODY, fontWeight: 600, fontSize: 52, color: C.cream}}>{t.q.slice(0, n)}<span style={{color: C.red, opacity: Math.floor(f / 12) % 2}}>|</span></div></Box></Pop>
+          <Pop d={56} from="scale" style={{position: 'absolute', left: 400, top: 170}}><div style={{position: 'relative', width: 200, height: 200}}>
+            <div style={{position: 'absolute', inset: 0, borderRadius: '50%', border: `4px solid ${C.red}`, transform: `scale(${0.4 + ring})`, opacity: 1 - ring}} />
+            <MapPin size={120} color={C.red} strokeWidth={2.5} style={{position: 'absolute', left: 40, top: 30}} /></div></Pop>
+          <Pop d={70}><div style={{position: 'absolute', left: 0, right: 0, top: 330, textAlign: 'center', fontFamily: HEAD, fontSize: 56, letterSpacing: 4, color: '#b8ab9d'}}>{t.region} · {t.now}</div></Pop>
         </div>
       </AbsoluteFill>);
   }},
-  l9: {dark: false, C: ({line, t}) => {
+  // we handle 01–04 (slot roll, one per spoken word), then "you focus on your business"
+  l5: {dark: true, C: ({line, g0, t}) => {
+    const f = useCurrentFrame();
+    const at = t.items.map((it, i) => findW(line, g0, it.toLowerCase().slice(0, 4), 0.1 + i * 0.12));
+    const youAt = findW(line, g0, t.you === 'SIE KÜMMERN SICH UM IHREN BETRIEB.' ? 'sie' : 'you', 0.7);
+    let cur = -1; at.forEach((a, i) => { if (f >= a - 3) cur = i; });
+    const k = cur >= 0 ? spring({frame: f - at[cur] + 3, fps: KFPS, config: {damping: 12, stiffness: 320, mass: 0.6}}) : 0;
+    return (
+      <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center'}}>
+        {f < youAt - 4 ? (cur >= 0 && <div style={{textAlign: 'center', overflow: 'hidden', height: 380}}><div style={{transform: `translateY(${(1 - k) * 100}%)`, filter: k < 0.9 ? `blur(${(1 - k) * 10}px)` : undefined}}>
+          <div style={{fontFamily: HEAD, fontSize: 120, color: C.red}}>0{cur + 1}</div>
+          <div style={{fontFamily: HEAD, fontSize: 220, color: C.cream, lineHeight: 0.9}}>{t.items[cur]}</div></div></div>) : (
+          <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10}}>
+            {t.items.map((it, i) => <Pop key={i} d={youAt - 4 + i * 3} from="left"><div style={{display: 'flex', alignItems: 'center', gap: 22, width: 820}}>
+              <div style={{fontFamily: HEAD, fontSize: 64, color: C.red, width: 90}}>0{i + 1}</div>
+              <div style={{flex: 1, fontFamily: HEAD, fontSize: 104, color: C.cream, lineHeight: 1}}>{it}</div><Check size={64} color={C.red} strokeWidth={3.5} /></div></Pop>)}
+            <Pop d={youAt + 12} from="scale" style={{marginTop: 40}}><div style={{fontFamily: HEAD, fontSize: 96, color: C.red, textAlign: 'center', maxWidth: 980, lineHeight: 0.95}}>{t.you}</div></Pop>
+          </div>)}
+      </AbsoluteFill>);
+  }},
+  // monthly report (site's sample-report idea) + "transparent numbers instead of empty promises"
+  l6: {dark: false, C: ({line, g0, t}) => {
+    const f = useCurrentFrame();
+    const ws = t.rows.map((r, i) => findW(line, g0, r.toLowerCase().slice(0, 5), 0.25 + i * 0.1));
+    const tr = findW(line, g0, t.trans.toLowerCase().slice(0, 6), 0.65);
+    return (
+      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', paddingBottom: 40}}>
+        <Pop d={4} style={{width: 1000}}><Box style={{padding: '30px 36px'}}>
+          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}><div style={{fontFamily: HEAD, fontSize: 86, color: C.ink}}>{t.rep}</div><BarChart3 size={56} color={C.red} /></div>
+          <div style={{fontFamily: BODY, fontWeight: 600, fontSize: 24, letterSpacing: 2, color: C.mute, marginBottom: 26}}>{t.sample}</div>
+          {t.rows.map((r, i) => {
+            const k = interpolate(f - ws[i], [0, 20], [0, 1], {...cl, easing: out});
+            return <div key={i} style={{marginBottom: 26}}>
+              <div style={{fontFamily: BODY, fontWeight: 700, fontSize: 50, color: k > 0 ? C.ink : C.line}}>{r}</div>
+              <div style={{height: 22, background: '#efe7dc', marginTop: 10}}><div style={{height: '100%', width: `${k * [70, 92, 48][i]}%`, background: i === 2 ? C.red : C.ink}} /></div>
+            </div>;
+          })}
+        </Box></Pop>
+        <div style={{marginTop: 50, textAlign: 'center'}}>
+          <Pop d={tr} from="scale"><div style={{fontFamily: HEAD, fontSize: 120, color: C.red, lineHeight: 0.92}}>{t.trans}</div></Pop>
+          <Pop d={tr + 12}><div style={{fontFamily: HEAD, fontSize: 84, color: C.ink, lineHeight: 0.95}}>{t.trans2}</div></Pop>
+        </div>
+      </AbsoluteFill>);
+  }},
+  // guarantee: dark 100 % block as on the site
+  l7: {dark: true, C: ({line, g0, t}) => {
+    const f = useCurrentFrame();
+    const cut = line.words.findIndex((w) => w.w.startsWith('100'));
+    const hit = Math.round(line.words[Math.max(0, cut)].s * KFPS) - g0;
+    const v = Math.round(interpolate(f - hit, [0, 26], [0, 100], {...cl, easing: out}));
+    return (
+      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', paddingBottom: 40}}>
+        <Stack line={{...line, words: line.words.slice(0, Math.max(1, cut))}} g0={g0} t={t} color={C.cream} size={104} maxW={980} mode="blur" />
+        <div style={{textAlign: 'center', marginTop: 40, opacity: f >= hit ? 1 : 0}}>
+          <div style={{fontFamily: HEAD, fontSize: 400, color: C.red, lineHeight: 0.9}}>{v} %</div>
+          <Pop d={hit + 20} from="scale"><div style={{fontFamily: HEAD, fontSize: 180, color: C.cream, lineHeight: 0.9}}>{t.back}</div></Pop>
+          <Pop d={hit + 34}><div style={{fontFamily: BODY, fontWeight: 600, fontSize: 34, color: '#b8ab9d', marginTop: 20}}>{t.backS}</div></Pop>
+        </div>
+      </AbsoluteFill>);
+  }},
+  l8: {dark: false, C: ({line, t}) => {
     const half = Math.ceil(line.words.length / 2);
     return (
       <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', gap: 30}}>
@@ -266,20 +266,18 @@ const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
         ))}
       </AbsoluteFill>);
   }},
-  l10: {dark: true, C: ({t, W, line}) => {
+  l9: {dark: true, C: ({t, line, g0}) => {
     const f = useCurrentFrame();
-    const btnAt = W(Math.max(0, line.words.length - 4));
+    const brand = findW(line, g0, 'bau', 0.55);
     return (
       <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', paddingBottom: 40}}>
-        <Pop d={0} from="scale"><Logo size={110} dark /></Pop>
-        <Pop d={6}><div style={{fontFamily: BODY, fontWeight: 700, fontSize: 26, letterSpacing: 4, color: '#b8ab9d', marginTop: 26}}>{t.tag}</div></Pop>
-        <div style={{marginTop: 50, textAlign: 'center'}}>
-          <Pop d={W(0)} from="scale"><div style={{fontFamily: HEAD, fontSize: 160, color: C.cream, lineHeight: 0.9}}>{t.e1}</div></Pop>
-          <Pop d={W(2)} from="scale"><div style={{fontFamily: HEAD, fontSize: 160, color: C.red, lineHeight: 0.9}}>{t.e2}</div></Pop>
-        </div>
-        <Pop d={btnAt} style={{marginTop: 70}}><div style={{background: C.red, color: '#fff', fontFamily: BODY, fontWeight: 700, fontSize: 52, padding: '34px 56px', display: 'flex', alignItems: 'center', gap: 16,
-          transform: `scale(${1 + 0.03 * Math.sin(f / 9)})`}}>{t.btn} <ArrowUpRight size={46} /></div></Pop>
-        <Pop d={btnAt + 10}><div style={{fontFamily: BODY, fontWeight: 700, fontSize: 48, letterSpacing: 3, color: C.cream, marginTop: 34}}>{t.url}</div></Pop>
+        <Pop d={0} from="scale"><div style={{fontFamily: HEAD, fontSize: 150, color: C.cream, lineHeight: 0.9, textAlign: 'center'}}>{t.e1}</div></Pop>
+        <Pop d={8} from="scale"><div style={{fontFamily: HEAD, fontSize: 150, color: C.red, lineHeight: 0.9, textAlign: 'center'}}>{t.e2}</div></Pop>
+        <Pop d={18} style={{marginTop: 50}}><div style={{background: C.red, color: '#fff', fontFamily: BODY, fontWeight: 700, fontSize: 50, padding: '32px 52px', display: 'flex', alignItems: 'center', gap: 16,
+          transform: `scale(${1 + 0.03 * Math.sin(f / 9)})`}}>{t.btn} <ArrowUpRight size={48} /></div></Pop>
+        <Pop d={brand} from="scale" style={{marginTop: 80}}><Logo size={120} dark /></Pop>
+        <Pop d={brand + 14}><div style={{fontFamily: HEAD, fontSize: 64, letterSpacing: 4, color: C.cream, marginTop: 24}}>{t.tag}</div></Pop>
+        <Pop d={brand + 24}><div style={{fontFamily: BODY, fontWeight: 700, fontSize: 46, letterSpacing: 3, color: '#b8ab9d', marginTop: 20}}>{t.url}</div></Pop>
       </AbsoluteFill>);
   }},
 };

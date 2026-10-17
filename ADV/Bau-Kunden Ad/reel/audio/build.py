@@ -22,7 +22,7 @@ for l in lines:
         tm = [(a + (b - a) * c[i], a + (b - a) * c[i + 1]) for i in range(len(words))]
     cues.append({'id': l['id'], 'start': round(t, 3), 'end': round(t + dur, 3), 'words': [{'w': w, 's': round(t + s, 3), 'e': round(t + e, 3)} for w, (s, e) in zip(words, tm)]})
     print(l['id'], len(ws), len(words), ' '.join(w.word.strip() for w in ws))
-    g = {'l4': .45, 'l9': .35}.get(l['id'], GAP)  # breathe before the turn to the solution and before the close
+    g = {'l2': .45, 'l8': .35}.get(l['id'], GAP)  # breathe before the turn to the solution and before the close
     out += [x, np.zeros(int(g * SR), np.float32)]; t += dur + g
 total = t + TAIL; N = int(total * SR); vo = np.concatenate(out); vo = np.pad(vo, (0, N - len(vo)))[:N]
 json.dump({'total': round(total, 3), 'lines': cues}, open(f'../../remotion/src/reel_cues_{LANG}.json', 'w'), indent=1, ensure_ascii=False)
@@ -33,7 +33,7 @@ def add(buf, s, at, g=1.0):
     i = int(at * SR); j = min(N, i + len(s))
     if 0 <= i < N: buf[i:j] += g * s[:j - i]
 B = 60 / 124; drums = np.zeros(N); bass = np.zeros(N); stab = np.zeros(N); sfx = np.zeros(N)
-sol = next(c['start'] for c in cues if c['id'] == 'l5')
+sol = next(c['start'] for c in cues if c['id'] == 'l3')
 def kick():
     n = int(.4 * SR); x = np.arange(n) / SR; fr = 46 + 120 * np.exp(-x * 30)
     return np.sin(2 * np.pi * np.cumsum(fr) / SR) * np.exp(-x * 8)
@@ -57,7 +57,7 @@ for b in range(int(total / B)):
 n = int(2 * SR); x = np.arange(n) / SR
 add(sfx, filt(rng.standard_normal(n), 2500, 'high') * (x / x[-1]) ** 2.5 * .22, sol - 2)
 for c in cues:
-    n = int(1.0 * SR); x = np.arange(n) / SR; big = c['id'] in ('l1', 'l5', 'l8', 'l10')
+    n = int(1.0 * SR); x = np.arange(n) / SR; big = c['id'] in ('l1', 'l3', 'l7', 'l9')
     add(sfx, (np.sin(2 * np.pi * np.cumsum(40 + 90 * np.exp(-x * 14)) / SR) * np.exp(-x * (3 if big else 6)) + filt(rng.standard_normal(n), 3000) * np.exp(-x * 18) * .5) * (.42 if big else .24), c['start'] - .08)
     n = int(.3 * SR); x = np.arange(n) / SR
     add(sfx, filt(rng.standard_normal(n), [700, 6000], 'band') * np.sin(np.pi * x / .3) ** 2 * .08, c['start'] - .3)
