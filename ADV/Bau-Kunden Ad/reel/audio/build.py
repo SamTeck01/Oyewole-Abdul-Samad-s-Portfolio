@@ -7,7 +7,7 @@ from faster_whisper import WhisperModel
 LANG = sys.argv[1]; SR = 48000; LEAD = 0.15; GAP = 0.18; TAIL = 2.6
 PITCH = 1.0  # Edge voices need no pitch fix (the old DE clone used 0.873)
 def load(p):
-    af = ['-af', f'rubberband=pitch={PITCH}:formant=preserved'] if PITCH != 1 else []
+    af = ['-af', 'atempo=1.10']  # the human-reference clone speaks calmly; 10 % faster keeps the reel tight
     x = np.frombuffer(subprocess.run(['ffmpeg', '-v', 'error', '-i', p, *af, '-ac', '1', '-ar', str(SR), '-f', 'f32le', '-'], capture_output=True).stdout, np.float32)
     nz = np.where(np.abs(x) > 0.01)[0]; return x[max(0, nz[0] - 480): nz[-1] + 2400].copy()
 wm = WhisperModel('small', compute_type='int8')

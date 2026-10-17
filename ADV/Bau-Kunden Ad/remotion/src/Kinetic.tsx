@@ -204,7 +204,7 @@ const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
     const k = cur >= 0 ? spring({frame: f - at[cur] + 3, fps: KFPS, config: {damping: 12, stiffness: 320, mass: 0.6}}) : 0;
     return (
       <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center'}}>
-        {f < youAt - 4 ? (cur >= 0 && <div style={{textAlign: 'center', overflow: 'hidden', height: 380}}><div style={{transform: `translateY(${(1 - k) * 100}%)`, filter: k < 0.9 ? `blur(${(1 - k) * 10}px)` : undefined}}>
+        {f < youAt - 4 ? (cur < 0 ? <Stack line={{...line, words: line.words.slice(0, 2)}} g0={g0} t={t} color={C.cream} size={170} mode="rise" /> : <div style={{textAlign: 'center', overflow: 'hidden', height: 380}}><div style={{transform: `translateY(${(1 - k) * 100}%)`, filter: k < 0.9 ? `blur(${(1 - k) * 10}px)` : undefined}}>
           <div style={{fontFamily: HEAD, fontSize: 120, color: C.red}}>0{cur + 1}</div>
           <div style={{fontFamily: HEAD, fontSize: 220, color: C.cream, lineHeight: 0.9}}>{t.items[cur]}</div></div></div>) : (
           <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10}}>
