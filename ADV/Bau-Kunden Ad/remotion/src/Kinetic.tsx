@@ -181,11 +181,11 @@ const Week: React.FC<{t: T; fillAt: number; per?: number; dark?: boolean; w?: nu
 const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
   // the dream: "Monday morning. Your calendar is full!" – the week fills up on "voll"
   l1: {dark: false, C: ({line, g0, t}) => {
-    const full = findW(line, g0, t.hl[0], 0.8);
+    const full = Math.round(line.words[Math.min(3, line.words.length - 1)].s * KFPS) - g0; // start filling at "Montagmorgen" so the full week is the payoff
     return (
       <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', gap: 40}}>
         <Stack line={line} g0={g0} t={t} color={C.ink} size={120} maxW={980} mode="slam" />
-        <Pop d={4}><Week t={t} fillAt={full - 6} per={0.9} /></Pop>
+        <Pop d={4}><Week t={t} fillAt={full} per={1.6} /></Pop>
       </AbsoluteFill>);
   }},
   // appointments land, phone rings
@@ -197,7 +197,7 @@ const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
     const card = (d: number, text: string, red: boolean) => <Pop d={d} from="right"><div style={{width: 1000, background: red ? C.red : C.cream, color: red ? '#fff' : C.ink, padding: '30px 36px', fontFamily: HEAD, fontSize: 92, lineHeight: 1, borderLeft: `16px solid ${red ? C.ink : C.red}`}}>{text}</div></Pop>;
     return (
       <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', gap: 24}}>
-        {card(b1 - 4, t.t1, false)}
+        {card(Math.min(b1 - 4, 6), t.t1, false)}
         {card(b2 - 4, t.t2, true)}
         <Pop d={ph - 4} from="scale" style={{marginTop: 40}}><Box dark style={{width: 1000, padding: '32px 36px', display: 'flex', alignItems: 'center', gap: 28}}>
           <div style={{width: 120, height: 120, borderRadius: 60, background: C.red, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `rotate(${ring}deg)`}}><Phone size={64} color="#fff" /></div>
@@ -290,7 +290,7 @@ const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
     return (
       <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', gap: 30}}>
         {[t.c1, t.c2].map((x, i) => (
-          <Pop key={i} d={Math.round((line.words[i === 0 ? 0 : half].s - line.start) * KFPS) + 10} from={i === 0 ? 'left' : 'right'}>
+          <Pop key={i} d={Math.round((line.words[i === 0 ? 0 : half].s - line.start) * KFPS) - 6} from={i === 0 ? 'left' : 'right'}>
             <Box style={{width: 1000, padding: '44px 44px', display: 'flex', alignItems: 'center', gap: 30, borderLeft: `14px solid ${C.red}`}}>
               <Check size={100} color={C.red} strokeWidth={3.5} /><div style={{fontFamily: HEAD, fontSize: 130, color: C.ink, lineHeight: 0.95}}>{x}</div></Box></Pop>
         ))}
