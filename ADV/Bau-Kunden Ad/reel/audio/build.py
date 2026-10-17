@@ -4,8 +4,8 @@
 import sys, json, subprocess, re, numpy as np, soundfile as sf, pyloudnorm as pyln, librosa
 from scipy.signal import butter, sosfilt
 from faster_whisper import WhisperModel
-LANG = sys.argv[1]; SR = 48000; LEAD = 0.6; GAP = 0.42; TAIL = 3.2
-PITCH = {'de': 0.873, 'en': 1.0}[LANG]   # DE clone came out high; match the approved Florian pitch
+LANG = sys.argv[1]; SR = 48000; LEAD = 0.6; GAP = 0.32; TAIL = 3.2
+PITCH = 1.0  # Edge voices need no pitch fix (the old DE clone used 0.873)
 def load(p):
     af = ['-af', f'rubberband=pitch={PITCH}:formant=preserved'] if PITCH != 1 else []
     x = np.frombuffer(subprocess.run(['ffmpeg', '-v', 'error', '-i', p, *af, '-ac', '1', '-ar', str(SR), '-f', 'f32le', '-'], capture_output=True).stdout, np.float32)
