@@ -43,7 +43,9 @@ const norm = (w: string) => w.toLowerCase().replace(/[^a-zäöüß0-9%]/g, '');
 
 // ---------- kinetic word stack: each word slams in at its spoken time ----------
 // rows are built greedily so the stack fills the width; words of the current line slam, older ones settle
-const Stack: React.FC<{line: Line; g0: number; t: T; color: string; size?: number; maxW?: number; align?: 'center' | 'left'}> = ({line, g0, t, color, size = 190, maxW = 960, align = 'center'}) => {
+// how a word enters; each scene uses a different one so the motion never repeats itself
+type Mode = 'slam' | 'rise' | 'type' | 'drop' | 'slide' | 'stretch' | 'flip' | 'blur';
+const Stack: React.FC<{line: Line; g0: number; t: T; color: string; size?: number; maxW?: number; align?: 'center' | 'left'; mode?: Mode}> = ({line, g0, t, color, size = 190, maxW = 960, align = 'center', mode = 'rise'}) => {
   const f = useCurrentFrame();
   const rows: Word[][] = [];
   let cur: Word[] = [], len = 0;
@@ -54,18 +56,54 @@ const Stack: React.FC<{line: Line; g0: number; t: T; color: string; size?: numbe
     cur.push(w); len += L;
   }
   if (cur.length) rows.push(cur);
+  let n = 0;
   return (
     <div style={{display: 'flex', flexDirection: 'column', alignItems: align === 'center' ? 'center' : 'flex-start', gap: 0}}>
       {rows.map((r, ri) => (
         <div key={ri} style={{display: 'flex', gap: size * 0.22, lineHeight: 0.92}}>
           {r.map((w, i) => {
+            const idx = n++;
             const d = Math.round(w.s * KFPS) - g0 - 3;
-            const k = spring({frame: f - d, fps: KFPS, config: {damping: 13, stiffness: 320, mass: 0.6}});
-            if (f < d) return <span key={i} style={{fontFamily: HEAD, fontSize: size, opacity: 0}}>{w.w}</span>;
+            const txt = w.w.toUpperCase();
             const red = t.hl.some((h) => norm(w.w).startsWith(h));
-            const bl = Math.max(0, (1 - k) * 18);
-            return <span key={i} style={{fontFamily: HEAD, fontSize: size, color: red ? C.red : color, display: 'inline-block', letterSpacing: 1,
-              transform: `scale(${1 + (1 - k) * 1.4}) translateY(${(1 - k) * -30}px)`, opacity: Math.min(1, k * 3), filter: bl > 0.5 ? `blur(${bl}px)` : undefined}}>{w.w.toUpperCase()}</span>;
+            const base: React.CSSProperties = {fontFamily: HEAD, fontSize: size, color: red ? C.red : color, display: 'inline-block', letterSpacing: 1, whiteSpace: 'pre'};
+            if (f < d) return <span key={i} style={{...base, opacity: 0}}>{txt}</span>;
+            const sp = (damping: number, stiffness: number) => spring({frame: f - d, fps: KFPS, config: {damping, stiffness, mass: 0.6}});
+            // red keywords always get a punch on top of the scene's mode
+            const punch = red ? 1 + 0.18 * Math.max(0, 1 - (f - d - 6) / 10) * (f - d > 6 ? 1 : 0) : 1;
+            if (mode === 'slam') {
+              const k = sp(13, 320); const bl = (1 - k) * 18;
+              return <span key={i} style={{...base, transform: `scale(${(1 + (1 - k) * 1.4) * punch})`, opacity: Math.min(1, k * 3), filter: bl > 0.5 ? `blur(${bl}px)` : undefined}}>{txt}</span>;
+            }
+            if (mode === 'rise') {
+              const k = interpolate(f - d, [0, 12], [0, 1], {...cl, easing: out});
+              return <span key={i} style={{display: 'inline-block', overflow: 'hidden', paddingTop: size * 0.06}}><span style={{...base, transform: `translateY(${(1 - k) * 105}%) scale(${punch})`}}>{txt}</span></span>;
+            }
+            if (mode === 'type') {
+              const chars = Math.ceil(interpolate(f - d, [0, Math.max(6, (w.e - w.s) * KFPS * 0.8)], [0, txt.length], cl));
+              return <span key={i} style={{...base, transform: `scale(${punch})`}}>{txt.slice(0, chars)}<span style={{opacity: 0}}>{txt.slice(chars)}</span></span>;
+            }
+            if (mode === 'drop') {
+              return <span key={i} style={{...base, transform: `scale(${punch})`}}>{txt.split('').map((c, ci) => {
+                const k = spring({frame: f - d - ci * 2, fps: KFPS, config: {damping: 10, stiffness: 260, mass: 0.6}});
+                return <span key={ci} style={{display: 'inline-block', transform: `translateY(${(1 - k) * -size * 1.2}px) rotate(${(1 - k) * (ci % 2 ? 25 : -25)}deg)`, opacity: f - d - ci * 2 < 0 ? 0 : 1}}>{c}</span>;
+              })}</span>;
+            }
+            if (mode === 'slide') {
+              const k = interpolate(f - d, [0, 11], [0, 1], {...cl, easing: out}); const side = idx % 2 ? 1 : -1;
+              return <span key={i} style={{...base, transform: `translateX(${(1 - k) * side * 600}px) skewX(${(1 - k) * side * -20}deg) scale(${punch})`, opacity: k, filter: k < 0.9 ? `blur(${(1 - k) * 16}px)` : undefined}}>{txt}</span>;
+            }
+            if (mode === 'stretch') {
+              const k = sp(9, 240);
+              return <span key={i} style={{...base, transformOrigin: '50% 100%', transform: `scaleY(${k * punch}) scaleX(${0.7 + 0.3 * Math.min(1, k)})`}}>{txt}</span>;
+            }
+            if (mode === 'flip') {
+              const k = sp(12, 200);
+              return <span key={i} style={{...base, transform: `perspective(800px) rotateX(${(1 - k) * 95}deg) scale(${punch})`, transformOrigin: '50% 100%', opacity: Math.min(1, k * 2)}}>{txt}</span>;
+            }
+            // blur: sharpens from a wide, soft, letter-spaced ghost
+            const k = interpolate(f - d, [0, 16], [0, 1], {...cl, easing: out});
+            return <span key={i} style={{...base, letterSpacing: 1 + (1 - k) * 40, opacity: k, filter: k < 0.95 ? `blur(${(1 - k) * 22}px)` : undefined, transform: `scale(${punch})`}}>{txt}</span>;
           })}
         </div>
       ))}
@@ -105,7 +143,7 @@ const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
   l1: {dark: true, C: ({line, g0, t}) => (
     <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', padding: 60}}>
       <div style={{position: 'absolute', top: 230}}><Num n="01" dark /></div>
-      <Stack line={line} g0={g0} t={t} color={C.cream} size={210} />
+      <Stack line={line} g0={g0} t={t} color={C.cream} size={210} mode="slam" />
     </AbsoluteFill>)},
   l2: {dark: false, C: ({line, g0, t, W}) => {
     const f = useCurrentFrame();
@@ -113,7 +151,7 @@ const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
     const n = Math.floor(interpolate(f, [t0, t0 + 36], [0, t.q.length], cl));
     return (
       <AbsoluteFill style={{alignItems: 'center', paddingTop: 230}}>
-        <Stack line={{...line, words: line.words.slice(0, 4)}} g0={g0} t={t} color={C.ink} size={150} />
+        <Stack line={{...line, words: line.words.slice(0, 4)}} g0={g0} t={t} color={C.ink} size={150} mode="type" />
         <Pop d={t0 - 8} style={{width: 920, marginTop: 50}}><Box style={{display: 'flex', alignItems: 'center', gap: 22, padding: '26px 32px'}}>
           <Search size={46} color={C.ink} /><div style={{fontFamily: BODY, fontWeight: 600, fontSize: 46, color: C.ink}}>{t.q.slice(0, n)}<span style={{color: C.red, opacity: Math.floor(f / 12) % 2}}>|</span></div></Box></Pop>
         {t.comp.map((c, i) => (
@@ -128,7 +166,7 @@ const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
     const roll = Math.min(3, 1 + Math.floor(interpolate(f, [W(2), W(2) + 24], [0, 2.99], cl)));
     return (
       <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center'}}>
-        <Stack line={{...line, words: line.words.slice(0, 2)}} g0={g0} t={t} color={C.cream} size={200} />
+        <Stack line={{...line, words: line.words.slice(0, 2)}} g0={g0} t={t} color={C.cream} size={200} mode="drop" />
         <div style={{position: 'relative', marginTop: 10, opacity: f >= W(2) ? 1 : 0}}>
           <div style={{fontFamily: HEAD, fontSize: 420, color: C.red, lineHeight: 0.9, textAlign: 'center'}}>{t.you === 'IHR BETRIEB' ? 'SEITE' : 'PAGE'} {roll}</div>
           <Stamp d={W(3) + 12} text={t.nf} rot={-9} size={96} style={{left: 120, top: 150}} />
@@ -139,7 +177,7 @@ const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
     const f = useCurrentFrame();
     return (
       <AbsoluteFill style={{alignItems: 'center', paddingTop: 260}}>
-        <Stack line={line} g0={g0} t={t} color={C.cream} size={170} />
+        <Stack line={line} g0={g0} t={t} color={C.cream} size={170} mode="slide" />
         <div style={{marginTop: 60, width: 920}}>
           {t.jobs.map((j, i) => {
             const go = interpolate(f - W(4) - i * 7, [0, 18], [0, 1], {...cl, easing: Easing.in(Easing.cubic)});
@@ -154,7 +192,7 @@ const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
   l5: {dark: false, C: ({line, g0, t, W}) => (
     <AbsoluteFill style={{alignItems: 'center', paddingTop: 220}}>
       <Pop d={0} from="scale"><Logo size={150} /></Pop>
-      <div style={{marginTop: 50}}><Stack line={{...line, words: line.words.slice(1)}} g0={g0} t={t} color={C.ink} size={120} maxW={940} /></div>
+      <div style={{marginTop: 50}}><Stack line={{...line, words: line.words.slice(1)}} g0={g0} t={t} color={C.ink} size={120} maxW={940} mode="stretch" /></div>
       <div style={{display: 'flex', gap: 24, marginTop: 50}}>
         {[t.g1, t.g2].map((g, i) => (
           <Pop key={i} d={W(Math.round(line.words.length * 0.55)) + i * 14} from={i === 0 ? 'left' : 'right'}><Box style={{width: 440, padding: '26px 28px', borderTop: `8px solid ${C.red}`}}>
@@ -173,10 +211,10 @@ const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
     const k = cur >= 0 ? spring({frame: f - (Math.round(items[cur].s * KFPS) - g0 - 3), fps: KFPS, config: {damping: 12, stiffness: 320, mass: 0.6}}) : 0;
     return (
       <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center'}}>
-        {cur >= 0 && f < lastAt && <div style={{textAlign: 'center', transform: `scale(${1 + (1 - k) * 0.8})`, opacity: Math.min(1, k * 3)}}>
+        {cur >= 0 && f < lastAt && <div style={{textAlign: 'center', overflow: 'hidden', height: 360}}><div style={{transform: `translateY(${(1 - k) * 100}%)`, filter: k < 0.9 ? `blur(${(1 - k) * 10}px)` : undefined}}>
           <div style={{fontFamily: HEAD, fontSize: 120, color: C.red}}>0{cur + 1}</div>
           <div style={{fontFamily: HEAD, fontSize: 230, color: C.cream, lineHeight: 0.9}}>{items[cur].w.replace(/[.,]/g, '').toUpperCase()}</div>
-        </div>}
+        </div></div>}
         {f >= lastAt && <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14}}>
           {items.map((w, i) => <Pop key={i} d={lastAt + i * 3} from="left"><div style={{display: 'flex', alignItems: 'center', gap: 22, width: 820}}>
             <div style={{fontFamily: HEAD, fontSize: 70, color: C.red, width: 90}}>0{i + 1}</div>
@@ -190,7 +228,7 @@ const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
     const ws = line.words.slice(-3).map((w) => Math.round(w.s * KFPS) - g0);
     return (
       <AbsoluteFill style={{alignItems: 'center', paddingTop: 250}}>
-        <Stack line={{...line, words: line.words.slice(0, -3)}} g0={g0} t={t} color={C.ink} size={150} />
+        <Stack line={{...line, words: line.words.slice(0, -3)}} g0={g0} t={t} color={C.ink} size={150} mode="flip" />
         <Pop d={4} style={{width: 920, marginTop: 50}}><Box style={{padding: '30px 36px'}}>
           <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 26}}><div style={{fontFamily: HEAD, fontSize: 70, color: C.ink}}>{t.rep}</div><BarChart3 size={50} color={C.red} /></div>
           {t.rows.map((r, i) => {
@@ -209,7 +247,7 @@ const S: Record<string, {dark: boolean; C: React.FC<SP>}> = {
     const v = Math.round(interpolate(f - hit, [0, 26], [0, 100], {...cl, easing: out}));
     return (
       <AbsoluteFill style={{alignItems: 'center', paddingTop: 260}}>
-        <Stack line={{...line, words: line.words.slice(0, line.words.findIndex((w) => w.w.startsWith('100')))}} g0={g0} t={t} color={C.cream} size={120} />
+        <Stack line={{...line, words: line.words.slice(0, line.words.findIndex((w) => w.w.startsWith('100')))}} g0={g0} t={t} color={C.cream} size={120} mode="blur" />
         {f >= hit && <div style={{textAlign: 'center', marginTop: 40}}>
           <div style={{fontFamily: HEAD, fontSize: 400, color: C.red, lineHeight: 0.9, transform: `scale(${1 + 0.06 * Math.max(0, 1 - (f - hit - 26) / 10) * (f > hit + 26 ? 1 : 0)})`}}>{v} %</div>
           <Pop d={hit + 20} from="scale"><div style={{fontFamily: HEAD, fontSize: 180, color: C.cream, lineHeight: 0.9}}>{t.back}</div></Pop>
