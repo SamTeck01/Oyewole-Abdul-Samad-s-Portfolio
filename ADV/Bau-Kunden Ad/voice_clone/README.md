@@ -21,3 +21,8 @@ Bau-Kunden 9:16 ad (DE + EN).
 ## Plan notes
 - Starter ($5) = Instant Voice Cloning: very close, made from a short sample.
 - Creator ($22) = Professional Voice Cloning: trained on 30+ min, near-identical.
+
+## Clone log
+- 2026-10-18 `BK_Clone` (voice_id in `work/BK_Clone.voice_id`), Instant Voice Clone from a 48 s video
+  supplied by the client side. Permission: confirmed by SamTeck that the video's owner agreed to cloning
+  and use in the Bau-Kunden ad.
