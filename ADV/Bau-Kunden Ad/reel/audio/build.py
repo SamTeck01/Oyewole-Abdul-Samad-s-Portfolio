@@ -4,10 +4,10 @@
 import sys, json, subprocess, re, numpy as np, soundfile as sf, pyloudnorm as pyln, librosa
 from scipy.signal import butter, sosfilt
 from faster_whisper import WhisperModel
-LANG = sys.argv[1]; SR = 48000; LEAD = 0.15; GAP = 0.18; TAIL = 2.6
+LANG = sys.argv[1]; SR = 48000; LEAD = 0.15; GAP = 0.32; TAIL = 2.6
 PITCH = 1.0  # Edge voices need no pitch fix (the old DE clone used 0.873)
 def load(p):
-    af = ['-af', 'atempo=1.10']  # the human-reference clone speaks calmly; 10 % faster keeps the reel tight
+    af = ['-af', 'atempo=0.95']  # client: clone voice felt too fast, so 5 % slower
     x = np.frombuffer(subprocess.run(['ffmpeg', '-v', 'error', '-i', p, *af, '-ac', '1', '-ar', str(SR), '-f', 'f32le', '-'], capture_output=True).stdout, np.float32)
     nz = np.where(np.abs(x) > 0.01)[0]; return x[max(0, nz[0] - 480): nz[-1] + 2400].copy()
 wm = WhisperModel('small', compute_type='int8')
@@ -22,7 +22,7 @@ for l in lines:
         tm = [(a + (b - a) * c[i], a + (b - a) * c[i + 1]) for i in range(len(words))]
     cues.append({'id': l['id'], 'start': round(t, 3), 'end': round(t + dur, 3), 'words': [{'w': w, 's': round(t + s, 3), 'e': round(t + e, 3)} for w, (s, e) in zip(words, tm)]})
     print(l['id'], len(ws), len(words), ' '.join(w.word.strip() for w in ws))
-    g = {'l3': .4, 'l8': .35}.get(l['id'], GAP)  # breathe before the turn to the solution and before the close
+    g = {'l3': .55, 'l8': .5}.get(l['id'], GAP)  # breathe before the turn to the solution and before the close
     out += [x, np.zeros(int(g * SR), np.float32)]; t += dur + g
 total = t + TAIL; N = int(total * SR); vo = np.concatenate(out); vo = np.pad(vo, (0, N - len(vo)))[:N]
 json.dump({'total': round(total, 3), 'lines': cues}, open(f'../../remotion/src/reel_cues_{LANG}.json', 'w'), indent=1, ensure_ascii=False)
