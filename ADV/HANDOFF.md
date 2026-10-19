@@ -4,6 +4,22 @@ Read this first in every new chat, together with `CLAUDE.motion-studio.md` (stan
 Where the two disagree, the newest lessons below win (male ElevenLabs voice, under 20 MB, −14 LUFS / −2 dBTP).
 
 All Motion Studio work lives on branch `claude/project-thread-wgsl7b`. Every thread should base its work on that branch.
+No PRs: commit and push straight to it (SamTeck, 19 Oct 2026).
+
+## Job index (as of 19 Oct 2026)
+| Job | Client | Folder (on this branch) | Renders | Status |
+|---|---|---|---|---|
+| Hebei Xiangjin Xin | fastener factory | `ADV/Hebei Xiangjin Xin Ad/` | not in git | Finished (EN). ZH stopped. |
+| Bau-Kunden (FB ad, DE + EN) | via Dave (lulu.tech) | `ADV/Bau-Kunden Ad/` | project files `Bau-Kunden Ad/` | Paid. Finals EN 9:16 v7, DE 9:16 v5; follow-up v8–v10 |
+| Baucheck24 / Bauplattform film | via Dave | `ADV/Bauplattform Ad/` | project files `Bauplattform Ad/` (v1–v8) | Latest EN v8 (12 Oct). Dave wants it "epic" |
+| Rothme product ad | spec piece for Riley Othmer | `ADV/Rothme Ad/` | not in git | Built 10 Oct, 16:9 + 9:16 |
+| Leah Luxe clearance sale | Ibadan beauty/gadgets store | `ADV/Leah Luxe Ad/` | not in git | v2 62 s 9:16, no voice (16 Oct) |
+| FDAC promo | WhatsApp youth community | not on branch | project files `FDAC Promo/` | v2 Remotion, 60 s (13 Oct) |
+| Excel Academy app advert | Excel Group | not on branch (another project's `excel-ad/`) | not here | Milestone 1, 46 s. Open: App Store badge, client-confirmed stats |
+| Tahir intro ad | SamTeck (own) | not on branch yet (`ADV/Tahir Ad/` planned) | not in git or Drive | 90 s 16:9 + 9:16. 60 s WhatsApp cut not made |
+| Portfolio Motion section | SamTeck | site `src/` (PR #3) | Drive "Motion" folder | Shows Product Ad + Food Bridge Explainer; more finals to upload |
+
+"Project files" = the Motion Studio project's shared folder. Big media (renders, reference videos, rejected voice tests) belongs there, not in git.
 
 ## Who / how we work
 - SamTeck runs the studio and talks to clients. Claude plans, writes briefs, builds and renders.
@@ -50,3 +66,33 @@ Lessons:
   the turn to the solution and the close (`reel/audio/build.py`). No re-recording needed.
 - Script lesson: sell the dream/result ("full calendar"), not the service ("we do Google ads").
 - faster-whisper offline: set `HF_HUB_OFFLINE=1` or it fails behind the proxy.
+
+## Baucheck24 / Bauplattform film (via Dave)
+Folder: `ADV/Bauplattform Ad/` (brief `brief/PROMPT.md`, Blender, Remotion, audio). Source: 57-page German spec PDF
+("Master-Funktionsumfang", "Vorbereitet für David Kumar"); function list in project files `Bauplattform Ad/Baucheck24_function_list.md`.
+- Product is only a spec, so every screen is designed in code. EN + DE wanted.
+- Versions v1–v8 on 12 Oct: v6 90 s cut, 124 BPM; v7 smooth camera glide (no shake); v8 reel-style kinetic type slams.
+- Dave wants it "epic"; his style reference is an Instagram reel Claude can't open (Instagram blocked). Ask SamTeck to attach it.
+
+## Rothme product ad (spec piece)
+Folder: `ADV/Rothme Ad/` (brief `brief/PROMPT.md`, references, vector logo rebuild `assets_in/brand/rothme_mark.svg`).
+- 34.5 s ad + 2.2 s samteck card, 16:9 + 9:16, 120 BPM music. Copy taken from rothme.app ("Connect. Understand. Act.").
+
+## Leah Luxe clearance-sale ad
+Folder: `ADV/Leah Luxe Ad/` (`NOTES.md` has the client notes). 9:16 TikTok, no voice, pink theme, logo sample 4.
+- v1 22 s shape-wipe style; v2 62 s with every product, prices, delivery and countdown scenes (16 Oct).
+- `music.py` (the music generator) is gitignored, so `remotion/public/music.wav` is the only copy of the track.
+
+## FDAC promo
+Not on this branch. Everything is in project files `FDAC Promo/`: v2 Remotion project (`v2/remotion-project`, copy and
+timing in `src/theme.ts`, audio from `scripts/make_audio.py`) and MP4s; v1 HTML/Playwright build is superseded.
+Copy never mentions scholarships, jobs or courses. Render with `REMOTION_LOCAL_FONTS=1`.
+
+## Excel Academy app advert (Excel Group, milestone 1)
+Built in another project's cloud folder (`excel-ad/`), not here: Remotion 4, 46 s, 16:9 + 9:16, VO and music-only cuts,
+logo and colours (#FF822B / #15161C) from `SamTeck01/excel-academy-dashboard`. Pronounce ACCA "aka", ICAN "I-can", CIMA "see-ma".
+Open: the app is Android only (drop the App Store badge?) and the client hasn't confirmed the stats.
+
+## Tahir intro ad (SamTeck's own)
+90 s 16:9 + 9:16, Remotion, Kokoro voice ("Hi. I'm Tahir Adewale Oyewole, motion designer…", pronunciation A:
+ah-DEH-wah-leh, oh-YEH-woh-leh), livelier code-made music. Pipeline not committed yet; it should go in `ADV/Tahir Ad/`.
