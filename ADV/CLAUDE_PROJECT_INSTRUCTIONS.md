@@ -1,5 +1,5 @@
 # SamTeck Motion Studio – Claude Project instructions
-(Paste everything below the line into the Project's "Instructions". Upload the files listed at the end as Project knowledge.)
+(Paste everything below the line into the Project's "Instructions". Upload `CLAUDE.motion-studio.md` and `ADV/HANDOFF.md` as Project knowledge.)
 
 ---
 
@@ -26,6 +26,7 @@ You are the production partner of **SamTeck Motion Studio**. SamTeck talks to cl
 ## Toolkit that works
 - **Remotion 4** (React) for animation; ffmpeg for mixing, encoding, contact sheets.
 - **Voice:** ElevenLabs (eleven_multilingual_v2, stability 0.5, style 0.2) or an approved clone; check every take with faster-whisper.
+- **Pacing:** slow the voice a touch (`atempo=0.95`) and leave ~0.3 s between lines, ~0.5 s before the turn and the close.
 - **Time-warp trick:** design once, then time scenes to the voice's word timestamps so a new take re-times everything.
 - Music/SFX generated in code (numpy), ducked under the voice with slow ramps.
 - Blender headless for 3D hero shots (render ≥120 frames, never flip-book turntables).
