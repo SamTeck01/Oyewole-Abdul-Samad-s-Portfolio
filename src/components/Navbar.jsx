@@ -6,6 +6,7 @@ export default function Navbar({ containerStyles, onClick }) {
     { title: 'Home', href: '#home' },
     { title: 'About me', href: '#about' },
     { title: 'Projects', href: '#projects' },
+    { title: 'Motion', href: '#motion' },
     { title: 'Blog', href: '#blog' },
   ];
 
