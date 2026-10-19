@@ -9,12 +9,12 @@ Every job starts from the per-job brief template below. These standing rules app
 Make me a premium motion ad for [CLIENT / PRODUCT].
 
 Reference video(s): [upload mp4 — YouTube links are blocked in the cloud], or "none, use the Huel/Shopify/Spotify vibe"
-What the client actually sells (the outcome, not the feature): [...]
+What the client's customer gets (the outcome, not the service): [...]
 Audiences: [one, or each side — one video per audience]
 Format: [UI launch ad 16:9 / vertical reel 9:16 / cartoon story with VO / all]
 Idea / message: [1–2 lines, or "you pitch me 3 ideas"]
 Script: [my lines, or "you write it"]
-Voice: [Kokoro af_heart / ElevenLabs Jessica, Lauren, Siren (only if ELEVENLABS_API_KEY is in env secrets) / "show me options" / none]
+Voice: [male by default / ElevenLabs voice or approved clone (needs ELEVENLABS_API_KEY in env secrets) / Kokoro (free) / "show me options" / none]
 Brand name pronunciation: [e.g. "TIK-rah"]
 Facts that must be right: [prices, payouts, numbers, website]
 Length: [~X s] + end card. Never cut it short on purpose; longer is fine if it stays interesting.
@@ -34,12 +34,12 @@ list, assets list), commit + push, show SamTeck. **Wait for OK.**
 - **3D:** Blender (headless), only when a job needs it.
 - **Fonts:** bundle locally with `@fontsource` (Google Fonts blocked by proxy). No SF Pro; use Inter / Manrope / the brand font if uploaded.
 - **Icons:** brand's own set if known (Hugeicons, Lucide…), else Lucide. Never emoji as icons.
-- **Voice:** Kokoro TTS (free, commercial OK) in a Python venv; phoneme-mark the brand name, check every take with faster-whisper, play-check before moving on.
+- **Voice:** male by default, must sound human and emotional. Default to ElevenLabs (`eleven_multilingual_v2`, stability 0.5, style 0.2) or an approved clone; clients rejected every free TTS on Bau-Kunden. Kokoro (free) only for drafts or when SamTeck asks. Phoneme-mark the brand name, check every take with faster-whisper.
 - **Music & SFX:** made in code with Python (numpy/scipy). SamTeck's SSD library is unreachable from the cloud.
 - **Mixing, mastering, contact sheets:** ffmpeg.
 - **Product screens:** if the app is ready, capture with Playwright. If not polished on mobile, DESIGN screens in code (brand colours, font, icons, real flow and copy) at real device size (390×844 pt). Never put ugly/broken real screens in an ad.
 - **Renders** are slow (motion blur @60fps ≈ 15–25 min/video): run in background with long timeout, one after another, give honest ETAs.
-- **Delivery:** files >30 MB can't be sent in chat — send videos one by one, stems as FLAC, never one giant zip.
+- **Delivery:** finals under 20 MB (x264 veryslow, crf 16–19); send videos one by one, stems as FLAC, never one giant zip.
 
 ## LOOK
 - Real brand: official logo + colours, facts checked with client or official site. No placeholder brand art.
@@ -55,11 +55,13 @@ list, assets list), commit + push, show SamTeck. **Wait for OK.**
 - Estimate cost first if paid. 2 takes, SamTeck picks.
 - Script in full, clear sentences — every word understandable on a phone speaker.
 - Re-time the picture to the voice, not the other way round.
+- Pace it slower than feels natural: `atempo=0.95` and ~0.3 s gaps, ~0.5 s before the turn to the solution and before the close. "Too fast" or "laggy" usually means the voice, not the picture.
+- Clone a voice only with the owner's consent, and log it in the job's `voice_clone/README.md`.
 
 ## MUSIC & SOUND
 - Original music made in code, arranged around the voice: ≥15 dB under VO while words are spoken, no limiter squashing the voice. Smooth and warm, never stiff. Reels without VO: energetic original beat, cuts on the beat.
 - Dense, satisfying SFX: whoosh into every word/title, hit on every landing, a sound on every product move, tap, success and the logo. Place and EQ them, don't remove them.
-- Master at **-14 LUFS / -1 dBTP**; verify both before delivering.
+- Master at **−14 LUFS / −2 dBTP**; verify both before delivering.
 
 ## QUALITY CHECK (before showing anything)
 - Contact sheet of every scene + full-res stills of key frames; inspect and fix overlaps, off-screen text, tiny/unreadable UI, empty frames, wrong numbers.
@@ -76,6 +78,10 @@ After the ad: animated "made by / samteck" end card, ~2 s, last chord ringing un
 4. PREVIEW v1 + contact sheet → feedback, repeat until approved
 5. Finals (16:9 / 9:16), stems (VO / music / SFX as FLAC), README with tools, lengths, loudness
 6. Only if asked: DaVinci Resolve FULL PROJECT, fully editable (layered video tracks, VO / music stems / every SFX on its own lane by category, scene markers). Remind SamTeck to set playback frame rate to 60. (Resolve doesn't run in the cloud — generate the project/timeline file; API checks happen locally.)
+
+## WORKING STYLE
+- Keep replies short and in plain English; SamTeck watches token use.
+- Sell the result, not the service: scripts show the customer's dream outcome, not the tools.
 
 ## NEVER
 - Never record or screenshot SamTeck's screen. Use the Resolve API to check Resolve.

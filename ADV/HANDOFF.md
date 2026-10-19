@@ -1,6 +1,9 @@
 # Motion Studio: handoff for new chats
 
 Read this first in every new chat, together with `CLAUDE.motion-studio.md` (standing rules) at the repo root.
+Where the two disagree, the newest lessons below win (male ElevenLabs voice, under 20 MB, −14 LUFS / −2 dBTP).
+
+All Motion Studio work lives on branch `claude/project-thread-wgsl7b`. Every thread should base its work on that branch.
 
 ## Who / how we work
 - SamTeck runs the studio and talks to clients. Claude plans, writes briefs, builds and renders.
@@ -19,7 +22,7 @@ Folder: `ADV/Hebei Xiangjin Xin Ad/` (brief, Blender script, Remotion code, audi
 4. **Fast scenes:** don't truck the camera with motion blur. Build grids tile by tile instead.
 5. **VO:** `kokoro-onnx` (Python 3.13 venv) is fine for English (`am_michael`, `af_bella`). For **Chinese**, use full `kokoro` + `misaki[zh]` in a **Python 3.12** venv (`uv venv -p 3.12`); the ONNX build mangles tones. Latin words get dropped in zh, so keep them on screen.
 6. **Time-warp trick:** design the picture once, then map design time → VO word timestamps (faster-whisper) so a new VO take re-times everything without rewriting scenes.
-7. Check every take with faster-whisper; master to −14 LUFS / −1 dBTP; send files < 30 MB.
+7. Check every take with faster-whisper; master to −14 LUFS / −2 dBTP; send files under 20 MB.
 
 ## Tool setup that worked in the cloud container
 - Node 22 + Remotion 4.0.240, `@fontsource/inter`, `@fontsource/noto-sans-sc`, lucide-react, d3-geo + world-atlas.
@@ -43,5 +46,7 @@ Lessons:
   Chatterbox, Zonos, Kartoffel-Orpheus). What finally passed: **ElevenLabs** (Starter $5) instant voice clone,
   `eleven_multilingual_v2`, stability 0.5, style 0.2. Use `mp3_44100_128` (192 needs a higher plan), max 3 parallel
   requests, call the API with curl (Python urllib gets 403). Clone only with the voice owner's permission.
+- Client then said the clone felt too fast: v10 slowed it with `atempo=0.95`, base gap 0.32 s and ~0.5 s before
+  the turn to the solution and the close (`reel/audio/build.py`). No re-recording needed.
 - Script lesson: sell the dream/result ("full calendar"), not the service ("we do Google ads").
 - faster-whisper offline: set `HF_HUB_OFFLINE=1` or it fails behind the proxy.
