@@ -39,3 +39,9 @@ Lessons:
 - Music ducking: one held dip per VO line with slow ramps (see `music_mix.py`), not per-word.
 - Under 20 MB at full quality: x264 `-preset veryslow -tune animation -crf 16` (SSIM 0.998).
 - "Laggy" from the client meant the voice pacing, not the picture — ask before changing motion.
+- Follow-up job (v8–v10, "full calendar" script): every free TTS was rejected by the client (Edge, Piper,
+  Chatterbox, Zonos, Kartoffel-Orpheus). What finally passed: **ElevenLabs** (Starter $5) instant voice clone,
+  `eleven_multilingual_v2`, stability 0.5, style 0.2. Use `mp3_44100_128` (192 needs a higher plan), max 3 parallel
+  requests, call the API with curl (Python urllib gets 403). Clone only with the voice owner's permission.
+- Script lesson: sell the dream/result ("full calendar"), not the service ("we do Google ads").
+- faster-whisper offline: set `HF_HUB_OFFLINE=1` or it fails behind the proxy.
