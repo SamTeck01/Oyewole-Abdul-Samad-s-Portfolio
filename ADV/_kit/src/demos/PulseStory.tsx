@@ -19,7 +19,7 @@ const PINK_B = '#ff9db0';
 const at = (i: number) => W[i].start;
 const words = (a: number, b: number) => W.slice(a, b + 1);
 
-const Blobs: React.FC<{t: number; colors: string[]; opacity?: number}> = ({t, colors, opacity = 1}) => (
+export const Blobs: React.FC<{t: number; colors: string[]; opacity?: number}> = ({t, colors, opacity = 1}) => (
   <AbsoluteFill style={{overflow: 'hidden', opacity}}>
     {colors.map((c, i) => (
       <div
@@ -63,7 +63,7 @@ const Hook: React.FC<{t: number}> = ({t}) => {
 };
 
 // ---------------------------------------------------------------- 2.2–7.0 s: watch-face cards, "tells a story"
-const HeartFace: React.FC<{t: number}> = ({t}) => {
+export const HeartFace: React.FC<{t: number}> = ({t}) => {
   const beat = Math.pow(Math.max(0, Math.sin(t * Math.PI * 2.4)), 6);
   const ecg = 'M 20 60 L 120 60 L 150 20 L 180 100 L 205 40 L 225 60 L 420 60';
   const e = evolvePath(((t * 0.9) % 1) + 0.0001, ecg);
@@ -108,7 +108,7 @@ const Ring: React.FC<{r: number; w: number; p: number; color: string}> = ({r, w,
   );
 };
 
-const SleepFace: React.FC<{p: number}> = ({p}) => (
+export const SleepFace: React.FC<{p: number}> = ({p}) => (
   <>
     <div style={{display: 'flex', alignItems: 'center', gap: 16, color: '#8f8bff', fontSize: 40, fontWeight: 600}}>
       <Icon name="moon" size={50} color="#8f8bff" />
@@ -125,7 +125,7 @@ const SleepFace: React.FC<{p: number}> = ({p}) => (
   </>
 );
 
-const ActivityFace: React.FC<{p: number}> = ({p}) => (
+export const ActivityFace: React.FC<{p: number}> = ({p}) => (
   <>
     <div style={{display: 'flex', alignItems: 'center', gap: 16, color: '#b6ff3b', fontSize: 40, fontWeight: 600}}>
       <Icon name="flame" size={50} color="#ff3b6b" />
@@ -233,7 +233,7 @@ const Story: React.FC<{t: number}> = ({t}) => {
 };
 
 // ---------------------------------------------------------------- 6.9–9.5 s: pink ring of moments around the question
-const TILES: [string, string, string][] = [
+export const TILES: [string, string, string][] = [
   ['heart', '#ff2d55', '#ff7a59'],
   ['moon', '#5b4bff', '#9b8cff'],
   ['flame', '#ff8a00', '#ffd23f'],
@@ -315,14 +315,14 @@ const BigPicture: React.FC<{t: number}> = ({t}) => {
 };
 
 // ---------------------------------------------------------------- 9.4–10.9 s: 3D watch + glass widgets, icon -> white
-const GLASS: {label: string; value: string; icon: string; x: number; y: number; d: number; color: string}[] = [
+export const GLASS: {label: string; value: string; icon: string; x: number; y: number; d: number; color: string}[] = [
   {label: 'Steps', value: '8,421', icon: 'steps', x: 250, y: 560, d: 0.0, color: '#22c55e'},
   {label: 'Sleep', value: '7h 40m', icon: 'moon', x: 830, y: 760, d: 0.08, color: '#6f63ff'},
   {label: 'HRV', value: '62 ms', icon: 'pulse', x: 270, y: 1400, d: 0.16, color: '#ff2d55'},
   {label: 'Water', value: '1.8 L', icon: 'drop', x: 820, y: 1500, d: 0.24, color: '#0fb5ff'},
 ];
 
-const AppIcon: React.FC<{size: number}> = ({size}) => (
+export const AppIcon: React.FC<{size: number}> = ({size}) => (
   <div
     style={{
       width: size,
