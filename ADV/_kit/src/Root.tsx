@@ -5,6 +5,7 @@ import {HaloScore} from './demos/HaloScore';
 import {PulseStory} from './demos/PulseStory';
 import {PulseWide} from './demos/PulseWide';
 import {CharTest} from './demos/CharTest';
+import {LottieGrid} from './demos/LottieGrid';
 
 loadFonts();
 
@@ -16,5 +17,6 @@ export const Root: React.FC = () => (
     <Composition id="PulseStory" component={PulseStory} width={1080} height={1920} fps={60} durationInFrames={840} />
     <Composition id="PulseWide" component={PulseWide} width={1920} height={1080} fps={60} durationInFrames={840} />
     <Composition id="CharTest" component={CharTest} width={1920} height={1080} fps={60} durationInFrames={480} />
+    <Composition id="LottieGrid" component={LottieGrid} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{prefix: 'c', count: 9}} />
   </>
 );
