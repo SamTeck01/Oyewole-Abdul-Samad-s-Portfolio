@@ -43,15 +43,6 @@ const videos = [
     poster: "/videos/bau-kunden-9x16.jpg",
     aspect: "portrait",
   },
-  {
-    title: "FDAC Promo",
-    type: "Community Promo",
-    description: "A 60-second promo for FDAC (Focus, Discipline, and Consistency), a WhatsApp community that helps young people start early.",
-    tags: ["Motion Graphics", "Promo"],
-    src: "/videos/fdac-promo-16x9.mp4",
-    poster: "/videos/fdac-promo-16x9.jpg",
-    aspect: "landscape",
-  },
 ];
 
 function VideoFacade({ video }) {
