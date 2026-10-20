@@ -35,7 +35,7 @@ const ik = (dx: number, dy: number, bend = 1): [number, number] => {
   return [base + bend * a, -bend * e];
 };
 
-const Site: React.FC<{t: number}> = ({t}) => (
+export const Site: React.FC<{t: number}> = ({t}) => (
   <AbsoluteFill>
     <AbsoluteFill style={{background: 'linear-gradient(180deg, #ffd9a8 0%, #ffe9cf 45%, #f3e3cf 62%, #e3cdb3 100%)'}} />
     {/* distant skyline + cranes, soft (depth) */}
