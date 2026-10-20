@@ -13,8 +13,8 @@ export const EASE = {
 /** interpolate with clamping and an easing, the one call used everywhere */
 export const tw = (
   f: number,
-  range: [number, number],
-  out: [number, number],
+  range: number[],
+  out: number[],
   easing: (t: number) => number = EASE.out,
 ) => interpolate(f, range, out, {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing});
 

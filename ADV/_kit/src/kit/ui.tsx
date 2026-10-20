@@ -100,6 +100,12 @@ export const Icon: React.FC<{name: string; size?: number; color?: string; stroke
     arrow: <path {...p} d="M5 12h13M13 6l6 6-6 6" />,
     chevron: <path {...p} d="m9 6 6 6-6 6" />,
     tri: <path {...solid} d="M12 5 20 18H4Z" />,
+    heart: <path {...solid} d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2Z" />,
+    flame: <path {...solid} d="M12 2.5c1 3.5 5.5 5.5 5.5 10.5a5.5 5.5 0 0 1-11 0c0-2.4 1.2-3.9 2.5-5 .2 1.8 1 2.8 2 3.3 0-3.2-.5-6 1-8.8Z" />,
+    drop: <path {...solid} d="M12 3s6 6.6 6 11a6 6 0 0 1-12 0c0-4.4 6-11 6-11Z" />,
+    bolt: <path {...solid} d="M13 2 5 13.5h6L10 22l9-12h-6.5Z" />,
+    steps: <g><ellipse {...solid} cx="8.5" cy="9" rx="3" ry="5" /><ellipse {...solid} cx="15.5" cy="14" rx="3" ry="5" /></g>,
+    pulse: <path {...p} d="M3 12h4l2-5 3 10 2.5-7 1.5 2H21" />,
   };
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" style={{display: 'block', color}}>
