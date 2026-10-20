@@ -1,0 +1,567 @@
+[
+{
+"word": "Welcome",
+"start": 0.0,
+"end": 0.464
+},
+{
+"word": "to",
+"start": 0.499,
+"end": 0.592
+},
+{
+"word": "Advance",
+"start": 0.708,
+"end": 1.08
+},
+{
+"word": "Safety",
+"start": 1.103,
+"end": 1.405
+},
+{
+"word": "Practice,",
+"start": 1.474,
+"end": 2.218
+},
+{
+"word": "your",
+"start": 2.426,
+"end": 2.577
+},
+{
+"word": "practical",
+"start": 2.635,
+"end": 3.123
+},
+{
+"word": "guide",
+"start": 3.204,
+"end": 3.448
+},
+{
+"word": "to",
+"start": 3.471,
+"end": 3.553
+},
+{
+"word": "safety",
+"start": 3.622,
+"end": 4.11
+},
+{
+"word": "at",
+"start": 4.435,
+"end": 4.667
+},
+{
+"word": "work,",
+"start": 4.76,
+"end": 5.341
+},
+{
+"word": "at",
+"start": 5.515,
+"end": 5.735
+},
+{
+"word": "home,",
+"start": 5.805,
+"end": 6.235
+},
+{
+"word": "and",
+"start": 6.385,
+"end": 6.583
+},
+{
+"word": "in",
+"start": 6.664,
+"end": 6.734
+},
+{
+"word": "industry.",
+"start": 6.815,
+"end": 7.546
+},
+{
+"word": "What",
+"start": 7.988,
+"end": 8.231
+},
+{
+"word": "exactly",
+"start": 8.301,
+"end": 8.766
+},
+{
+"word": "is",
+"start": 8.812,
+"end": 8.893
+},
+{
+"word": "safety?",
+"start": 8.928,
+"end": 9.59
+},
+{
+"word": "Safety",
+"start": 10.194,
+"end": 10.635
+},
+{
+"word": "means",
+"start": 10.716,
+"end": 10.913
+},
+{
+"word": "taking",
+"start": 10.983,
+"end": 11.297
+},
+{
+"word": "sensible",
+"start": 11.366,
+"end": 11.854
+},
+{
+"word": "steps",
+"start": 11.877,
+"end": 12.283
+},
+{
+"word": "to",
+"start": 12.666,
+"end": 12.806
+},
+{
+"word": "prevent",
+"start": 12.887,
+"end": 13.293
+},
+{
+"word": "injuries,",
+"start": 13.375,
+"end": 14.199
+},
+{
+"word": "illness,",
+"start": 14.408,
+"end": 15.186
+},
+{
+"word": "damage,",
+"start": 15.395,
+"end": 16.08
+},
+{
+"word": "and",
+"start": 16.254,
+"end": 16.463
+},
+{
+"word": "other",
+"start": 16.579,
+"end": 16.869
+},
+{
+"word": "unwanted",
+"start": 16.951,
+"end": 17.461
+},
+{
+"word": "incidents.",
+"start": 17.508,
+"end": 18.332
+},
+{
+"word": "Think",
+"start": 18.657,
+"end": 18.889
+},
+{
+"word": "about",
+"start": 18.947,
+"end": 19.168
+},
+{
+"word": "a",
+"start": 19.203,
+"end": 19.226
+},
+{
+"word": "construction",
+"start": 19.272,
+"end": 19.829
+},
+{
+"word": "site.",
+"start": 19.899,
+"end": 20.468
+},
+{
+"word": "A",
+"start": 20.677,
+"end": 20.758
+},
+{
+"word": "worker",
+"start": 20.874,
+"end": 21.281
+},
+{
+"word": "wearing",
+"start": 21.374,
+"end": 21.699
+},
+{
+"word": "the",
+"start": 21.734,
+"end": 21.803
+},
+{
+"word": "correct",
+"start": 21.861,
+"end": 22.279
+},
+{
+"word": "protective",
+"start": 22.36,
+"end": 22.941
+},
+{
+"word": "equipment,",
+"start": 22.976,
+"end": 23.719
+},
+{
+"word": "following",
+"start": 23.997,
+"end": 24.462
+},
+{
+"word": "instructions,",
+"start": 24.532,
+"end": 25.426
+},
+{
+"word": "and",
+"start": 25.542,
+"end": 25.727
+},
+{
+"word": "using",
+"start": 25.785,
+"end": 26.064
+},
+{
+"word": "tools",
+"start": 26.122,
+"end": 26.401
+},
+{
+"word": "properly",
+"start": 26.47,
+"end": 27.016
+},
+{
+"word": "is",
+"start": 27.26,
+"end": 27.422
+},
+{
+"word": "helping",
+"start": 27.492,
+"end": 27.782
+},
+{
+"word": "to",
+"start": 27.829,
+"end": 27.887
+},
+{
+"word": "reduce",
+"start": 28.003,
+"end": 28.351
+},
+{
+"word": "risk.",
+"start": 28.398,
+"end": 28.897
+},
+{
+"word": "Safety",
+"start": 29.338,
+"end": 29.814
+},
+{
+"word": "is",
+"start": 29.872,
+"end": 29.965
+},
+{
+"word": "not",
+"start": 30.023,
+"end": 30.162
+},
+{
+"word": "only",
+"start": 30.244,
+"end": 30.464
+},
+{
+"word": "for",
+"start": 30.522,
+"end": 30.65
+},
+{
+"word": "construction",
+"start": 30.708,
+"end": 31.3
+},
+{
+"word": "sites",
+"start": 31.37,
+"end": 31.765
+},
+{
+"word": "and",
+"start": 32.043,
+"end": 32.241
+},
+{
+"word": "factories.",
+"start": 32.322,
+"end": 33.146
+},
+{
+"word": "At",
+"start": 33.471,
+"end": 33.669
+},
+{
+"word": "home,",
+"start": 33.715,
+"end": 33.97
+},
+{
+"word": "it",
+"start": 34.028,
+"end": 34.156
+},
+{
+"word": "includes",
+"start": 34.226,
+"end": 34.609
+},
+{
+"word": "keeping",
+"start": 34.679,
+"end": 34.958
+},
+{
+"word": "walkways",
+"start": 35.016,
+"end": 35.422
+},
+{
+"word": "clear,",
+"start": 35.492,
+"end": 36.026
+},
+{
+"word": "handling",
+"start": 36.269,
+"end": 36.711
+},
+{
+"word": "electricity",
+"start": 36.769,
+"end": 37.372
+},
+{
+"word": "carefully,",
+"start": 37.43,
+"end": 38.115
+},
+{
+"word": "and",
+"start": 38.29,
+"end": 38.475
+},
+{
+"word": "storing",
+"start": 38.51,
+"end": 38.951
+},
+{
+"word": "household",
+"start": 39.009,
+"end": 39.439
+},
+{
+"word": "products",
+"start": 39.497,
+"end": 40.008
+},
+{
+"word": "safely.",
+"start": 40.182,
+"end": 40.867
+},
+{
+"word": "On",
+"start": 41.378,
+"end": 41.575
+},
+{
+"word": "the",
+"start": 41.598,
+"end": 41.668
+},
+{
+"word": "road,",
+"start": 41.738,
+"end": 42.167
+},
+{
+"word": "it",
+"start": 42.376,
+"end": 42.516
+},
+{
+"word": "includes",
+"start": 42.609,
+"end": 43.143
+},
+{
+"word": "obeying",
+"start": 43.352,
+"end": 43.828
+},
+{
+"word": "traffic",
+"start": 43.874,
+"end": 44.269
+},
+{
+"word": "signs",
+"start": 44.327,
+"end": 44.733
+},
+{
+"word": "and",
+"start": 45.058,
+"end": 45.279
+},
+{
+"word": "paying",
+"start": 45.372,
+"end": 45.65
+},
+{
+"word": "attention",
+"start": 45.708,
+"end": 46.161
+},
+{
+"word": "to",
+"start": 46.231,
+"end": 46.324
+},
+{
+"word": "other",
+"start": 46.417,
+"end": 46.637
+},
+{
+"word": "road",
+"start": 46.695,
+"end": 46.869
+},
+{
+"word": "users.",
+"start": 46.951,
+"end": 47.543
+},
+{
+"word": "Remember",
+"start": 47.868,
+"end": 48.286
+},
+{
+"word": "three",
+"start": 48.379,
+"end": 48.611
+},
+{
+"word": "basic",
+"start": 48.681,
+"end": 49.064
+},
+{
+"word": "principles:",
+"start": 49.133,
+"end": 50.004
+},
+{
+"word": "identify",
+"start": 50.445,
+"end": 51.037
+},
+{
+"word": "hazards,",
+"start": 51.107,
+"end": 51.792
+},
+{
+"word": "assess",
+"start": 51.966,
+"end": 52.384
+},
+{
+"word": "the",
+"start": 52.442,
+"end": 52.535
+},
+{
+"word": "risks,",
+"start": 52.616,
+"end": 53.104
+},
+{
+"word": "and",
+"start": 53.22,
+"end": 53.406
+},
+{
+"word": "take",
+"start": 53.464,
+"end": 53.696
+},
+{
+"word": "suitable",
+"start": 53.731,
+"end": 54.149
+},
+{
+"word": "action",
+"start": 54.172,
+"end": 54.485
+},
+{
+"word": "to",
+"start": 54.555,
+"end": 54.625
+},
+{
+"word": "control",
+"start": 54.694,
+"end": 55.089
+},
+{
+"word": "them.",
+"start": 55.135,
+"end": 55.681
+}
+]
