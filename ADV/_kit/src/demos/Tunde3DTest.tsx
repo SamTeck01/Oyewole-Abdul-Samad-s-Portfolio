@@ -4,7 +4,7 @@ import React from 'react';
 import {AbsoluteFill, Img, staticFile, useCurrentFrame} from 'remotion';
 import {EASE, tw} from '../kit/core';
 
-const C = {bg: '#fffaf5', t1: '#ffeadb', t2: '#ffd6bb', t3: '#ffb98e', t4: '#ff8a4c', main: '#ff6a13', ink: '#2b1d16'};
+export const C = {bg: '#fffaf5', t1: '#ffeadb', t2: '#ffd6bb', t3: '#ffb98e', t4: '#ff8a4c', main: '#ff6a13', ink: '#2b1d16'};
 const SANS = 'Inter, sans-serif';
 const pop = (t: number, a: number, d = 0.5) => tw(t, [a, a + d], [0, 1], EASE.back);
 const fade = (t: number, a: number, d = 0.4) => tw(t, [a, a + d], [0, 1], EASE.out);
@@ -19,7 +19,7 @@ const Worker: React.FC<{x: number; y: number; s: number; c: string; t: number; p
   </g>
 );
 
-const Back: React.FC<{t: number}> = ({t}) => (
+export const Back: React.FC<{t: number}> = ({t}) => (
   <svg width={1920} height={1080} style={{position: 'absolute'}}>
     {/* clouds */}
     {[[200, 120, 1], [1300, 90, 1.3], [1650, 200, 0.8]].map(([x, y, s], i) => (
@@ -38,7 +38,7 @@ const Back: React.FC<{t: number}> = ({t}) => (
   </svg>
 );
 
-const Mid: React.FC<{t: number}> = ({t}) => (
+export const Mid: React.FC<{t: number}> = ({t}) => (
   <svg width={1920} height={1080} style={{position: 'absolute'}}>
     {/* building under construction */}
     <g transform="translate(760 250)">
@@ -88,7 +88,7 @@ const Mid: React.FC<{t: number}> = ({t}) => (
   </svg>
 );
 
-const Front: React.FC<{t: number}> = ({t}) => (
+export const Front: React.FC<{t: number}> = ({t}) => (
   <svg width={1920} height={1080} style={{position: 'absolute'}}>
     {[[1560, 900, 1], [160, 960, 1.2]].map(([x, y, s], i) => (
       <g key={i} transform={`translate(${x} ${y}) scale(${s})`}>
