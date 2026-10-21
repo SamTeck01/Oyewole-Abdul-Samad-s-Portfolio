@@ -324,7 +324,7 @@ const Scene: React.FC<{t: number}> = ({t}) => {
         {/* contact shadow + Tunde */}
         <div style={{position: 'absolute', left: tundeX(t), top: 555}}>
           <div style={{position: 'absolute', left: -120, top: 345, width: 240, height: 30, borderRadius: '50%', background: TC.t2, filter: 'blur(3px)'}} />
-          <Img src={sf(`tunde3d/full/f${String(Math.min(1829, Math.floor(t * 15) * 2 + 1)).padStart(4, '0')}.png`)} style={{position: 'absolute', left: -314, top: -440, height: 880}} />
+          <Img src={sf(`tunde3d/real/f${String(Math.min(1829, Math.floor(t * 15) * 2 + 1)).padStart(4, '0')}.png`)} style={{position: 'absolute', left: -314, top: -440, height: 880}} />
         </div>
       </AbsoluteFill>
 
@@ -459,9 +459,7 @@ const Inner: React.FC = () => <Scene t={useCurrentFrame() / 60} />;
 
 export const Safety3D: React.FC = () => (
   <AbsoluteFill>
-    <Sequence from={Math.round(A * 60)}>
-      <Audio src={staticFile('audio/asp_vo.wav')} />
-    </Sequence>
+    <Audio src={staticFile('audio/asp3d_mix.wav')} />
     <CameraMotionBlur shutterAngle={160} samples={4}>
       <Inner />
     </CameraMotionBlur>

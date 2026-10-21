@@ -4,7 +4,7 @@ cues.json: {"dur": sec, "bpm": 120, "key_hz": 55, "cues": [[sec, "sfx_name", gai
 sfx_name resolves to Motion Library/sfx/synth/<name>.wav (or a path)."""
 import json, sys, os, numpy as np, soundfile as sf
 SR = 48000
-LIB = os.path.join(os.path.dirname(__file__), '..', 'sfx', 'synth')
+LIB = '/mnt/project-files/Motion Library/sfx/synth'
 cfg = json.load(open(sys.argv[1])); dur = cfg['dur']; n = int(dur * SR); t = np.arange(n) / SR
 bpm = cfg.get('bpm', 120); beat = 60 / bpm; root = cfg.get('key_hz', 55.0)
 rng = np.random.default_rng(3)
