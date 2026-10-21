@@ -71,8 +71,8 @@ const KEYS: (keyof PuppetPose)[] = ['lean', 'head', 'uaL', 'faL', 'hL', 'uaR', '
 // ---------------- camera / walking ----------------
 // world x of the camera (left edge): site 0, home 1920, road 3840
 // walk windows (s) must match tools3d/gen_safety.py; V = mocap foot speed in px/s at Tunde height 1000
-const WK: [number, number][] = [[-1, 1.7], [30.5, 33.72], [41.3, 44.52]];
-const V = 670;
+const WK: [number, number][] = [[-1, 1.7], [30.5, 33.9], [41.3, 44.7]];
+const V = 630;
 const smo = (x: number) => {
   const c = Math.max(0, Math.min(1, x));
   return c * c * (3 - 2 * c);
@@ -356,7 +356,7 @@ const Scene: React.FC<{t: number}> = ({t}) => {
         {/* contact shadow + Tunde */}
         <div style={{position: 'absolute', left: tundeX(t), top: 555}}>
           <div style={{position: 'absolute', left: -120, top: 345, width: 240, height: 30, borderRadius: '50%', background: TC.t2, filter: 'blur(3px)'}} />
-          <Img src={sf(`tunde3d/v2/f${String(Math.min(1829, Math.floor(t * 15) * 2 + 1)).padStart(4, '0')}.png`)} style={{position: 'absolute', left: -357, top: -545, height: 1000}} />
+          <Img src={sf(`tunde3d/v3/f${String(Math.min(1829, Math.floor(t * 15) * 2 + 1)).padStart(4, '0')}.png`)} style={{position: 'absolute', left: -357, top: -545, height: 1000}} />
         </div>
       </AbsoluteFill>
 

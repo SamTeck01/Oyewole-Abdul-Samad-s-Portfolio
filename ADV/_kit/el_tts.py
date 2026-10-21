@@ -3,7 +3,7 @@ writes <out>.mp3 and <out>.words.json [{word,start,end}] (seconds)."""
 import os, sys, json, base64, urllib.request
 vid, text, out = sys.argv[1], sys.argv[2], sys.argv[3]
 body = json.dumps({"text": text, "model_id": os.environ.get("EL_MODEL","eleven_multilingual_v2"),
-                   "voice_settings": {"stability": 0.5, "similarity_boost": 0.8, "style": 0.2, "use_speaker_boost": True}}).encode()
+                   "voice_settings": {"stability": float(os.environ.get("EL_STAB",0.5)), "similarity_boost": 0.8, "style": float(os.environ.get("EL_STYLE",0.2)), "use_speaker_boost": True}}).encode()
 req = urllib.request.Request(f"https://api.elevenlabs.io/v1/text-to-speech/{vid}/with-timestamps?output_format=mp3_44100_128",
                              data=body, headers={"xi-api-key": os.environ["ELEVENLABS_TOKEN"], "Content-Type": "application/json"})
 j = json.load(urllib.request.urlopen(req))

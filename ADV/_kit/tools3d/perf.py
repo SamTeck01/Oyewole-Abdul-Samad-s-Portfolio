@@ -28,6 +28,28 @@ def sample(act):  # {bone:[quat per source frame]}
         for i in range(L): d[b][i][fc.array_index]=fc.evaluate(i+1)
     return d,L
 T,TL=sample(src['talk']); W,WL=sample(src['walk'])
+def retarget(fp,an):  # world-space delta retarget from another Mixamo rig (different rest rolls)
+    old=set(bpy.data.objects); bpy.ops.import_scene.gltf(filepath=fp); new=[o for o in bpy.data.objects if o not in old]
+    sa=[o for o in new if o.type=='ARMATURE'][0]; act=[a for a in bpy.data.actions if a.name==an][0]
+    sa.animation_data_create(); sa.animation_data.action=act; arm.animation_data.action=None
+    sm={key(b.name):b for b in sa.pose.bones}; L=int(act.frame_range[1]); d={}
+    sw=sa.matrix_world.to_3x3(); tw=arm.matrix_world.to_3x3()
+    ob=sorted(arm.pose.bones,key=lambda b: len(b.parent_recursive))
+    for i in range(L):
+        bpy.context.scene.frame_set(i+1)
+        for b in ob: b.rotation_quaternion=Quaternion()
+        bpy.context.view_layer.update()
+        for b in ob:
+            k=key(b.name)
+            if k not in sm or k=='_rootJoint' or any(x in k for x in ('Arm','Shoulder','Hand')): continue
+            sb=sm[k]; D=(sw@sb.matrix.to_3x3())@(sw@sb.bone.matrix_local.to_3x3()).inverted(); Hh=Matrix.Rotation(math.radians(CFG.get('srcyaw',0)),3,'Z'); D=Hh@D@Hh.inverted()
+            Mt=(tw.inverted()@D@tw@b.bone.matrix_local.to_3x3()).to_4x4(); Mt.translation=b.matrix.to_translation()
+            b.matrix=Mt; bpy.context.view_layer.update()
+            d.setdefault(b.name,[]).append(list(b.rotation_quaternion))
+    for o in new: bpy.data.objects.remove(o)
+    for b in ob: b.rotation_quaternion=Quaternion()
+    return d,L
+if CFG.get('walksrc'): W,WL=retarget(*CFG['walksrc'])
 arm.animation_data.action=None
 def sm(x): x=max(0,min(1,x)); return x*x*(3-2*x)
 def env(t,a,b,r): return min(sm((t-a)/r),sm((b-t)/r))
@@ -75,6 +97,12 @@ for f in range(1,N+1):
         pb.rotation_quaternion=q
     piv.rotation_euler[2]=math.radians(CFG.get('turn',80))*max([env(t,a-0.2,b+0.2,0.45) for a,b in WK]+[0])
     bpy.context.view_layer.update()
+    sw_=CFG.get('swing')
+    if sw_ and ww>0:
+        ph=math.sin(2*math.pi*(t*24/(WL-1))+sw_[1])*sw_[0]*ww
+        for bn,sg in (('LeftArm',1),('RightArm',-1)):
+            pb=arm.pose.bones[names[bn]]; M=pb.matrix.copy(); tr=M.to_translation()
+            Nm=M@Matrix.Rotation(math.radians(ph*sg),4,Vector((1,0,0))); Nm.translation=tr; pb.matrix=Nm; bpy.context.view_layer.update()
     for g in G:
         bn,ax,deg,a,b,r=g[:6]; hz=g[6] if len(g)>6 else 0; loc=len(g)>7 and g[7]
         w=env(t,a,b,r)

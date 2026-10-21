@@ -8,15 +8,15 @@ def curl(side,fs,a,e,d=75,r=0.2):
 def point(side,a,e): curl(side,['Middle','Ring','Pinky'],a,e); curl(side,['Thumb'],a,e,40)
 def fist(side,a,e): curl(side,FING,a,e); curl(side,['Thumb'],a,e,40)
 def wave(a,e):
-    g('RightArm',Y,72,a,e,0.4); g('RightForeArm',Y,95,a,e,0.4); g('RightForeArm',Y,22,a+0.3,e-0.3,0.25,2.2); g('Head',Y,6,a,e,0.4)
+    g('RightArm',Y,72,a,e,0.4); g('RightForeArm',Y,95,a,e,0.4); g('RightForeArm',Y,22,a+0.3,e-0.3,0.25,2.2); g('RightForeArm',Y,-70,a,e,0.4,0,True); g('Head',Y,6,a,e,0.4)
 def present(a,e,x=-25):
-    g('LeftArm',Y,-38,a,e,0.4); g('LeftArm',X,x,a,e,0.4); g('LeftForeArm',X,-55,a,e,0.4); g('LeftHand',Y,-20,a,e,0.4)
+    g('LeftArm',Y,-38,a,e,0.4); g('LeftArm',X,x,a,e,0.4); g('LeftForeArm',X,-55,a,e,0.4); g('LeftHand',Y,-20,a,e,0.4); g('LeftForeArm',Y,-70,a,e,0.4,0,True)
 def ptR(a,e,head=True):  # point screen-right with index
     g('LeftArm',Y,-80,a,e,0.35); g('LeftForeArm',Y,-8,a,e,0.35); point('Left',a,e)
     if head: g('Head',Z,-18,a,e,0.35)
 def handup(side,a,e):
     s=1 if side=='Left' else 1
-    g(side+'Arm',X,-40,a,e,0.35); g(side+'ForeArm',X,-105,a,e,0.35)
+    g(side+'Arm',X,-40,a,e,0.35); g(side+'ForeArm',X,-105,a,e,0.35); g(side+'ForeArm',Y,-60,a,e,0.35,0,True)
 wave(1.9,3.5)
 g('LeftArm',X,-30,5.3,8.2,0.4); g('LeftForeArm',X,-85,5.3,8.2,0.4)
 for (a,e,d) in ((5.5,6.2,-12),(6.5,7.2,-32),(7.5,8.2,-52)): g('LeftArm',Y,d,a,e,0.2)
@@ -39,12 +39,12 @@ g('LeftArm',Y,-70,37.0,37.8,0.25); g('LeftArm',X,-15,37.0,37.8,0.25); g('LeftFor
 handup('Left',37.9,39.1); point('Left',37.9,39.1); g('LeftForeArm',Y,15,38.1,38.9,0.15,3); g('Head',Z,10,38.1,39.0,0.2,2)
 for s in ('Left','Right'): g(s+'Arm',X,-45,39.2,40.1,0.3); g(s+'ForeArm',X,-45,39.2,40.1,0.3)
 g('LeftArm',Y,-140,40.0,41.2,0.35); g('LeftForeArm',Y,-15,40.0,41.2,0.35)
-ptR(44.6,45.9)
+ptR(44.8,46.0)
 g('Head',Z,55,46.1,47.0,0.3); g('Neck',Z,15,46.1,47.0,0.3); g('Head',Z,-55,47.0,47.9,0.3); g('Neck',Z,-15,47.0,47.9,0.3)
 handup('Left',48.6,50.7); point('Left',48.6,49.25); curl('Left',['Ring','Pinky'],49.2,50.7); curl('Left',['Thumb'],49.2,50.7,40)
 present(51.0,52.6,-25); present(52.7,54.1,-12); present(54.2,56.7,0)
 wave(57.6,61.0)
-W=[[-1,1.7],[30.5,33.72],[41.3,44.52]]
-A=sys.argv[1:]; cfg={"frames":1830,"gest":G,"walk":W,"w":720,"h":1008,"samples":5,"real":True,"tex":"tex/tunde_body.png","only":list(range(1,1830,2))}
+W=[[-1,1.7],[30.5,33.9],[41.3,44.7]]
+A=sys.argv[1:]; cfg={"frames":1830,"gest":G,"walk":W,"w":720,"h":1008,"samples":5,"real":True,"walksrc":["Soldier.glb","Walk"],"srcyaw":180,"swing":[22,0],"tex":"tex/tunde_body.png","only":list(range(1,1830,2))}
 if len(A)>1: cfg.update(w=int(A[1]),h=int(A[2]),samples=int(A[3]),only=[int(x) for x in A[4:]])
 json.dump(cfg,open(A[0],'w'))

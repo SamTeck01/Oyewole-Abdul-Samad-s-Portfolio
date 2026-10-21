@@ -30,12 +30,12 @@ const Photo: React.FC<{src: string; t: number; a: number; b: number; z0?: number
 };
 
 // a scene that fades/blur-scales in and out (camera keeps moving through cuts)
-const Shot: React.FC<{t: number; a: number; b: number; children: React.ReactNode}> = ({t, a, b, children}) => {
-  if (t < a - 0.01 || t > b + 0.45) return null;
-  const i = tw(t, [a, a + 0.45], [0, 1], EASE.out);
-  const o = tw(t, [b, b + 0.45], [0, 1], EASE.in);
+const Shot: React.FC<{t: number; a: number; b: number; dir?: number; children: React.ReactNode}> = ({t, a, b, dir = 1, children}) => {
+  if (t < a - 0.01 || t > b + 0.28) return null;
+  const i = tw(t, [a, a + 0.34], [0, 1], EASE.out);
+  const o = tw(t, [b, b + 0.28], [0, 1], EASE.in);
   return (
-    <AbsoluteFill style={{opacity: Math.min(i, 1 - o), transform: `scale(${1.08 - 0.08 * i + 0.1 * o})`, filter: `blur(${(1 - i) * 14 + o * 18}px)`}}>
+    <AbsoluteFill style={{opacity: Math.min(tw(t, [a, a + 0.08], [0, 1]), 1 - tw(t, [b + 0.18, b + 0.28], [0, 1])), transform: `translateX(${((1 - i) * 900 - o * 900) * dir}px) scale(${1.12 - 0.12 * i + 0.06 * o})`}}>
       {children}
     </AbsoluteFill>
   );
@@ -44,8 +44,14 @@ const Shot: React.FC<{t: number; a: number; b: number; children: React.ReactNode
 const Kicker: React.FC<{t: number; a: number; text: string; color?: string}> = ({t, a, text, color = RED}) => (
   <div style={{fontFamily: SANS, fontWeight: 700, fontSize: 24, letterSpacing: 6, color, opacity: ap(t, a), transform: `translateY(${(1 - ap(t, a)) * 14}px)`}}>{text}</div>
 );
+const Slam: React.FC<{t: number; a: number; children: React.ReactNode; size?: number; color?: string}> = ({t, a, children, size = 96, color = '#fff'}) => {
+  const p = tw(t, [a - 0.05, a + 0.2], [0, 1], EASE.out);
+  return <span style={{display: 'inline-block', fontFamily: SANS, fontWeight: 800, fontSize: size, letterSpacing: -size * 0.035, lineHeight: 1.02, color, marginRight: size * 0.24, opacity: tw(t, [a - 0.05, a + 0.03], [0, 1]), transform: `scale(${1.9 - 0.9 * p})`, transformOrigin: '50% 60%'}}>{children}</span>;
+};
+// camera punch on impacts: quick zoom kick that decays
+const punch = (t: number, hits: number[]) => 1 + hits.reduce((s, h) => s + (t >= h ? 0.045 * Math.exp(-(t - h) / 0.11) : 0), 0);
 const Big: React.FC<{t: number; a: number; children: React.ReactNode; size?: number}> = ({t, a, children, size = 96}) => {
-  const p = ap(t, a, 0.8);
+  const p = ap(t, a, 0.45);
   return <div style={{fontFamily: SANS, fontWeight: 700, fontSize: size, letterSpacing: -size * 0.035, lineHeight: 1.02, color: '#fff', opacity: p, filter: `blur(${(1 - p) * 10}px)`, transform: `translateY(${(1 - p) * 30}px)`}}>{children}</div>;
 };
 const Glass: React.FC<{style?: React.CSSProperties; children: React.ReactNode}> = ({style, children}) => (
@@ -73,7 +79,7 @@ const Scene: React.FC<{t: number}> = ({t}) => {
   const camX = (() => {
     let x = 0;
     nodes.forEach((n, i) => {
-      if (i > 0) x += 640 * tw(t, [n[0] - 0.55, n[0] + 0.15], [0, 1], EASE.inOut);
+      if (i > 0) x += 640 * tw(t, [n[0] - 0.42, n[0] - 0.02], [0, 1], EASE.out);
     });
     return x;
   })();
@@ -85,28 +91,29 @@ const Scene: React.FC<{t: number}> = ({t}) => {
     ['part_133.png', W[69], -330, 260, 0.6],
     ['part_156.png', W[69] + 0.2, 400, 270, 0.6],
   ] as [string, number, number, number, number][];
+  const hits = [W[5], W[6], W[7], W[9], W[21], W[27], W[29], W[32], ...nodes.map((n) => n[0]), W[63], W[65], W[66], W[67], W[68], W[83], W[84], W[91]];
+  const k = punch(t, hits);
   return (
     <AbsoluteFill style={{background: BG}}>
+     <AbsoluteFill style={{transform: `scale(${k})`}}>
       {/* 1. hook: 3D lathe */}
       <Shot t={t} a={-1} b={s2}>
         <Img src={im(`hook/f_${String(hf).padStart(4, '0')}.png`)} style={{width: '100%', height: '100%'}} />
         <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(0,0,0,0.6))'}} />
         <div style={{position: 'absolute', left: 140, top: 760}}>
-          <Big t={t} a={W[5] - 0.1} size={84}>
-            One <span style={{color: RED}}>perfect</span> part.
-          </Big>
+          <Slam t={t} a={W[5]} size={110}>One</Slam>
+          <Slam t={t} a={W[6]} size={110} color={RED}>perfect</Slam>
+          <Slam t={t} a={W[7]} size={110}>part.</Slam>
         </div>
       </Shot>
       {/* 2. factory + brand */}
-      <Shot t={t} a={s2} b={s3}>
+      <Shot t={t} a={s2} b={s3} dir={1}>
         <Photo src="p-001-003.png" t={t} a={s2} b={s3 + 0.5} x={-60} />
         <div style={{position: 'absolute', left: 140, top: 300}}>
           <div style={{display: 'flex', alignItems: 'center', gap: 28}}>
             <Img src={im('logo_star.png')} style={{height: 150, opacity: ap(t, W[9] - 0.3), transform: `scale(${tw(ap(t, W[9] - 0.3, 0.6), [0, 1], [0.5, 1], EASE.back)}) rotate(${(1 - ap(t, W[9] - 0.3)) * -40}deg)`}} />
             <div>
-              <Big t={t} a={W[9]} size={120}>
-                <span style={{color: RED}}>HAIXING</span>
-              </Big>
+              <Slam t={t} a={W[9]} size={130} color={RED}>HAIXING</Slam>
               <Big t={t} a={W[10]} size={56}>
                 Precision Technology
               </Big>
@@ -125,11 +132,11 @@ const Scene: React.FC<{t: number}> = ({t}) => {
         </div>
       </Shot>
       {/* 3. people + capability */}
-      <Shot t={t} a={s3} b={s4}>
+      <Shot t={t} a={s3} b={s4} dir={-1}>
         <Photo src="m_089.png" t={t} a={s3} b={s4 + 0.5} dark={0.62} z0={1.15} z1={1.05} />
         <div style={{position: 'absolute', left: 140, top: 190}}>
           <Kicker t={t} a={W[21]} text="OUR TEAM" />
-          <div style={{fontFamily: SANS, fontWeight: 700, fontSize: 200, letterSpacing: -8, color: '#fff', lineHeight: 1, opacity: ap(t, W[21])}}>
+          <div style={{fontFamily: SANS, fontWeight: 800, fontSize: 220, letterSpacing: -8, color: '#fff', lineHeight: 1, opacity: tw(t, [W[21] - 0.05, W[21] + 0.05], [0, 1]), transform: `scale(${1.7 - 0.7 * tw(t, [W[21] - 0.05, W[21] + 0.22], [0, 1], EASE.out)})`, transformOrigin: '0 60%'}}>
             {count(t, W[21], W[24] + 0.5, 100)}
             <span style={{color: RED}}>+</span>
           </div>
@@ -143,9 +150,9 @@ const Scene: React.FC<{t: number}> = ({t}) => {
             ['m_088.png', 'CNC turning', W[29]],
             ['m_085.png', 'Full inspection', W[32]],
           ].map(([src, label, a], i) => {
-            const p = ap(t, (a as number) - 0.15, 0.8);
+            const p = ap(t, (a as number) - 0.12, 0.38);
             return (
-              <Glass key={i} style={{width: 300, padding: 14, opacity: p, transform: `translateY(${(1 - p) * 80 + Math.sin(t * 1.3 + i) * 6}px) rotate(${(1 - p) * 6}deg)`, filter: `blur(${(1 - p) * 8}px)`}}>
+              <Glass key={i} style={{width: 300, padding: 14, opacity: p, transform: `translateX(${(1 - p) * 700}px) translateY(${Math.sin(t * 1.3 + i) * 6}px) rotate(${(1 - p) * 8}deg)`}}>
                 <Img src={im(src as string)} style={{width: '100%', height: 380, objectFit: 'cover', borderRadius: 18}} />
                 <div style={{fontFamily: SANS, fontWeight: 600, fontSize: 28, color: '#fff', padding: '16px 6px 4px'}}>{label}</div>
               </Glass>
@@ -201,17 +208,17 @@ const Scene: React.FC<{t: number}> = ({t}) => {
         })()}
       </Shot>
       {/* 5. products */}
-      <Shot t={t} a={s5} b={s6}>
+      <Shot t={t} a={s5} b={s6} dir={-1}>
         <AbsoluteFill style={{background: `radial-gradient(ellipse at 50% 55%, #1d2235 0%, ${BG} 65%)`}} />
         <div style={{position: 'absolute', left: 0, right: 0, top: 90, textAlign: 'center'}}>
           <Kicker t={t} a={s5 + 0.2} text="WHAT WE MAKE" />
         </div>
         {parts.map(([src, a, x, y, s], i) => {
-          const p = ap(t, a - 0.15, 0.9);
+          const p = ap(t, a - 0.12, 0.42);
           const fl = Math.sin(t * 1.1 + i * 1.7) * 10;
           const shrink = tw(t, [W[69], W[69] + 0.8], [1, 0.82], EASE.inOut);
           return (
-            <div key={i} style={{position: 'absolute', left: 960 + x * shrink, top: 520 + y * shrink - 80 * (1 - shrink) * 0, transform: `translate(-50%,-50%) translateY(${(1 - p) * 120 + fl}px) scale(${s * shrink * (0.7 + 0.3 * p)}) rotate(${(1 - p) * 12 + Math.sin(t * 0.7 + i) * 2}deg)`, opacity: p, filter: `blur(${(1 - p) * 10}px) drop-shadow(0 30px 40px rgba(0,0,0,0.6))`}}>
+            <div key={i} style={{position: 'absolute', left: 960 + x * shrink, top: 520 + y * shrink - 80 * (1 - shrink) * 0, transform: `translate(-50%,-50%) translateY(${(1 - p) * 120 + fl}px) scale(${s * shrink * (0.3 + 0.7 * tw(p, [0, 1], [0, 1], EASE.back))}) rotate(${(1 - p) * -120 + Math.sin(t * 0.7 + i) * 2}deg)`, opacity: Math.min(1, p * 3), filter: 'drop-shadow(0 30px 40px rgba(0,0,0,0.6))'}}>
               <Img src={im(src)} style={{height: 320}} />
             </div>
           );
@@ -241,19 +248,19 @@ const Scene: React.FC<{t: number}> = ({t}) => {
         <AbsoluteFill style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
           <Img src={im('logo_star.png')} style={{height: 200, opacity: ap(t, s6 + 0.1), transform: `scale(${tw(ap(t, s6 + 0.1, 0.8), [0, 1], [0.4, 1], EASE.back)}) rotate(${(1 - ap(t, s6 + 0.1)) * 90}deg)`}} />
           <div style={{marginTop: 16, textAlign: 'center'}}>
-            <Big t={t} a={W[83]} size={130}>
-              <span style={{color: RED}}>HAIXING</span> <span style={{fontWeight: 500}}>PRECISION</span>
-            </Big>
+            <Slam t={t} a={W[83]} size={140} color={RED}>HAIXING</Slam>
+            <Slam t={t} a={W[84]} size={140}>PRECISION</Slam>
             <div style={{fontFamily: SANS, fontWeight: 500, fontSize: 40, color: '#fff', marginTop: 20}}>
               <span style={{opacity: ap(t, W[85])}}>Craftsmanship in machining. </span>
               <span style={{opacity: ap(t, W[88]), color: '#ffd9d9'}}>Integrity in delivery.</span>
             </div>
           </div>
-          <Glass style={{marginTop: 50, padding: '22px 44px', opacity: ap(t, W[91] - 0.2), transform: `translateY(${(1 - ap(t, W[91] - 0.2)) * 30}px)`, background: RED, border: 'none'}}>
+          <Glass style={{marginTop: 50, padding: '22px 44px', opacity: tw(t, [W[91] - 0.1, W[91]], [0, 1]), transform: `scale(${tw(t, [W[91] - 0.1, W[91] + 0.35], [0.4, 1], EASE.back) * (1 + 0.03 * Math.max(0, Math.sin((t - W[91]) * 6)))})`, background: RED, border: 'none', boxShadow: `0 0 ${40 + 30 * Math.max(0, Math.sin((t - W[91]) * 6))}px rgba(227,38,46,0.7)`}}>
             <div style={{fontFamily: SANS, fontWeight: 700, fontSize: 40, color: '#fff'}}>Call Mr. Zhou · +86 138 2317 6851</div>
           </Glass>
         </AbsoluteFill>
       </Shot>
+     </AbsoluteFill>
       {/* subtitles */}
       <div style={{position: 'absolute', left: 0, right: 0, top: 985, opacity: 0.92 * (1 - tw(t, [s6, s6 + 0.4], [0, 1]))}}>
         <ReplaceCaption t={t} size={36} color="#ffffff" accent={RED} phrases={PHRASES} />
@@ -268,7 +275,7 @@ const PHRASES = CUTS.map((s, i) => ({text: WD.slice(s, CUTS[i + 1] ?? 83).map((w
 const Inner: React.FC = () => <Scene t={useCurrentFrame() / 60} />;
 export const HaixingEN: React.FC = () => (
   <AbsoluteFill>
-    <Audio src={staticFile('audio/hx_mix.wav')} />
+    <Audio src={staticFile('audio/hx_mix2.wav')} />
     <CameraMotionBlur shutterAngle={170} samples={4}>
       <Inner />
     </CameraMotionBlur>
