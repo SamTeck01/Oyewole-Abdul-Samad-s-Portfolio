@@ -323,8 +323,8 @@ const Scene: React.FC<{t: number}> = ({t}) => {
         <AbsoluteFill style={{background: 'rgba(255,240,222,0.55)', backdropFilter: 'blur(6px)', opacity: dim}} />
         {/* contact shadow + Tunde */}
         <div style={{position: 'absolute', left: tundeX(t), top: 555}}>
-          <div style={{position: 'absolute', left: -140, top: 440, width: 280, height: 34, borderRadius: '50%', background: TC.t2, filter: 'blur(3px)'}} />
-          <Img src={sf(`tunde3d/full/f${String(Math.min(1830, Math.floor(t * 30) + 1)).padStart(4, '0')}.png`)} style={{position: 'absolute', left: -357, top: -450, height: 1000}} />
+          <div style={{position: 'absolute', left: -120, top: 345, width: 240, height: 30, borderRadius: '50%', background: TC.t2, filter: 'blur(3px)'}} />
+          <Img src={sf(`tunde3d/full/f${String(Math.min(1829, Math.floor(t * 15) * 2 + 1)).padStart(4, '0')}.png`)} style={{position: 'absolute', left: -314, top: -440, height: 880}} />
         </div>
       </AbsoluteFill>
 
