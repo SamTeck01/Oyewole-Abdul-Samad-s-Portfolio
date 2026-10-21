@@ -70,9 +70,21 @@ const KEYS: (keyof PuppetPose)[] = ['lean', 'head', 'uaL', 'faL', 'hL', 'uaR', '
 
 // ---------------- camera / walking ----------------
 // world x of the camera (left edge): site 0, home 1920, road 3840
-const camX = (t: number) => kf(t, [[0, 0], [31.0, 0], [33.6, 1920], [41.9, 1920], [43.7, 3840]]);
-const walkW = (t: number) => Math.max(t < 1.6 ? 1 : 0, env(t, 30.8, 33.9, 0.3), env(t, 41.7, 44.0, 0.3));
-const tundeX = (t: number) => kf(t, [[0, -200], [1.7, 520], [48.4, 520], [49.6, 330]]);
+// walk windows (s) must match tools3d/gen_safety.py; V = mocap foot speed in px/s at Tunde height 1000
+const WK: [number, number][] = [[-1, 1.7], [30.5, 33.72], [41.3, 44.52]];
+const V = 670;
+const smo = (x: number) => {
+  const c = Math.max(0, Math.min(1, x));
+  return c * c * (3 - 2 * c);
+};
+const walked = (t: number, [a, b]: [number, number]) => {
+  let s = 0;
+  for (let x = a; x < Math.min(t, b); x += 1 / 120) s += Math.min(smo((x - a) / 0.35), smo((b - x) / 0.35)) / 120;
+  return s;
+};
+const camX = (t: number) => Math.min(1920, V * walked(t, WK[1])) + Math.min(1920, V * walked(t, WK[2]));
+const walkW = (t: number) => Math.max(...WK.map(([a, b]) => env(t, a, b, 0.35)));
+const tundeX = (t: number) => 520 - V * (walked(1.7, WK[0]) - walked(t, WK[0]));
 
 const pose = (t: number): PuppetPose => {
   const ta = t - A;
@@ -177,50 +189,70 @@ const Home: React.FC<{t: number}> = ({t}) => {
 };
 
 const Road: React.FC<{t: number}> = ({t}) => {
-  const car = tw(t, [W[93] - 0.6, W[96] + 1.4], [-500, 2400], EASE.inOut);
+  // car approaches behind Tunde, slows and stops before the zebra crossing while he looks both ways
+  const car = tw(t, [45.2, 47.4], [-560, 930], EASE.out);
+  const spin = (car / 30) * (180 / Math.PI);
+  const green = t > 47.5;
+  const Wheel = ({x}: {x: number}) => (
+    <g transform={`translate(${x} 44) rotate(${spin})`}>
+      <circle r={30} fill="#262a33" />
+      <circle r={14} fill="#c9ced6" />
+      <rect x={-2} y={-14} width={4} height={28} fill="#8a919c" />
+      <rect x={-14} y={-2} width={28} height={4} fill="#8a919c" />
+    </g>
+  );
   return (
     <AbsoluteFill>
       <AbsoluteFill style={{background: 'linear-gradient(180deg, #fffaf5 0%, #fff3ea 55%)'}} />
       <svg width={1920} height={1080} style={{position: 'absolute', filter: 'blur(3px)'}}>
         <g fill="#ffd6bb" opacity={0.7}>
-          <rect x={80} y={380} width={160} height={260} />
-          <rect x={260} y={300} width={120} height={340} />
-          <rect x={1400} y={340} width={180} height={300} />
-          <rect x={1600} y={420} width={150} height={220} />
-          <rect x={980} y={440} width={140} height={200} />
+          <rect x={80} y={300} width={160} height={300} />
+          <rect x={260} y={220} width={120} height={380} />
+          <rect x={1400} y={260} width={180} height={340} />
+          <rect x={1600} y={340} width={150} height={260} />
+          <rect x={980} y={360} width={140} height={240} />
         </g>
       </svg>
       <svg width={1920} height={1080} style={{position: 'absolute'}}>
-        <rect x={0} y={640} width={1920} height={70} fill="#ffd6bb" />
-        <rect x={0} y={706} width={1920} height={10} fill="#ffb98e" />
-        <rect x={0} y={716} width={1920} height={364} fill="#ffeadb" />
+        {/* far pavement, road, kerb, near pavement */}
+        <rect x={0} y={590} width={1920} height={30} fill="#ffd9c0" />
+        <rect x={0} y={620} width={1920} height={160} fill="#e9d3c4" />
         {Array.from({length: 12}).map((_, i) => (
-          <rect key={i} x={i * 180 - 40} y={890} width={100} height={12} rx={4} fill="#fff" />
+          <rect key={i} x={i * 180 - 40} y={696} width={90} height={8} rx={4} fill="#fff" opacity={0.9} />
         ))}
-        {/* zebra crossing */}
-        {[0, 1, 2, 3, 4, 5].map((i) => (
-          <rect key={i} x={1180 + i * 58} y={730} width={34} height={340} fill="#fff" opacity={0.92} />
+        {[0, 1, 2, 3, 4, 5, 6].map((i) => (
+          <rect key={i} x={1220 + i * 50} y={624} width={30} height={152} fill="#fff" opacity={0.95} />
         ))}
+        <rect x={1170} y={624} width={8} height={152} fill="#fff" />
+        <rect x={0} y={780} width={1920} height={16} fill="#ffb98e" />
+        <rect x={0} y={796} width={1920} height={284} fill="#ffeadb" />
+        {/* car */}
+        <g transform={`translate(${car} 690) scale(0.85)`}>
+          <ellipse cx={0} cy={74} rx={200} ry={14} fill="rgba(0,0,0,0.22)" />
+          <path d="M -190 40 Q -190 -10 -150 -16 L -90 -20 Q -50 -90 30 -90 L 90 -90 Q 140 -80 170 -20 Q 200 -14 200 30 L 200 50 L -190 50 Z" fill="#2b7bd6" />
+          <path d="M -70 -22 Q -36 -76 24 -76 L 30 -22 Z M 46 -22 L 44 -76 L 88 -76 Q 124 -66 146 -22 Z" fill="#cfe6ff" />
+          <rect x={-190} y={18} width={390} height={6} fill="#1f5fae" />
+          <rect x={186} y={4} width={16} height={14} rx={4} fill="#ffe08a" />
+          <rect x={-194} y={6} width={10} height={14} rx={3} fill={t > 46.6 && !green ? '#ff3b3b' : '#c4423f'} />
+          <Wheel x={-110} />
+          <Wheel x={120} />
+        </g>
+        {/* pedestrian light next to the crossing */}
+        <g transform="translate(1590 796)">
+          <rect x={-5} y={-300} width={10} height={300} fill="#5d6570" />
+          <rect x={-30} y={-380} width={60} height={110} rx={10} fill="#2a2f38" />
+          <circle cx={0} cy={-352} r={18} fill={green ? '#3a2020' : '#ff3b3b'} />
+          <circle cx={0} cy={-298} r={18} fill={green ? '#3ddc84' : '#1f3a2a'} />
+        </g>
         {/* sign */}
-        <g transform="translate(1100 640)">
-          <rect x={-6} y={-330} width={12} height={330} fill="#7c8590" />
-          <path d="M 0 -420 L 76 -290 L -76 -290 Z" fill="#fff" stroke="#e5243b" strokeWidth={14} strokeLinejoin="round" />
-          <g transform="translate(0 -330)" fill={INK}>
+        <g transform="translate(1700 796)">
+          <rect x={-6} y={-380} width={12} height={380} fill="#7c8590" />
+          <path d="M 0 -470 L 76 -340 L -76 -340 Z" fill="#fff" stroke="#e5243b" strokeWidth={14} strokeLinejoin="round" />
+          <g transform="translate(0 -380)" fill={INK}>
             <circle cx={0} cy={-34} r={8} />
             <path d="M -4 -24 L 6 -24 L 10 0 L 18 16 L 10 18 L 2 4 L -6 18 L -14 16 L -6 0 Z" />
           </g>
           <ellipse cx={0} cy={2} rx={40} ry={8} fill="rgba(60,30,10,0.2)" />
-        </g>
-        {/* car */}
-        <g transform={`translate(${car} 860)`}>
-          <ellipse cx={0} cy={70} rx={190} ry={16} fill="rgba(0,0,0,0.25)" />
-          <path d="M -190 40 Q -190 -10 -150 -16 L -90 -20 Q -50 -90 30 -90 L 90 -90 Q 140 -80 170 -20 Q 200 -14 200 30 L 200 50 L -190 50 Z" fill="#2b7bd6" />
-          <path d="M -70 -22 Q -36 -76 24 -76 L 30 -22 Z M 46 -22 L 44 -76 L 88 -76 Q 124 -66 146 -22 Z" fill="#cfe6ff" />
-          <circle cx={-110} cy={52} r={34} fill="#222" />
-          <circle cx={120} cy={52} r={34} fill="#222" />
-          <circle cx={-110} cy={52} r={14} fill="#aaa" />
-          <circle cx={120} cy={52} r={14} fill="#aaa" />
-          <rect x={186} y={4} width={16} height={14} rx={4} fill="#ffe08a" />
         </g>
       </svg>
     </AbsoluteFill>
@@ -312,19 +344,19 @@ const Scene: React.FC<{t: number}> = ({t}) => {
           </div>
         </div>
         {/* item highlight rings (home + road, screen space once the camera settles) */}
-        {cx === 1920 ? (
+        {Math.abs(cx - 1920) < 4 ? (
           <>
             <Ring x={960} y={870} r={140} t={t} a={W[71]} b={W[74]} />
             <Ring x={1180} y={540} r={110} t={t} a={W[74]} b={W[77]} />
             <Ring x={1670} y={460} r={230} t={t} a={W[78]} b={W[82] - 0.3} />
           </>
         ) : null}
-        {cx === 3840 ? <Ring x={1100} y={-355 + 640} r={120} t={t} a={W[87]} b={W[90]} /> : null}
+        {Math.abs(cx - 3840) < 8 ? <Ring x={1700} y={395} r={120} t={t} a={W[87]} b={W[90]} /> : null}
         <AbsoluteFill style={{background: 'rgba(255,240,222,0.55)', backdropFilter: 'blur(6px)', opacity: dim}} />
         {/* contact shadow + Tunde */}
         <div style={{position: 'absolute', left: tundeX(t), top: 555}}>
           <div style={{position: 'absolute', left: -120, top: 345, width: 240, height: 30, borderRadius: '50%', background: TC.t2, filter: 'blur(3px)'}} />
-          <Img src={sf(`tunde3d/real/f${String(Math.min(1829, Math.floor(t * 15) * 2 + 1)).padStart(4, '0')}.png`)} style={{position: 'absolute', left: -314, top: -440, height: 880}} />
+          <Img src={sf(`tunde3d/v2/f${String(Math.min(1829, Math.floor(t * 15) * 2 + 1)).padStart(4, '0')}.png`)} style={{position: 'absolute', left: -357, top: -545, height: 1000}} />
         </div>
       </AbsoluteFill>
 

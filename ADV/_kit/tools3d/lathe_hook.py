@@ -79,7 +79,7 @@ for col,loc,en in (((1,0.1,0.1),(-1,2,1.5),900),((0.15,0.3,1),(3,2,-1),900),((1,
     l=bpy.data.lights.new('a','AREA'); l.color=col; l.energy=en; l.size=1.5
     o=bpy.data.objects.new('a',l); o.location=loc; sc.collection.objects.link(o)
     cc=o.constraints.new('TRACK_TO'); cc.target=tgt; cc.track_axis='TRACK_NEGATIVE_Z'; cc.up_axis='UP_Y'
-sc.render.engine='CYCLES'; sc.cycles.samples=14; sc.cycles.use_denoising=True
+sc.render.use_overwrite=False; sc.render.engine='CYCLES'; sc.cycles.samples=14; sc.cycles.use_denoising=True
 sc.render.resolution_x=1920; sc.render.resolution_y=1080; sc.render.resolution_percentage=int(A[2]) if len(A)>2 else 100
 sc.render.use_motion_blur=True; sc.render.motion_blur_shutter=0.6
 sc.view_settings.view_transform='AgX'; sc.view_settings.look='AgX - Punchy'

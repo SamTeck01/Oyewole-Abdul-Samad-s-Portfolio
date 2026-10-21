@@ -65,9 +65,10 @@ WK=CFG.get('walk',[])  # [start,end]
 only=CFG.get('only')
 for f in range(1,N+1):
     if only and f not in only: continue
+    if not CFG.get('measure') and os.path.exists(f'{OUT}{f:04d}.png'): continue
     t=(f-1)/FPS
     ww=max([env(t,a,b,0.35) for a,b in WK]+[0])
-    ti=int(t*FPS)%(TL-1); wi=int(t*FPS*1.0)%(WL-1)
+    ti=int(t*FPS)%(TL-1); wi=int(t*24)%(WL-1)
     for pb in arm.pose.bones:
         q=Quaternion(T[pb.name][ti]) if pb.name in T else Quaternion()
         if ww>0 and pb.name in W: q=q.slerp(Quaternion(W[pb.name][wi]),ww)
@@ -75,13 +76,17 @@ for f in range(1,N+1):
     piv.rotation_euler[2]=math.radians(CFG.get('turn',80))*max([env(t,a-0.2,b+0.2,0.45) for a,b in WK]+[0])
     bpy.context.view_layer.update()
     for g in G:
-        bn,ax,deg,a,b,r=g[:6]; hz=g[6] if len(g)>6 else 0
+        bn,ax,deg,a,b,r=g[:6]; hz=g[6] if len(g)>6 else 0; loc=len(g)>7 and g[7]
         w=env(t,a,b,r)
         if w<=0: continue
         d=deg*w*(math.sin(t*hz*2*math.pi) if hz else 1)
         pb=arm.pose.bones[names[bn]]
         M=pb.matrix.copy(); tr=M.to_translation()
         R=aw.inverted().to_4x4()@Matrix.Rotation(math.radians(d),4,Vector(ax))@aw.to_4x4()
-        Nm=R@M; Nm.translation=tr; pb.matrix=Nm
+        Nm=M@Matrix.Rotation(math.radians(d),4,Vector(ax)) if loc else R@M; Nm.translation=tr; pb.matrix=Nm
         bpy.context.view_layer.update()
+    if CFG.get('measure'):
+        from bpy_extras.object_utils import world_to_camera_view as w2c
+        ps=[w2c(sc,co,arm.matrix_world@arm.pose.bones[names[k]].head) for k in ('LeftToeBase','RightToeBase')]
+        print('MS',f,round(ps[0].x*sc.render.resolution_x,1),round(ps[0].y,3),round(ps[1].x*sc.render.resolution_x,1),round(ps[1].y,3)); continue
     sc.render.filepath=f'{OUT}{f:04d}.png'; bpy.ops.render.render(write_still=True)
