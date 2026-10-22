@@ -14,11 +14,12 @@ C+=[('whoosh',W[i]-0.15,0.4) for i in (65,66,67,68)]
 C+=[('impact',W[83],0.9),('impact',W[91],0.6)]
 ins=['-i','vo/hx_v2.mp3','-i','vo/hx_music2.mp3']; fl=[]
 for j,(n,t,v) in enumerate(C):
+    v=v*0.5
     ins+=['-i',f'vo/hxsfx/{n}.mp3']; ms=int(max(0,t)*1000)
     fl.append(f'[{j+2}:a]volume={v},adelay={ms}|{ms}[s{j}]')
-fl.append(f'[0:a]adelay={int(A*1000)}|{int(A*1000)},apad,asplit[v][vk]')
-fl.append(f'[1:a]volume=0.55,afade=t=out:st={D-2.2}:d=2.2[m]')
-fl.append('[m][vk]sidechaincompress=threshold=0.03:ratio=6:attack=15:release=350[md]')
+fl.append(f'[0:a]volume=1.6,acompressor=threshold=0.1:ratio=3:attack=5:release=80,adelay={int(A*1000)}|{int(A*1000)},apad,asplit[v][vk]')
+fl.append(f'[1:a]volume=0.16,afade=t=out:st={D-2.2}:d=2.2[m]')
+fl.append('[m][vk]sidechaincompress=threshold=0.02:ratio=10:attack=10:release=400[md]')
 fl.append(f"[v][md]{''.join(f'[s{j}]' for j in range(len(C)))}amix=inputs={len(C)+2}:normalize=0,atrim=0:{D},loudnorm=I=-14:TP=-1.5:LRA=9[o]")
 subprocess.run(['ffmpeg','-loglevel','error','-y',*ins,'-filter_complex',';'.join(fl),'-map','[o]','-ar','48000','public/audio/hx_mix2.wav'],check=True)
 print('dur',D)
