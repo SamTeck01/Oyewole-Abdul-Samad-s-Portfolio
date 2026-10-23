@@ -1,0 +1,8 @@
+node_modules/
+build/
+out/
+stills/
+models/
+.venv/
+public/vo*/
+public/sfx/
