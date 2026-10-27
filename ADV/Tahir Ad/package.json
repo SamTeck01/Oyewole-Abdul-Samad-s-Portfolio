@@ -1,0 +1,21 @@
+{
+  "name": "tahir-ad",
+  "version": "1.0.0",
+  "description": "A 90-second ad for Tahir Adewale Oyewole, in 16:9 and 9:16.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@remotion/cli": "^4.0.242",
+    "@remotion/fonts": "^4.0.242",
+    "@remotion/media-utils": "^4.0.242",
+    "@remotion/transitions": "^4.0.242",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.242"
+  }
+}
