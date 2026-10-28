@@ -176,9 +176,9 @@ const Hero: React.FC = () => {
         f={f}
         keys={[
           {at: 0, x: 600, y: 540, w: 16, h: 16, fill: '#ffffff', glow: 'rgba(255,255,255,.8)'},
-          {at: 30, dur: 12, x: 960, y: 540, w: 300, h: 96, fill: '#171230', content: <T size={44} color="#DEDBF6">Sleep 67</T>},
-          {at: 80, dur: 14, x: 960, y: 540, w: 760, h: 460, r: 40, fill: '#1d1b2a', content: <T size={64}>Weekly score</T>},
-          {at: 130, dur: 14, x: 960, y: 540, w: 220, h: 220, r: 60, fill: '#8b7bd8', glow: 'rgba(139,123,216,.7)', content: <T size={110}>H</T>},
+          {at: 30, dur: 24, x: 960, y: 540, w: 300, h: 96, fill: '#171230', content: <T size={44} color="#DEDBF6">Sleep 67</T>},
+          {at: 80, dur: 28, x: 960, y: 540, w: 760, h: 460, r: 40, fill: '#1d1b2a', content: <T size={64}>Weekly score</T>},
+          {at: 130, dur: 28, x: 960, y: 540, w: 220, h: 220, r: 60, fill: '#8b7bd8', glow: 'rgba(139,123,216,.7)', content: <T size={110}>H</T>},
         ]}
         style={{border: '3px solid rgba(222,219,246,.6)'}}
       />

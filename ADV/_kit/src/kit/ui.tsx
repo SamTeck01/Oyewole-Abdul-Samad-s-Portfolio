@@ -6,6 +6,27 @@ import {EASE, tw} from './core';
 import {SANS} from './fonts';
 
 // ---------- backgrounds ----------
+/** Fine monochrome grain that dithers 8-bit banding out of big soft gradients. */
+export const Dither: React.FC<{amount?: number; seed?: number}> = ({amount = 0.015, seed = 3}) => {
+  const id = 'dth' + React.useId().replace(/:/g, '');
+  if (amount <= 0) return null;
+  return (
+    <svg width="100%" height="100%" style={{position: 'absolute', inset: 0, pointerEvents: 'none', opacity: amount}}>
+      <filter id={id} x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency={0.85} numOctaves={2} seed={seed} stitchTiles="stitch" />
+        <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 0 1" />
+        <feComponentTransfer>
+          <feFuncR type="discrete" tableValues="0 1" />
+          <feFuncG type="discrete" tableValues="0 1" />
+          <feFuncB type="discrete" tableValues="0 1" />
+          <feFuncA type="linear" slope={0} intercept={1} />
+        </feComponentTransfer>
+      </filter>
+      <rect width="100%" height="100%" filter={`url(#${id})`} />
+    </svg>
+  );
+};
+
 export const DarkGlow: React.FC<{
   base?: string;
   glow?: string;
@@ -24,8 +45,9 @@ export const DarkGlow: React.FC<{
   />
 );
 
-export const LightBlobs: React.FC<{f: number; base?: string; colors?: string[]}> = ({
+export const LightBlobs: React.FC<{f: number; base?: string; colors?: string[]; grain?: number}> = ({
   f,
+  grain = 0.015,
   base = '#f4f6fb',
   colors = ['#bcd6ff', '#d9e7ff', '#a9c8ff', '#e6efff'],
 }) => (
@@ -50,6 +72,7 @@ export const LightBlobs: React.FC<{f: number; base?: string; colors?: string[]}>
         />
       );
     })}
+    <Dither amount={grain} seed={1 + (Math.floor(f / 2) % 6)} />
   </AbsoluteFill>
 );
 
@@ -147,6 +170,8 @@ export const StatPill: React.FC<{
   const arc = evolvePath(Math.max(0.0001, Math.min(1, value / max)), d);
   return (
     <div style={{position: 'relative', width, height: height + (label ? 80 : 0)}}>
+      {/* 05: soft lilac halo around the whole pill, growing with the count */}
+      <div style={{position: 'absolute', left: 0, top: 0, width, height, borderRadius: height / 2, boxShadow: `0 0 ${height * 0.5}px ${height * 0.08}px ${hexA('#B9AEFF', 0.1 + 0.22 * Math.min(1, value / max))}`}} />
       <svg width={width} height={height} style={{position: 'absolute', overflow: 'visible'}}>
         <defs>
           <filter id="arcglow" x="-50%" y="-50%" width="200%" height="200%">
@@ -157,7 +182,7 @@ export const StatPill: React.FC<{
             </feMerge>
           </filter>
         </defs>
-        <path d={d} fill="rgba(18,17,24,0.92)" stroke="rgba(160,155,180,0.38)" strokeWidth={5} />
+        <path d={d} fill="rgba(24,21,34,0.94)" stroke="rgba(170,162,200,0.45)" strokeWidth={5} />
         <path
           d={d}
           fill="none"

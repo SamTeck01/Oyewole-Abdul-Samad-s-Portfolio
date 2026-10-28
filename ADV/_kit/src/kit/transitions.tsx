@@ -1,9 +1,9 @@
 // Transitions, flashes and finishing layers measured in the deep studies.
 // All take the frame `f` (60 fps; 30 fps reference counts are doubled) and are pure.
 import React, {useMemo} from 'react';
-import {AbsoluteFill, Easing, random, spring} from 'remotion';
+import {AbsoluteFill, Easing, random, spring, useVideoConfig} from 'remotion';
 import {EASE, lerp, prog, tw} from './core';
-import {hexA} from './ui';
+import {Dither, hexA} from './ui';
 import {useFid, type Ease} from './camera';
 
 // ---------------------------------------------------------------------------
@@ -79,6 +79,7 @@ export const WhipPan: React.FC<{
   overshoot?: number;
   bg?: string;
 }> = ({f, at, a, b, dir = 'left', dur = 8, dist = 1700, settle = 16, enter = 520, blurK = 0.09, blackGap = 0, overshoot = 0, bg = '#000'}) => {
+  const {width, height} = useVideoConfig();
   const [dx, dy] = DV[dir];
   const outPos = (t: number) => tw(t, [at, at + dur], [0, dist], Easing.in(Easing.exp));
   const s0 = at + dur + blackGap;
@@ -88,26 +89,61 @@ export const WhipPan: React.FC<{
     const sp = spring({frame: t - s0, fps: 60, config: {damping: 14, stiffness: 160}});
     return base - overshoot * Math.sin(Math.min(1, sp) * Math.PI) * (1 - prog(t, s0, s0 + settle * 2));
   };
-  if (f < at + dur) {
-    const p = outPos(f);
-    const v = Math.abs(vel(outPos, f));
+  if (blackGap > 0) {
+    // 06.6 style: intentional black frames between the two halves
+    if (f < at + dur) {
+      const p = outPos(f);
+      const v = Math.abs(vel(outPos, f));
+      return (
+        <AbsoluteFill style={{background: bg, overflow: 'hidden'}}>
+          <AbsoluteFill style={{transform: `translate(${dx * p}px,${dy * p}px)`}}>
+            <DirBlur sx={dx * v * blurK} sy={dy * v * blurK} ghosts={v > 60 ? 3 : 0}>
+              {a}
+            </DirBlur>
+          </AbsoluteFill>
+        </AbsoluteFill>
+      );
+    }
+    if (f < s0) return <AbsoluteFill style={{background: bg}} />;
+    const p = inPos(f);
+    const v = Math.abs(vel(inPos, f));
     return (
       <AbsoluteFill style={{background: bg, overflow: 'hidden'}}>
-        <AbsoluteFill style={{transform: `translate(${dx * p}px,${dy * p}px)`}}>
-          <DirBlur sx={dx * v * blurK} sy={dy * v * blurK} ghosts={v > 60 ? 3 : 0}>
-            {a}
+        <AbsoluteFill style={{transform: `translate(${-dx * p}px,${-dy * p}px)`}}>
+          <DirBlur sx={dx ? v * blurK * 1.6 : 0} sy={dy ? v * blurK * 1.6 : 0}>
+            {b}
           </DirBlur>
         </AbsoluteFill>
       </AbsoluteFill>
     );
   }
-  if (f < s0) return <AbsoluteFill style={{background: bg}} />;
-  const p = inPos(f);
-  const v = Math.abs(vel(inPos, f));
+  // Continuous strip (01 T3): A and B sit side by side on one strip, so the frame is never empty.
+  // Strip travels W - enter in `dur` f (expo-in), then the last `enter` px over `settle` f (expo-out).
+  const W = dx ? width : height;
+  const head = Math.max(0, W - enter);
+  const strip = (t: number) => {
+    if (t <= at + dur) return tw(t, [at, at + dur], [0, head], Easing.in(Easing.exp));
+    const base = head + tw(t, [at + dur, at + dur + settle], [0, W - head], Easing.out(Easing.exp));
+    if (!overshoot) return base;
+    const sp = spring({frame: t - at - dur, fps: 60, config: {damping: 14, stiffness: 160}});
+    return base + overshoot * Math.sin(Math.min(1, sp) * Math.PI) * (1 - prog(t, at + dur, at + dur + settle * 2));
+  };
+  if (f < at) return <AbsoluteFill style={{background: bg, overflow: 'hidden'}}>{a}</AbsoluteFill>;
+  const S = strip(f);
+  const v = Math.abs(vel(strip, f));
+  const k = v * blurK * (f > at + dur ? 1.6 : 1);
+  const showA = S < W - 1;
   return (
     <AbsoluteFill style={{background: bg, overflow: 'hidden'}}>
-      <AbsoluteFill style={{transform: `translate(${-dx * p}px,${-dy * p}px)`}}>
-        <DirBlur sx={dx ? v * blurK * 1.6 : 0} sy={dy ? v * blurK * 1.6 : 0}>
+      {showA && (
+        <AbsoluteFill style={{transform: `translate(${dx * S}px,${dy * S}px)`}}>
+          <DirBlur sx={dx * k} sy={dy * k} ghosts={v > 60 ? 3 : 0}>
+            {a}
+          </DirBlur>
+        </AbsoluteFill>
+      )}
+      <AbsoluteFill style={{transform: `translate(${dx * (S - W)}px,${dy * (S - W)}px)`}}>
+        <DirBlur sx={dx * k} sy={dy * k} ghosts={v > 60 ? 3 : 0}>
           {b}
         </DirBlur>
       </AbsoluteFill>
@@ -190,6 +226,22 @@ export const ZoomThrough: React.FC<{
       <AbsoluteFill style={{clipPath: `url(#${id})`, opacity: reveal}}>{b}</AbsoluteFill>
       <svg width="100%" height="100%" style={{position: 'absolute', inset: 0, opacity: lineOp, pointerEvents: 'none'}}>
         <path d={shape} transform={tr} fill="none" stroke={stroke} strokeWidth={strokeW} vectorEffect="non-scaling-stroke" />
+        {glyph && (
+          // 02 T5: the glyph keeps growing as a hairline OUTLINE of its own shape (screen-space
+          // 1.5 px ring from dilate - erode), drawn over the incoming scene
+          <>
+            <filter id={id + 'o'} x="-5%" y="-5%" width="110%" height="110%" filterUnits="userSpaceOnUse">
+              <feMorphology in="SourceAlpha" operator="dilate" radius={1} result="d" />
+              <feMorphology in="SourceAlpha" operator="erode" radius={0.6} result="e" />
+              <feComposite in="d" in2="e" operator="out" result="ring" />
+              <feFlood floodColor={stroke} />
+              <feComposite in2="ring" operator="in" />
+            </filter>
+            <g filter={`url(#${id}o)`} opacity={1 - fillOp}>
+              <g transform={tr}>{glyph}</g>
+            </g>
+          </>
+        )}
       </svg>
     </AbsoluteFill>
   );
@@ -356,11 +408,11 @@ export const HeroMorph: React.FC<{f: number; keys: HeroKey[]; style?: React.CSSP
   let A: React.ReactNode = cur?.content;
   let B: React.ReactNode = null;
   if (next && i > 0) {
-    const d = next.dur ?? 10;
+    const d = next.dur ?? 24; // 04 T1: 12-18 f @30 total
     if (f >= next.at - d) {
       t = (next.ease ?? EASE.inOut)(prog(f, next.at - d, next.at, (x) => x));
       box = lerpBox(cur, next, t);
-      blur = (next.blur ?? 10) * Math.sin(Math.PI * t);
+      blur = (next.blur ?? 18) * Math.sin(Math.PI * t);
       B = next.content;
     }
   } else if (i === 0) {
@@ -590,31 +642,35 @@ export const ySpinIn = (f: number, at: number, dur = 16): React.CSSProperties =>
 // ---------------------------------------------------------------------------
 /** animated iridescent noise (18.9): rotating pastel conic + feTurbulence (.004) colour noise hue-rotated by frame */
 export const HoloBg: React.FC<{f: number; speed?: number; freq?: number; style?: React.CSSProperties}> = ({f, speed = 3, freq = 0.004, style}) => {
+  // Oil-slick look of 18.9: repeating pastel rainbow bands, warped by very low-frequency noise
+  // (smooth swirls, not blotches), softened, with a slow drifting sheen. `freq` scales the warp
+  // frequency (default .004 -> .0011 effective), `speed` the band drift.
   const id = useFid('holo');
+  const gid = id + 'g';
+  const wf = freq * 0.28;
+  const shift = (f * speed * 0.9) % 900;
+  const stops = ['#ffa8e6', '#f4b8ff', '#a8e6ff', '#b8ffd8', '#fff6a8', '#ffc8a8', '#ffa8e6'];
   return (
-    <AbsoluteFill style={{background: '#dfe4ff', overflow: 'hidden', ...style}}>
-      <AbsoluteFill
-        style={{
-          background: `conic-gradient(from ${f * speed * 0.5}deg at 50% 50%, #ff9ad5, #a0e9ff, #c6ffb1, #fff3a0, #ffb0f0, #9ab6ff, #ff9ad5)`,
-          filter: 'blur(30px)',
-          transform: 'scale(1.3)',
-        }}
-      />
-      <svg width="100%" height="100%" style={{position: 'absolute', inset: 0, mixBlendMode: 'soft-light'}}>
-        <filter id={id} x="0" y="0" width="100%" height="100%">
-          <feTurbulence type="fractalNoise" baseFrequency={freq} numOctaves={3} seed={7} />
-          <feColorMatrix type="hueRotate" values={String((f * speed) % 360)} />
-          <feColorMatrix type="saturate" values="4" />
-          <feComponentTransfer>
-            <feFuncA type="linear" slope="0" intercept="1" />
-          </feComponentTransfer>
-        </filter>
-        <rect width="100%" height="100%" filter={`url(#${id})`} />
+    <AbsoluteFill style={{background: '#f0d8f4', overflow: 'hidden', ...style}}>
+      <svg width="100%" height="100%" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" style={{position: 'absolute', inset: 0}}>
+        <defs>
+          <linearGradient id={gid} gradientUnits="userSpaceOnUse" x1={shift} y1={0} x2={shift + 900} y2={520} spreadMethod="repeat">
+            {stops.map((c, i) => (
+              <stop key={i} offset={i / (stops.length - 1)} stopColor={c} />
+            ))}
+          </linearGradient>
+          <filter id={id} x="-10%" y="-10%" width="120%" height="120%" colorInterpolationFilters="sRGB">
+            <feTurbulence type="fractalNoise" baseFrequency={`${wf} ${wf * 1.6}`} numOctaves={2} seed={11} result="n" />
+            <feDisplacementMap in="SourceGraphic" in2="n" scale={680} xChannelSelector="R" yChannelSelector="G" result="d" />
+            <feGaussianBlur in="d" stdDeviation={10} />
+          </filter>
+        </defs>
+        <rect x={-300} y={-300} width={2520} height={1680} fill={`url(#${gid})`} filter={`url(#${id})`} />
       </svg>
       <AbsoluteFill
         style={{
-          background: `linear-gradient(${100 + f * speed * 0.3}deg, rgba(255,255,255,0) 30%, rgba(255,255,255,.55) 50%, rgba(255,255,255,0) 70%)`,
-          mixBlendMode: 'overlay',
+          background: `linear-gradient(${120 + f * speed * 0.15}deg, rgba(255,255,255,0) 25%, rgba(255,255,255,.35) 50%, rgba(255,255,255,0) 75%)`,
+          mixBlendMode: 'soft-light',
         }}
       />
     </AbsoluteFill>
@@ -988,7 +1044,7 @@ export const GlowBg: React.FC<{f?: number; variant?: 'teal-band' | 'red-room' | 
 };
 
 /** 09.1 / 12.3 airy light blobs: base #F1F9FF, blobs 60-80 % of width off the corners, blur 140, drift +-40 */
-export const AiryBlobs: React.FC<{f: number; base?: string; color?: string; n?: number}> = ({f, base = '#F1F9FF', color = '#BFE0FA', n = 4}) => (
+export const AiryBlobs: React.FC<{f: number; base?: string; color?: string; n?: number; grain?: number}> = ({f, base = '#F1F9FF', color = '#BFE0FA', n = 4, grain = 0.015}) => (
   <AbsoluteFill style={{background: base, overflow: 'hidden'}}>
     {Array.from({length: n}).map((_, i) => {
       const cx = [0, 100, 100, 0][i % 4];
@@ -1012,6 +1068,7 @@ export const AiryBlobs: React.FC<{f: number; base?: string; color?: string; n?: 
         />
       );
     })}
+    <Dither amount={grain} seed={1 + (Math.floor(f / 2) % 6)} />
   </AbsoluteFill>
 );
 

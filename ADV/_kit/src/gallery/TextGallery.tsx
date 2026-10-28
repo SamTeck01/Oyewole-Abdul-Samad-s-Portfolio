@@ -295,7 +295,7 @@ export const PANELS: {id: string; dur: number; render: (f: number) => React.Reac
     dur: 260,
     render: (f) => (
       <C color="#F2EBF3">
-        <TypeBox text="Hey Nova, can you make some photos for my new linen jacket?" f={f} placeholder="Tell Nova what you need..." width={1400} size={46} bg="#F7F5F8" radius={36} growIn={20} follow={{anchor: 0.7}} right={<div style={{width: 64, height: 64, borderRadius: 32, background: '#22D3EE'}} />} />
+        <TypeBox text="Hey Nova, can you make some photos for my new linen jacket?" f={f} placeholder="Tell Nova what you need..." size={46} bg="#F7F5F8" radius={36} growIn={20} wrap={2} width={1000} right={<div style={{width: 64, height: 64, borderRadius: 32, background: '#22D3EE'}} />} />
         <div style={{position: 'absolute', top: 700}}>
           <ShimmerText text="Writing..." f={f} size={44} base="#B48BD8" />
         </div>

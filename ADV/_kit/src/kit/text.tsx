@@ -170,8 +170,10 @@ export const SmearWords: React.FC<
     accentColor?: string;
     exitAt?: number; // whole line whips out (expo-in, 4f@30 -> 8)
     exitDistance?: number;
+    samples?: number; // motion-blur sub-frame samples (1 = off)
+    shutter?: number; // frames the shutter stays open (1 = 360deg)
   }
-> = ({words, f, stagger = 10, dur = 16, from = 'right', distance = 320, blur = 60, accentIdx = [], accentColor = '#0A6BF0', exitAt, exitDistance = -1400, size = 96, weight = 600, family = SANS, color = '#111', tracking = -0.025}) => {
+> = ({words, f, stagger = 10, dur = 16, from = 'right', distance = 320, blur = 60, samples = 8, shutter = 1.5, accentIdx = [], accentColor = '#0A6BF0', exitAt, exitDistance = -1400, size = 96, weight = 600, family = SANS, color = '#111', tracking = -0.025}) => {
   const {xs} = layout(words, size, weight, family, tracking);
   const horiz = from === 'right' || from === 'left';
   const sgn = from === 'right' || from === 'down' ? 1 : -1;
@@ -180,27 +182,38 @@ export const SmearWords: React.FC<
   return (
     <Smear x={exV * blur} style={{position: 'relative', height: size * 1.2, width: 0, transform: `translateX(${ex * exitDistance}px)`, opacity: 1 - tw(f, [(exitAt ?? 1e9) + 6, (exitAt ?? 1e9) + 10], [0, 1])}}>
       {words.map((w, i) => {
-        const lf = f - i * stagger;
-        if (lf < 0) return null;
-        const k = prog(lf, 0, dur);
-        const off = (1 - k) * distance * sgn;
-        const sm = (1 - k) * blur;
+        const lf0 = f - i * stagger;
+        if (lf0 < 0) return null;
+        // real (multi-sample) motion blur: `samples` sub-frame positions across `shutter` frames,
+        // layer k drawn at opacity 1/k so every sample ends up equally weighted; a lighter
+        // one-axis gaussian on top fills the gaps between samples.
+        const n = prog(lf0, 0, dur) >= 1 ? 1 : Math.max(1, samples);
         return (
-          <Smear
-            key={i}
-            x={horiz ? sm : 0}
-            y={horiz ? 0 : sm}
-            style={{
-              ...txtStyle({size, weight, family, tracking, color: accentIdx.includes(i) ? accentColor : color}),
-              position: 'absolute',
-              left: xs[i],
-              top: 0,
-              opacity: tw(lf, [0, 5], [0, 1]),
-              transform: horiz ? `translateX(${off}px) scaleX(${1 + (1 - k) * 0.25})` : `translateY(${off}px) scaleY(${1 + (1 - k) * 0.25})`,
-            }}
-          >
-            {w}
-          </Smear>
+          <React.Fragment key={i}>
+            {Array.from({length: n}).map((_, kIdx) => {
+              const lf = lf0 - (n === 1 ? 0 : (shutter * kIdx) / (n - 1));
+              const k = prog(Math.max(0, lf), 0, dur);
+              const off = (1 - k) * distance * sgn;
+              const sm = (1 - k) * blur * (n > 1 ? 0.45 : 1);
+              return (
+                <Smear
+                  key={kIdx}
+                  x={horiz ? sm : 0}
+                  y={horiz ? 0 : sm}
+                  style={{
+                    ...txtStyle({size, weight, family, tracking, color: accentIdx.includes(i) ? accentColor : color}),
+                    position: 'absolute',
+                    left: xs[i],
+                    top: 0,
+                    opacity: tw(lf, [0, 5], [0, 1]) / (kIdx + 1),
+                    transform: horiz ? `translateX(${off}px) scaleX(${1 + (1 - k) * 0.25})` : `translateY(${off}px) scaleY(${1 + (1 - k) * 0.25})`,
+                  }}
+                >
+                  {w}
+                </Smear>
+              );
+            })}
+          </React.Fragment>
         );
       })}
     </Smear>
@@ -692,6 +705,53 @@ export const Caret: React.FC<{f: number; h: number; color?: string; w?: number; 
   />
 );
 
+/** greedy word wrap of `str` into lines no wider than `maxW` */
+const wrapLines = (str: string, maxW: number, size: number, weight: number, family: string, ls: number) => {
+  const lines: string[] = [''];
+  for (const tok of str.split(/(?<= )/)) {
+    const cur = lines[lines.length - 1];
+    if (cur && textW((cur + tok).trimEnd(), size, weight, family, ls) > maxW) lines.push(tok);
+    else lines[lines.length - 1] = cur + tok;
+  }
+  return lines;
+};
+
+const WrapBox: React.FC<any> = (p) => {
+  const {text, s, f, n, wrap, placeholder, width, h, radius, bg, border, shadow, right, underglow, g, padX, size, weight, family, color, tracking, ls, caretColor, caretGlow, typing} = p;
+  const lineH = size * 1.25;
+  const maxW = width - padX * 2 - (right ? size * 1.8 : 0);
+  const linesAt = (fr: number) => Math.min(wrap, wrapLines(text.slice(0, typedCount(s, fr)), maxW, size, weight, family, ls).length);
+  // box height eases to the new line count over ~10 f
+  let acc = 0;
+  for (let k = 0; k < 10; k++) acc += linesAt(f - k);
+  const lnS = EASE.inOut(acc / 10 - Math.floor(acc / 10)) + Math.floor(acc / 10);
+  const H = h + (lnS - 1) * lineH;
+  const lines = wrapLines(text.slice(0, n), maxW, size, weight, family, ls);
+  const vis = lines.slice(-wrap);
+  return (
+    <div style={{position: 'relative', width, height: H}}>
+      {underglow && (
+        <div style={{position: 'absolute', left: width * 0.1, right: width * 0.1, bottom: -h * 0.6, height: h * 1.4, borderRadius: '50%', background: underglow, filter: 'blur(90px)', opacity: 0.8 * g}} />
+      )}
+      <div style={{position: 'absolute', inset: 0, top: (H * (1 - g)) / 2, height: H * g, borderRadius: radius, background: bg, border, boxShadow: shadow, overflow: 'hidden', opacity: tw(g, [0, 0.2], [0, 1])}}>
+        <div style={{position: 'absolute', left: padX, top: (h - lineH) / 2, width: maxW, ...txtStyle({size, weight, family, tracking, color}), lineHeight: `${lineH}px`}}>
+          {n === 0 && placeholder ? (
+            <span style={{opacity: 0.4}}>{placeholder}</span>
+          ) : (
+            vis.map((l: string, i: number) => (
+              <div key={i} style={{height: lineH, display: 'flex', alignItems: 'center'}}>
+                {l}
+                {i === vis.length - 1 && g >= 1 && <Caret f={f} h={size * 1.05} color={caretColor ?? color} w={Math.max(2, size * 0.06)} glow={caretGlow} blink={!typing} />}
+              </div>
+            ))
+          )}
+        </div>
+        {right && <div style={{position: 'absolute', right: size * 0.35, bottom: 0, height: h, display: 'flex', alignItems: 'center'}}>{right}</div>}
+      </div>
+    </div>
+  );
+};
+
 export const TypeBox: React.FC<
   Txt & {
     text: string;
@@ -711,10 +771,12 @@ export const TypeBox: React.FC<
     follow?: {anchor?: number; lag?: number}; // camera keeps caret at anchor*width (0.55-0.6)
     right?: React.ReactNode; // send button / icons
     shadow?: string;
+    wrap?: number; // max lines: text wraps (greedy, like a real textarea) and the box grows (18: 2 lines)
   }
 > = ({
   text,
   f,
+  wrap,
   cps = 16,
   sched,
   placeholder,
@@ -753,6 +815,9 @@ export const TypeBox: React.FC<
     shift = Math.max(0, cx + padX - width * (follow.anchor ?? 0.55));
   }
   const typing = n > 0 && n < text.length && f - s[n - 1] < 10;
+  if (wrap && wrap > 1) return (
+    <WrapBox {...{text, s, f, n, wrap, placeholder, width, h, radius, bg, border, shadow, right, underglow, g, padX, size, weight, family, color, tracking, ls, caretColor, caretGlow, typing}} />
+  );
   return (
     <div style={{position: 'relative', width, height: h}}>
       {underglow && (

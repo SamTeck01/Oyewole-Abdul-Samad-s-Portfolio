@@ -3,6 +3,7 @@ import React from 'react';
 import {AbsoluteFill, useCurrentFrame} from 'remotion';
 import {DarkGlow, LightBlobs} from '../kit/ui';
 import * as B from '../kit/blocks';
+import {MacCursor} from '../kit/cursor';
 
 type Entry = {id: string; still: number; dur?: number; bg: 'dark' | 'light' | 'violet' | 'space' | 'pastel'; render: (f: number) => React.ReactNode};
 
@@ -19,11 +20,8 @@ const Bg: React.FC<{k: Entry['bg']; f: number}> = ({k, f}) =>
     <LightBlobs f={f} />
   );
 
-const Arrow: React.FC = () => (
-  <svg width={46} height={60} viewBox="0 0 23 30" style={{filter: 'drop-shadow(0 3px 4px rgba(0,0,0,0.35))'}}>
-    <path d="M2 2v22l6-5 4 9 4-2-4-9h8Z" fill="#111" stroke="#fff" strokeWidth={2} strokeLinejoin="round" />
-  </svg>
-);
+// macOS cursor (src/kit/cursor.tsx); CursorSlot places the hotspot at its x,y
+const Arrow: React.FC = () => <MacCursor x={0} y={0} type="arrow" size={64} />;
 
 const logos = ['Acme', 'Globex', 'Umbra', 'Hooli', 'Initech', 'Vandelay', 'Stark'].map((t) => <B.Wordmark key={t} text={t} />);
 

@@ -60,11 +60,11 @@ export const MacCursor: React.FC<MacCursorProps> = ({
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const cfg = { damping: 18, stiffness: 420, mass: 0.5 };
-  let scale = pressed ? 0.9 : 1;
+  let scale = pressed ? 0.85 : 1; // 09/16: click squashes to 0.85
   if (pressedAt !== undefined) {
     const down = spring({ frame: frame - pressedAt, fps, config: cfg });
     const up = releasedAt !== undefined ? spring({ frame: frame - releasedAt, fps, config: cfg }) : 0;
-    scale = 1 - 0.1 * down + 0.1 * up;
+    scale = 1 - 0.15 * down + 0.15 * up;
   }
   const hs = HOTSPOTS[type];
   const id = React.useId().replace(/:/g, "");
@@ -129,9 +129,9 @@ export const cursorPosition = (
 export const useCursorPath = (waypoints: Waypoint[], ease?: (t: number) => number) =>
   cursorPosition(waypoints, useCurrentFrame(), ease);
 
-/** Cursor that travels the waypoints; clicks (press 6 frames, ripple) on waypoints with click:true. */
+/** Cursor that travels the waypoints; clicks (press 4 frames = 2 f @30 as in 09, ripple) on waypoints with click:true. */
 export const CursorPath: React.FC<{ waypoints: Waypoint[]; type?: CursorType; size?: number; shadow?: boolean; ripple?: boolean; pressFrames?: number }> = ({
-  waypoints, type = "arrow", size = 64, shadow = true, ripple = true, pressFrames = 6,
+  waypoints, type = "arrow", size = 64, shadow = true, ripple = true, pressFrames = 4,
 }) => {
   const frame = useCurrentFrame();
   const { x, y, index } = cursorPosition(waypoints, frame);
