@@ -219,6 +219,15 @@ const Domino: React.FC = () => {
             </div>
           );
         })}
+        {(() => {
+          const t0 = a + 10 + EXAMS.length * 6 + 6;
+          const p = prog(f, t0, t0 + 30, EASE.back);
+          return (
+            <div style={{gridColumn: '1 / -1', height: (tall ? 150 : 120) * u, borderRadius: 30 * u, background: `linear-gradient(135deg, ${O2}, ${O})`, boxShadow: '0 24px 50px rgba(255,130,43,.3)', transform: `rotateX(${lerp(-95, 0, p)}deg)`, transformOrigin: 'bottom', opacity: Math.min(1, p * 3), display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 50 * u, fontWeight: 800, color: '#fff', letterSpacing: -1.5 * u}}>
+              + lots more
+            </div>
+          );
+        })()}
       </div>
     </AbsoluteFill>
   );
@@ -278,7 +287,7 @@ const Papers: React.FC = () => {
   const a = s(17.4);
   const pw = (tall ? 900 : 560) * u;
   const ph = pw * 1.25;
-  const years = ['Nov 2019', 'May 2020', 'Nov 2020', 'May 2021', 'Nov 2021', 'May 2022', 'Nov 2022', 'May 2023', 'Nov 2023', 'May 2024', 'Nov 2024', 'May 2025'];
+  const years = ['ICAN', 'ACCA', 'CIMA', 'CITN', 'CIBN', 'ANAN', 'CFA', 'CPA', 'CIS', 'CFE', 'ICAN', 'ACCA'];
   const flipT = (i: number) => a + 14 + i * 5;
   const open = a + 14 + years.length * 5 + 6;
   const cy = tall ? H * 0.6 : H * 0.64;
@@ -289,7 +298,7 @@ const Papers: React.FC = () => {
       <div style={{position: 'absolute', left: W / 2 - pw / 2, top: cy - ph / 2, width: pw, height: ph, perspective: 2000 * u}}>
         {/* solution page underneath */}
         <div style={{position: 'absolute', inset: 0, borderRadius: 28 * u, background: '#fff', boxShadow: '0 40px 90px rgba(60,35,10,.2)', padding: 46 * u}}>
-          <div style={{fontSize: 22 * u, fontWeight: 800, color: O, letterSpacing: 2 * u}}>ICAN · MAY 2025 · Q3 SOLUTION</div>
+          <div style={{fontSize: 22 * u, fontWeight: 800, color: O, letterSpacing: 2 * u}}>FINANCIAL REPORTING · WORKED SOLUTION</div>
           <div style={{fontSize: 34 * u, fontWeight: 800, color: D, marginTop: 18 * u, lineHeight: 1.2}}>Compute the deferred tax liability at year end.</div>
           {['Carrying amount   ₦48.0m', 'Tax base   ₦30.0m', 'Temporary diff.   ₦18.0m', 'Tax rate   30%'].map((t, i) => (
             <div key={t} style={{display: 'flex', justifyContent: 'space-between', fontSize: 28 * u, color: D, marginTop: 22 * u, opacity: tw(f, [open + 8 + i * 6, open + 18 + i * 6], [0, 1])}}>
@@ -312,8 +321,8 @@ const Papers: React.FC = () => {
           const p = prog(f, flipT(i), flipT(i) + 14, EASE.inOut);
           if (p >= 1) return null;
           return (
-            <div key={y} style={{position: 'absolute', inset: 0, borderRadius: 28 * u, background: i % 2 ? '#FBFAF8' : '#F3F0EC', border: '1px solid #E4DFD8', transformOrigin: 'top', transform: `rotateX(${p * 110}deg) translateY(${-(years.length - i) * 3 * u}px)`, zIndex: years.length - i, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', opacity: 1 - prog(f, flipT(i) + 8, flipT(i) + 14, (t) => t)}}>
-              <div style={{fontSize: 30 * u, color: MUTE, fontWeight: 700, letterSpacing: 3 * u}}>ICAN PAST QUESTIONS</div>
+            <div key={i} style={{position: 'absolute', inset: 0, borderRadius: 28 * u, background: i % 2 ? '#FBFAF8' : '#F3F0EC', border: '1px solid #E4DFD8', transformOrigin: 'top', transform: `rotateX(${p * 110}deg) translateY(${-(years.length - i) * 3 * u}px)`, zIndex: years.length - i, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', opacity: 1 - prog(f, flipT(i) + 8, flipT(i) + 14, (t) => t)}}>
+              <div style={{fontSize: 30 * u, color: MUTE, fontWeight: 700, letterSpacing: 3 * u}}>PAST QUESTIONS</div>
               <div style={{fontSize: 96 * u, fontWeight: 800, color: D, letterSpacing: -3 * u}}>{y}</div>
             </div>
           );
@@ -495,6 +504,28 @@ const Night: React.FC = () => {
   );
 };
 
+// ---------- store badges ----------
+const StoreBadge: React.FC<{kind: 'play' | 'apple'; u: number}> = ({kind, u}) => (
+  <div style={{display: 'flex', alignItems: 'center', gap: 18 * u, padding: `${18 * u}px ${34 * u}px ${18 * u}px ${26 * u}px`, borderRadius: 22 * u, background: '#000', border: '2px solid #A6A6A6', color: '#fff', boxShadow: '0 24px 60px rgba(21,22,28,.3)'}}>
+    {kind === 'play' ? (
+      <svg width={54 * u} height={60 * u} viewBox="0 0 48 52">
+        <path d="M2 2l26 24L2 50c-1-.6-1.6-1.7-1.6-3V5C.4 3.7 1 2.6 2 2z" fill="#00D7FE" />
+        <path d="M37 17L28 26 2 2c.6-.4 1.6-.5 2.6.1z" fill="#00F076" />
+        <path d="M37 35L4.6 51.9c-1 .6-2 .5-2.6.1l26-26z" fill="#FF3A44" />
+        <path d="M37 17l8.4 4.8c2.6 1.5 2.6 4 0 5.5L37 35l-9-9z" fill="#FFD400" />
+      </svg>
+    ) : (
+      <svg width={50 * u} height={60 * u} viewBox="0 0 384 512">
+        <path fill="#fff" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
+      </svg>
+    )}
+    <div style={{lineHeight: 1.05}}>
+      <div style={{fontSize: 20 * u, fontWeight: 500}}>{kind === 'play' ? 'GET IT ON' : 'Download on the'}</div>
+      <div style={{fontSize: 40 * u, fontWeight: 700, letterSpacing: -0.5 * u}}>{kind === 'play' ? 'Google Play' : 'App Store'}</div>
+    </div>
+  </div>
+);
+
 // ---------- 11. end card ----------
 const End: React.FC = () => {
   const f = useCurrentFrame();
@@ -510,14 +541,14 @@ const End: React.FC = () => {
         <div style={{opacity: lp, transform: `translateY(${(1 - lp) * 50 * u}px) scale(${0.92 + lp * 0.08})`}}>
           <Img src={staticFile('xa/logo_dark.png')} style={{width: (tall ? 900 : 860) * u}} />
         </div>
-        <div style={{marginTop: 40 * u, fontSize: 34 * u, fontWeight: 600, color: MUTE, opacity: tw(f, [s(35.2), s(35.8)], [0, 1])}}>Trusted by students across Nigeria</div>
+        <div style={{marginTop: 40 * u, fontSize: 34 * u, fontWeight: 600, color: MUTE, opacity: tw(f, [s(35.2), s(35.8)], [0, 1])}}>Trusted by students worldwide</div>
         <div style={{position: 'relative', marginTop: 50 * u, transform: `scale(${btn * press})`, opacity: Math.min(1, btn * 2)}}>
-          <div style={{display: 'flex', alignItems: 'center', gap: 22 * u, padding: `${28 * u}px ${56 * u}px`, borderRadius: 99, background: D, color: '#fff', fontSize: 44 * u, fontWeight: 800, boxShadow: '0 30px 70px rgba(21,22,28,.3)'}}>
-            <Icon k="android" c="#3DDC84" z={56 * u} />
-            Download for Android
+          <div style={{display: 'flex', gap: 26 * u, flexDirection: 'row', transform: `scale(${tall ? 1.45 : 1.15})`}}>
+            <StoreBadge kind="play" u={u} />
+            <StoreBadge kind="apple" u={u} />
           </div>
-          <div style={{position: 'absolute', inset: -12 * u, borderRadius: 99, border: `4px solid ${O}`, opacity: tw(f, [s(38.0), s(38.2), s(39.3)], [0, 0.9, 0]), transform: `scale(${tw(f, [s(38.0), s(39.3)], [1, 1.25])})`}} />
-          <Ripple at={s(37.9)} x={600 * u} y={60 * u} c="#fff" />
+          <div style={{position: 'absolute', inset: -12 * u, borderRadius: 30 * u, border: `4px solid ${O}`, opacity: tw(f, [s(38.0), s(38.2), s(39.3)], [0, 0.9, 0]), transform: `scale(${tw(f, [s(38.0), s(39.3)], [1, 1.25])})`}} />
+          <Ripple at={s(37.9)} x={200 * u} y={60 * u} c="#fff" />
         </div>
         <div style={{marginTop: 34 * u, fontSize: 36 * u, fontWeight: 700, color: O, opacity: tw(f, [s(37.4), s(37.9)], [0, 1])}}>excelacademyonline.com</div>
       </AbsoluteFill>
