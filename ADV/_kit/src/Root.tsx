@@ -13,12 +13,15 @@ import {HaixingEN, HaixingFrame, HX_DURATION} from './demos/Haixing';
 import {Tunde3DTest} from './demos/Tunde3DTest';
 import {PuppetTest} from './demos/PuppetTest';
 import {ExcelWide, ExcelTall, XA_DURATION} from './demos/ExcelAd';
+import {ExcelPass, XP_DURATION} from './demos/ExcelPass';
 import {SafetyVideo, SafetyFrame, ASP_DURATION} from './demos/SafetyVideo';
 
 loadFonts();
 
 export const Root: React.FC = () => (
   <>
+    <Composition id="PassTall" component={ExcelPass} width={1080} height={1920} fps={60} durationInFrames={XP_DURATION} defaultProps={{mute: false}} />
+    <Composition id="PassWide" component={ExcelPass} width={1920} height={1080} fps={60} durationInFrames={XP_DURATION} defaultProps={{mute: false}} />
     <Composition id="ExcelWide" component={ExcelWide} width={1920} height={1080} fps={60} durationInFrames={XA_DURATION} defaultProps={{mute: false}} />
     <Composition id="ExcelTall" component={ExcelTall} width={1080} height={1920} fps={60} durationInFrames={XA_DURATION} defaultProps={{mute: false}} />
     {/* Rebuild of reference 05 (score-pill template), 16:9 */}

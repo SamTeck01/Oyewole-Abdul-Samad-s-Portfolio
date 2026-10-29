@@ -13,7 +13,7 @@ const MUTE = '#6B6E78';
 const s = (t: number) => Math.round(t * 60);
 
 // ---------- small pieces ----------
-const Reveal: React.FC<{at: number; children: React.ReactNode; dy?: number; dur?: number; style?: React.CSSProperties}> = ({at, children, dy = 60, dur = 34, style}) => {
+export const Reveal: React.FC<{at: number; children: React.ReactNode; dy?: number; dur?: number; style?: React.CSSProperties}> = ({at, children, dy = 60, dur = 34, style}) => {
   const f = useCurrentFrame();
   const p = prog(f, at, at + dur);
   return (
@@ -23,7 +23,7 @@ const Reveal: React.FC<{at: number; children: React.ReactNode; dy?: number; dur?
   );
 };
 
-const Words: React.FC<{text: string; at: number; gap?: number; accent?: string[]}> = ({text, at, gap = 4, accent = []}) => (
+export const Words: React.FC<{text: string; at: number; gap?: number; accent?: string[]}> = ({text, at, gap = 4, accent = []}) => (
   <>
     {text.split(' ').map((w, i) => (
       <Reveal key={i} at={at + i * gap} style={{marginRight: '0.24em', color: accent.includes(w) ? O : undefined}}>
@@ -33,7 +33,7 @@ const Words: React.FC<{text: string; at: number; gap?: number; accent?: string[]
   </>
 );
 
-const Ripple: React.FC<{x: number; y: number; at: number; c?: string}> = ({x, y, at, c = O}) => {
+export const Ripple: React.FC<{x: number; y: number; at: number; c?: string}> = ({x, y, at, c = O}) => {
   const f = useCurrentFrame();
   if (f < at || f > at + 40) return null;
   const p = prog(f, at, at + 36);
@@ -45,7 +45,7 @@ const Ripple: React.FC<{x: number; y: number; at: number; c?: string}> = ({x, y,
   );
 };
 
-const Icon: React.FC<{k: 'play' | 'doc' | 'check' | 'chart' | 'clock' | 'android' | 'star'; c?: string; z?: number}> = ({k, c = '#fff', z = 26}) => {
+export const Icon: React.FC<{k: 'play' | 'doc' | 'check' | 'chart' | 'clock' | 'android' | 'star'; c?: string; z?: number}> = ({k, c = '#fff', z = 26}) => {
   const p: Record<string, React.ReactNode> = {
     play: <path d="M8 5v14l11-7z" fill={c} />,
     doc: <path d="M6 3h8l4 4v14H6zM9 11h6M9 15h6" stroke={c} strokeWidth={2} fill="none" strokeLinejoin="round" />,
@@ -68,7 +68,7 @@ const Icon: React.FC<{k: 'play' | 'doc' | 'check' | 'chart' | 'clock' | 'android
 // ---------- app screens (390 x 843 logical) ----------
 const SW = 390;
 const SH = 843;
-const Bar: React.FC<{dark?: boolean}> = ({dark}) => (
+export const Bar: React.FC<{dark?: boolean}> = ({dark}) => (
   <div style={{height: 54, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', padding: '0 30px 6px', fontSize: 15, fontWeight: 600, color: dark ? '#fff' : D}}>
     <span>9:41</span>
     <span style={{letterSpacing: 2}}>●●● ▮</span>
@@ -88,7 +88,7 @@ const Splash: React.FC = () => {
   );
 };
 
-const Card: React.FC<{children: React.ReactNode; style?: React.CSSProperties}> = ({children, style}) => (
+export const Card: React.FC<{children: React.ReactNode; style?: React.CSSProperties}> = ({children, style}) => (
   <div style={{background: '#fff', borderRadius: 22, boxShadow: '0 6px 20px rgba(20,22,28,.06)', ...style}}>{children}</div>
 );
 
@@ -397,7 +397,7 @@ const Callout: React.FC<{at: number; out: number; icon: Parameters<typeof Icon>[
   );
 };
 
-const Backdrop: React.FC = () => {
+export const Backdrop: React.FC = () => {
   const f = useCurrentFrame();
   const {width, height} = useVideoConfig();
   const b = (cx: number, cy: number, r: number, c: string, sp: number) => (
