@@ -6,6 +6,7 @@ const FILES: [string, string, string, string][] = [
   ['Inter', 'inter-latin-500-normal.woff2', '500', 'normal'],
   ['Inter', 'inter-latin-600-normal.woff2', '600', 'normal'],
   ['Inter', 'inter-latin-700-normal.woff2', '700', 'normal'],
+  ['Inter', 'inter-latin-800-normal.woff2', '800', 'normal'],
   ['Instrument Serif', 'instrument-serif-latin-400-italic.woff2', '400', 'italic'],
 ];
 

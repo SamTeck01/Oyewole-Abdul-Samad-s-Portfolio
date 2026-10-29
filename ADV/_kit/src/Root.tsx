@@ -12,12 +12,15 @@ import {Safety3D, Safety3DFrame, ASP3D_DURATION} from './demos/Safety3D';
 import {HaixingEN, HaixingFrame, HX_DURATION} from './demos/Haixing';
 import {Tunde3DTest} from './demos/Tunde3DTest';
 import {PuppetTest} from './demos/PuppetTest';
+import {ExcelWide, ExcelTall, XA_DURATION} from './demos/ExcelAd';
 import {SafetyVideo, SafetyFrame, ASP_DURATION} from './demos/SafetyVideo';
 
 loadFonts();
 
 export const Root: React.FC = () => (
   <>
+    <Composition id="ExcelWide" component={ExcelWide} width={1920} height={1080} fps={60} durationInFrames={XA_DURATION} defaultProps={{mute: false}} />
+    <Composition id="ExcelTall" component={ExcelTall} width={1080} height={1920} fps={60} durationInFrames={XA_DURATION} defaultProps={{mute: false}} />
     {/* Rebuild of reference 05 (score-pill template), 16:9 */}
     <Composition id="HaloScore" component={HaloScore} width={1920} height={1080} fps={60} durationInFrames={660} />
     {/* Rebuild of reference 17 (VO-driven caption template), 9:16 */}
