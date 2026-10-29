@@ -99,7 +99,7 @@ const COURSES: [string, string, string][] = [
   ['CITN', 'Taxation', '#F4E6FF'],
 ];
 
-const Home: React.FC<{at: number}> = ({at}) => {
+export const Home: React.FC<{at: number}> = ({at}) => {
   const f = useCurrentFrame();
   const it = (i: number) => ({opacity: tw(f, [at + i * 5, at + i * 5 + 14], [0, 1]), transform: `translateY(${tw(f, [at + i * 5, at + i * 5 + 24], [30, 0])}px)`});
   const cont = tw(f, [at + 30, at + 90], [0, 64], EASE.count);
@@ -145,7 +145,7 @@ const Home: React.FC<{at: number}> = ({at}) => {
   );
 };
 
-const Lesson: React.FC<{at: number}> = ({at}) => {
+export const Lesson: React.FC<{at: number}> = ({at}) => {
   const f = useCurrentFrame();
   const pl = tw(f, [at + 40, at + 160], [0, 38], (t) => t);
   return (
@@ -180,7 +180,7 @@ const Lesson: React.FC<{at: number}> = ({at}) => {
   );
 };
 
-const PastQ: React.FC<{at: number}> = ({at}) => {
+export const PastQ: React.FC<{at: number}> = ({at}) => {
   const f = useCurrentFrame();
   const rows = ['May 2025', 'Nov 2024', 'May 2024', 'Nov 2023', 'May 2023', 'Nov 2022'];
   return (
@@ -213,7 +213,7 @@ const PastQ: React.FC<{at: number}> = ({at}) => {
   );
 };
 
-const Mock: React.FC<{at: number}> = ({at}) => {
+export const Mock: React.FC<{at: number}> = ({at}) => {
   const f = useCurrentFrame();
   const pick = at + 50;
   const res = at + 92;
@@ -266,7 +266,7 @@ const Mock: React.FC<{at: number}> = ({at}) => {
   );
 };
 
-const Progress: React.FC<{at: number}> = ({at}) => {
+export const Progress: React.FC<{at: number}> = ({at}) => {
   const f = useCurrentFrame();
   const bars = [42, 58, 50, 72, 64, 88, 80];
   return (
