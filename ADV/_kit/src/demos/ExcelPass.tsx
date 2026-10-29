@@ -276,12 +276,12 @@ const Papers: React.FC = () => {
   const f = useCurrentFrame();
   const {W, H, u, tall} = useU();
   const a = s(17.4);
-  const pw = (tall ? 900 : 640) * u;
+  const pw = (tall ? 900 : 560) * u;
   const ph = pw * 1.25;
   const years = ['Nov 2019', 'May 2020', 'Nov 2020', 'May 2021', 'Nov 2021', 'May 2022', 'Nov 2022', 'May 2023', 'Nov 2023', 'May 2024', 'Nov 2024', 'May 2025'];
   const flipT = (i: number) => a + 14 + i * 5;
   const open = a + 14 + years.length * 5 + 6;
-  const cy = tall ? H * 0.6 : H * 0.6;
+  const cy = tall ? H * 0.6 : H * 0.64;
   return (
     <AbsoluteFill>
       <Backdrop />
