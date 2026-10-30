@@ -5,6 +5,7 @@ import {EASE, tw, prog, lerp} from '../kit/core';
 import {SANS} from '../kit/fonts';
 import {Words, Icon, Ripple, Backdrop, Home, Lesson, PastQ, Mock} from './ExcelAd';
 import {StoreBadge} from './ExcelPass';
+import {Kinetic} from './kinetic';
 
 export const XD_DURATION = Math.round(37.5 * 60);
 const O = '#FF822B';
@@ -329,9 +330,11 @@ export const ExcelDesk: React.FC<{mute?: boolean}> = ({mute = false}) => {
   const f = useCurrentFrame();
   return (
     <AbsoluteFill style={{fontFamily: SANS, background: '#120D09'}}>
-      {f < s(30.2) && <Desk />}
-      <Confetti at={s(27.6)} />
-      {f >= s(29.4) && <End />}
+      <Kinetic cuts={[4.0, 4.7, 6.6, 9.0, 11.0, 13.9, 17.4, 19.6, 22.5, 25.7, 27.4, 29.6]}>
+        {f < s(30.2) && <Desk />}
+        <Confetti at={s(27.6)} />
+        {f >= s(29.4) && <End />}
+      </Kinetic>
       {!mute && <Audio src={staticFile('xa/xd_mix.wav')} />}
     </AbsoluteFill>
   );

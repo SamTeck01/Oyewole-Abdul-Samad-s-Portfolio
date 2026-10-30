@@ -5,6 +5,7 @@ import {AbsoluteFill, Audio, Img, staticFile, useCurrentFrame, useVideoConfig} f
 import {EASE, tw, prog, lerp} from '../kit/core';
 import {SANS} from '../kit/fonts';
 import {Words, Reveal, Icon, Backdrop, Ripple} from './ExcelAd';
+import {Kinetic} from './kinetic';
 
 export const XP_DURATION = 40 * 60;
 const O = '#FF822B';
@@ -558,6 +559,7 @@ const End: React.FC = () => {
 
 export const ExcelPass: React.FC<{mute?: boolean}> = ({mute = false}) => (
   <AbsoluteFill style={{fontFamily: SANS, background: '#050506', overflow: 'hidden'}}>
+    <Kinetic cuts={[0.6, 1.38, 3.0, 6.1, 8.6, 11.4, 14.4, 17.4, 21.4, 25.4, 29.2, 31.8, 33.4]}>
     <Scene a={0} b={3.0} enter="cut"><Clock /></Scene>
     <Scene a={3.0} b={6.1} exit="cut"><Scripts /></Scene>
     <Scene a={6.1} b={8.6} enter="cut" exit="cut"><Invert /></Scene>
@@ -569,6 +571,7 @@ export const ExcelPass: React.FC<{mute?: boolean}> = ({mute = false}) => (
     <Scene a={25.4} b={29.2} exit="cut"><Weak /></Scene>
     <Scene a={29.2} b={33.4} enter="cut"><Night /></Scene>
     <Scene a={33.4} b={41}><End /></Scene>
+    </Kinetic>
     {!mute && <Audio src={staticFile('xa/xp_mix.wav')} />}
   </AbsoluteFill>
 );
