@@ -505,7 +505,7 @@ const Night: React.FC = () => {
 };
 
 // ---------- store badges ----------
-const StoreBadge: React.FC<{kind: 'play' | 'apple'; u: number}> = ({kind, u}) => (
+export const StoreBadge: React.FC<{kind: 'play' | 'apple'; u: number}> = ({kind, u}) => (
   <div style={{display: 'flex', alignItems: 'center', gap: 18 * u, padding: `${18 * u}px ${34 * u}px ${18 * u}px ${26 * u}px`, borderRadius: 22 * u, background: '#000', border: '2px solid #A6A6A6', color: '#fff', boxShadow: '0 24px 60px rgba(21,22,28,.3)'}}>
     {kind === 'play' ? (
       <svg width={54 * u} height={60 * u} viewBox="0 0 48 52">
@@ -543,7 +543,7 @@ const End: React.FC = () => {
         </div>
         <div style={{marginTop: 40 * u, fontSize: 34 * u, fontWeight: 600, color: MUTE, opacity: tw(f, [s(35.2), s(35.8)], [0, 1])}}>Trusted by students worldwide</div>
         <div style={{position: 'relative', marginTop: 50 * u, transform: `scale(${btn * press})`, opacity: Math.min(1, btn * 2)}}>
-          <div style={{display: 'flex', gap: 26 * u, flexDirection: 'row', transform: `scale(${tall ? 1.45 : 1.15})`}}>
+          <div style={{display: 'flex', gap: 26 * u, flexDirection: tall ? 'column' : 'row', alignItems: 'center', transform: `scale(${tall ? 1.35 : 1.15})`, margin: tall ? `${40 * u}px 0` : 0}}>
             <StoreBadge kind="play" u={u} />
             <StoreBadge kind="apple" u={u} />
           </div>

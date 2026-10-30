@@ -4,6 +4,7 @@ import {AbsoluteFill, Audio, Img, staticFile, useCurrentFrame, useVideoConfig} f
 import {EASE, tw, prog, lerp} from '../kit/core';
 import {SANS} from '../kit/fonts';
 import {Words, Icon, Ripple, Backdrop, Home, Lesson, PastQ, Mock} from './ExcelAd';
+import {StoreBadge} from './ExcelPass';
 
 export const XD_DURATION = Math.round(37.5 * 60);
 const O = '#FF822B';
@@ -24,7 +25,7 @@ const pullAt = (i: number) => PULL + 10 + i * 16;
 // ---------- desk props (drawn top-down) ----------
 const Book: React.FC<{c: string; t: string; w: number; h: number}> = ({c, t, w, h}) => (
   <div style={{width: w, height: h, borderRadius: 8, background: c, boxShadow: 'inset -10px 0 0 rgba(0,0,0,.18), inset 0 -6px 0 rgba(255,255,255,.15)', padding: w * 0.08, color: '#fff', fontFamily: SANS}}>
-    <div style={{fontSize: w * 0.06, fontWeight: 700, opacity: 0.8, letterSpacing: 2}}>ICAN STUDY TEXT</div>
+    <div style={{fontSize: w * 0.06, fontWeight: 700, opacity: 0.8, letterSpacing: 2}}>STUDY TEXT</div>
     <div style={{fontSize: w * 0.11, fontWeight: 800, marginTop: w * 0.03, lineHeight: 1.05}}>{t}</div>
     <div style={{position: 'absolute', right: w * 0.08, bottom: w * 0.07, fontSize: w * 0.05, fontWeight: 700, opacity: 0.7}}>1,240 pages</div>
   </div>
@@ -159,11 +160,11 @@ const PhoneUI: React.FC = () => {
           </div>
           <div>
             <div style={{display: 'flex', justifyContent: 'space-between', fontSize: 15, fontWeight: 800, color: D}}>
-              <span>ICAN Results</span>
+              <span>Exam Results</span>
               <span style={{color: MUTE, fontWeight: 500}}>now</span>
             </div>
             <div style={{fontSize: 15, color: D, marginTop: 3}}>
-              <b style={{color: G}}>PASSED ✓</b> Congratulations, Tobi! All three papers cleared.
+              <b style={{color: G}}>PASSED ✓</b> Congratulations, Tobi! You passed your professional exam.
             </div>
           </div>
         </div>
@@ -209,9 +210,9 @@ const Desk: React.FC = () => {
     {at: s(4.0), x: L.book[0], y: L.book[1] + 0.02, r: -8, pull: 0, node: <Book c="#1F4E8C" t="Financial Reporting" w={330 * u} h={440 * u} />},
     {at: s(4.35), x: L.book[0] + 0.01, y: L.book[1], r: 5, pull: 0, node: <Book c="#7A2E3B" t="Taxation" w={320 * u} h={430 * u} />},
     {at: s(4.7), x: L.book[0] - 0.005, y: L.book[1] - 0.02, r: -2, pull: 0, node: <Book c="#2F6B4F" t="Audit & Assurance" w={310 * u} h={420 * u} />},
-    {at: s(6.6), x: L.sheet[0] - 0.02, y: L.sheet[1] + 0.03, r: 14, pull: 1, node: <Sheet w={260 * u} y="NOV 2019" />},
-    {at: s(6.75), x: L.sheet[0] + 0.02, y: L.sheet[1], r: -9, pull: 1, node: <Sheet w={260 * u} y="MAY 2021" />},
-    {at: s(6.9), x: L.sheet[0], y: L.sheet[1] - 0.02, r: 4, pull: 1, node: <Sheet w={260 * u} y="NOV 2023" />},
+    {at: s(6.6), x: L.sheet[0] - 0.02, y: L.sheet[1] + 0.03, r: 14, pull: 1, node: <Sheet w={260 * u} y="FINANCIAL REPORTING" />},
+    {at: s(6.75), x: L.sheet[0] + 0.02, y: L.sheet[1], r: -9, pull: 1, node: <Sheet w={260 * u} y="TAXATION" />},
+    {at: s(6.9), x: L.sheet[0], y: L.sheet[1] - 0.02, r: 4, pull: 1, node: <Sheet w={260 * u} y="AUDIT & ASSURANCE" />},
     {at: s(9.0), x: L.rec[0], y: L.rec[1], r: -10, pull: 2, node: <Receipt w={270 * u} />},
     {at: s(11.0), x: L.tix[0], y: L.tix[1], r: 8, pull: 3, node: <Ticket w={330 * u} />},
   ];
@@ -265,7 +266,7 @@ const Desk: React.FC = () => {
         })}
       </AbsoluteFill>
 
-      <Cap at={0.8} out={3.6} text="This is what studying for ICAN used to look like." acc={['ICAN']} />
+      <Cap at={0.3} out={4.0} text="This is what studying for professional exams used to look like." acc={['professional', 'exams']} />
       <Cap at={4.0} out={6.2} text="Textbooks you can barely carry." acc={['barely']} />
       <Cap at={6.6} out={8.6} text="Photocopied past questions." acc={['Photocopied']} />
       <Cap at={9.0} out={10.7} text="Lesson centre fees." acc={['fees.']} />
@@ -310,13 +311,13 @@ const End: React.FC = () => {
         <div style={{opacity: lp, transform: `translateY(${(1 - lp) * 50 * u}px) scale(${0.92 + lp * 0.08})`}}>
           <Img src={staticFile('xa/logo_dark.png')} style={{width: (tall ? 900 : 860) * u}} />
         </div>
-        <div style={{marginTop: 40 * u, fontSize: 34 * u, fontWeight: 600, color: MUTE, opacity: tw(f, [s(31.6), s(32.2)], [0, 1])}}>Trusted by students across Nigeria</div>
+        <div style={{marginTop: 40 * u, fontSize: 34 * u, fontWeight: 600, color: MUTE, opacity: tw(f, [s(31.6), s(32.2)], [0, 1])}}>Trusted by students worldwide</div>
         <div style={{position: 'relative', marginTop: 50 * u, transform: `scale(${btn * press})`, opacity: Math.min(1, btn * 2)}}>
-          <div style={{display: 'flex', alignItems: 'center', gap: 22 * u, padding: `${28 * u}px ${56 * u}px`, borderRadius: 99, background: D, color: '#fff', fontSize: 44 * u, fontWeight: 800, boxShadow: '0 30px 70px rgba(21,22,28,.3)'}}>
-            <Icon k="android" c="#3DDC84" z={56 * u} />
-            Download for Android
+          <div style={{display: 'flex', gap: 26 * u, flexDirection: tall ? 'column' : 'row', alignItems: 'center', transform: `scale(${tall ? 1.35 : 1.15})`, margin: tall ? `${40 * u}px 0` : 0}}>
+            <StoreBadge kind="play" u={u} />
+            <StoreBadge kind="apple" u={u} />
           </div>
-          <div style={{position: 'absolute', inset: -12 * u, borderRadius: 99, border: `4px solid ${O}`, opacity: tw(f, [s(34.6), s(34.8), s(35.9)], [0, 0.9, 0]), transform: `scale(${tw(f, [s(34.6), s(35.9)], [1, 1.25])})`}} />
+          <div style={{position: 'absolute', inset: -12 * u, borderRadius: 30 * u, border: `4px solid ${O}`, opacity: tw(f, [s(34.6), s(34.8), s(35.9)], [0, 0.9, 0]), transform: `scale(${tw(f, [s(34.6), s(35.9)], [1, 1.25])})`}} />
         </div>
         <div style={{marginTop: 34 * u, fontSize: 36 * u, fontWeight: 700, color: O, opacity: tw(f, [s(34.0), s(34.5)], [0, 1])}}>excelacademyonline.com</div>
       </AbsoluteFill>

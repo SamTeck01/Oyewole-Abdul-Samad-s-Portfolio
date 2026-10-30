@@ -182,7 +182,7 @@ export const Lesson: React.FC<{at: number}> = ({at}) => {
 
 export const PastQ: React.FC<{at: number}> = ({at}) => {
   const f = useCurrentFrame();
-  const rows = ['May 2025', 'Nov 2024', 'May 2024', 'Nov 2023', 'May 2023', 'Nov 2022'];
+  const rows = ['ICAN|Financial Reporting', 'ACCA|Audit & Assurance', 'CIMA|Management Accounting', 'CITN|Taxation', 'CIBN|Banking Operations', 'ANAN|Public Sector Accounting'];
   return (
     <AbsoluteFill style={{background: '#F6F4F1'}}>
       <Bar />
@@ -201,8 +201,8 @@ export const PastQ: React.FC<{at: number}> = ({at}) => {
                 <Icon k="doc" c={O} z={22} />
               </div>
               <div style={{flex: 1}}>
-                <div style={{fontSize: 15, fontWeight: 700, color: D}}>Financial Reporting</div>
-                <div style={{fontSize: 12, color: MUTE}}>{r} · with solutions</div>
+                <div style={{fontSize: 15, fontWeight: 700, color: D}}>{r.split('|')[1]}</div>
+                <div style={{fontSize: 12, color: MUTE}}>{r.split('|')[0]} · past questions with solutions</div>
               </div>
               <div style={{fontSize: 12, fontWeight: 700, color: i < 2 ? '#1A9E5C' : MUTE}}>{i < 2 ? 'Done' : 'Open'}</div>
             </Card>
