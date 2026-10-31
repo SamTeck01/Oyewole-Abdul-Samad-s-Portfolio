@@ -6,8 +6,9 @@ import {EASE, tw, prog, lerp} from '../kit/core';
 import {SANS} from '../kit/fonts';
 import {Words, Reveal, Icon, Backdrop, Ripple} from './ExcelAd';
 import {Kinetic} from './kinetic';
+import {EndDuo} from './webapp';
 
-export const XP_DURATION = 40 * 60;
+export const XP_DURATION = 44 * 60;
 const O = '#FF822B';
 const O2 = '#FFA35C';
 const D = '#15161C';
@@ -570,7 +571,7 @@ export const ExcelPass: React.FC<{mute?: boolean}> = ({mute = false}) => (
     <Scene a={21.4} b={25.4}><Mock /></Scene>
     <Scene a={25.4} b={29.2} exit="cut"><Weak /></Scene>
     <Scene a={29.2} b={33.4} enter="cut"><Night /></Scene>
-    <Scene a={33.4} b={41}><End /></Scene>
+    <Scene a={33.4} b={46} exit="cut"><EndDuo a={s(33.4)} b={s(37.6)} /></Scene>
     </Kinetic>
     {!mute && <Audio src={staticFile('xa/xp_mix.wav')} />}
   </AbsoluteFill>
