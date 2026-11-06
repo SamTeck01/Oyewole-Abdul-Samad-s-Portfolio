@@ -22,11 +22,114 @@ import fabulousD from '../assets/projects/fabulous-desktop.png';
 import fabulousM from '../assets/projects/fabulous-mobile.png';
 import labbridgeD from '../assets/projects/labbridge-desktop.png';
 import labbridgeM from '../assets/projects/labbridge-mobile.png';
+import oonavaD from '../assets/projects/oonava-desktop.webp';
+import oonavaM from '../assets/projects/oonava-mobile.webp';
+import excelD from '../assets/projects/excel-desktop.webp';
+import excelM from '../assets/projects/excel-mobile.webp';
+import excelAppD from '../assets/projects/excel-app-desktop.webp';
+import excelAppM from '../assets/projects/excel-app-mobile.webp';
+import excelAdminD from '../assets/projects/excel-admin-desktop.webp';
+import excelAdminM from '../assets/projects/excel-admin-mobile.webp';
+import archiveD from '../assets/projects/archive-desktop.webp';
+import archiveM from '../assets/projects/archive-mobile.webp';
+import paceD from '../assets/projects/pace-desktop.webp';
+import paceM from '../assets/projects/pace-mobile.webp';
+import zinosD from '../assets/projects/zinos-desktop.webp';
+import zinosM from '../assets/projects/zinos-mobile.webp';
+import hassanD from '../assets/projects/hassan-desktop.webp';
+import hassanM from '../assets/projects/hassan-mobile.webp';
+import miracleD from '../assets/projects/miracle-desktop.webp';
+import miracleM from '../assets/projects/miracle-mobile.webp';
+import orangeD from '../assets/projects/orangecounty-desktop.webp';
+import orangeM from '../assets/projects/orangecounty-mobile.webp';
+import recallD from '../assets/projects/recall-desktop.webp';
+import recallM from '../assets/projects/recall-mobile.webp';
 /* Luxor and BQ Cuisine have no captured screenshots yet, so their cards pass an
    empty `shots` array and the carousel renders its own neutral panel. Add the
    PNGs to src/assets/projects/, import them here, and fill in the arrays. */
 
 const projects = [
+  {
+    type: "EdTech Platform",
+    title: "Excel Academy",
+    description: "A complete online learning platform for ICAN, ACCA and other Accounting & Finance exam candidates, made up of three products: the marketing website, a student app for lectures, summary notes and mock exams, and an admin dashboard for running the academy.",
+    role: "Designed and built all three products: the Next.js marketing site, the student learning app, and the admin dashboard that manages courses, students and content.",
+    link: "https://www.excelacademyonline.com",
+    tags: ["Next.js", "React", "Dashboard", "Tailwind CSS"],
+    shots: [{ src: excelD, type: "desktop" }, { src: excelM, type: "mobile" }, { src: excelAppD, type: "desktop", alt: "Student app" }, { src: excelAdminD, type: "desktop", alt: "Admin dashboard" }],
+  },
+  {
+    type: "AI & Automation Agency",
+    title: "Oonava",
+    description: "The website for an agency that helps businesses remove repetitive work, connect disconnected tools and build the software they need, under the line \"Automate. Integrate. Build.\" It includes interactive walkthroughs of real systems such as an AI lead-conversion pipeline.",
+    role: "Designed and built the site in Next.js, including the animated capture, follow-up and operate product demos and the service, pricing and case-study pages.",
+    link: "https://www.oonava.com",
+    tags: ["Next.js", "React", "Tailwind CSS"],
+    shots: [{ src: oonavaD, type: "desktop" }, { src: oonavaM, type: "mobile" }],
+  },
+  {
+    type: "Real Estate",
+    title: "Pace Consults",
+    description: "A site for a surveying, GIS and real-estate consultancy with estates across Oyo, Ibadan and Lagos. It is built around trust: land that is surveyed, documented and allocated before it is sold.",
+    role: "Designed and built the company site in Next.js: estates, services, inspection booking and the brand system shared with the Orange County estate site.",
+    link: "https://www.paceconsults.ng",
+    tags: ["Next.js", "React", "Tailwind CSS"],
+    shots: [{ src: paceD, type: "desktop" }, { src: paceM, type: "mobile" }],
+  },
+  {
+    type: "Real Estate",
+    title: "Orange County",
+    description: "Sales sites for Pace Consults' two Orange County residential estates, in Balogun, Oyo and Epe, Lagos. A chooser opens onto each estate, with 3D renders, an interactive masterplan, features, location and plot pricing.",
+    role: "Built both estate experiences in Next.js from a single codebase, with a cinematic serif-led design, the masterplan views and the enquiry flow.",
+    link: "https://www.orangecounty.estate",
+    tags: ["Next.js", "React", "Tailwind CSS"],
+    shots: [{ src: orangeD, type: "desktop" }, { src: orangeM, type: "mobile" }],
+  },
+  {
+    type: "AI Product",
+    title: "Recall",
+    description: "A company knowledge assistant. Upload your documents and ask questions in plain language to get grounded answers with citations back to the source, or have it log a support ticket for you.",
+    role: "Built it end-to-end: document upload and chunking, pgvector retrieval over 768-dimension embeddings, the LLM answer layer with citations, ticket actions, and a light and dark chat interface.",
+    link: "https://recall-gamma-ten.vercel.app",
+    tags: ["Next.js", "RAG", "pgvector", "LLM"],
+    shots: [{ src: recallD, type: "desktop" }, { src: recallM, type: "mobile" }],
+  },
+  {
+    type: "Culture & Heritage",
+    title: "Archive",
+    description: "A digital home for Nigerian creative heritage, bringing photography, music, fashion and design into one immersive gallery-style experience.",
+    role: "Designed and built the experience in React and Vite, with an editorial, museum-inspired layout and category navigation.",
+    link: "https://archive-haleemah.vercel.app",
+    tags: ["React", "Vite"],
+    shots: [{ src: archiveD, type: "desktop" }, { src: archiveM, type: "mobile" }],
+  },
+  {
+    type: "Personal Brand",
+    title: "Hassan Creates",
+    description: "A portfolio for Hassan Okesanjo, a visual and motion designer specialising in brand identity, motion graphics, UI/UX and creative direction.",
+    role: "Built the portfolio in Next.js, with motion-rich interactions to match a motion designer's work and a case-study layout for the projects.",
+    link: "https://www.hassancreates.design",
+    tags: ["Next.js", "React", "Framer Motion"],
+    shots: [{ src: hassanD, type: "desktop" }, { src: hassanM, type: "mobile" }],
+  },
+  {
+    type: "Personal Brand",
+    title: "Miracle Akhimien",
+    description: "A personal brand site for a social media manager, content creator and voice-over artist, presenting her strategy, story and voice to brands.",
+    role: "Designed and built the site in Next.js, with an editorial, magazine-style hero and pages for work, services and her CV.",
+    link: "https://miracle-akhimien.vercel.app",
+    tags: ["Next.js", "React", "Tailwind CSS"],
+    shots: [{ src: miracleD, type: "desktop" }, { src: miracleM, type: "mobile" }],
+  },
+  {
+    type: "Food Ordering",
+    title: "Zinos Kitchen",
+    description: "A pre-order site for Zinosfood Cakes & Events, selling weekend jollof rice with chicken or turkey and delivering across campus.",
+    role: "Built the ordering site in Next.js: a bold menu-led hero, pricing, delivery details and a direct order flow.",
+    link: "https://zinos-kitchen.vercel.app",
+    tags: ["Next.js", "React", "Tailwind CSS"],
+    shots: [{ src: zinosD, type: "desktop" }, { src: zinosM, type: "mobile" }],
+  },
   {
     type: "Wireframe-to-Build Study",
     title: "Luxor Builders",
