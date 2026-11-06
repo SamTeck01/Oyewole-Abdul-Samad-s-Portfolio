@@ -32,13 +32,13 @@ export default function Hero() {
                     animate="visible"
                 >
                     <motion.h1 variants={itemVariants} className="text-[38px] md:text-[85px] font-black text-white leading-[1.2] mb-8 tracking-tighter">
-                        CODING WITH <br />
-                        🔥PASSION, BUILDING <br />
-                        WITH PURPOSE
+                        WEBSITES & APPS <br />
+                        THAT 🔥GROW <br />
+                        YOUR BUSINESS
                     </motion.h1>
 
                     <motion.p variants={itemVariants} className="text-white/60 text-base md:text-lg max-w-xl mb-12 font-inter leading-relaxed">
-                        I&apos;m a Frontend Engineer, full-stack developer, and technical founder. I build production-ready web apps, SaaS products, and dashboards with React, Next.js &amp; TypeScript &mdash; and I&apos;m currently open to freelance projects and new opportunities.
+                        I&apos;m Abdul Samad, a full-stack developer and technical founder. I design and build fast business websites, online stores, dashboards and AI tools for brands in Nigeria and worldwide, with 15+ live products shipped. Tell me what you need and I&apos;ll send a plan and quote.
                     </motion.p>
 
                     <motion.div variants={itemVariants} className="flex flex-wrap gap-6 items-center mb-16">

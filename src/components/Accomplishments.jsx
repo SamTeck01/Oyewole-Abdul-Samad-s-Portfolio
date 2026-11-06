@@ -8,7 +8,7 @@ const achievements = [
     color: "#A855F7" // Purple
   },
   {
-    title: "Shipped 6+ production web apps — booking platforms, e-commerce stores, and operational dashboards — using React, Next.js, and TypeScript.",
+    title: "Shipped 15+ live products for clients and my own ventures, including booking platforms, e-commerce stores, a 3-part learning platform, AI tools and operational dashboards.",
     color: "#C3FF2E" // Lime
   },
   {

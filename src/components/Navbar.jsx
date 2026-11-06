@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 export default function Navbar({ containerStyles, onClick }) {
   const navLinks = [
     { title: 'Home', href: '#home' },
+    { title: 'Services', href: '#services' },
     { title: 'About me', href: '#about' },
     { title: 'Projects', href: '#projects' },
-    { title: 'Blog', href: '#blog' },
   ];
 
   return (
