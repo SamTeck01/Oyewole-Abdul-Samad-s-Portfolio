@@ -5,8 +5,10 @@ export default function Navbar({ containerStyles, onClick }) {
   const navLinks = [
     { title: 'Home', href: '#home' },
     { title: 'Services', href: '#services' },
-    { title: 'About me', href: '#about' },
     { title: 'Projects', href: '#projects' },
+    { title: 'About me', href: '#about' },
+    { title: 'Experience', href: '#experience' },
+    { title: 'FAQ', href: '#faq' },
   ];
 
   return (

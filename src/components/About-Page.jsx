@@ -62,6 +62,21 @@ export default function AboutPage() {
               </p>
             </div>
           </motion.div>
+
+          {/* Highlights (formerly the separate Accomplishments section) */}
+          <motion.dl variants={itemVariants} className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-16">
+            {[
+              ['15+', 'Live products shipped for clients and my own ventures'],
+              ['CTO', 'Founder & CTO of Tiqra, a product-validation SaaS'],
+              ['2', 'Engineering teams led, including frontend at Food Bridge'],
+              ['3D', 'LabBridge: a virtual science lab built with Three.js & WebGL'],
+            ].map(([stat, label]) => (
+              <div key={stat} className="rounded-3xl bg-dark p-6 md:p-8 flex flex-col gap-3">
+                <dt className="text-accent text-4xl md:text-5xl font-black tracking-tighter">{stat}</dt>
+                <dd className="text-white/70 text-sm leading-snug">{label}</dd>
+              </div>
+            ))}
+          </motion.dl>
         </motion.div>
       </div>
     </section>
