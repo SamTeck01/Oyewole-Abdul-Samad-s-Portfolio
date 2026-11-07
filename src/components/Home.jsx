@@ -7,6 +7,7 @@ import Services from "./Services";
 import Accomplishments from "./Accomplishments";
 import Testimonials from "./Testimonials";
 import Connect from "./Connect";
+import FAQ from "./FAQ";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <Skills />
       <Accomplishments />
       <Testimonials />
+      <FAQ />
       <Connect />
     </div>
   )

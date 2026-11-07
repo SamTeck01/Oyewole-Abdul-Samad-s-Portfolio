@@ -28,7 +28,8 @@ export default function AboutPage() {
           viewport={{ once: true, amount: 0.1 }}
           className="max-w-5xl mx-auto"
         >
-          <motion.h2
+          <h2 className="sr-only">About Abdul Samad Oyewole</h2>
+          <motion.p
             variants={itemVariants}
             className="text-[26px] md:text-[42px] font-normal leading-[1.3] text-dark font-outfit mb-12"
           >
@@ -41,7 +42,7 @@ export default function AboutPage() {
             I&apos;m comfortable across the stack &mdash; from pixel-perfect frontend architecture to API integration and data &mdash; and I currently serve as
             <span className="text-purple font-semibold italic mx-2 underline underline-offset-[8px] decoration-[6px] decoration-purple/20">FOUNDER &amp; CTO AT TIQRA</span>
             and Frontend Technical Lead at Food Bridge.
-          </motion.h2>
+          </motion.p>
 
           <motion.div variants={itemVariants} className="grid md:grid-cols-2 gap-12 mt-16 pt-16 border-t border-dark/10">
             <div className="flex gap-6">

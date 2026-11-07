@@ -7,6 +7,8 @@ export default {
         dark: "#080808",
         accent: "#C3FF2E", // Lime green
         purple: "#A855F7",
+        // Same hue, dark enough for small text on white (6.6:1)
+        "purple-ink": "#7E22CE",
         primary: "#FDFDFD",
         gray: {
           900: "#111111",

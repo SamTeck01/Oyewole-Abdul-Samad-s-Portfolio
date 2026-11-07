@@ -28,16 +28,19 @@ export default function Connect() {
             viewport={{ once: true }}
             className="mb-8"
           >
-            <h2 className="text-[48px] md:text-[110px] font-black text-white uppercase tracking-tighter leading-[0.85] mb-12">
-              LET&apos;S WORK <br />
+            <h2 className="sr-only">Let&apos;s work together</h2>
+            {/* Visual headline only: the photo replaces the "O", which would
+                otherwise read as "T GETHER" to search engines. */}
+            <div aria-hidden="true" className="text-[48px] md:text-[110px] font-black text-white uppercase tracking-tighter leading-[0.85] mb-12">
+              <span>LET&apos;S WORK <br /></span>
               <span className="flex items-center justify-center gap-2 md:gap-4">
                 T
                 <div className="w-12 h-12 md:w-28 md:h-28 rounded-full overflow-hidden border-4 md:border-8 border-white/10 grayscale hover:grayscale-0 transition-all duration-500">
-                  <img src={mypics} alt="Sam" className="w-full h-full object-cover" />
+                  <img src={mypics} alt="" className="w-full h-full object-cover" />
                 </div>
                 GETHER
               </span>
-            </h2>
+            </div>
           </motion.div>
 
           <motion.div
@@ -47,23 +50,23 @@ export default function Connect() {
             className="flex flex-col items-center gap-4 mb-20"
           >
             <div className="flex items-center gap-6 text-accent text-3xl">
-              <a href="mailto:samadoye28@gmail.com" className="hover:scale-110 transition-transform">
+              <a aria-label="Email Abdul Samad" href="mailto:samadoye28@gmail.com" className="hover:scale-110 transition-transform">
                 <HugeiconsIcon icon={MailSend01Icon} size={32} strokeWidth={2} />
               </a>
-              <a href="https://wa.me/2349023036748" target="_blank" rel="noreferrer" className="hover:scale-110 transition-transform">
+              <a aria-label="Chat on WhatsApp" href="https://wa.me/2349023036748" target="_blank" rel="noreferrer" className="hover:scale-110 transition-transform">
                 <HugeiconsIcon icon={WhatsappIcon} size={32} strokeWidth={2} />
               </a>
-              <a href="https://www.linkedin.com/in/abdul-samad-oyewole-36b1a635b/" target="_blank" rel="noreferrer" className="hover:scale-110 transition-transform">
+              <a aria-label="LinkedIn profile" href="https://www.linkedin.com/in/abdul-samad-oyewole-36b1a635b/" target="_blank" rel="noreferrer" className="hover:scale-110 transition-transform">
                 <HugeiconsIcon icon={Linkedin01Icon} size={32} strokeWidth={2} />
               </a>
-              <a href="https://github.com/SamTeck01" target="_blank" rel="noreferrer" className="hover:scale-110 transition-transform">
+              <a aria-label="GitHub profile" href="https://github.com/SamTeck01" target="_blank" rel="noreferrer" className="hover:scale-110 transition-transform">
                 <HugeiconsIcon icon={Github01Icon} size={32} strokeWidth={2} />
               </a>
-              <a href="https://www.upwork.com/freelancers/~01a9e7570a64422593" target="_blank" rel="noreferrer" className="hover:scale-110 transition-transform">
+              <a aria-label="Upwork profile" href="https://www.upwork.com/freelancers/~01a9e7570a64422593" target="_blank" rel="noreferrer" className="hover:scale-110 transition-transform">
                 <HugeiconsIcon icon={UpworkIcon} size={32} strokeWidth={2} />
               </a>
             </div>
-            <p className="text-white/40 text-lg md:text-xl max-w-2xl font-inter font-medium leading-relaxed uppercase tracking-widest">
+            <p className="text-white/60 text-lg md:text-xl max-w-2xl font-inter font-medium leading-relaxed uppercase tracking-widest">
               Have a project in mind or just want to say hi? <br />
               Feel free to reach out.
             </p>

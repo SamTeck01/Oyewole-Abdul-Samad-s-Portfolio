@@ -260,7 +260,7 @@ export default function Projects() {
               <div className="relative overflow-hidden rounded-5xl border-[3px] border-dark/5 bg-white shadow-sm hover:shadow-xl transition-all duration-500">
                 <div className="p-4 bg-white aspect-[16/10]">
                   <div className="w-full h-full rounded-3xl overflow-hidden">
-                    <ScreenshotCarousel shots={project.shots} theme="light" />
+                    <ScreenshotCarousel shots={project.shots} theme="light" label={project.title} />
                   </div>
                 </div>
               </div>
@@ -268,13 +268,13 @@ export default function Projects() {
               <div className="mt-8 flex items-start justify-between gap-4">
                 <div>
                   <h3 className="text-3xl font-black text-dark mb-3 uppercase tracking-tighter">{project.title}</h3>
-                  <p className="text-dark/50 text-base leading-snug mb-6 max-w-sm line-clamp-2">
+                  <p className="text-dark/70 text-base leading-snug mb-6 max-w-sm line-clamp-2">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    <span className="px-4 py-1.5 border-2 border-dark/5 rounded-full text-[11px] font-black uppercase text-dark/40 italic tracking-widest">{project.type}</span>
+                    <span className="px-4 py-1.5 border-2 border-dark/5 rounded-full text-[11px] font-black uppercase text-dark/60 italic tracking-widest">{project.type}</span>
                     {project.tags.map(tag => (
-                      <span key={tag} className="px-4 py-1.5 bg-dark/5 rounded-full text-[11px] font-black uppercase text-dark/30 tracking-widest">{tag}</span>
+                      <span key={tag} className="px-4 py-1.5 bg-dark/5 rounded-full text-[11px] font-black uppercase text-dark/60 tracking-widest">{tag}</span>
                     ))}
                   </div>
                 </div>

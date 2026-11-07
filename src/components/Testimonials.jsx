@@ -41,7 +41,7 @@ export default function Testimonials() {
   const next = () => setActive((active + 1) % testimonials.length);
 
   return (
-    <section className="py-32 bg-white text-dark relative overflow-hidden">
+    <section id="testimonials" className="py-32 bg-white text-dark relative overflow-hidden">
       {/* Huge Background Icon */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] select-none pointer-events-none">
         <HugeiconsIcon icon={Quote} size={600} color="currentColor" strokeWidth={1} />
@@ -75,8 +75,8 @@ export default function Testimonials() {
                 &quot;{t.quote}&quot;
               </p>
               <div className="flex flex-col items-center">
-                <h4 className="font-black text-xl uppercase tracking-tighter text-dark">{t.author}</h4>
-                <p className="text-dark/40 text-xs font-black uppercase tracking-[0.2em] mt-1">{t.role}</p>
+                <p className="font-black text-xl uppercase tracking-tighter text-dark">{t.author}</p>
+                <p className="text-dark/60 text-xs font-black uppercase tracking-[0.2em] mt-1">{t.role}</p>
               </div>
             </motion.div>
           ))}
@@ -98,8 +98,8 @@ export default function Testimonials() {
                 onClick={() => setActive(i)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                aria-label={`Show testimonial from ${t.author}`}
-                className={`w-16 h-16 md:w-20 md:h-20 rounded-full border-[4px] transition-all overflow-hidden ${active === i ? 'border-accent p-1 shadow-xl' : 'border-transparent opacity-30 grayscale'
+                aria-label={`${t.initials}: show testimonial from ${t.author}`}
+                className={`w-16 h-16 md:w-20 md:h-20 rounded-full border-[4px] transition-all overflow-hidden ${active === i ? 'border-accent p-1 shadow-xl' : 'border-transparent opacity-70 hover:opacity-100'
                   }`}
               >
                 <div

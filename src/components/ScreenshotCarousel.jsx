@@ -14,7 +14,7 @@ const variants = {
  * `shots` = [{ src, type: 'desktop' | 'mobile' }]. Desktop shots fill the
  * frame; mobile shots are contained (device-style) so nothing is cropped.
  */
-export default function ScreenshotCarousel({ shots, theme = 'light', alwaysShowArrows = false }) {
+export default function ScreenshotCarousel({ shots, theme = 'light', alwaysShowArrows = false, label = '' }) {
   const [[index, dir], setState] = useState([0, 0]);
   const list = shots ?? [];
   const count = list.length;
@@ -26,7 +26,7 @@ export default function ScreenshotCarousel({ shots, theme = 'light', alwaysShowA
   if (count === 0) {
     return (
       <div className={`w-full h-full flexCenter ${isDark ? 'bg-black/50' : 'bg-dark/[0.04]'}`}>
-        <span className="text-[11px] font-black uppercase tracking-widest text-dark/25">
+        <span className="text-[11px] font-black uppercase tracking-widest text-dark/60">
           Screenshot coming
         </span>
       </div>
@@ -51,7 +51,9 @@ export default function ScreenshotCarousel({ shots, theme = 'light', alwaysShowA
         <motion.img
           key={index}
           src={current.src}
-          alt={current.alt || ''}
+          alt={`${label ? label + ' ' : ''}${current.alt || current.type} screenshot`}
+          loading="lazy"
+          decoding="async"
           custom={dir}
           variants={variants}
           initial="enter"

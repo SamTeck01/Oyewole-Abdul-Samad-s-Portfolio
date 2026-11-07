@@ -102,7 +102,7 @@ export default function Skills() {
               <h3 className="text-3xl font-black mb-4 uppercase tracking-tight">
                 {skill.title}
               </h3>
-              <p className={`text-lg leading-relaxed font-medium ${skill.accent ? 'text-dark/60' : 'text-dark/40'}`}>
+              <p className={`text-lg leading-relaxed font-medium ${skill.accent ? 'text-dark/60' : 'text-dark/60'}`}>
                 {skill.description}
               </p>
             </motion.div>

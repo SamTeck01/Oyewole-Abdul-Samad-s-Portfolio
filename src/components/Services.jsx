@@ -60,7 +60,7 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <p className="text-[11px] font-black uppercase tracking-[0.3em] text-dark/40 mb-4">What I can build for you</p>
+          <p className="text-[11px] font-black uppercase tracking-[0.3em] text-dark/60 mb-4">What I can build for you</p>
           <h2 className="text-[40px] md:text-[64px] font-black uppercase tracking-tighter leading-[1.05]">
             Services 🚀
           </h2>
@@ -93,7 +93,7 @@ export default function Services() {
                   </li>
                 ))}
               </ul>
-              <p className={`text-xs uppercase tracking-widest font-black mb-8 ${i === 0 ? 'text-white/40' : 'text-dark/40'}`}>
+              <p className={`text-xs uppercase tracking-widest font-black mb-8 ${i === 0 ? 'text-white/60' : 'text-dark/60'}`}>
                 Built: {s.proof}
               </p>
               <a
@@ -116,7 +116,7 @@ export default function Services() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {steps.map((st) => (
               <div key={st.n} className="border-t-2 border-dark pt-6">
-                <p className="font-black text-purple mb-3">{st.n}</p>
+                <p className="font-black text-purple-ink mb-3">{st.n}</p>
                 <p className="font-black uppercase tracking-tight text-lg mb-2">{st.title}</p>
                 <p className="text-dark/60 text-sm leading-relaxed">{st.text}</p>
               </div>

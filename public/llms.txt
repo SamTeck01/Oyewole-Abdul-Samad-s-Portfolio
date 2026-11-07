@@ -1,0 +1,44 @@
+# Abdul Samad Oyewole
+
+> Full-stack web developer and technical founder based in Nigeria, working with clients in Nigeria and worldwide. Designs and builds business websites, e-commerce stores, web apps, admin dashboards and AI tools with React, Next.js and TypeScript. 15+ live products shipped. Open to freelance projects and full-time roles.
+
+- Website: https://abdul-samads-portfolio.vercel.app/
+- Email: samadoye28@gmail.com
+- WhatsApp: +234 902 303 6748 (https://wa.me/2349023036748)
+- LinkedIn: https://www.linkedin.com/in/abdul-samad-oyewole-36b1a635b/
+- GitHub: https://github.com/SamTeck01
+- Upwork: https://www.upwork.com/freelancers/~01a9e7570a64422593
+
+## Services
+
+- Business websites: custom, mobile-first, SEO-ready sites with WhatsApp and contact integration.
+- E-commerce stores: product and inventory management, payments, checkout and an order dashboard.
+- Web apps and dashboards: booking platforms, learning platforms (LMS), admin panels and SaaS products.
+- AI and automation: AI assistants that answer from company documents with citations, lead capture and follow-up, tool integrations.
+
+Pricing is quoted per project; start with a free call on WhatsApp or email.
+
+## Current roles
+
+- Founder, CTO & Frontend Engineer at Tiqra (2026–present): product-validation SaaS with a "Truth Layer Engine" that flags unreliable survey responses from behavioural signals.
+- Full-Stack Developer / Frontend Technical Lead at Food Bridge (2026–present): surplus-food distribution platform; leads two frontend engineers.
+- Freelance full-stack developer (2024–present).
+
+## Selected work
+
+- [Excel Academy](https://www.excelacademyonline.com): EdTech platform for ICAN and ACCA candidates; marketing site, student learning app and admin dashboard.
+- [Recall](https://recall-gamma-ten.vercel.app): AI company knowledge assistant; retrieval-augmented generation with pgvector and citations.
+- [Oonava](https://www.oonava.com): website for an AI automation and integrations agency.
+- [Pace Consults](https://www.paceconsults.ng) and [Orange County](https://www.orangecounty.estate): real-estate company site and estate sales sites.
+- [Vemu Homes](https://vemu-homes.vercel.app): shortlet booking platform with admin dashboard and Supabase backend.
+- [FanceLux](https://fancelux.vercel.app): luxury e-commerce storefront.
+- [LabBridge](https://labbridge-two.vercel.app): interactive 3D virtual science laboratory (Three.js, WebGL).
+- [Food Bridge](https://food-bridge-amber.vercel.app): surplus-food platform with operational dashboards.
+
+## Skills
+
+React, Next.js, TypeScript, JavaScript, Tailwind CSS, Framer Motion, React Native, Node.js, REST APIs, Supabase, Appwrite, PostgreSQL, pgvector, LLM integration, Three.js, WebGL, Git, Vercel, Figma, SEO.
+
+## Education
+
+BSc Industrial Chemistry, University of Ilorin (2024–present).

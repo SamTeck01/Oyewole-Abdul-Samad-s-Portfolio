@@ -102,7 +102,7 @@ export default function Experience() {
 
               <div className="flex flex-wrap gap-2 md:pl-16">
                 {exp.stack.map((s) => (
-                  <span key={s} className="px-3 py-1.5 bg-white/5 rounded-full text-[11px] font-black uppercase text-white/40 tracking-widest">
+                  <span key={s} className="px-3 py-1.5 bg-white/5 rounded-full text-[11px] font-black uppercase text-white/60 tracking-widest">
                     {s}
                   </span>
                 ))}

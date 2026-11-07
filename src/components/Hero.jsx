@@ -57,7 +57,7 @@ export default function Hero() {
                     </motion.div>
 
                     <motion.div variants={itemVariants} className="">
-                        <p className="text-white/30 text-[10px] font-black uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
+                        <p className="text-white/60 text-[10px] font-black uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
                             Currently
                         </p>
                         <div className="flex flex-wrap items-center gap-3">

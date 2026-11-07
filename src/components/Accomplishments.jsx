@@ -23,7 +23,7 @@ const achievements = [
 
 export default function Accomplishments() {
   return (
-    <section className="py-32 bg-dark relative overflow-hidden">
+    <section id="accomplishments" className="py-32 bg-dark relative overflow-hidden">
       {/* Huge Background Icon */}
       <div className="absolute top-0 right-0 opacity-[0.05] translate-x-1/4 -translate-y-1/4">
         <HugeiconsIcon icon={Award01Icon} size={500} color="#ffffff" strokeWidth={1} />

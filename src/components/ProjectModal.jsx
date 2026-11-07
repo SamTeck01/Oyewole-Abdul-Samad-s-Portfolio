@@ -64,11 +64,11 @@ export default function ProjectModal({ project, onClose }) {
         <div className="overflow-y-auto px-6 sm:px-10 md:px-12 pt-6 pb-12">
           {project.shots?.length > 0 && (
             <div className="mb-8 rounded-3xl overflow-hidden border border-white/10 aspect-[16/10]">
-              <ScreenshotCarousel shots={project.shots} theme="dark" alwaysShowArrows />
+              <ScreenshotCarousel shots={project.shots} theme="dark" alwaysShowArrows label={project.title} />
             </div>
           )}
 
-          <span className="inline-block px-4 py-1.5 border border-white/10 rounded-full text-[11px] font-black uppercase text-white/40 italic tracking-widest mb-5">
+          <span className="inline-block px-4 py-1.5 border border-white/10 rounded-full text-[11px] font-black uppercase text-white/60 italic tracking-widest mb-5">
             {project.type}
           </span>
 
@@ -85,7 +85,7 @@ export default function ProjectModal({ project, onClose }) {
 
           {project.role && (
             <div className="mb-10">
-              <p className="text-white/30 text-[10px] font-black uppercase tracking-[0.3em] mb-4">
+              <p className="text-white/60 text-[10px] font-black uppercase tracking-[0.3em] mb-4">
                 My Role
               </p>
               <p className="text-white/60 text-base md:text-lg leading-relaxed font-inter max-w-2xl">
@@ -95,7 +95,7 @@ export default function ProjectModal({ project, onClose }) {
           )}
 
           <div className="mb-10">
-            <p className="text-white/30 text-[10px] font-black uppercase tracking-[0.3em] mb-4">
+            <p className="text-white/60 text-[10px] font-black uppercase tracking-[0.3em] mb-4">
               Tech Stack
             </p>
             <div className="flex flex-wrap gap-2">
