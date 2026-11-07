@@ -27,9 +27,7 @@ import oonavaM from '../assets/projects/oonava-mobile.webp';
 import excelD from '../assets/projects/excel-desktop.webp';
 import excelM from '../assets/projects/excel-mobile.webp';
 import excelAppD from '../assets/projects/excel-app-desktop.webp';
-import excelAppM from '../assets/projects/excel-app-mobile.webp';
 import excelAdminD from '../assets/projects/excel-admin-desktop.webp';
-import excelAdminM from '../assets/projects/excel-admin-mobile.webp';
 import archiveD from '../assets/projects/archive-desktop.webp';
 import archiveM from '../assets/projects/archive-mobile.webp';
 import paceD from '../assets/projects/pace-desktop.webp';
@@ -225,16 +223,6 @@ const projects = [
 export default function Projects() {
   const [selected, setSelected] = useState(null);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    whileInView: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
-
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -254,17 +242,17 @@ export default function Projects() {
           </h2>
         </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="whileInView"
-          viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24"
-        >
+        {/* Each card triggers on its own: with 20 cards stacked on a phone the
+            grid is far taller than the screen, so a container-level threshold
+            never fires and the whole section stays invisible. */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
           {projects.map((project, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
+              initial="hidden"
+              whileInView="whileInView"
+              viewport={{ once: true, amount: 0.15 }}
               onClick={() => setSelected(project)}
               className="group cursor-pointer"
             >
@@ -305,7 +293,7 @@ export default function Projects() {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         <motion.div
           className="mt-32 text-center"
