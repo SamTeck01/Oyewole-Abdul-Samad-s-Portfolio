@@ -42,9 +42,10 @@ import orangeD from '../assets/projects/orangecounty-desktop.webp';
 import orangeM from '../assets/projects/orangecounty-mobile.webp';
 import recallD from '../assets/projects/recall-desktop.webp';
 import recallM from '../assets/projects/recall-mobile.webp';
-/* Luxor and BQ Cuisine have no captured screenshots yet, so their cards pass an
-   empty `shots` array and the carousel renders its own neutral panel. Add the
-   PNGs to src/assets/projects/, import them here, and fill in the arrays. */
+import luxorD from '../assets/projects/luxor-desktop.webp';
+import luxorM from '../assets/projects/luxor-mobile.webp';
+import bqD from '../assets/projects/bq-desktop.webp';
+import bqM from '../assets/projects/bq-mobile.webp';
 
 const projects = [
   {
@@ -135,7 +136,7 @@ const projects = [
     role: "Self-directed build. Measured the drawings numerically instead of eyeballing them, then expressed every value — font sizes included — as a multiple of one custom CSS unit representing a single wireframe pixel, so the drawn proportions hold at any screen width instead of drifting between breakpoints. Identified the two typefaces from x-height-to-cap-height ratios measured off the drawings.",
     link: "https://samteck-demo-websites.vercel.app/demos/luxor",
     tags: ["TanStack Start", "React", "TypeScript", "Tailwind CSS"],
-    shots: [],
+    shots: [{ src: luxorD, type: "desktop" }, { src: luxorM, type: "mobile" }],
   },
   {
     type: "Food & Hospitality",
@@ -144,7 +145,7 @@ const projects = [
     role: "Designed and built the site end-to-end in Next.js, including a hero that maps scroll position to individual video frames, and a menu and packages structure driven by the brand's own confirmed pricing.",
     link: "https://bq-cuisine-samteck.vercel.app",
     tags: ["Next.js", "React", "Tailwind CSS"],
-    shots: [],
+    shots: [{ src: bqD, type: "desktop" }, { src: bqM, type: "mobile" }],
   },
   {
     type: "Luxury E-commerce",

@@ -1,7 +1,7 @@
 /**
  * Capture the desktop + mobile screenshots used by the Projects section.
  *
- * Run when you want real shots for a card that currently passes `shots: []`:
+ * Re-run to refresh a card's screenshots (every card currently has them):
  *
  *   npm i -D playwright-core
  *   npx playwright install chromium     # ~200MB, needs a stable connection
