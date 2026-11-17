@@ -1,0 +1,457 @@
+[
+{
+"word": "New",
+"start": 0.0,
+"end": 0.232
+},
+{
+"word": "enquiry.",
+"start": 0.279,
+"end": 0.975
+},
+{
+"word": "Twenty",
+"start": 1.149,
+"end": 1.486
+},
+{
+"word": "forty-seven,",
+"start": 1.533,
+"end": 2.241
+},
+{
+"word": "Sunday.",
+"start": 2.334,
+"end": 2.972
+},
+{
+"word": "Who's",
+"start": 3.413,
+"end": 3.657
+},
+{
+"word": "replying",
+"start": 3.715,
+"end": 4.075
+},
+{
+"word": "to",
+"start": 4.11,
+"end": 4.168
+},
+{
+"word": "this?",
+"start": 4.226,
+"end": 4.621
+},
+{
+"word": "...",
+"start": 4.644,
+"end": 4.807
+},
+{
+"word": "Nobody.",
+"start": 4.865,
+"end": 5.433
+},
+{
+"word": "Until",
+"start": 6.13,
+"end": 6.42
+},
+{
+"word": "Monday.",
+"start": 6.49,
+"end": 7.024
+},
+{
+"word": "Most",
+"start": 7.233,
+"end": 7.488
+},
+{
+"word": "businesses",
+"start": 7.546,
+"end": 8.022
+},
+{
+"word": "don't",
+"start": 8.081,
+"end": 8.266
+},
+{
+"word": "lose",
+"start": 8.313,
+"end": 8.522
+},
+{
+"word": "customers",
+"start": 8.568,
+"end": 9.009
+},
+{
+"word": "to",
+"start": 9.056,
+"end": 9.114
+},
+{
+"word": "competitors.",
+"start": 9.172,
+"end": 9.961
+},
+{
+"word": "They",
+"start": 10.17,
+"end": 10.321
+},
+{
+"word": "lose",
+"start": 10.403,
+"end": 10.623
+},
+{
+"word": "them",
+"start": 10.658,
+"end": 10.774
+},
+{
+"word": "to",
+"start": 10.82,
+"end": 10.879
+},
+{
+"word": "slow",
+"start": 10.948,
+"end": 11.18
+},
+{
+"word": "replies,",
+"start": 11.25,
+"end": 11.9
+},
+{
+"word": "forgotten",
+"start": 12.016,
+"end": 12.434
+},
+{
+"word": "follow-ups,",
+"start": 12.504,
+"end": 13.154
+},
+{
+"word": "and",
+"start": 13.27,
+"end": 13.421
+},
+{
+"word": "admin",
+"start": 13.491,
+"end": 13.816
+},
+{
+"word": "nobody",
+"start": 13.909,
+"end": 14.234
+},
+{
+"word": "has",
+"start": 14.28,
+"end": 14.408
+},
+{
+"word": "time",
+"start": 14.466,
+"end": 14.71
+},
+{
+"word": "for.",
+"start": 14.745,
+"end": 15.128
+},
+{
+"word": "What",
+"start": 15.639,
+"end": 15.824
+},
+{
+"word": "if",
+"start": 15.859,
+"end": 15.929
+},
+{
+"word": "it",
+"start": 15.975,
+"end": 16.045
+},
+{
+"word": "just...",
+"start": 16.091,
+"end": 16.509
+},
+{
+"word": "ran?",
+"start": 16.753,
+"end": 17.276
+},
+{
+"word": "Oonava",
+"start": 18.088,
+"end": 18.529
+},
+{
+"word": "builds",
+"start": 18.599,
+"end": 18.913
+},
+{
+"word": "the",
+"start": 18.959,
+"end": 19.052
+},
+{
+"word": "systems",
+"start": 19.11,
+"end": 19.563
+},
+{
+"word": "behind",
+"start": 19.621,
+"end": 19.934
+},
+{
+"word": "your",
+"start": 19.992,
+"end": 20.108
+},
+{
+"word": "business.",
+"start": 20.155,
+"end": 20.712
+},
+{
+"word": "Automations",
+"start": 20.863,
+"end": 21.583
+},
+{
+"word": "that",
+"start": 21.629,
+"end": 21.757
+},
+{
+"word": "reply,",
+"start": 21.815,
+"end": 22.396
+},
+{
+"word": "follow",
+"start": 22.512,
+"end": 22.802
+},
+{
+"word": "up,",
+"start": 22.883,
+"end": 23.208
+},
+{
+"word": "and",
+"start": 23.266,
+"end": 23.417
+},
+{
+"word": "update",
+"start": 23.487,
+"end": 23.847
+},
+{
+"word": "everything",
+"start": 23.893,
+"end": 24.276
+},
+{
+"word": "for",
+"start": 24.334,
+"end": 24.509
+},
+{
+"word": "you,",
+"start": 24.578,
+"end": 24.845
+},
+{
+"word": "connected",
+"start": 24.961,
+"end": 25.403
+},
+{
+"word": "to",
+"start": 25.449,
+"end": 25.507
+},
+{
+"word": "the",
+"start": 25.577,
+"end": 25.646
+},
+{
+"word": "tools",
+"start": 25.693,
+"end": 26.053
+},
+{
+"word": "you",
+"start": 26.099,
+"end": 26.18
+},
+{
+"word": "already",
+"start": 26.25,
+"end": 26.54
+},
+{
+"word": "use.",
+"start": 26.622,
+"end": 27.156
+},
+{
+"word": "Faster",
+"start": 27.597,
+"end": 28.015
+},
+{
+"word": "replies.",
+"start": 28.073,
+"end": 28.746
+},
+{
+"word": "No",
+"start": 28.92,
+"end": 29.083
+},
+{
+"word": "lost",
+"start": 29.164,
+"end": 29.396
+},
+{
+"word": "leads.",
+"start": 29.466,
+"end": 29.942
+},
+{
+"word": "Less",
+"start": 30.093,
+"end": 30.337
+},
+{
+"word": "admin.",
+"start": 30.383,
+"end": 30.94
+},
+{
+"word": "Your",
+"start": 31.184,
+"end": 31.381
+},
+{
+"word": "team",
+"start": 31.428,
+"end": 31.637
+},
+{
+"word": "stops",
+"start": 31.707,
+"end": 32.008
+},
+{
+"word": "chasing,",
+"start": 32.055,
+"end": 32.566
+},
+{
+"word": "and",
+"start": 32.589,
+"end": 32.728
+},
+{
+"word": "starts",
+"start": 32.786,
+"end": 33.076
+},
+{
+"word": "closing.",
+"start": 33.123,
+"end": 33.692
+},
+{
+"word": "Book",
+"start": 34.203,
+"end": 34.423
+},
+{
+"word": "a",
+"start": 34.481,
+"end": 34.505
+},
+{
+"word": "free",
+"start": 34.563,
+"end": 34.772
+},
+{
+"word": "thirty-minute",
+"start": 34.83,
+"end": 35.422
+},
+{
+"word": "mapping",
+"start": 35.457,
+"end": 35.77
+},
+{
+"word": "call.",
+"start": 35.828,
+"end": 36.211
+},
+{
+"word": "We'll",
+"start": 36.455,
+"end": 36.664
+},
+{
+"word": "show",
+"start": 36.71,
+"end": 36.85
+},
+{
+"word": "you",
+"start": 36.896,
+"end": 36.977
+},
+{
+"word": "exactly",
+"start": 37.035,
+"end": 37.442
+},
+{
+"word": "what",
+"start": 37.488,
+"end": 37.674
+},
+{
+"word": "to",
+"start": 37.72,
+"end": 37.779
+},
+{
+"word": "automate",
+"start": 37.848,
+"end": 38.278
+},
+{
+"word": "first.",
+"start": 38.324,
+"end": 39.102
+}
+]
