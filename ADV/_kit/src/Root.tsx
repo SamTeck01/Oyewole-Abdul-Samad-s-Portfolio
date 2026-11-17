@@ -15,6 +15,7 @@ import {PuppetTest} from './demos/PuppetTest';
 import {ExcelWide, ExcelTall, XA_DURATION} from './demos/ExcelAd';
 import {ExcelPass, XP_DURATION} from './demos/ExcelPass';
 import {ExcelDesk, XD_DURATION} from './demos/ExcelDesk';
+import {OonavaV1, OV1_DURATION} from './demos/oonava/V1';
 import {SafetyVideo, SafetyFrame, ASP_DURATION} from './demos/SafetyVideo';
 
 loadFonts();
@@ -44,5 +45,7 @@ export const Root: React.FC = () => (
     <Composition id="Safety3DFrame" component={Safety3DFrame} width={1920} height={1080} fps={60} durationInFrames={1} defaultProps={{t: 2}} />
     <Composition id="SafetyVideo" component={SafetyVideo} width={1920} height={1080} fps={60} durationInFrames={ASP_DURATION} />
     <Composition id="SafetyFrame" component={SafetyFrame} width={1920} height={1080} fps={60} durationInFrames={1} defaultProps={{t: 2}} />
+    <Composition id="OonV1Tall" component={OonavaV1} width={1080} height={1920} fps={60} durationInFrames={OV1_DURATION} defaultProps={{mute: true}} />
+    <Composition id="OonV1Wide" component={OonavaV1} width={1920} height={1080} fps={60} durationInFrames={OV1_DURATION} defaultProps={{mute: true}} />
   </>
 );

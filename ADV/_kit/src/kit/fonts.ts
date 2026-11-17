@@ -8,6 +8,7 @@ const FILES: [string, string, string, string][] = [
   ['Inter', 'inter-latin-700-normal.woff2', '700', 'normal'],
   ['Inter', 'inter-latin-800-normal.woff2', '800', 'normal'],
   ['Instrument Serif', 'instrument-serif-latin-400-italic.woff2', '400', 'italic'],
+  ['Caveat', 'caveat-latin-700-normal.woff2', '700', 'normal'],
 ];
 
 let loaded = false;
