@@ -63,7 +63,7 @@ const Problem: React.FC = () => {
   const pw = tall ? 940 : 820;
   return (
     <AbsoluteFill style={{background: C.ink, alignItems: 'center', justifyContent: 'center'}}>
-      <div style={{display: 'flex', flexDirection: tall ? 'column' : 'row', gap: 60, transform: `scale(${u * (tall ? 1 : 0.95)})`, marginTop: tall ? -160 * u : -60 * u}}>
+      <div style={{display: 'flex', flexDirection: tall ? 'column' : 'row', gap: tall ? 150 : 60, transform: `scale(${u * (tall ? 0.98 : 0.95)})`, marginTop: tall ? -200 * u : -60 * u}}>
         <div style={side(0)}>
           <div style={{fontFamily: SANS, fontSize: 34, fontWeight: 600, color: '#9EA3AE', marginBottom: 20}}>Your competitor</div>
           <Card w={pw} dark url="mail · Inbox">
@@ -144,8 +144,8 @@ const Show: React.FC = () => {
   );
   return (
     <AbsoluteFill style={{background: C.white}}>
-      <div style={{position: 'absolute', left: tall ? W / 2 : W * 0.36, top: tall ? H * 0.42 : H / 2, transform: `translate(-50%,-50%) scale(${u * (tall ? 1 : 0.86)})`}}>{card}</div>
-      <div style={{position: 'absolute', ...(tall ? {left: 0, right: 0, top: H * 0.42 + 560 * u, alignItems: 'center'} : {left: W * 0.68, top: 0, bottom: 0, justifyContent: 'center'}), display: 'flex', flexDirection: 'column', gap: 18 * u}}>
+      <div style={{position: 'absolute', left: tall ? W / 2 : W * 0.36, top: tall ? H * 0.36 : H / 2, transform: `translate(-50%,-50%) scale(${u * (tall ? 1 : 0.86)})`}}>{card}</div>
+      <div style={{position: 'absolute', ...(tall ? {left: 0, right: 0, top: H * 0.36 + 420 * u, alignItems: 'center'} : {left: W * 0.68, top: 0, bottom: 0, justifyContent: 'center'}), display: 'flex', flexDirection: 'column', gap: 18 * u}}>
         {chips.map(([t, at, tone]) => {
           const p = prog(f, s(at), s(at) + 18, EASE.back);
           return <div key={t} style={{transform: `scale(${p * u * 1.15})`, transformOrigin: tall ? '50% 50%' : '0 50%', opacity: Math.min(1, p * 2)}}><Chip text={t} tone={tone} icon="check" size={34} /></div>;
