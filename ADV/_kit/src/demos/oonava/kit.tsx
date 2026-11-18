@@ -102,7 +102,7 @@ export const Ico: React.FC<{n: keyof typeof PATHS | string; s: number; c: string
 export const Chip: React.FC<{text: string; tone?: 'green' | 'blue' | 'red' | 'grey'; size?: number; icon?: string}> = ({text, tone = 'green', size = 26, icon}) => {
   const col = {green: C.green, blue: C.blue, red: C.red, grey: C.mute}[tone];
   return (
-    <div style={{display: 'inline-flex', alignItems: 'center', gap: size * 0.35, padding: `${size * 0.42}px ${size * 0.75}px`, borderRadius: 99, fontFamily: SANS, fontSize: size, fontWeight: 600,
+    <div style={{display: 'inline-flex', whiteSpace: 'nowrap', alignItems: 'center', gap: size * 0.35, padding: `${size * 0.42}px ${size * 0.75}px`, borderRadius: 99, fontFamily: SANS, fontSize: size, fontWeight: 600,
       color: col, background: `${col}1A`, border: `1.5px solid ${col}40`}}>
       {icon && <Ico n={icon} s={size * 1.05} c={col} sw={2.4} />}{text}
     </div>
