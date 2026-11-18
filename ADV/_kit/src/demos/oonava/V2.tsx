@@ -156,7 +156,7 @@ const Show: React.FC = () => {
 };
 
 /* ---------- dot wipe (dark -> white) ---------- */
-const Wipe: React.FC<{at: number}> = ({at}) => {
+export const Wipe: React.FC<{at: number}> = ({at}) => {
   const f = useCurrentFrame();
   const {u, W, H} = useU();
   const drop = prog(f, at, at + 18, EASE.in);

@@ -17,6 +17,7 @@ import {ExcelPass, XP_DURATION} from './demos/ExcelPass';
 import {ExcelDesk, XD_DURATION} from './demos/ExcelDesk';
 import {OonavaV1, OV1_DURATION} from './demos/oonava/V1';
 import {OonavaV2, OV2_DURATION} from './demos/oonava/V2';
+import {OonavaV3, OV3_DURATION} from './demos/oonava/V3';
 import {SafetyVideo, SafetyFrame, ASP_DURATION} from './demos/SafetyVideo';
 
 loadFonts();
@@ -50,5 +51,7 @@ export const Root: React.FC = () => (
     <Composition id="OonV1Wide" component={OonavaV1} width={1920} height={1080} fps={60} durationInFrames={OV1_DURATION} defaultProps={{mute: true}} />
     <Composition id="OonV2Tall" component={OonavaV2} width={1080} height={1920} fps={60} durationInFrames={OV2_DURATION} defaultProps={{mute: true}} />
     <Composition id="OonV2Wide" component={OonavaV2} width={1920} height={1080} fps={60} durationInFrames={OV2_DURATION} defaultProps={{mute: true}} />
+    <Composition id="OonV3Tall" component={OonavaV3} width={1080} height={1920} fps={60} durationInFrames={OV3_DURATION} defaultProps={{mute: true}} />
+    <Composition id="OonV3Wide" component={OonavaV3} width={1920} height={1080} fps={60} durationInFrames={OV3_DURATION} defaultProps={{mute: true}} />
   </>
 );
