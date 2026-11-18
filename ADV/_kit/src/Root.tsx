@@ -22,6 +22,7 @@ import {OonavaV4, OV4_DURATION} from './demos/oonava/V4';
 import {OonavaV5, OV5_DURATION} from './demos/oonava/V5';
 import {OonavaV6, OV6_DURATION} from './demos/oonava/V6';
 import {OonavaV7, OV7_DURATION} from './demos/oonava/V7';
+import {HookShort, hookTimes} from './demos/oonava/Hooks';
 import {SafetyVideo, SafetyFrame, ASP_DURATION} from './demos/SafetyVideo';
 
 loadFonts();
@@ -65,5 +66,7 @@ export const Root: React.FC = () => (
     <Composition id="OonV6Wide" component={OonavaV6} width={1920} height={1080} fps={60} durationInFrames={OV6_DURATION} defaultProps={{mute: true}} />
     <Composition id="OonV7Tall" component={OonavaV7} width={1080} height={1920} fps={60} durationInFrames={OV7_DURATION} defaultProps={{mute: true}} />
     <Composition id="OonV7Wide" component={OonavaV7} width={1920} height={1080} fps={60} durationInFrames={OV7_DURATION} defaultProps={{mute: true}} />
+    {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => <Composition key={n} id={`OonHook${n}Tall`} component={HookShort} width={1080} height={1920} fps={60} durationInFrames={Math.round(hookTimes(n).dur * 60)} defaultProps={{n, mute: true}} />)}
+    {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => <Composition key={n + 10} id={`OonHook${n}Wide`} component={HookShort} width={1920} height={1080} fps={60} durationInFrames={Math.round(hookTimes(n).dur * 60)} defaultProps={{n, mute: true}} />)}
   </>
 );

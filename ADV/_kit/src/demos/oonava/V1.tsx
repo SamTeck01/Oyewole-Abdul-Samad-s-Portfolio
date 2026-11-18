@@ -298,7 +298,7 @@ const Build: React.FC = () => {
   );
 };
 
-const Show: React.FC = () => {
+export const Show: React.FC = () => {
   const f = useCurrentFrame();
   const {u, W, H, tall} = useU();
   const part = f < s(21.65) ? 0 : f < s(24.9) ? 1 : 2;
