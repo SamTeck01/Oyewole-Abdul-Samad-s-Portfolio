@@ -59,7 +59,7 @@ const COLS = ['New', 'Nurturing', 'Re-engaged', 'Ready'];
 const MINI: [string, number, number, number][] = [['Oliver R.', 0, 1, 10.2], ['Sophie L.', 0, 2, 10.8], ['Jack M.', 1, 2, 11.4], ['Mia T.', 1, 3, 12.0], ['Noah P.', 0, 1, 12.5], ['Ella W.', 2, 3, 12.9]];
 const SEQ = [['D0', 13.3], ['D2', 13.95], ['D5', 14.5], ['D10', 15.1]] as const;
 
-const Show: React.FC = () => {
+export const Show: React.FC = () => {
   const f = useCurrentFrame();
   const {u, W, H, tall} = useU();
   const colW = tall ? 236 : 220;

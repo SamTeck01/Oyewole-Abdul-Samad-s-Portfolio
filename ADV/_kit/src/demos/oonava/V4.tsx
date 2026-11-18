@@ -68,7 +68,7 @@ const Problem: React.FC = () => {
   );
 };
 
-const Show: React.FC = () => {
+export const Show: React.FC = () => {
   const f = useCurrentFrame();
   const {u, W, H, tall} = useU();
   const at = (i: number) => s(10.6) + i * 33;

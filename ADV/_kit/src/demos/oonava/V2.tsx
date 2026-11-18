@@ -97,7 +97,7 @@ const Problem: React.FC = () => {
 /* ---------- Show: the inbox does the work ---------- */
 const FIELDS = [['Type', '3-bed apartment'], ['Area', 'Manchester'], ['Budget', '~£500k'], ['Timeline', '3 months'], ['Intent', 'Buying']];
 const REPLY = 'Hi Sarah, thanks for getting in touch. Would Tuesday 14:00 or Wednesday 17:30 suit for a viewing?';
-const Show: React.FC = () => {
+export const Show: React.FC = () => {
   const f = useCurrentFrame();
   const {u, W, H, tall} = useU();
   const hot = f >= s(14.15);
