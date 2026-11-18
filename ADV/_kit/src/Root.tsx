@@ -20,6 +20,7 @@ import {OonavaV2, OV2_DURATION} from './demos/oonava/V2';
 import {OonavaV3, OV3_DURATION} from './demos/oonava/V3';
 import {OonavaV4, OV4_DURATION} from './demos/oonava/V4';
 import {OonavaV5, OV5_DURATION} from './demos/oonava/V5';
+import {OonavaV6, OV6_DURATION} from './demos/oonava/V6';
 import {SafetyVideo, SafetyFrame, ASP_DURATION} from './demos/SafetyVideo';
 
 loadFonts();
@@ -59,5 +60,7 @@ export const Root: React.FC = () => (
     <Composition id="OonV4Wide" component={OonavaV4} width={1920} height={1080} fps={60} durationInFrames={OV4_DURATION} defaultProps={{mute: true}} />
     <Composition id="OonV5Tall" component={OonavaV5} width={1080} height={1920} fps={60} durationInFrames={OV5_DURATION} defaultProps={{mute: true}} />
     <Composition id="OonV5Wide" component={OonavaV5} width={1920} height={1080} fps={60} durationInFrames={OV5_DURATION} defaultProps={{mute: true}} />
+    <Composition id="OonV6Tall" component={OonavaV6} width={1080} height={1920} fps={60} durationInFrames={OV6_DURATION} defaultProps={{mute: true}} />
+    <Composition id="OonV6Wide" component={OonavaV6} width={1920} height={1080} fps={60} durationInFrames={OV6_DURATION} defaultProps={{mute: true}} />
   </>
 );

@@ -1,0 +1,457 @@
+[
+{
+"word": "Scared",
+"start": 0.0,
+"end": 0.43
+},
+{
+"word": "of",
+"start": 0.464,
+"end": 0.511
+},
+{
+"word": "a",
+"start": 0.557,
+"end": 0.58
+},
+{
+"word": "tech",
+"start": 0.639,
+"end": 0.859
+},
+{
+"word": "project",
+"start": 0.906,
+"end": 1.289
+},
+{
+"word": "going",
+"start": 1.358,
+"end": 1.602
+},
+{
+"word": "wrong?",
+"start": 1.649,
+"end": 2.125
+},
+{
+"word": "Here's",
+"start": 2.566,
+"end": 2.844
+},
+{
+"word": "how",
+"start": 2.879,
+"end": 2.972
+},
+{
+"word": "we",
+"start": 3.019,
+"end": 3.1
+},
+{
+"word": "keep",
+"start": 3.146,
+"end": 3.309
+},
+{
+"word": "it",
+"start": 3.355,
+"end": 3.425
+},
+{
+"word": "simple.",
+"start": 3.471,
+"end": 4.098
+},
+{
+"word": "Map.",
+"start": 4.481,
+"end": 4.946
+},
+{
+"word": "A",
+"start": 5.039,
+"end": 5.132
+},
+{
+"word": "free",
+"start": 5.224,
+"end": 5.445
+},
+{
+"word": "call",
+"start": 5.503,
+"end": 5.77
+},
+{
+"word": "to",
+"start": 5.84,
+"end": 5.898
+},
+{
+"word": "map",
+"start": 5.979,
+"end": 6.177
+},
+{
+"word": "your",
+"start": 6.235,
+"end": 6.351
+},
+{
+"word": "process",
+"start": 6.409,
+"end": 6.838
+},
+{
+"word": "together.",
+"start": 6.873,
+"end": 7.512
+},
+{
+"word": "Design.",
+"start": 8.208,
+"end": 8.916
+},
+{
+"word": "We",
+"start": 9.067,
+"end": 9.195
+},
+{
+"word": "show",
+"start": 9.242,
+"end": 9.404
+},
+{
+"word": "exactly",
+"start": 9.474,
+"end": 9.95
+},
+{
+"word": "what",
+"start": 9.996,
+"end": 10.112
+},
+{
+"word": "will",
+"start": 10.147,
+"end": 10.275
+},
+{
+"word": "be",
+"start": 10.321,
+"end": 10.391
+},
+{
+"word": "automated.",
+"start": 10.437,
+"end": 11.192
+},
+{
+"word": "Build.",
+"start": 11.703,
+"end": 12.295
+},
+{
+"word": "We",
+"start": 12.736,
+"end": 12.887
+},
+{
+"word": "build",
+"start": 12.957,
+"end": 13.189
+},
+{
+"word": "it,",
+"start": 13.247,
+"end": 13.375
+},
+{
+"word": "and",
+"start": 13.41,
+"end": 13.526
+},
+{
+"word": "connect",
+"start": 13.584,
+"end": 13.897
+},
+{
+"word": "it",
+"start": 13.944,
+"end": 14.013
+},
+{
+"word": "to",
+"start": 14.048,
+"end": 14.095
+},
+{
+"word": "your",
+"start": 14.164,
+"end": 14.28
+},
+{
+"word": "tools.",
+"start": 14.338,
+"end": 14.977
+},
+{
+"word": "Launch.",
+"start": 15.418,
+"end": 16.033
+},
+{
+"word": "It",
+"start": 16.544,
+"end": 16.684
+},
+{
+"word": "goes",
+"start": 16.742,
+"end": 16.927
+},
+{
+"word": "live,",
+"start": 16.997,
+"end": 17.38
+},
+{
+"word": "and",
+"start": 17.403,
+"end": 17.508
+},
+{
+"word": "your",
+"start": 17.554,
+"end": 17.67
+},
+{
+"word": "team",
+"start": 17.717,
+"end": 17.914
+},
+{
+"word": "is",
+"start": 17.972,
+"end": 18.053
+},
+{
+"word": "trained.",
+"start": 18.1,
+"end": 18.692
+},
+{
+"word": "Support.",
+"start": 19.133,
+"end": 19.702
+},
+{
+"word": "We",
+"start": 19.76,
+"end": 19.899
+},
+{
+"word": "monitor",
+"start": 19.969,
+"end": 20.341
+},
+{
+"word": "and",
+"start": 20.387,
+"end": 20.48
+},
+{
+"word": "maintain",
+"start": 20.526,
+"end": 20.933
+},
+{
+"word": "it,",
+"start": 20.991,
+"end": 21.142
+},
+{
+"word": "every",
+"start": 21.176,
+"end": 21.432
+},
+{
+"word": "month.",
+"start": 21.49,
+"end": 21.989
+},
+{
+"word": "You",
+"start": 22.43,
+"end": 22.546
+},
+{
+"word": "get",
+"start": 22.604,
+"end": 22.709
+},
+{
+"word": "a",
+"start": 22.744,
+"end": 22.767
+},
+{
+"word": "fixed",
+"start": 22.837,
+"end": 23.104
+},
+{
+"word": "price",
+"start": 23.15,
+"end": 23.452
+},
+{
+"word": "before",
+"start": 23.487,
+"end": 23.765
+},
+{
+"word": "we",
+"start": 23.8,
+"end": 23.882
+},
+{
+"word": "start,",
+"start": 23.94,
+"end": 24.474
+},
+{
+"word": "a",
+"start": 24.567,
+"end": 24.625
+},
+{
+"word": "system",
+"start": 24.706,
+"end": 25.043
+},
+{
+"word": "built",
+"start": 25.101,
+"end": 25.31
+},
+{
+"word": "properly,",
+"start": 25.356,
+"end": 25.867
+},
+{
+"word": "and",
+"start": 25.913,
+"end": 26.064
+},
+{
+"word": "a",
+"start": 26.122,
+"end": 26.146
+},
+{
+"word": "team",
+"start": 26.192,
+"end": 26.401
+},
+{
+"word": "that",
+"start": 26.447,
+"end": 26.563
+},
+{
+"word": "stays",
+"start": 26.61,
+"end": 26.9
+},
+{
+"word": "on",
+"start": 26.958,
+"end": 27.098
+},
+{
+"word": "to",
+"start": 27.156,
+"end": 27.214
+},
+{
+"word": "look",
+"start": 27.272,
+"end": 27.411
+},
+{
+"word": "after",
+"start": 27.469,
+"end": 27.713
+},
+{
+"word": "it.",
+"start": 27.771,
+"end": 28.026
+},
+{
+"word": "Clear",
+"start": 28.468,
+"end": 28.723
+},
+{
+"word": "scope.",
+"start": 28.781,
+"end": 29.28
+},
+{
+"word": "Fixed",
+"start": 29.489,
+"end": 29.779
+},
+{
+"word": "price.",
+"start": 29.826,
+"end": 30.302
+},
+{
+"word": "Ongoing",
+"start": 30.43,
+"end": 30.929
+},
+{
+"word": "support.",
+"start": 30.987,
+"end": 31.567
+},
+{
+"word": "Book",
+"start": 32.264,
+"end": 32.508
+},
+{
+"word": "a",
+"start": 32.566,
+"end": 32.589
+},
+{
+"word": "free",
+"start": 32.659,
+"end": 32.891
+},
+{
+"word": "thirty-minute",
+"start": 32.949,
+"end": 33.529
+},
+{
+"word": "mapping",
+"start": 33.576,
+"end": 33.866
+},
+{
+"word": "call.",
+"start": 33.936,
+"end": 34.551
+}
+]

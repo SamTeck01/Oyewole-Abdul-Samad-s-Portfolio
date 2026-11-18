@@ -109,14 +109,14 @@ export const OonavaV5: React.FC<{mute?: boolean}> = ({mute}) => {
         <Replay from={12.0} until={14.8} srcAt={14.3}><S3 /></Replay>
         {f >= s(13.7) && f < s(14.8) && (
           <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center'}}>
-            <div style={{transform: `scale(${prog(f, s(13.75), s(14.0), EASE.back) * u * 1.6})`}}><Chip text="Offer stage" tone="blue" icon="check" size={40} /></div>
+            <div style={{transform: `scale(${prog(f, s(13.75), s(14.0), EASE.back) * u * 1.6})`}}><div style={{background: '#fff', borderRadius: 99, boxShadow: '0 20px 50px rgba(11,40,80,.25)'}}><Chip text="Offer stage" tone="blue" icon="check" size={40} /></div></div>
           </AbsoluteFill>
         )}
         {f >= s(14.0) && f < s(14.8) && <Wipe at={s(14.0)} />}
         {f >= s(14.6) && f < s(18.5) && <Outcome />}
         {f >= s(18.2) && <EndCard at={s(18.3)} extra="For estate & letting agents." />}
       </Kinetic>
-      <Captions words={words as W[]} offset={VO} dark y={H - (H > 1500 ? 260 : 110) * u} size={50 * u} hide={[[0, 2.6], [14.4, 99]]} />
+      <Captions words={words as W[]} offset={VO} dark={!((f >= s(6.3) && f < s(10.4)) || f >= s(12.0))} y={H - (H > 1500 ? 260 : 110) * u} size={50 * u} hide={[[0, 2.6], [14.4, 99]]} />
       {!mute && <Audio src={staticFile('oon/v5_mix.wav')} />}
     </AbsoluteFill>
   );
