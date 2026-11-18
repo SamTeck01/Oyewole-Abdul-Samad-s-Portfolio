@@ -61,7 +61,7 @@ const Steps: React.FC = () => {
   };
   return (
     <AbsoluteFill style={{background: C.white}}>
-      <div style={{position: 'absolute', left: W / 2, top: tall ? H * 0.46 : H * 0.47, transform: `translate(-50%,-50%) scale(${u * (tall ? 1 : 1.0)})`}}>
+      <div style={{position: 'absolute', left: W / 2, top: tall ? H * 0.45 : H * 0.42, transform: `translate(-50%,-50%) scale(${u * (tall ? 1.1 : 1.08)})`}}>
         <div style={{position: 'relative', display: 'flex', flexDirection: tall ? 'column' : 'row', gap: tall ? 30 : 54}}>
           <div style={{position: 'absolute', ...(tall ? {left: 62, top: 65, width: 6, height: 4 * 250} : {top: 62, left: 65, height: 6, width: 4 * 354}), background: C.g2, borderRadius: 3}}>
             <div style={{...(tall ? {width: 6, height: `${lineP * 100}%`} : {height: 6, width: `${lineP * 100}%`}), background: C.blue, borderRadius: 3}} />
