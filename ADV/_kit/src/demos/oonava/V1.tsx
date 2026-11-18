@@ -22,21 +22,23 @@ const Glow: React.FC = () => (
 /* ---------- 1. Hook ---------- */
 const Hook: React.FC = () => {
   const f = useCurrentFrame();
-  const {u} = useU();
+  const {u, tall} = useU();
   const buzz = f > s(0.35) && f < s(0.95) ? Math.sin(f * 2.2) * 7 * (1 - (f - s(0.35)) / s(0.6)) : 0;
   const t1 = f < s(5.05);
   return (
     <Bg c={C.ink}>
       <Glow />
-      <AbsoluteFill style={{alignItems: 'center', transform: `scale(${u}) translateY(${tw(f, [0, s(7.5)], [0, -30])}px)`, transformOrigin: '50% 0'}}>
-        <div style={{marginTop: 380, fontFamily: SANS, color: '#fff', textAlign: 'center', ...rise(f, 0, 30)}}>
+      <AbsoluteFill style={{alignItems: 'center', ...(tall ? {} : {flexDirection: 'row', justifyContent: 'center', gap: 120}), transform: `scale(${u}) translateY(${tw(f, [0, s(7.5)], [0, -30])}px)`, transformOrigin: tall ? '50% 0' : '50% 50%'}}>
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <div style={{marginTop: tall ? 380 : 0, fontFamily: SANS, color: '#fff', textAlign: 'center', ...rise(f, 0, 30)}}>
           <div style={{fontSize: 40, fontWeight: 500, color: '#9EA3AE'}}>Sunday 22 November</div>
           <div style={{fontSize: 250, fontWeight: 300, letterSpacing: '-0.05em', lineHeight: 1}}>21:47</div>
         </div>
         <div style={{marginTop: 70, transform: `translateX(${buzz}px) translateY(${(1 - prog(f, s(0.15), s(0.5), EASE.back)) * -160}px) scale(${0.9 + prog(f, s(0.15), s(0.5)) * 0.1})`, opacity: prog(f, s(0.15), s(0.35))}}>
-          <Toast w={940} app="Website enquiry" title="New enquiry · 21:47, Sunday" body="Hi, is it still available? Can I view this week?" />
+          <Toast w={tall ? 940 : 820} app="Website enquiry" title="New enquiry · 21:47, Sunday" body="Hi, is it still available? Can I view this week?" />
         </div>
-        <div style={{marginTop: 210, width: 960}}>
+        </div>
+        <div style={{marginTop: tall ? 210 : 0, width: tall ? 960 : 820}}>
           {t1 ? (
             <Head words={["Who's", 'replying', 'to', 'this?']} at={s(3.65)} size={104} />
           ) : (
@@ -123,16 +125,16 @@ const Clash: React.FC = () => (
 
 const Problem: React.FC = () => {
   const f = useCurrentFrame();
-  const {u, W, H} = useU();
+  const {u, W, H, tall} = useU();
   const m = prog(f, s(10.3), s(10.9), EASE.inOut); // inbox -> tile
   const freeze = prog(f, s(15.55), s(15.85));
-  const pos = [[-245, -300], [245, -300], [-245, 300], [245, 300]];
+  const pos = tall ? [[-245, -300], [245, -300], [-245, 300], [245, 300]] : [[-735, -40], [-245, -40], [245, -40], [735, -40]];
   const appear = [0, s(12.2), s(13.3), s(14.3)];
   const push = tw(f, [s(10.9), s(15.6)], [1, 1.06], EASE.inOut);
   return (
     <Bg c={C.ink}>
       <AbsoluteFill style={{filter: `grayscale(${freeze}) brightness(${1 - freeze * 0.35})`, transform: `scale(${push})`}}>
-        <div style={{position: 'absolute', left: W / 2, top: H / 2, transform: `scale(${u})`}}>
+        <div style={{position: 'absolute', left: W / 2, top: H / 2, transform: `scale(${u * (tall ? 1 : 0.86)})`}}>
           <div style={{position: 'absolute', transform: `translate(-50%,-50%) translate(${pos[0][0] * m}px, ${pos[0][1] * m}px) scale(${1 - m * 0.511})`, opacity: prog(f, s(7.4), s(7.8))}}>
             <Inbox at={s(7.5)} />
           </div>
@@ -178,11 +180,11 @@ const Turn: React.FC = () => {
 /* ---------- 4. Show: Automate / Integrate / Build ---------- */
 const Label: React.FC<{n: string; t: string; at: number; end: number}> = ({n, t, at, end}) => {
   const f = useCurrentFrame();
-  const {u} = useU();
+  const {u, tall} = useU();
   const p = prog(f, at, at + 18);
   const o = 1 - prog(f, end - 8, end);
   return (
-    <div style={{position: 'absolute', top: 210 * u, left: 0, right: 0, display: 'flex', justifyContent: 'center', alignItems: 'baseline', gap: 22 * u, fontFamily: SANS, opacity: p * o, transform: `translateY(${(1 - p) * 40 * u}px)`}}>
+    <div style={{position: 'absolute', ...(tall ? {top: 210 * u, left: 0, right: 0} : {top: 0, bottom: 0, left: 130 * u, flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start'}), display: 'flex', justifyContent: 'center', alignItems: 'baseline', gap: 22 * u, fontFamily: SANS, opacity: p * o, transform: `translateY(${(1 - p) * 40 * u}px)`}}>
       <span style={{fontSize: 34 * u, fontWeight: 600, color: C.mute}}>{n}</span>
       <span style={{fontSize: 130 * u, fontWeight: 700, letterSpacing: '-0.045em', color: C.ink}}>{t}<span style={{color: C.blue}}>.</span></span>
     </div>
@@ -298,7 +300,7 @@ const Build: React.FC = () => {
 
 const Show: React.FC = () => {
   const f = useCurrentFrame();
-  const {u, W, H} = useU();
+  const {u, W, H, tall} = useU();
   const part = f < s(21.65) ? 0 : f < s(24.9) ? 1 : 2;
   const swap = (a: number, b: number) => ({opacity: prog(f, a, a + 12) * (1 - prog(f, b - 10, b))});
   return (
@@ -306,7 +308,7 @@ const Show: React.FC = () => {
       <Label n="01" t="Automate" at={s(18.3)} end={s(21.65)} />
       <Label n="02" t="Integrate" at={s(21.65)} end={s(24.9)} />
       <Label n="03" t="Build" at={s(24.9)} end={s(27.85)} />
-      <div style={{position: 'absolute', left: W / 2, top: H / 2 + 90 * u, transform: `scale(${u})`}}>
+      <div style={{position: 'absolute', left: tall ? W / 2 : W * 0.66, top: tall ? H / 2 + 90 * u : H / 2 - 30 * u, transform: `scale(${u * (tall ? 1 : 0.86)})`}}>
         {part === 0 && <div style={{position: 'absolute', transform: 'translate(-50%,-50%)', ...swap(s(18.3), s(21.65))}}><Automate /></div>}
         {part === 1 && <div style={{position: 'absolute', ...swap(s(21.65), s(24.9))}}><Integrate /></div>}
         {part === 2 && <div style={{position: 'absolute', transform: 'translate(-50%,-50%)', ...swap(s(24.9), s(27.85))}}><Build /></div>}
@@ -365,7 +367,7 @@ export const OonavaV1: React.FC<{mute?: boolean}> = ({mute}) => {
       {f >= s(27.8) && f < s(34.6) && <Outcome />}
       {f >= s(34.3) && <EndCard at={s(34.4)} />}
       </Kinetic>
-      <Captions words={words as W[]} offset={VO} dark={f < s(16.5)} y={H - (H > 1500 ? 330 : 170) * u} size={50 * u}
+      <Captions words={words as W[]} offset={VO} dark={f < s(16.5)} y={H - (H > 1500 ? 330 : 120) * u} size={50 * u}
         hide={[[0, 7.45], [15.6, 18.3], [27.75, 99]]} />
       {!mute && <Audio src={staticFile('oon/v1_mix.wav')} />}
     </AbsoluteFill>

@@ -1,0 +1,367 @@
+[
+{
+"word": "How",
+"start": 0.0,
+"end": 0.209
+},
+{
+"word": "fast",
+"start": 0.29,
+"end": 0.592
+},
+{
+"word": "do",
+"start": 0.615,
+"end": 0.673
+},
+{
+"word": "you",
+"start": 0.708,
+"end": 0.778
+},
+{
+"word": "reply",
+"start": 0.848,
+"end": 1.138
+},
+{
+"word": "to",
+"start": 1.219,
+"end": 1.277
+},
+{
+"word": "a",
+"start": 1.358,
+"end": 1.382
+},
+{
+"word": "new",
+"start": 1.451,
+"end": 1.602
+},
+{
+"word": "lead?",
+"start": 1.672,
+"end": 2.078
+},
+{
+"word": "...",
+"start": 2.148,
+"end": 2.345
+},
+{
+"word": "We",
+"start": 3.042,
+"end": 3.181
+},
+{
+"word": "reply",
+"start": 3.251,
+"end": 3.553
+},
+{
+"word": "in",
+"start": 3.622,
+"end": 3.692
+},
+{
+"word": "thirty-eight",
+"start": 3.75,
+"end": 4.249
+},
+{
+"word": "seconds.",
+"start": 4.284,
+"end": 4.969
+},
+{
+"word": "Leads",
+"start": 5.782,
+"end": 6.072
+},
+{
+"word": "go",
+"start": 6.118,
+"end": 6.246
+},
+{
+"word": "cold",
+"start": 6.339,
+"end": 6.676
+},
+{
+"word": "in",
+"start": 6.745,
+"end": 6.827
+},
+{
+"word": "minutes,",
+"start": 6.896,
+"end": 7.361
+},
+{
+"word": "not",
+"start": 7.43,
+"end": 7.593
+},
+{
+"word": "days.",
+"start": 7.651,
+"end": 8.208
+},
+{
+"word": "Whoever",
+"start": 8.452,
+"end": 8.824
+},
+{
+"word": "replies",
+"start": 8.882,
+"end": 9.253
+},
+{
+"word": "first,",
+"start": 9.323,
+"end": 9.845
+},
+{
+"word": "usually",
+"start": 9.973,
+"end": 10.344
+},
+{
+"word": "wins.",
+"start": 10.403,
+"end": 10.96
+},
+{
+"word": "The",
+"start": 11.471,
+"end": 11.587
+},
+{
+"word": "moment",
+"start": 11.645,
+"end": 11.9
+},
+{
+"word": "an",
+"start": 11.947,
+"end": 12.016
+},
+{
+"word": "enquiry",
+"start": 12.063,
+"end": 12.527
+},
+{
+"word": "arrives,",
+"start": 12.574,
+"end": 13.084
+},
+{
+"word": "it's",
+"start": 13.131,
+"end": 13.328
+},
+{
+"word": "read,",
+"start": 13.398,
+"end": 13.735
+},
+{
+"word": "scored,",
+"start": 13.851,
+"end": 14.327
+},
+{
+"word": "and",
+"start": 14.35,
+"end": 14.466
+},
+{
+"word": "answered.",
+"start": 14.524,
+"end": 15.07
+},
+{
+"word": "The",
+"start": 15.673,
+"end": 15.79
+},
+{
+"word": "hot",
+"start": 15.859,
+"end": 15.999
+},
+{
+"word": "ones",
+"start": 16.057,
+"end": 16.254
+},
+{
+"word": "are",
+"start": 16.289,
+"end": 16.37
+},
+{
+"word": "booked",
+"start": 16.393,
+"end": 16.614
+},
+{
+"word": "straight",
+"start": 16.66,
+"end": 16.986
+},
+{
+"word": "into",
+"start": 17.02,
+"end": 17.16
+},
+{
+"word": "your",
+"start": 17.206,
+"end": 17.322
+},
+{
+"word": "calendar,",
+"start": 17.38,
+"end": 17.845
+},
+{
+"word": "any",
+"start": 17.88,
+"end": 18.065
+},
+{
+"word": "time",
+"start": 18.123,
+"end": 18.321
+},
+{
+"word": "of",
+"start": 18.356,
+"end": 18.414
+},
+{
+"word": "day.",
+"start": 18.472,
+"end": 19.006
+},
+{
+"word": "Every",
+"start": 19.447,
+"end": 19.737
+},
+{
+"word": "lead",
+"start": 19.784,
+"end": 20.004
+},
+{
+"word": "answered.",
+"start": 20.074,
+"end": 20.666
+},
+{
+"word": "Even",
+"start": 20.945,
+"end": 21.188
+},
+{
+"word": "at",
+"start": 21.223,
+"end": 21.293
+},
+{
+"word": "nine",
+"start": 21.374,
+"end": 21.606
+},
+{
+"word": "forty-seven,",
+"start": 21.653,
+"end": 22.361
+},
+{
+"word": "on",
+"start": 22.407,
+"end": 22.558
+},
+{
+"word": "a",
+"start": 22.593,
+"end": 22.628
+},
+{
+"word": "Sunday",
+"start": 22.674,
+"end": 22.976
+},
+{
+"word": "night.",
+"start": 23.046,
+"end": 23.452
+},
+{
+"word": "See",
+"start": 23.893,
+"end": 24.091
+},
+{
+"word": "it",
+"start": 24.126,
+"end": 24.207
+},
+{
+"word": "on",
+"start": 24.253,
+"end": 24.311
+},
+{
+"word": "your",
+"start": 24.358,
+"end": 24.474
+},
+{
+"word": "own",
+"start": 24.532,
+"end": 24.695
+},
+{
+"word": "enquiries.",
+"start": 24.741,
+"end": 25.507
+},
+{
+"word": "Book",
+"start": 25.786,
+"end": 26.018
+},
+{
+"word": "a",
+"start": 26.088,
+"end": 26.134
+},
+{
+"word": "free",
+"start": 26.227,
+"end": 26.471
+},
+{
+"word": "thirty-minute",
+"start": 26.529,
+"end": 27.109
+},
+{
+"word": "mapping",
+"start": 27.156,
+"end": 27.446
+},
+{
+"word": "call.",
+"start": 27.516,
+"end": 28.143
+}
+]
