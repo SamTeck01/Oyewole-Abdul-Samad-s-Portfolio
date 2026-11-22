@@ -91,25 +91,25 @@ const Sweep: React.FC<{at: number; color: string; dur?: number}> = ({at, color, 
 const Open: React.FC = () => {
   const f = useCurrentFrame();
   // mark outline draws on, fills, then shrinks to a dot that becomes the line
-  const draw = prog(f, 0, s(0.9), EASE.inOut);
-  const fill = prog(f, s(0.7), s(1.0));
-  const shrink = prog(f, s(1.3), s(1.75), EASE.inOut);
+  const draw = prog(f, 0, s(0.35), EASE.inOut);
+  const fill = prog(f, s(0.2), s(0.4));
+  const shrink = prog(f, s(0.4), s(0.75), EASE.inOut);
   return (
     <>
-      <svg width={1920} height={1080} style={{position: 'absolute', inset: 0}}>
-        <g transform={`translate(960 540) scale(${lerp(2.4, 0.15, shrink)}) translate(-40 -42)`} opacity={1 - prog(f, s(1.6), s(1.75))}>
+      <svg width={1920} height={1080} overflow="visible" style={{position: 'absolute', inset: 0, overflow: 'visible'}}>
+        <g transform={`translate(960 540) scale(${lerp(2.4, 0.15, shrink)}) translate(-40 -42)`} opacity={1 - prog(f, s(0.65), s(0.78))}>
           <path d={MARK} fill={P} fillOpacity={fill} stroke={P} strokeWidth={1.6} strokeDasharray={`${draw * 700} 700`} />
           <circle cx={41.8} cy={22.6} r={4.3 * fill} fill={P} />
         </g>
         {/* the line shoots out of the logo */}
-        <Stroke d="M 960 540 C 1150 540, 1250 380, 1450 420 S 1750 600, 2050 520" a={1.55} b={2.4} />
-        <Stroke d="M 960 540 C 770 540, 670 700, 470 660 S 170 480, -130 560" a={1.55} b={2.4} c={2.9} e={3.4} color={PK} />
-        <Dot x={960} y={540} at={1.6} out={2.7} r={16} color={P} />
-        <Dot x={1450} y={420} at={2.0} out={2.75} />
-        <Dot x={470} y={660} at={2.0} out={2.75} />
+        <Stroke d="M 960 540 C 1150 540, 1250 380, 1450 420 S 1750 600, 2050 520" a={0.6} b={1.3} />
+        <Stroke d="M 960 540 C 770 540, 670 700, 470 660 S 170 480, -130 560" a={0.6} b={1.3} c={2.6} e={3.3} color={PK} />
+        <Dot x={960} y={540} at={0.62} out={2.7} r={16} color={P} />
+        <Dot x={1450} y={420} at={0.95} out={2.75} />
+        <Dot x={470} y={660} at={1.15} out={2.75} />
       </svg>
-      <Label t="deen" x={1420} y={330} at={v(0.05)} out={2.75} />
-      <Label t="dunya" x={420} y={690} at={v(0.55)} out={2.75} />
+      <Label t="deen" x={1420} y={330} at={0.9} out={2.75} />
+      <Label t="dunya" x={420} y={690} at={1.1} out={2.75} />
       <Label t="and everything in between" x={960} y={760} at={v(1.0)} out={2.75} size={46} color="#5B6268" align="center" />
     </>
   );
@@ -123,10 +123,10 @@ const Busy: React.FC = () => {
   return (
     <>
       <svg width={1920} height={1080} style={{position: 'absolute', inset: 0}}>
-        <Stroke d={ROAD} a={2.45} b={5.2} c={6.4} e={7.3} w={14} len={3000} />
-        {STOPS.map(([, x, y, at], i) => <Dot key={i} x={x} y={y} at={at} out={5.9} r={16} color={[P, PK, OR, INK][i]} />)}
+        <Stroke d={ROAD} a={1.9} b={4.6} c={6.4} e={7.3} w={14} len={3000} />
+        {STOPS.map(([, x, y, at], i) => <Dot key={i} x={x} y={y} at={at} out={5.6} r={16} color={[P, PK, OR, INK][i]} />)}
       </svg>
-      {STOPS.map(([t, x, y, at], i) => <Label key={t} t={t} x={x} y={y - 90 + (i % 2 ? 130 : 0)} at={at} out={5.9} align="center" size={48} />)}
+      {STOPS.map(([t, x, y, at], i) => <Label key={t} t={t} x={x} y={y - 90 + (i % 2 ? 130 : 0)} at={at} out={5.6} align="center" size={52} />)}
       <div style={{position: 'absolute', inset: 0, transform: `translateX(${-tw(f, [s(2.6), s(6)], [0, 120], EASE.inOut)}px)`}} />
     </>
   );
@@ -145,10 +145,10 @@ const Heavy: React.FC = () => {
   const shake = Math.sin(f * 0.25) * 6 * prog(f, s(v(5.6)), s(v(6.6)));
   return (
     <>
-      <svg width={1920} height={1080} style={{position: 'absolute', inset: 0, opacity: 0.6 * (1 - prog(f, s(v(7.7)), s(v(8.0)))), transformOrigin: '960px 540px', transform: `translate(${shake}px, 0) scale(${1 - 0.92 * prog(f, s(v(7.35)), s(v(8.0)), EASE.in)}) rotate(${prog(f, s(v(7.35)), s(v(8.0)), EASE.in) * 120}deg)`}}>
+      <svg width={1920} height={1080} style={{position: 'absolute', inset: 0, opacity: 0.7 * (1 - prog(f, s(v(7.88)), s(v(8.0)))), transformOrigin: '960px 540px', transform: `translate(${shake}px, 0) scale(${1 - 0.96 * prog(f, s(v(7.3)), s(v(7.95)), EASE.in)}) rotate(${prog(f, s(v(7.35)), s(v(8.0)), EASE.in) * 120}deg)`}}>
         {KNOT.map((d, i) => <Stroke key={i} d={d} a={v(5.4) + i * 0.13} b={v(6.6) + i * 0.13} c={v(9)} e={v(9.1)} w={[26, 18, 34, 14, 22][i]} color={[P, PK, OR, INK, '#E7C3F5'][i]} len={3000} />)}
       </svg>
-      <Words words={[['Some', v(5.65)], ['days', v(5.9)], ['it', v(6.15)], ['all', v(6.3)], ['feels', v(6.5)], ['like', v(6.75)], ['too', v(6.95)], ['much.', v(7.15)]]} accent="much." x={960} y={470} size={104} out={v(7.4)} />
+      <Words words={[['Some', v(5.65)], ['days', v(5.9)], ['it', v(6.15)], ['all', v(6.3)], ['feels', v(6.5)], ['like', v(6.75)], ['too', v(6.95)], ['much.', v(7.15)]]} accent="much." x={960} y={470} size={96} out={v(7.35)} width={1850} />
     </>
   );
 };
@@ -156,7 +156,7 @@ const Heavy: React.FC = () => {
 // the knot pulls tight into the logo, then the app
 const Built: React.FC = () => {
   const f = useCurrentFrame();
-  const a = v(7.86);
+  const a = v(7.78);
   const k = prog(f, s(a), s(a + 0.45), EASE.back);
   const slide = prog(f, s(v(9.2)), s(v(9.9)), EASE.inOut);
   return (
@@ -336,9 +336,9 @@ export const HerDeen: React.FC<{mute?: boolean}> = ({mute}) => {
   return (
     <AbsoluteFill style={{background: BG, overflow: 'hidden'}}>
       <AbsoluteFill style={{transform: `translate(${drift}px, ${-drift * 0.6}px) scale(${zoom})`}}>
-        <AbsoluteFill style={{transform: `translateX(${-1920 * prog(f, s(2.3), s(3.05), EASE.inOut)}px)`}}>
+        <AbsoluteFill style={{transform: `translateX(${-1920 * prog(f, s(2.2), s(3.2), EASE.inOut)}px)`}}>
           {at(0, 3.4) && <Open />}
-          {at(2.3, 7.4) && <AbsoluteFill style={{left: 1920}}><Busy /></AbsoluteFill>}
+          {at(1.8, 7.4) && <AbsoluteFill style={{left: 1920}}><Busy /></AbsoluteFill>}
         </AbsoluteFill>
         {at(v(5.3), v(8.05)) && <Heavy />}
         {at(v(7.8), v(11.95)) && <Built />}
