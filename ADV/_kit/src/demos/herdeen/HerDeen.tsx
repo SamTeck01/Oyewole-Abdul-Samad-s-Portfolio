@@ -48,7 +48,7 @@ const Dot: React.FC<{x: number; y: number; at: number; out?: number; r?: number;
 };
 
 // words that appear one by one with the voice
-const Words: React.FC<{words: [string, number][]; x: number; y: number; size: number; color?: string; serif?: boolean; accent?: string; out?: number; width?: number}> = ({words, x, y, size, color = INK, serif, accent, out = 999, width}) => {
+const Words: React.FC<{words: [string, number][]; x: number; y: number; size: number; color?: string; serif?: boolean; accent?: string; out?: number; width?: number; halo?: boolean}> = ({words, x, y, size, color = INK, serif, accent, out = 999, width, halo}) => {
   const f = useCurrentFrame();
   const q = prog(f, s(out), s(out) + 14, EASE.in);
   return (
@@ -57,7 +57,7 @@ const Words: React.FC<{words: [string, number][]; x: number; y: number; size: nu
         const p = prog(f, s(at), s(at) + 14);
         const hot = w === accent;
         return <span key={i} style={{display: 'inline-block', opacity: p, transform: `translateY(${(1 - p) * size * 0.35}px)`, filter: `blur(${(1 - p) * 6}px)`,
-          fontFamily: serif || hot ? SER : POP, fontStyle: hot ? 'italic' : 'normal', fontWeight: serif || hot ? 500 : 600, fontSize: size, color: hot ? P : color, letterSpacing: serif ? '-0.02em' : '-0.035em', lineHeight: 1.1}}>{w}</span>;
+          fontFamily: serif || hot ? SER : POP, fontStyle: hot ? 'italic' : 'normal', fontWeight: serif || hot ? 500 : 600, fontSize: size, color: hot ? P : color, letterSpacing: serif ? '-0.02em' : '-0.035em', lineHeight: 1.1, textShadow: halo ? `0 0 14px ${BG}, 0 0 14px ${BG}, 0 0 28px ${BG}, 0 0 28px ${BG}, 0 0 50px ${BG}` : undefined}}>{w}</span>;
       })}
     </div>
   );
@@ -75,7 +75,7 @@ const Phone: React.FC<{src: string; x: number; y: number; h: number; at: number;
 };
 
 // wipe: a fat ribbon sweeps across and leaves a new background colour behind it
-const Sweep: React.FC<{at: number; color: string; dur?: number}> = ({at, color, dur = 0.7}) => {
+const Sweep: React.FC<{at: number; color: string; dur?: number}> = ({at, color, dur = 0.9}) => {
   const f = useCurrentFrame();
   const p = prog(f, s(at), s(at + dur), EASE.inOut);
   if (p <= 0) return null;
@@ -116,8 +116,8 @@ const Open: React.FC = () => {
 };
 
 // one long winding road; life stops pop on it as she names them
-const ROAD = 'M 130 520 C 300 520, 300 380, 620 400 S 900 760, 1200 700 S 1500 300, 1800 360 S 2100 600, 2200 600';
-const STOPS: [string, number, number, number][] = [['classes', 330, 470, v(2.62)], ['work', 760, 640, v(3.2)], ['family', 1180, 700, v(3.75)], ['five prayers a day', 1560, 380, v(4.3)]];
+const ROAD = 'M 130 520 C 220 520, 250 440, 340 440 S 600 650, 760 650 S 1000 700, 1180 700 S 1440 380, 1560 380 S 1900 520, 2200 520';
+const STOPS: [string, number, number, number][] = [['classes', 340, 440, v(2.62)], ['work', 760, 650, v(3.2)], ['family', 1180, 700, v(3.75)], ['five prayers a day', 1560, 380, v(4.3)]];
 const Busy: React.FC = () => {
   const f = useCurrentFrame();
   return (
@@ -126,7 +126,7 @@ const Busy: React.FC = () => {
         <Stroke d={ROAD} a={1.9} b={4.6} c={6.4} e={7.3} w={14} len={3000} />
         {STOPS.map(([, x, y, at], i) => <Dot key={i} x={x} y={y} at={at} out={5.6} r={16} color={[P, PK, OR, INK][i]} />)}
       </svg>
-      {STOPS.map(([t, x, y, at], i) => <Label key={t} t={t} x={x} y={y - 90 + (i % 2 ? 130 : 0)} at={at} out={5.6} align="center" size={52} />)}
+      {STOPS.map(([t, x, y, at], i) => <Label key={t} t={t} x={x} y={i % 3 === 0 ? y - 100 : y + 36} at={at} out={5.6} align="center" size={52} />)}
       <div style={{position: 'absolute', inset: 0, transform: `translateX(${-tw(f, [s(2.6), s(6)], [0, 120], EASE.inOut)}px)`}} />
     </>
   );
@@ -148,7 +148,7 @@ const Heavy: React.FC = () => {
       <svg width={1920} height={1080} style={{position: 'absolute', inset: 0, opacity: 0.7 * (1 - prog(f, s(v(7.88)), s(v(8.0)))), transformOrigin: '960px 540px', transform: `translate(${shake}px, 0) scale(${1 - 0.96 * prog(f, s(v(7.3)), s(v(7.95)), EASE.in)}) rotate(${prog(f, s(v(7.35)), s(v(8.0)), EASE.in) * 120}deg)`}}>
         {KNOT.map((d, i) => <Stroke key={i} d={d} a={v(5.4) + i * 0.13} b={v(6.6) + i * 0.13} c={v(9)} e={v(9.1)} w={[26, 18, 34, 14, 22][i]} color={[P, PK, OR, INK, '#E7C3F5'][i]} len={3000} />)}
       </svg>
-      <Words words={[['Some', v(5.65)], ['days', v(5.9)], ['it', v(6.15)], ['all', v(6.3)], ['feels', v(6.5)], ['like', v(6.75)], ['too', v(6.95)], ['much.', v(7.15)]]} accent="much." x={960} y={470} size={96} out={v(7.35)} width={1850} />
+      <Words words={[['Some', v(5.65)], ['days', v(5.9)], ['it', v(6.15)], ['all', v(6.3)], ['feels', v(6.5)], ['like', v(6.75)], ['too', v(6.95)], ['much.', v(7.15)]]} accent="much." x={960} y={470} size={96} out={v(7.35)} width={1850} halo />
     </>
   );
 };
@@ -239,7 +239,7 @@ const Cycle: React.FC = () => {
 // qibla, dhikr, Quran: three cards on the line, each on its word
 const Faith: React.FC = () => {
   const f = useCurrentFrame();
-  const cards: [string, number][] = [['Find the qibla', v(21.34)], ['Keep your dhikr', v(22.36)], ['Read the Quran, anywhere', v(23.4)]];
+  const cards: [string, number][] = [['Find the qibla', v(21.12)], ['Keep your dhikr', v(22.36)], ['Read the Quran, anywhere', v(23.4)]];
   const out = prog(f, s(v(24.75)), s(v(25.1)), EASE.in);
   const spin = tw(f, [s(v(21.4)), s(v(22.4))], [-160, 32], EASE.out) + Math.sin(f / 16) * 8;
   const count = Math.round(tw(f, [s(v(22.4)), s(v(23.3))], [0, 33], EASE.count));
@@ -278,7 +278,7 @@ const Proof: React.FC = () => {
     <div style={{position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 0}}>
       {S.map(([lab, to, fmt, suf, at], i) => {
         const p = prog(f, s(at), s(at) + 20, EASE.back);
-        const val = tw(f, [s(at), s(at + 1.1)], [0, to], EASE.count);
+        const val = tw(f, [s(at), s(at + 1.1)], [to === 4.9 ? 4.0 : 0, to], EASE.count);
         return (
           <React.Fragment key={lab}>
             {i > 0 && <div style={{width: 3, height: 200 * prog(f, s(at) - 6, s(at) + 10), background: 'rgba(19,24,28,.35)'}} />}
@@ -336,19 +336,19 @@ export const HerDeen: React.FC<{mute?: boolean}> = ({mute}) => {
   return (
     <AbsoluteFill style={{background: BG, overflow: 'hidden'}}>
       <AbsoluteFill style={{transform: `translate(${drift}px, ${-drift * 0.6}px) scale(${zoom})`}}>
-        <AbsoluteFill style={{transform: `translateX(${-1920 * prog(f, s(2.2), s(3.2), EASE.inOut)}px)`}}>
+        <AbsoluteFill style={{transform: `translateX(${-1920 * prog(f, s(2.0), s(3.4), EASE.inOut)}px)`}}>
           {at(0, 3.4) && <Open />}
           {at(1.8, 7.4) && <AbsoluteFill style={{left: 1920}}><Busy /></AbsoluteFill>}
         </AbsoluteFill>
         {at(v(5.3), v(8.05)) && <Heavy />}
         {at(v(7.8), v(11.95)) && <Built />}
-        <Sweep at={v(11.4)} color={LIL} dur={0.6} />
+        <Sweep at={v(11.4)} color={LIL} dur={0.9} />
         {at(v(11.6), v(16.2)) && <Plan />}
         {at(v(15.3), v(17.7)) && <Track />}
         {at(v(17.4), v(21.5)) && <Cycle />}
-        <Sweep at={v(20.75)} color={BG} dur={0.6} />
+        <Sweep at={v(20.75)} color={BG} dur={0.9} />
         {at(v(21.1), v(25.3)) && <Faith />}
-        <Sweep at={v(24.55)} color={PK} dur={0.6} />
+        <Sweep at={v(24.55)} color={PK} dur={0.9} />
         {at(v(24.9), 99) && <Ribbons />}
         {at(v(24.9), v(31.3)) && <Proof />}
         {at(v(30.95), 99) && <Close />}
