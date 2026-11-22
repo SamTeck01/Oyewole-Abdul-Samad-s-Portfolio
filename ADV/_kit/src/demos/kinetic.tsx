@@ -30,7 +30,7 @@ export const Kinetic: React.FC<{cuts: number[]; children: React.ReactNode; amp?:
     }
   });
   return (
-    <AbsoluteFill style={{transform: `translate(${tx}px,${ty}px) rotate(${rot}deg) scale(${sc})`, filter: blur > 0.4 ? `blur(${blur.toFixed(1)}px)` : undefined}}>
+    <AbsoluteFill style={{transform: `translate(${tx}px,${ty}px) scale(${sc})`}}>
       {children}
     </AbsoluteFill>
   );

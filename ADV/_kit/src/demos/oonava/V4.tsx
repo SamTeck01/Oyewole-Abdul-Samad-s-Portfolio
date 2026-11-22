@@ -8,7 +8,7 @@ import {Wipe} from './V2';
 import words from './v4_words.json';
 
 const s = (x: number) => Math.round(x * 60);
-export const OV4_DURATION = s(28.5);
+export const OV4_DURATION = s(22.9);
 const VO = 0.3;
 const CUTS = [0.3, 2.4, 3.4, 6.1, 8.6, 10.6, 14.75, 16.6, 19.4];
 
@@ -143,7 +143,7 @@ export const OonavaV4: React.FC<{mute?: boolean}> = ({mute}) => {
         {f >= s(16.55) && f < s(19.6) && <Outcome />}
         {f >= s(19.3) && <EndCard at={s(19.4)} />}
       </Kinetic>
-      <Captions words={words as W[]} offset={VO} dark={f < s(16.5)} y={H - (H > 1500 ? 260 : 110) * u} size={50 * u} hide={[[0, 3.3], [16.4, 99]]} />
+      <Captions words={words as W[]} offset={VO} dark={f < s(16.5)} y={H - (H > 1500 ? 430 : 110) * u} size={50 * u} hide={[[0, 3.3], [16.4, 99]]} />
       {!mute && <Audio src={staticFile('oon/v4_mix.wav')} />}
     </AbsoluteFill>
   );

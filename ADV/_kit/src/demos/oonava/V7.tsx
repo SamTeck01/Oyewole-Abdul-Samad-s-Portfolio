@@ -4,13 +4,12 @@ import {AbsoluteFill, Audio, staticFile, useCurrentFrame} from 'remotion';
 import {EASE, tw, prog} from '../../kit/core';
 import {Kinetic} from '../kinetic';
 import {C, SANS, useU, Head, Captions, EndCard, W} from './kit';
-import {Wipe} from './V2';
 import words from './v7_words.json';
 
 const s = (x: number) => Math.round(x * 60);
-export const OV7_DURATION = s(25);
+export const OV7_DURATION = s(22.2);
 const VO = 0.3;
-const CUTS = [0.3, 2.37, 4.1, 5.9, 7.56, 9.95, 11.55, 12.8, 16.3];
+const CUTS = [0.3, 2.37, 5.9, 7.56, 9.95, 11.55, 12.8, 18.7];
 
 const PLANS = [
   {n: 'Essential Automation', setup: '€1,500', mo: '€199', from: false, at: 5.9},
@@ -25,16 +24,16 @@ const Cards: React.FC = () => {
   const grow = prog(f, s(12.8), s(15.0), EASE.inOut);
   return (
     <AbsoluteFill style={{background: C.white}}>
-      <div style={{position: 'absolute', left: 0, right: 0, top: (tall ? 170 : 90) * u, display: 'flex', justifyContent: 'center'}}>
-        <Head words={['Three', 'ways', 'to', 'work', 'with', 'us.']} at={s(4.1)} size={(tall ? 84 : 72) * u} color={C.ink} weight={700} stagger={3} />
+      <div style={{position: 'absolute', left: (tall ? 120 : 160) * u, right: (tall ? 120 : 160) * u, top: (tall ? 200 : 100) * u, display: 'flex', justifyContent: 'center'}}>
+        <Head words={['Three', 'ways', 'to', 'work', 'with', 'us.']} at={s(4.1)} size={(tall ? 66 : 72) * u} color={C.ink} weight={700} stagger={3} />
       </div>
-      <div style={{position: 'absolute', left: W / 2, top: tall ? H * 0.53 : H * 0.55, transform: `translate(-50%,-50%) scale(${u * 1.1})`, display: 'flex', flexDirection: tall ? 'column' : 'row', gap: tall ? 34 : 40, alignItems: 'center'}}>
+      <div style={{position: 'absolute', left: W / 2, top: tall ? H * 0.53 : H * 0.55, transform: `translate(-50%,-50%) scale(${u * (tall ? 0.96 : 1.05)})`, display: 'flex', flexDirection: tall ? 'column' : 'row', gap: tall ? 34 : 40, alignItems: 'center'}}>
         {PLANS.map((p, i) => {
           const a = prog(f, s(p.at), s(p.at) + 22, EASE.back);
           const mid = i === 1;
           const lift = mid ? pop : 0;
           return (
-            <div key={p.n} style={{position: 'relative', width: tall ? 900 : 520, padding: tall ? '36px 44px' : '46px 44px', boxSizing: 'border-box', borderRadius: 34, fontFamily: SANS,
+            <div key={p.n} style={{position: 'relative', width: tall ? 840 : 520, padding: tall ? '36px 44px' : '46px 44px', boxSizing: 'border-box', borderRadius: 34, fontFamily: SANS,
               background: mid && pop > 0 ? C.ink : C.white, color: mid && pop > 0 ? '#fff' : C.ink, border: `2px solid ${mid && pop > 0 ? C.blue : C.g2}`,
               boxShadow: mid ? `0 0 0 ${lift * 8}px rgba(38,160,248,.25), 0 ${30 + lift * 30}px ${60 + lift * 40}px rgba(11,40,80,${0.1 + lift * 0.15})` : '0 24px 50px rgba(11,40,80,.08)',
               opacity: Math.min(1, a * 2), transform: `translate${tall ? 'X' : 'Y'}(${(1 - a) * 160}px) scale(${(0.9 + a * 0.1) * (1 + lift * 0.06)}) translateY(${-lift * (tall ? 0 : 30)}px)`, zIndex: mid ? 2 : 1}}>
@@ -66,18 +65,17 @@ export const OonavaV7: React.FC<{mute?: boolean}> = ({mute}) => {
     <AbsoluteFill style={{background: f > s(4.0) ? C.white : C.ink}}>
       <Kinetic cuts={CUTS}>
         {f < s(4.2) && (
-          <AbsoluteFill style={{background: C.ink, alignItems: 'center', justifyContent: 'center', gap: 40 * u}}>
+          <AbsoluteFill style={{background: C.ink, alignItems: 'center', justifyContent: 'center', gap: 40 * u, opacity: 1 - prog(f, s(3.85), s(4.15))}}>
             <div style={{width: 980 * u}}><Head words={['What', 'does', 'automation', 'cost?']} at={s(0.3)} size={100 * u} color="#9EA3AE" weight={600} stagger={4} /></div>
             <div style={{width: 980 * u, transform: `scale(${tw(f, [s(2.4), s(2.65)], [1.3, 1])})`}}>
               <Head words={['Less', 'than', 'one', 'admin', 'hire.']} accent={['hire.']} at={s(2.37)} size={130 * u} weight={700} stagger={4} />
             </div>
           </AbsoluteFill>
         )}
-        {f >= s(3.45) && f < s(4.3) && <Wipe at={s(3.45)} />}
-        {f >= s(4.0) && f < s(16.5) && <Cards />}
-        {f >= s(16.2) && <EndCard at={s(16.3)} extra="Estimate yours: oonava.com/estimate" />}
+        {f >= s(3.85) && f < s(18.9) && <AbsoluteFill style={{opacity: prog(f, s(3.85), s(4.15))}}><Cards /></AbsoluteFill>}
+        {f >= s(18.6) && <EndCard at={s(18.7)} extra="Estimate yours: oonava.com/estimate" />}
       </Kinetic>
-      <Captions words={words as W[]} offset={VO} dark={false} y={H - (H > 1500 ? 250 : 100) * u} size={46 * u} hide={[[0, 4.0], [16.2, 99]]} />
+      <Captions words={words as W[]} offset={VO} dark={false} y={H - (H > 1500 ? 430 : 100) * u} size={46 * u} hide={[[0, 4.0], [18.6, 99]]} />
       {!mute && <Audio src={staticFile('oon/v7_mix.wav')} />}
     </AbsoluteFill>
   );

@@ -10,7 +10,7 @@ import {Show as S4} from './V4';
 import words from './v5_words.json';
 
 const s = (x: number) => Math.round(x * 60);
-export const OV5_DURATION = s(27);
+export const OV5_DURATION = s(24);
 const VO = 0.3;
 const CUTS = [0.3, 1.6, 2.75, 4.5, 6.3, 10.4, 12.0, 14.6, 15.95, 17.3, 18.3];
 
@@ -113,10 +113,10 @@ export const OonavaV5: React.FC<{mute?: boolean}> = ({mute}) => {
           </AbsoluteFill>
         )}
         {f >= s(14.0) && f < s(14.8) && <Wipe at={s(14.0)} />}
-        {f >= s(14.6) && f < s(18.5) && <Outcome />}
-        {f >= s(18.2) && <EndCard at={s(18.3)} extra="For estate & letting agents." />}
+        {f >= s(14.6) && f < s(20.7) && <Outcome />}
+        {f >= s(20.4) && <EndCard at={s(20.5)} extra="For estate & letting agents." />}
       </Kinetic>
-      <Captions words={words as W[]} offset={VO} dark={!((f >= s(6.3) && f < s(10.4)) || f >= s(12.0))} y={H - (H > 1500 ? 260 : 110) * u} size={50 * u} hide={[[0, 2.6], [14.4, 99]]} />
+      <Captions words={words as W[]} offset={VO} dark={!((f >= s(6.3) && f < s(10.4)) || f >= s(12.0))} y={H - (H > 1500 ? 430 : 110) * u} size={50 * u} hide={[[0, 2.6], [14.4, 99]]} />
       {!mute && <Audio src={staticFile('oon/v5_mix.wav')} />}
     </AbsoluteFill>
   );

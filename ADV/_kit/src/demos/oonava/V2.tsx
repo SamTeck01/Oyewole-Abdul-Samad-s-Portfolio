@@ -7,7 +7,7 @@ import {C, SANS, useU, rise, Head, Card, Toast, Chip, Captions, EndCard, W} from
 import words from './v2_words.json';
 
 const s = (x: number) => Math.round(x * 60);
-export const OV2_DURATION = s(33.5);
+export const OV2_DURATION = s(29.3);
 const VO = 0.3;
 export const CUTS2 = [0.3, 3.3, 6.0, 8.7, 11.6, 13.4, 14.15, 16.7, 19.7, 21.2, 24.2];
 
@@ -192,10 +192,10 @@ export const OonavaV2: React.FC<{mute?: boolean}> = ({mute}) => {
         {f >= s(5.85) && f < s(12.4) && <AbsoluteFill style={{opacity: prog(f, s(5.85), s(6.05))}}><Problem /></AbsoluteFill>}
         {f >= s(10.95) && f < s(12.4) && <Wipe at={s(10.95)} />}
         {f >= s(11.6) && f < s(19.85) && <AbsoluteFill style={{opacity: prog(f, s(11.6), s(11.75))}}><Show /></AbsoluteFill>}
-        {f >= s(19.6) && f < s(24.4) && <Outcome />}
-        {f >= s(24.1) && <EndCard at={s(24.2)} extra="See it on your own enquiries." />}
+        {f >= s(19.6) && f < s(26.05) && <Outcome />}
+        {f >= s(25.75) && <EndCard at={s(25.85)} extra="See it on your own enquiries." />}
       </Kinetic>
-      <Captions words={words as W[]} offset={VO} dark={f < s(11.5)} y={H - (H > 1500 ? 330 : 120) * u} size={50 * u} hide={[[0, 5.8], [19.5, 99]]} />
+      <Captions words={words as W[]} offset={VO} dark={f < s(11.5)} y={H - (H > 1500 ? 430 : 120) * u} size={50 * u} hide={[[0, 5.8], [19.5, 99]]} />
       {!mute && <Audio src={staticFile('oon/v2_mix.wav')} />}
     </AbsoluteFill>
   );

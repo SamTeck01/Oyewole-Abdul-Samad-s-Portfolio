@@ -7,7 +7,7 @@ import {C, SANS, SERIF, useU, rise, Head, Card, Toast, Chip, Ico, Captions, EndC
 import words from './v1_words.json';
 
 const s = (x: number) => Math.round(x * 60);
-export const OV1_DURATION = s(44);
+export const OV1_DURATION = s(40.3);
 const VO = 0.3;
 // punch-ins: scene changes + key beats only
 export const CUTS = [0.3, 3.65, 5.12, 7.4, 10.3, 12.2, 13.3, 14.3, 16.35, 17.05, 18.3, 21.65, 24.9, 27.85, 29.2, 30.38, 31.4, 32.95, 34.4];
@@ -364,10 +364,10 @@ export const OonavaV1: React.FC<{mute?: boolean}> = ({mute}) => {
       {f >= s(7.3) && f < s(16.9) && <AbsoluteFill style={{opacity: prog(f, s(7.3), s(7.55))}}><Problem /></AbsoluteFill>}
       {f >= s(15.85) && f < s(18.45) && <Turn />}
       {f >= s(18.2) && f < s(27.95) && <AbsoluteFill style={{opacity: prog(f, s(18.2), s(18.35))}}><Show /></AbsoluteFill>}
-      {f >= s(27.8) && f < s(34.6) && <Outcome />}
-      {f >= s(34.3) && <EndCard at={s(34.4)} />}
+      {f >= s(27.8) && f < s(37) && <Outcome />}
+      {f >= s(36.7) && <EndCard at={s(36.8)} />}
       </Kinetic>
-      <Captions words={words as W[]} offset={VO} dark={f < s(16.5)} y={H - (H > 1500 ? 330 : 120) * u} size={50 * u}
+      <Captions words={words as W[]} offset={VO} dark={f < s(16.5)} y={H - (H > 1500 ? 430 : 120) * u} size={50 * u}
         hide={[[0, 7.45], [15.6, 18.3], [27.75, 99]]} />
       {!mute && <Audio src={staticFile('oon/v1_mix.wav')} />}
     </AbsoluteFill>

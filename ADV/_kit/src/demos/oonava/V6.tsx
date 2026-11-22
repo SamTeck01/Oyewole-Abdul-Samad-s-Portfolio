@@ -8,7 +8,7 @@ import {Wipe} from './V2';
 import words from './v6_words.json';
 
 const s = (x: number) => Math.round(x * 60);
-export const OV6_DURATION = s(41.5);
+export const OV6_DURATION = s(35.8);
 const VO = 0.3;
 const STEPS = [
   ['Map', 'Free call to map your process', 4.78],
@@ -138,7 +138,7 @@ export const OonavaV6: React.FC<{mute?: boolean}> = ({mute}) => {
         {f >= s(28.65) && f < s(32.7) && <Outcome />}
         {f >= s(32.4) && <EndCard at={s(32.5)} />}
       </Kinetic>
-      <Captions words={words as W[]} offset={VO} dark={false} y={H - (H > 1500 ? 260 : 100) * u} size={50 * u} hide={[[0, 4.7], [28.6, 99]]} />
+      <Captions words={words as W[]} offset={VO} dark={false} y={H - (H > 1500 ? 430 : 100) * u} size={50 * u} hide={[[0, 4.7], [28.6, 99]]} />
       {!mute && <Audio src={staticFile('oon/v6_mix.wav')} />}
     </AbsoluteFill>
   );

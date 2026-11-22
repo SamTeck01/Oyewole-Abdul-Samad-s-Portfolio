@@ -32,9 +32,9 @@ export const Head: React.FC<{
     <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: align === 'center' ? 'center' : 'flex-start', columnGap: size * 0.26, rowGap: gap, fontFamily: SANS, fontSize: size, fontWeight: weight, letterSpacing: '-0.035em', lineHeight: 1.04, color}}>
       {words.map((w, i) => {
         const a = accent.includes(w);
-        const p = prog(f, at + i * stagger, at + i * stagger + 20);
+        const p = at <= 18 && i * stagger <= 18 ? 1 : prog(f, at + i * stagger, at + i * stagger + 20);
         return (
-          <span key={i} style={{display: 'inline-block', opacity: p, transform: `translateY(${(1 - p) * size * 0.5}px)`, filter: `blur(${(1 - p) * 8}px)`,
+          <span key={i} style={{display: 'inline-block', opacity: p, transform: `translateY(${(1 - p) * size * 0.5}px)`,
             ...(a ? {fontFamily: SERIF, fontStyle: 'italic', fontWeight: 400, color: C.blue, letterSpacing: '-0.01em', fontSize: size * 1.12} : {})}}>
             {w}
           </span>
@@ -135,7 +135,7 @@ export const Captions: React.FC<{words: W[]; offset: number; dark: boolean; y: n
         padding: `${size * 0.3}px ${size * 0.6}px`, borderRadius: size * 0.6, background: dark ? 'rgba(3,3,15,.55)' : 'rgba(255,255,255,.75)'}}>
         {ch.map((w, i) => {
           const on = t >= w.start - 0.02;
-          return <span key={i} style={{color: on ? (t < w.end + 0.08 ? C.blue : dark ? '#fff' : C.ink) : dark ? 'rgba(255,255,255,.35)' : 'rgba(3,3,15,.3)'}}>{w.word.replace(/^(\w)/, (m) => m)}</span>;
+          return <span key={i} style={{color: on ? (t < w.end + 0.08 ? C.blue : dark ? '#fff' : C.ink) : dark ? 'rgba(255,255,255,.65)' : 'rgba(3,3,15,.62)'}}>{w.word.replace(/^(\w)/, (m) => m)}</span>;
         })}
       </div>
     </div>
@@ -163,9 +163,6 @@ export const EndCard: React.FC<{at: number; extra?: string}> = ({at, extra}) => 
         </div>
         {extra && <div style={{marginTop: 36, fontFamily: SANS, fontSize: 34, fontWeight: 500, color: C.mute, ...rise(f, at + 70)}}>{extra}</div>}
         <div style={{marginTop: 40, fontFamily: SANS, fontSize: 40, fontWeight: 650, color: C.deep, ...rise(f, at + 80)}}>oonava.com</div>
-      </div>
-      <div style={{position: 'absolute', left: cx * u, top: cy * u, opacity: tw(f, [at + 60, at + 70, at + 150, at + 165], [0, 1, 1, 0])}}>
-        <svg width={56 * u} height={56 * u} viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.6L10 19z" fill="#000" stroke="#fff" strokeWidth={1.4} strokeLinejoin="round" /></svg>
       </div>
     </AbsoluteFill>
   );

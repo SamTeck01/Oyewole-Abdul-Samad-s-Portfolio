@@ -16,13 +16,13 @@ const ACCENT = ['this.', 'Stop.', 'system.', 'coffee.', 'updated', 'deals', 'cli
 
 export const hookTimes = (n: number) => {
   const w = (HW as unknown as Record<string, W[]>)[String(n)];
-  const a = Math.max(2.6, w[w.length - 1].end + 0.3 + 0.45);
-  return {a, b: a + 5, dur: a + 5 + 4.2};
+  const a = Math.max(2.6, w[w.length - 1].end + 0.5);
+  return {a, b: a + 5, dur: a + 5 + 2.5};
 };
 
 export const HookShort: React.FC<{n: number; mute?: boolean}> = ({n, mute}) => {
   const f = useCurrentFrame();
-  const {u} = useU();
+  const {u, tall} = useU();
   const w = (HW as unknown as Record<string, W[]>)[String(n)].filter((x) => x.word !== '...');
   const {a, b} = hookTimes(n);
   const [Scene, srcAt] = SCENES[n - 1];
@@ -33,14 +33,14 @@ export const HookShort: React.FC<{n: number; mute?: boolean}> = ({n, mute}) => {
         {f < s(a) + 6 && (
           <AbsoluteFill style={{background: C.ink, alignItems: 'center', justifyContent: 'center', opacity: 1 - prog(f, s(a) - 4, s(a) + 6)}}>
             <AbsoluteFill style={{background: 'radial-gradient(55% 35% at 50% 50%, rgba(38,160,248,.16), transparent 70%)'}} />
-            <div style={{width: 960 * u}}>
-              <WordsTimed w={w} accent={ACCENT[n - 1]} size={(w.length > 8 ? 96 : 116) * u} />
+            <div style={{width: 840 * u}}>
+              <WordsTimed w={w} accent={ACCENT[n - 1]} size={(w.length > 8 ? 92 : 108) * u} />
             </div>
           </AbsoluteFill>
         )}
         {f >= s(a) - 6 && f < s(b) + 6 && (
           <AbsoluteFill style={{opacity: prog(f, s(a) - 6, s(a) + 4)}}>
-            <Sequence from={s(a) - s(srcAt)}><Scene /></Sequence>
+            <AbsoluteFill style={{transform: `scale(${tall ? 1.25 : 1})`}}><Sequence from={s(a) - s(srcAt)}><Scene /></Sequence></AbsoluteFill>
           </AbsoluteFill>
         )}
         {f >= s(b) - 6 && <EndCard at={s(b)} />}
@@ -57,10 +57,10 @@ const WordsTimed: React.FC<{w: W[]; accent: string; size: number}> = ({w, accent
     <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', columnGap: size * 0.26}}>
       {w.map((x, i) => {
         const at = s(x.start + 0.3) - 2;
-        const p = prog(f, at, at + 14);
+        const p = 1;
         const hot = x.word === accent || x.word.startsWith(accent);
         return (
-          <span key={i} style={{display: 'inline-block', opacity: p, transform: `translateY(${(1 - p) * size * 0.4}px) scale(${hot ? tw(f, [at, at + 12], [1.3, 1]) : 1})`, filter: `blur(${(1 - p) * 8}px)`,
+          <span key={i} style={{display: 'inline-block', opacity: p, transform: `translateY(${(1 - p) * size * 0.4}px) `,
             fontFamily: hot ? '"Instrument Serif", serif' : '"Inter Display", Inter, sans-serif', fontStyle: hot ? 'italic' : 'normal', fontWeight: hot ? 400 : 700,
             fontSize: hot ? size * 1.15 : size, color: hot ? C.blue : '#fff', letterSpacing: hot ? '-0.01em' : '-0.04em', lineHeight: 1.1}}>{x.word}</span>
         );
